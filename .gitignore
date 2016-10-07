@@ -26,4 +26,4 @@ vignettes/*.pdf
 *.nb.html
 # packrat files
 packrat/lib*/
-packrat/src*/
+packrat/src/
