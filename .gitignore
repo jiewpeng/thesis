@@ -27,3 +27,5 @@ vignettes/*.pdf
 # packrat files
 packrat/lib*/
 packrat/src/
+
+data/**
