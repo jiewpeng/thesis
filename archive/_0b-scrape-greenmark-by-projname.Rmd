@@ -1,0 +1,120 @@
+---
+title: "R Notebook"
+output: #html_notebook
+---
+
+```{r setup}
+library(RSelenium)
+library(tidyverse)
+library(stringr)
+library(rvest)
+```
+
+```{r}
+transactions <- readRDS("data/raw/private/private.RDS")
+```
+
+```{r}
+search_id <- function(browser, proj_name) {
+    browser$navigate("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx")
+    
+    search_box <- browser$findElement(using = "xpath", "//*[@id=\"txtBuildingName\"]")
+    search_box$clickElement()
+    search_box$sendKeysToActiveElement(list(proj_name))
+    browser$findElement(using = "xpath", "//*[@id=\"imgBtnSearchListing\"]")$clickElement()
+    
+    page <- browser$getPageSource()[[1]] %>% read_html()
+    
+    links <- page %>% html_nodes("a") %>% map(str_trim)
+    links <- tibble(links = links) %>% unnest()
+    ids <- links$links %>% 
+        str_match_all("(id=)([0-9]+)") %>% 
+        map(~.[,3]) %>% 
+        unlist()
+    
+    if (length(ids) == 0) {
+        return("NA")
+    }
+    id = ids[1] # return only the first one, because some properties might have multiple phases etc.
+    
+    return(id)
+}
+
+```
+
+```{r}
+get_info <- function(browser, bca_id) {
+    browser$navigate(str_c("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectoryDetail.aspx?id=", bca_id))
+    
+    page <- browser$getPageSource()[[1]] %>% read_html()
+    contents <- page %>% 
+        html_nodes("#gdPropertyDetail .content") %>% 
+        html_text() %>% 
+        map(str_trim) %>% 
+        map(~str_replace_all(.x, "[\r\n]", " "))
+    
+    if (length(contents) == 0) return(tibble())
+    
+    building_name <- contents[[1]]
+    building_info <- contents[[2]]
+    
+    award <- building_info %>% str_match("(Award: ?)(.*)(FY:.*)") %>% .[,3]
+    award_yr <- building_info %>% 
+        str_match("(FY: ?)(.*)(GFA:.*)") %>% .[,3] %>% 
+        str_replace("FY", "20")
+    address <- building_info %>% 
+        str_match("(Address: ?)(.*)(Postal Code:.*)") %>% 
+        .[,3]
+    postal_code <- building_info %>% 
+        str_match("(Postal Code: ?)(.*)(District:.*)") %>% 
+        .[,3]
+    
+    return(tibble(
+        name = building_name, award = award, award_yr = award_yr, 
+        address = address, postal_code = postal_code
+    ))
+}
+```
+
+```{r}
+scrape_all <- function() {
+    startServer()
+    browser <- remoteDriver(browserName = "chrome")
+    browser$open()
+    
+    proj_names <- transactions %>% distinct(project_name) %>% .$project_name
+    
+    all_info <- tibble()
+    curr <- 0
+    total <- length(proj_names)
+    for (proj_name in proj_names) {
+        curr <- curr + 1
+        bca_id <- browser %>% search_id(proj_name)
+        if (bca_id == "NA") {
+            next()
+        }
+        
+        bldg_info <- get_info(browser, bca_id) %>% mutate(proj_name = proj_name)
+        
+        all_info <- all_info %>% bind_rows(bldg_info)
+        
+        if (curr %% 50 == 0) {
+            print(str_c("Processed ", curr, "projects out of ", total))
+        }
+        
+    }
+    
+    browser$close()
+    all_info
+}
+```
+
+```{r}
+greenmark <- scrape_all()
+```
+
+```{r}
+greenmark %>% write_rds("data/raw/greenmark/greenmark_info_by_name.RDS")
+```
+
+

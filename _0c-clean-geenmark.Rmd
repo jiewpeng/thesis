@@ -1,0 +1,151 @@
+---
+title: "Clean Green Mark Dataset"
+output: #html_notebook
+---
+
+This script will clean the greenmark dataset in preparation for merging with the transactions dataset. The objective is to prepare a dataset with a unique key that is the project name, so that I can merge it with the transactions dataset from REALIS. The process is as follows: 
+
+1. Check for missing postal codes and fix them
+1. Remove properties that are definitely not private residential properties (e.g. HDB, university residences, mixed developments with no residential units)
+1. Try to match on postal code, and get the corresponding project name from the transactions dataset.
+1. If there is no match in postal code and hence no corresponding project name, I will get all the possible project names using the postal code in the URA geocoding API
+1. The final dataset to be merged will be identified by a project name, and have information on what type of greenmark award, as well as the award year
+
+
+```{r setup}
+library(tidyverse, pos = 2)
+library(rvest)
+library(stringr)
+library(Hmisc)
+library(httr)
+library(rjson)
+```
+
+```{r load data}
+greenmark <- read_rds("data/raw/greenmark/greenmark.RDS")
+transactions <- read_rds("data/raw/private/non-landed.RDS")
+```
+
+Looks like only The Glades does not have a valid postal code (I don't care about PSA Maintenance Base because that has no residential blocks).
+
+```{r check missing postal codes}
+greenmark %>% filter(is.na(postal_code))
+```
+
+So we can just replace its postal code with one that we can find from the transactions dataset.
+
+```{r replace postal code for The Glades Condo}
+glades_postal_code <- transactions %>% filter(project_name == "THE GLADES") %>% .$postal_code %>% .[1]
+greenmark <- greenmark %>% mutate(postal_code = replace(postal_code, project_name == "The Glades", glades_postal_code))
+greenmark %>% filter(project_name == "The Glades")
+```
+
+We don't care about recertifications
+
+```{r remove recertifications}
+greenmark <- greenmark %>% filter(!str_detect(str_to_lower(project_name), "certification"))
+greenmark
+```
+
+Since there are a sizable number of mixed developments with no specification of whether or not they contain residential units, we'll look at them first.
+
+```{r check how many mixed devs}
+mixed_devs <- greenmark %>% filter(type_of_building == "Mixed Development")
+mixed_devs
+```
+
+Get rid of all mixed developments that don't have a residential component: I first grab the building descriptions of buildings classified as "Mixed Development" by scraping Grenemark Buildings Directory again, then print out the descriptions. I read the descriptions of these buildings and determine which ones are mixed developments with residential units. From there I can subset the data.
+
+```{r grab building description to determine if it contains residential}
+get_description <- Vectorize(function(bldg_id) {
+    page <- read_html(GET(str_c("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectoryDetail.aspx?id=", bldg_id)))
+    
+    details <- page %>% 
+        html_node("td+ td tr:nth-child(1) tr~ tr+ tr td") %>% # grab details section
+        html_text() %>% 
+        str_trim() %>% 
+        str_split("Project Description:") %>% .[[1]] %>% .[2] %>% # get rid of preceding details
+        str_split("Green Features:") %>% .[[1]] %>% .[1] %>% # get rid of green features section
+        str_trim() %>% str_replace_all("\\r\\n", " ")
+    
+    return(details)
+})
+mixed_devs <- mixed_devs %>% mutate(description = get_description(id))
+mixed_devs %>% write_tsv("misc/mixed_devs.tsv") # to print out from excel
+```
+
+```{r filter residential only}
+residential_greenmark <- greenmark %>% 
+    filter((type_of_building != "Mixed Development") | (id %in% c("946", "669", "1606", "1639", "1140", "1141", "650", "907")))
+residential_greenmark
+```
+
+I observe some residences that are HDB flats or university residences - since I am dealing only with private housing transactions, I'll remove them first.
+
+```{r filter out HDB and uni residences}
+residential_greenmark <- residential_greenmark %>% 
+    mutate(project_name = str_to_upper(project_name)) %>% 
+    filter(!str_detect(project_name, "(^BLK|HALL OF RESIDENCE|KENT VALE|FACULTY HOUSING|UNIVERSITY)"))
+residential_greenmark
+```
+
+
+Now I can start merging the greenmark dataset with the transactions dataset
+
+```{r find matches on postal code}
+merged <- residential_greenmark %>% 
+    left_join(transactions, by = "postal_code") %>% 
+    distinct(year_award, award, project_name.x, project_name.y, postal_code)
+merged
+```
+
+
+```{r find which matches have no proper project name in dataset}
+merged %>% filter(is.na(project_name.y))
+```
+
+```{r get project names from URA geocoding API}
+get_project_name_from_ura <- Vectorize(function(postal_code) {
+    api <- "https://developers.onemap.sg/commonapi/search?searchVal=singapore+<pcode>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+    info <- fromJSON(file = str_replace(api, "<pcode>", postal_code))
+    
+    if (info$found == 0) {
+        return(NA_character_)
+    }
+    
+    results <- info$results
+    building_names <- map(results, ~.["BUILDING"]) %>% unlist()
+    return(building_names)
+})
+merged_wo_projname <- merged %>% 
+    filter(is.na(project_name.y)) %>%
+    select(-project_name.x, -project_name.y) %>% 
+    mutate(project_name = get_project_name_from_ura(postal_code)) %>% 
+    unnest() %>% 
+    distinct(year_award, award, project_name)
+merged_wo_projname
+```
+
+Building = "NIL" sounds about right.
+
+```{r replace NIL project name}
+merged_wo_projname <- merged_wo_projname %>% 
+    mutate(project_name = replace(project_name, project_name == "NIL", "16 LAKESHORE VIEW"))
+merged_wo_projname
+```
+
+Next I can get the final dataset that can be merged with the transactions dataset
+
+```{r combine datasets with and without matching project names in transactions dataset}
+merged_with_projname <- merged %>% 
+    filter(!is.na(project_name.y) & project_name.y != "N.A.") %>% 
+    select(project_name = project_name.y, year_award, award)
+greenmark_cleaned <- merged_with_projname %>% bind_rows(merged_wo_projname)
+```
+
+```{r save cleaned greenmark dataset}
+greenmark_cleaned %>% write_rds("data/intermediate/greenmark_cleaned.RDS")
+```
+
+
+

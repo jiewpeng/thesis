@@ -1,0 +1,97 @@
+---
+title: "Scrape IDs for Green Mark Buildings"
+output: #html_notebook
+---
+
+# Purpose of Scraping IDs
+
+The [BCA Green Mark Buildings Directory](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx) contains both Singapore and foreign buildings. The website has a simple URL structure to scrape the information from single buildings, where the URL is just a prefix and an ID for the building. Since some foreign buildings might have a postal code structure identical to Singapore, it is less risky to first get all the building IDs of Singapore buildings, then loop through the IDs to scrape the actual data.
+
+```{r setup}
+library(RSelenium)
+library(tidyverse)
+library(stringr)
+library(rvest)
+```
+
+
+```{r scrape-all}
+get_greenmark_ids <- function() {
+    
+    # Function to scrape all the building IDs to loop through in the main
+    # scraping script. Does this by browsing the buildings directory (by
+    # default, it selects Singapore buildings) when we click on "Search
+    # Listing". Then we can find out how many pages of listings there is,
+    # and loop through that number; grabbing the building IDs from the links
+    # in each page. Stores all this in the data frame that is returned.
+
+    #addCap <- list(phantomjs.page.settings.userAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:29.0) Gecko/20120101 Firefox/29.0")
+    #browser <- remoteDriver(browserName = "phantomjs", extraCapabilities = addCap)
+    browser <- remoteDriver(browserName = "chrome")
+    browser$open()
+    browser$navigate("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx")
+    
+    # get only residential buildings
+    browser$findElement(using = "xpath", "//*[@id=\"map_accordion\"]/ul/li[4]/a/div")$clickElement()
+    Sys.sleep(1)
+    browser$findElement(using = "xpath", "//*[@id=\"chkBuilding16\"]")$clickElement()
+    
+    browser$findElement(using = "xpath", "//*[@id=\"imgBtnSearchListing\"]")$clickElement()
+    
+    no_buildings <- browser$findElement(
+        using = "xpath", 
+        "//*[@id=\"Form1\"]/table/tbody/tr[1]/td/table/tbody/tr/td/span[2]"
+        )$getElementText() %>% 
+        str_match("(\\d+)( results)") %>% 
+        .[,2] %>% 
+        as.integer()
+    no_pages <- ceiling(no_buildings / 10)
+    
+    all_ids <- tibble()
+    for (i in 1:no_pages) {
+        curr_page <- browser$getPageSource()[[1]]
+        page <- curr_page %>% read_html()
+        
+        links <- page %>% html_nodes("a") %>% map(str_trim)
+        if (length(links) == 0) {
+            next()
+        }
+        links <- tibble(links = links) %>% unnest()
+        
+        ids <- links$links %>% 
+            str_match_all("(id=)([0-9]+)") %>% 
+            map(~.[,3]) %>% 
+            unlist()
+        if (length(ids) == 0) {
+            next()
+            }
+        ids <- tibble(ids = ids)
+        all_ids <- all_ids %>% bind_rows(ids)
+        
+        browser$executeScript(str_c("__doPostBack('gdSearchData', 'Page$", i+1, "')"), args = list())
+        next_page <- browser$getPageSource()[[1]]
+        while (next_page == curr_page) {
+            print("waiting")
+            Sys.sleep(0.5)
+            next_page <- browser$getPageSource()[[1]]
+        }
+            
+        #Sys.sleep(2)
+    }
+    
+    browser$close()
+    return(all_ids)
+}
+
+
+```
+
+```{r}
+ids <- get_greenmark_ids()
+```
+
+```{r}
+ids %>% distinct(ids) %>% saveRDS(file = "data/raw/greenmark/greenmark_ids.RDS")
+```
+
+

@@ -1,0 +1,87 @@
+---
+title: "Scrape Greenmark"
+output: #html_notebook
+---
+
+# Purpose of Scraping the BCA Buildings Directory
+
+This notebook scrapes the [BCA Green Mark Buildings Directory](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx) for the award information of BCA award recipients (Singapore residential properties only). Exports the resulting data frame as a RDS file. This dataset can then be merged with the property transactions dataset from the [Real Estate Information System (REALIS)](https://spring.ura.gov.sg/lad/ore/login/index.cfm) database in order to explore the relationship between environmental certification ([BCA Green Mark](https://www.bca.gov.sg/greenmark/green_mark_buildings.html)) and housing prices.
+
+# Caveats
+
+The BCA Green Mark Buildings Directory is incomplete. For example, I ran a quick check on the BCA Green Mark Gold recipients (residential properties) for 2015, and The Tampines Trillant was listed in the [Green Mark Award 2015](https://www.bca.gov.sg/greenmark/others/gm2015.pdf) as having the Gold Award, but cannot be found in the Buildings Directory. Given that there were building IDs that were not successful in scraping (either the page was broken or did not exist), this is not surprising.
+
+```{r setup}
+library(rvest)
+library(tidyverse)
+library(stringr)
+```
+
+```{r greenmark-ids}
+ids <- readRDS("data/raw/greenmark/greenmark_ids.RDS")
+```
+
+```{r scrape-single}
+scrape_building <- function(bldg_id) {
+    # The BCA Green Mark Buildings Directory has a relatively simple URL
+    # structure, with some prefix and an id. We can just loop through
+    # integer ids to get each webpage. This function is to scrape a single
+    # building (one integer id)
+    
+    page <- read_html(str_c("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectoryDetail.aspx?id=", bldg_id))
+    contents <- page %>% 
+        html_nodes("#gdPropertyDetail .content") %>% 
+        html_text() %>% 
+        map(str_trim) %>% 
+        map(~str_replace_all(.x, "[\r\n]", " "))
+    
+    if (length(contents) == 0) return(tibble())
+    
+    building_name <- contents[[1]]
+    building_info <- contents[[2]]
+    
+    award <- building_info %>% str_match("(Award: ?)(.*)(FY:.*)") %>% .[,3]
+    award_yr <- building_info %>% 
+        str_match("(FY: ?)(.*)(GFA:.*)") %>% .[,3] %>% 
+        str_replace("FY", "20")
+    address <- building_info %>% 
+        str_match("(Address: ?)(.*)(Postal Code:.*)") %>% 
+        .[,3]
+    postal_code <- building_info %>% 
+        str_match("(Postal Code: ?)(.*)(District:.*)") %>% 
+        .[,3]
+    
+    return(tibble(
+        name = building_name, award = award, award_yr = award_yr, 
+        address = address, postal_code = postal_code
+    ))
+}
+
+```
+
+```{r scrape-all}
+get_greenmark_info <- function() {
+    # This function will loop through all the integers, resulting in a 
+    # single data frame with the defails from all the buildings
+    
+    all_properties <- tibble()
+    
+    for (id in ids$ids) {
+        info <- scrape_building(id)
+        if (length(info) > 0) {
+            all_properties <- all_properties %>% bind_rows(info)
+        }
+    }
+    
+    return(all_properties)
+}
+```
+
+
+```{r}
+greenmark <- get_greenmark_info()
+greenmark %>% saveRDS(file = "data/raw/greenmark/greenmark_info.RDS")
+```
+
+
+

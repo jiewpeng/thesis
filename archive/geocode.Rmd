@@ -1,0 +1,61 @@
+---
+title: "R Notebook"
+output: #html_notebook
+---
+
+```{r setup}
+library(rvest)
+library(tidyverse)
+library(stringr)
+
+```
+
+```{r}
+transactions <- read_rds("data/raw/private/private.RDS")
+unique_postals <- transactions %>% 
+    distinct(postal_code) %>% 
+    filter(!is.na(postal_code)) %>% 
+    # postal codes that start with 0 got truncated when I loaded them in as integers
+    mutate(postal = str_pad(postal_code, width = 6, side = "left", pad = "0"))
+rm(transactions)
+```
+
+```{r}
+geocode <- function(postal_code) {
+    onemap_api <- "https://developers.onemap.sg/commonapi/search?searchVal=<addr>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+    addr <- str_c("Singapore+", postal_code)
+    
+    response <- str_replace(onemap_api, "<addr>", addr) %>% 
+        read_html() %>% html_text() %>% 
+        str_replace_all('\"', "") # response is filled with quotes, remove them
+    found <- str_match(response, "(found:)(\\d+)") %>% .[,3]
+    if (found == "0") {
+        return(tibble(lat = NA_real_, lon = NA_real_))
+    }
+    
+    # Match the first result only, if there are multiple
+    lat <- response %>% 
+        str_match("(LATITUDE:)(\\d+\\.\\d+)") %>% 
+        .[,3] %>% as.double()
+    lon <- response %>% 
+        str_match("(LONGITUDE:)(\\d+\\.\\d+)") %>% 
+        .[,3] %>% as.double()
+    
+    Sys.sleep(0.05) # avoid hammering the servers
+    
+    return(tibble(lat = lat, lon = lon)) 
+}
+```
+
+```{r}
+print(str_c("Started geocoding ", nrow(unique_postals), " postal codes at ", Sys.time()))
+geocoded <- unique_postals %>% 
+    mutate(coords = map(postal, geocode)) %>% 
+    unnest()
+print(str_c("Finished geocoding ", nrow(unique_postals), " postal codes at ", Sys.time()))
+```
+
+```{r}
+geocoded %>% write_rds("data/raw/geocode/private_coords.RDS")
+```
+

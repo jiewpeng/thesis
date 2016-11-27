@@ -1,0 +1,43 @@
+---
+title: "R Notebook"
+output: #html_notebook
+---
+
+```{r}
+library(tidyverse, pos = 2)
+library(Hmisc)
+```
+
+```{r}
+private_datasets <- Sys.glob("data/raw/private/*.csv")
+transactions <- private_datasets %>% map(read_csv, col_types = "cciiciciicccccciiccc") %>% tibble() %>% unnest()
+transactions
+```
+
+
+```{r}
+label_df <- function(df) {
+    col_labels <- names(df)
+    names(col_labels) <- col_labels
+    col_labels <- as.list(col_labels)
+    label(df) <- col_labels
+    return(df)
+}
+transactions <- label_df(transactions)
+names(transactions) <- c(
+    "project_name", "address", "no_units", "area", "type_of_area",
+    "trans_price", "nett_price", "price_psm", "price_psf", "sale_date",
+    "property_type", "tenure", "completion_date", "type_of_sale",
+    "hdb_buyer", "postal_district", "postal_sector", "postal_code",
+    "planning_region", "planning_area"
+)
+transactions
+```
+
+```{r}
+transactions %>% write_rds("data/raw/private/private.RDS")
+transactions %>% 
+    filter(property_type %in% c("Condominium", "Apartment", "Executive Condominium")) %>% 
+    write_rds("data/raw/private/non-landed.RDS")
+```
+

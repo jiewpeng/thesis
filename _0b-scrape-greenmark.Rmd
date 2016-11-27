@@ -1,0 +1,68 @@
+---
+title: "Scrape Greenmark Info"
+output: #html_notebook
+---
+
+This script scrapes the information about Green Mark awards from the BCA website. Gets the information for properties that are either pure residential or mixed developments. It will not filter out the mixed developments which have no residential units; this is done in another script.
+
+```{r setup}
+library(tidyverse)
+library(stringr)
+library(rvest)
+library(httr)
+```
+
+```{r html GET request}
+set_config(config(ssl_verifypeer = 0L))
+page <- read_html(GET("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx")) %>% as_list()
+```
+
+```{r grab all info}
+buildings <- page %>% 
+    str_replace_all(c('\\"' = "")) %>% # remove quotes to more easily use regex
+    str_match("var markers = .*];") %>%  # var markers contain info of all properties
+    str_match_all("\\{.*\\}") %>% # get actual data enclosed within {}
+    .[[1]] %>% .[1,1] %>% # get actual data from within nested data structure
+    str_split(":") %>% 
+    .[[1]]
+buildings <- buildings[2:length(buildings)] %>% # start at 2 because 1st entry is garbage
+    map(~str_match(.x, "\\'(.*)\\'")) %>% map(~.x[2]) %>% # get text enclosed within quotes
+    map(str_trim)
+```
+
+```{r convert info into data frame format}
+buildings <- buildings %>% matrix(ncol = 10, byrow = TRUE) %>% as.data.frame() %>% unnest()
+names(buildings) <- c("id", "project_name", "image", "type_of_building", "year_award", "award", "gfa", "lat", "lon", "country")
+buildings
+```
+
+```{r filter to SG residential / mixed dev properties}
+residential <- buildings %>% 
+    filter(country == "Singapore" & (type_of_building == "Residential" | str_detect(type_of_building, "Mixed"))) %>%
+    filter(!type_of_building %in% c("Mixed Development- Commercial / Hotel", "Mixed development- Hotel / Retail",
+                                   "Mixed Development- Office / Retail", "Mixed development- Office / Retail")) %>% 
+    select(id, type_of_building, year_award, award, project_name)
+residential
+```
+
+```{r function to get postal code from BCA building ID}
+get_postal_code <- Vectorize(function(bldg_id) {
+    page <- read_html(GET(str_c("https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectoryDetail.aspx?id=", bldg_id)))
+    
+    details <- page %>% 
+        html_node(".content+ .content") %>% 
+        html_text() %>% 
+        str_to_lower()
+    postal_code <- str_match(details, "postal code: .*(\\d{6})") %>% .[2]
+    return(postal_code)
+})
+```
+
+```{r get postal codes from BCA ID}
+greenmark <- residential %>% mutate(postal_code = get_postal_code(id))
+```
+
+```{r save dataset}
+greenmark %>% write_rds("data/raw/greenmark/greenmark.RDS")
+```
+
