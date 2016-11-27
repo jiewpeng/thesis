@@ -1,21 +1,22 @@
 ---
-title: "R Notebook"
+title: "Combine all csv files into one RDS"
 output: #html_notebook
 ---
 
-```{r}
+This script combines the entire directory of csv files into a single dataset and outputs it as a RDS file.
+
+```{r setup}
 library(tidyverse, pos = 2)
 library(Hmisc)
 ```
 
-```{r}
+```{r append all csvs into one dataset}
 private_datasets <- Sys.glob("data/raw/private/*.csv")
 transactions <- private_datasets %>% map(read_csv, col_types = "cciiciciicccccciiccc") %>% tibble() %>% unnest()
 transactions
 ```
 
-
-```{r}
+```{r label dataset}
 label_df <- function(df) {
     col_labels <- names(df)
     names(col_labels) <- col_labels
@@ -34,7 +35,7 @@ names(transactions) <- c(
 transactions
 ```
 
-```{r}
+```{r write dataset}
 transactions %>% write_rds("data/raw/private/private.RDS")
 transactions %>% 
     filter(property_type %in% c("Condominium", "Apartment", "Executive Condominium")) %>% 
