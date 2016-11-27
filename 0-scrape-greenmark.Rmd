@@ -1,9 +1,0 @@
----
-title: "Scrape Greenmark"
-output: #html_notebook
----
-
-```{r setup}
-library(rvest)
-```
-
