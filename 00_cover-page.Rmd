@@ -1,0 +1,30 @@
+
+\begin{titlepage}
+    \large
+    \begin{center}
+        \vspace*{1cm}
+        
+        \textbf{THESIS TITLE THAT STRETCHES FOR TWO LINES BECAUSE THIS IS A VERY LONG PLACEHOLDER TITLE}
+        
+        \vspace*{\fill}
+        \begingroup
+            \centering
+            \textbf{BY}\\
+            \textbf{LIM JIEW PENG}
+        \endgroup
+        \vspace*{\fill}
+        
+        \textbf{A THESIS SUBMITTED FOR}\\
+        \vspace{0.5cm}
+        \textbf{THE DEGREE OF B.SOC.SCI(HONS) ECONOMICS}\\
+        \textbf{FACULTY OF ARTS AND SOCIAL SCIENCES}\\
+        \textbf{NATIONAL UNIVERSITY OF SINGAPORE}
+        
+        \vspace*{1.5cm}  
+        
+        \textbf{2017}
+        
+        \vspace*{1cm}
+        
+    \end{center}
+\end{titlepage}

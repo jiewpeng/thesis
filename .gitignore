@@ -30,3 +30,5 @@ packrat/lib*/
 packrat/src*/
 data/**
 _notes.Rmd
+# book files
+_main.**

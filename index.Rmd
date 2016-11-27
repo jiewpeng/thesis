@@ -1,6 +1,3 @@
 ---
-title: "Thesis"
-output: html_notebook
+bibliography: "../Z_Mendeley/thesis.bib"
 ---
-
-

@@ -1,0 +1,22 @@
+\usepackage{booktabs}
+\usepackage[section]{placeins}
+\usepackage{longtable}
+\usepackage{chngcntr}
+\usepackage{adjustbox}
+\usepackage{etoolbox}
+
+
+\newsavebox{\mybox}
+\newenvironment{mytabularwrap}{\begin{lrbox}{\mybox}}
+  {\end{lrbox}%
+  \setbox0\hbox{\usebox\mybox}%
+  \ifdim\wd0<\textwidth
+      \usebox\mybox%
+  \else
+      \resizebox{\textwidth}{!}{\usebox\mybox}%
+  \fi
+  }
+
+
+\BeforeBeginEnvironment{tabular}{\begin{mytabularwrap}}
+\AfterEndEnvironment{tabular}{\end{mytabularwrap}}
