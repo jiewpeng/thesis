@@ -5,7 +5,77 @@ output: #html_notebook
 
 This notebook will merge the cleaned greenmark dataset with the private residential properties dataset.
 
-```{r}
+```{r setup}
 source("misc/load_libraries.R")
+```
+
+```{r load data}
+transactions <- read_rds("data/raw/private/non-landed.RDS")
+greenmark <- read_rds("data/intermediate/greenmark_cleaned.RDS")
+```
+
+```{r merge on project name}
+merged <- transactions %>% left_join(greenmark, on = "project_name")
+merged
+```
+
+```{r get all postal codes associated with each project name}
+with_awards <- merged %>% 
+    filter(!is.na(award)) %>% 
+    distinct(project_name, postal_code)
+with_awards
+```
+
+```{r expand greenmark dataset to include all postal codes from each project/condo}
+greenmark_expanded <- with_awards %>%
+    left_join(greenmark, by = "project_name")
+greenmark_expanded
+```
+
+```{r some basic cleaning neglected in the cleaning script}
+greenmark_expanded <- greenmark_expanded %>% 
+    mutate(year_award = as.integer(str_replace(year_award, "FY", "20")),
+           award = str_replace_all(award, "Green Mark ", ""))
+greenmark_expanded
+```
+
+
+```{r add labels to the expanded dataset}
+label(greenmark_expanded$year_award) <- "Year of Award"
+label(greenmark_expanded$award) <- "Green Mark Award"
+```
+
+```{r check for invalid year of award}
+greenmark_expanded %>% distinct(year_award) %>% arrange(year_award)
+```
+
+```{r check for invalid award type}
+greenmark_expanded %>% distinct(award)
+```
+
+```{r perform second merge}
+second_merge <- transactions %>% left_join(greenmark_expanded, by = "project_name")
+second_merge
+```
+
+```{r clean up data types}
+final <- second_merge %>% 
+    mutate(project_name = as.factor(project_name),
+           type_of_area = as.factor(type_of_area),
+           sale_date = dmy(sale_date),
+           property_type = as.factor(property_type),
+           tenure = as.factor(str_replace(tenure, " From .*", "")),
+           type_of_sale = as.factor(type_of_sale),
+           hdb_buyer = as.integer(hdb_buyer == "HDB"),
+           planning_region = as.factor(planning_region),
+           planning_area = as.factor(planning_area),
+           award = as.factor(award)) %>% 
+    select(-nett_price, -postal_code.y) %>% 
+    rename(postal_code = postal_code.x)
+final
+```
+
+```{r}
+final %>% write_rds("data/final/data.RDS")
 ```
 
