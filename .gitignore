@@ -32,3 +32,4 @@ data/**
 _notes.Rmd
 # book files
 _main.**
+!_book/_main.pdf
