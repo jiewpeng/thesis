@@ -13,12 +13,7 @@ This script will clean the greenmark dataset in preparation for merging with the
 
 
 ```{r setup}
-library(tidyverse, pos = 2)
-library(rvest)
-library(stringr)
-library(Hmisc)
-library(httr)
-library(rjson)
+source("misc/load_libraries.R")
 ```
 
 ```{r load data}

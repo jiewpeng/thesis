@@ -6,8 +6,7 @@ output: #html_notebook
 This script combines the entire directory of csv files into a single dataset and outputs it as a RDS file.
 
 ```{r setup}
-library(tidyverse, pos = 2)
-library(Hmisc)
+source("misc/load_libraries.R")
 ```
 
 ```{r append all csvs into one dataset}

@@ -4,3 +4,8 @@ output: #html_notebook
 ---
 
 This notebook will merge the cleaned greenmark dataset with the private residential properties dataset.
+
+```{r}
+source("misc/load_libraries.R")
+```
+

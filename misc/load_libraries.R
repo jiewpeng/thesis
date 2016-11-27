@@ -1,0 +1,6 @@
+library(tidyverse, pos = 2)
+library(rvest)
+library(stringr)
+library(Hmisc)
+library(httr)
+library(rjson)

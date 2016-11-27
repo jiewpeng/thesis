@@ -6,10 +6,7 @@ output: #html_notebook
 This script scrapes the information about Green Mark awards from the BCA website. Gets the information for properties that are either pure residential or mixed developments. It will not filter out the mixed developments which have no residential units; this is done in another script.
 
 ```{r setup}
-library(tidyverse)
-library(stringr)
-library(rvest)
-library(httr)
+source("misc/load_libraries.R")
 ```
 
 ```{r html GET request}
