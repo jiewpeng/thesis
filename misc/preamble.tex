@@ -5,8 +5,15 @@
 \usepackage{adjustbox}
 \usepackage{etoolbox}
 \usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{tocloft}
 
 \doublespacing
+\allsectionsfont{\centering}
+
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand*\listfigurename{LIST OF FIGURES}
+\renewcommand*\listtablename{LIST OF TABLES}
 
 \newsavebox{\mybox}
 \newenvironment{mytabularwrap}{\begin{lrbox}{\mybox}}
