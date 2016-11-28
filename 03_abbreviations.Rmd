@@ -1,6 +1,6 @@
 
 
-# Abbreviations {-}
+# ABBREVIATIONS {-}
 
 Blah.
 

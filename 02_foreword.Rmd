@@ -1,6 +1,6 @@
 
 
-# Foreword {-}
+# FOREWORD {-}
 
 Acknowledgements blah blah blah
 
