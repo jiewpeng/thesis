@@ -1,0 +1,7 @@
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+\listoftables
+
+\pagebreak
