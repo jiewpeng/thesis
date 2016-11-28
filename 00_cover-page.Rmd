@@ -4,25 +4,17 @@
     \begin{center}
         \vspace*{1cm}
         
-        \textbf{THESIS TITLE THAT STRETCHES FOR TWO LINES BECAUSE THIS IS A VERY LONG PLACEHOLDER TITLE}
+        \textbf{PLACEHOLDER THESIS TITLE}\\
+        \textbf{A VERY MEANINGFUL THESIS}
         
         \vspace*{\fill}
-        \begingroup
-            \centering
-            \textbf{BY}\\
-            \textbf{LIM JIEW PENG}
-        \endgroup
+        \textbf{by}\\
+        \textbf{LIM JIEW PENG}
         \vspace*{\fill}
         
-        \textbf{A THESIS SUBMITTED FOR}\\
-        \vspace{0.5cm}
-        \textbf{THE DEGREE OF B.SOC.SCI(HONS) ECONOMICS}\\
-        \textbf{FACULTY OF ARTS AND SOCIAL SCIENCES}\\
-        \textbf{NATIONAL UNIVERSITY OF SINGAPORE}
-        
-        \vspace*{1.5cm}  
-        
-        \textbf{2017}
+        \textbf{DEPARTMENT OF ECONOMICS}\\
+        \textbf{NATIONAL UNIVERSITY OF SINGAPORE}\\
+        \textbf{2016/2017}
         
         \vspace*{1cm}
         
