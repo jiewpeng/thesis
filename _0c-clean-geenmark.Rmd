@@ -8,7 +8,7 @@ This script will clean the greenmark dataset in preparation for merging with the
 1. Check for missing postal codes and fix them
 1. Remove properties that are definitely not private residential properties (e.g. HDB, university residences, mixed developments with no residential units)
 1. Try to match on postal code, and get the corresponding project name from the transactions dataset.
-1. If there is no match in postal code and hence no corresponding project name, I will get all the possible project names using the postal code in the URA geocoding API
+1. If there is no match in postal code and hence no corresponding project name, I will get all the possible project names using the postal code in the URA geocoding API. Hopefully because the REALIS dataset is from URA, using the geocoding API from URA's Onemap will yield project names that match the project names in the REALIS data. **This will likely not be perfect, and this will result in some projects not being correctly classified as Greenmark award recipients.**
 1. The final dataset to be merged will be identified by a project name, and have information on what type of greenmark award, as well as the award year
 
 
