@@ -101,7 +101,7 @@ merged %>% filter(is.na(project_name.y))
 
 ```{r get project names from URA geocoding API}
 get_project_name_from_ura <- Vectorize(function(postal_code) {
-    api <- "https://developers.onemap.sg/commonapi/search?searchVal=singapore+<pcode>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+    api <- "http://developers.onemap.sg/commonapi/search?searchVal=singapore+<pcode>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
     info <- fromJSON(file = str_replace(api, "<pcode>", postal_code))
     
     if (info$found == 0) {
@@ -138,9 +138,19 @@ merged_with_projname <- merged %>%
 greenmark_cleaned <- merged_with_projname %>% bind_rows(merged_wo_projname)
 ```
 
+Finally, I export a dataset containing projects that fail to join from the Green Mark dataset to the transactions dataset, so that I can manually check that these do not exist in the transactions dataset. This can be done with the search bar from the RStudio `View()` window. `transactions %>% distinct(project_name, address) %>% View()` will list all the project names in the transactions dataset, I can then search manually for the addresses.
+
+```{r}
+not_found_in_transactions <- greenmark_cleaned %>% anti_join(transactions, by = "project_name")
+not_found_in_transactions %>% write_tsv("misc/not_found_in_transactions.tsv")
+```
+
+It turns out that all those that are not matched in the transactions dataset are really non-matches - they are mostly either HDB, or non-residential mixed developments, or serviced apartments.
+
 ```{r save cleaned greenmark dataset}
 greenmark_cleaned %>% write_rds("data/intermediate/greenmark_cleaned.RDS")
 ```
+
 
 
 
