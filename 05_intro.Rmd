@@ -2,7 +2,6 @@
 
 # INTRODUCTION
 
-
-
+The aim of this paper is to explore the signalling effects of a certification or award. The signalling effects of environmental certifications are important because they are meant to incentivise certain behaviour, for instance, constructing energy efficient buildings. In order for them to incentivise private companies to adopt such practices, these certifications need to provide credible signals, which provide a price premium to justify the investment into green technology. This paper uses a difference-in-difference (DID) approach to isolate the signalling effect from the information provided by the award. 
 
 \pagebreak
