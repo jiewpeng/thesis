@@ -1,2 +1,8 @@
 
 # LITERATURE REVIEW
+
+There is a fair amount of literature showing the price effects of environmental certifications on property prices. However, there are fewer publications on why certifications have an effect on prices. Certifications can have an impact on prices in the market through the information that they provide to the market (information effect), and also by signalling unobservable quality (signalling effect).
+
+Heinzle, Yip and Xing [-@Heinzle2013], citing 
+
+\pagebreak
