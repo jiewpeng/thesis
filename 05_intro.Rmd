@@ -4,4 +4,14 @@
 
 The aim of this paper is to explore the signalling effects of a certification or award. The signalling effects of environmental certifications are important because they are meant to incentivise certain behaviour, for instance, constructing energy efficient buildings. In order for them to incentivise private companies to adopt such practices, these certifications need to provide credible signals, which provide a price premium to justify the investment into green technology. This paper uses a difference-in-difference (DID) approach to isolate the signalling effect from the information provided by the award. 
 
+The reason why certification is required to incentivise the construction of green buildings is well explained by Heinzle, Yip and Xing [-@Heinzle2013]. Citing Cadman (2000), RICS (2008) and Falkenback *et al.* (2010), they explain that there is a "vicious circle of blame". The argument is that there is a lack of demand in the asset market for green buildings because investors believe that there is no demand for such properties among buyers in the market for space (owner-occupiers). Because of this, developers do not want to construct green buildings, even when constructors have the ability to do so, because investors do not pay for the additional costs involved in designing and constructing green buildings. As a result, a certification can solve this problem, as long as it provides a credible signal.
+
+Essentially, there exists an information asymmetry problem that starts off with a lack of investor demand, leading to the lack of price premium for green buildings, which then leads to a lack of supply, due to the inability to justify cost premiums to construct them. 
+
+A credible certification solves the lack of supply of green buildings in two ways.
+
+Firstly, if there is a lack of demand for green buildings among owner-occupiers due to the difficulty of observing building attributes [see @Matisoff2016], a credible certification can act as a signal to potential buyers about the green features and quality of the building. This will lead to an increase in demand for green buildings in the market for space, and hence a corresponding increase in the market for housing assets.
+
+Secondly, 
+
 \pagebreak
