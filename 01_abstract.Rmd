@@ -1,7 +1,7 @@
 
 \pagenumbering{roman}
 
-# ABSTRACT {-}
+# Abstract {-}
 
 Here is some filler text.
 
