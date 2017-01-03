@@ -1,6 +1,7 @@
 
+\pdfbookmark[section]{Abbreviations}{abbr}
 
-# Abbreviations {-}
+# Abbreviations {#abbr .unnumbered}
 
 **GM**: Green Mark environmental certification in Singapore. 
 

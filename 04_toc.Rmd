@@ -1,4 +1,5 @@
 
+\pdfbookmark[section]{Contents}{toc}
 \tableofcontents
 
 \listoffigures

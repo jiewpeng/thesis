@@ -1,7 +1,8 @@
 
 \pagenumbering{roman}
+\pdfbookmark[section]{Abstract}{abstract}
 
-# Abstract {-}
+# Abstract {#abstract .unnumbered}
 
 Here is some filler text.
 

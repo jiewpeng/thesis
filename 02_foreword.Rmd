@@ -1,6 +1,7 @@
 
+\pdfbookmark[section]{Foreword}{foreword}
 
-# Foreword {-}
+# Foreword {#foreword .unnumbered}
 
 Acknowledgements blah blah blah
 
