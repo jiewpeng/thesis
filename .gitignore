@@ -35,3 +35,4 @@ _main.**
 !_book/_main.pdf
 references/**
 documents/**
+_bookdown_files/**
