@@ -75,7 +75,39 @@ final <- second_merge %>%
 final
 ```
 
+```{r add dates of GM certification}
+bca_award_dates <- ymd(
+    "2005-01-12",
+    "2006-04-19",
+    "2007-05-04",
+    "2008-05-22",
+    "2009-05-27",
+    "2010-05-26",
+    "2011-05-19",
+    "2012-05-20",
+    "2013-05-16",
+    "2014-04-29",
+    "2015-05-14",
+    "2016-05-26"
+)
+greenmark_dates_df <- tibble(year_award = 2005:2016, date_award = bca_award_dates)
+greenmark_dates_df
+```
+
 ```{r}
-final %>% write_rds("data/final/data.RDS")
+final_with_dates <- final %>% 
+    left_join(greenmark_dates_df, by = "year_award") %>% 
+    mutate(treat = as.integer(sale_date > date_award),
+           placebo_3mo = as.integer(sale_date > date_award %m-% months(3)),
+           placebo_6mo = as.integer(sale_date > date_award %m-% months(6)),
+           placebo_12mo = as.integer(sale_date > date_award %m-% months(12)),
+           placebo_flag = as.integer(sale_date <= date_award),
+           ln_price = log(trans_price))
+final_with_dates
+```
+
+
+```{r}
+final_with_dates %>% write_rds("data/final/data.RDS")
 ```
 
