@@ -9,6 +9,6 @@ Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Rea
 
 This paper uses a fixed effects (FE) approach to isolate the signalling effect of the GM certification from other unobserved characteristics correlated with a GM certification. 
 
-[^gm_buildings_directory]: Website can be found here: https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx
+[^gm_buildings_directory]: Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
 
 \newpage
