@@ -94,7 +94,7 @@ greenmark_dates_df <- tibble(year_award = 2005:2016, date_award = bca_award_date
 greenmark_dates_df
 ```
 
-```{r}
+```{r add dates of award}
 final_with_dates <- final %>% 
     left_join(greenmark_dates_df, by = "year_award") %>% 
     mutate(treat = as.integer(sale_date > date_award),
@@ -102,12 +102,28 @@ final_with_dates <- final %>%
            placebo_6mo = as.integer(sale_date > date_award %m-% months(6)),
            placebo_12mo = as.integer(sale_date > date_award %m-% months(12)),
            placebo_flag = as.integer(sale_date <= date_award),
-           ln_price = log(trans_price))
+           ln_price = log(trans_price),
+           year_sale = factor(year(sale_date)),
+           month_sale = factor(month(sale_date))) %>% 
+    filter(type_of_area == "Strata")
 final_with_dates
+```
+
+```{r add proportions of transactions before/after GM award}
+proportions <- final_with_dates %>% 
+    filter(!is.na(award)) %>% 
+    group_by(project_name) %>% 
+    summarise(count = n(), treat = sum(treat)) %>% 
+    mutate(prop = treat/count) %>% 
+    select(-count, -treat)
+final_with_dates_proportions <- final_with_dates %>% 
+    left_join(proportions, by = "project_name") %>% 
+    filter(!is.na(prop) & prop != 0 & prop != 1)
+final_with_dates_proportions
 ```
 
 
 ```{r}
-final_with_dates %>% write_rds("data/final/data.RDS")
+final_with_dates_proportions %>% write_rds("data/final/data.RDS")
 ```
 
