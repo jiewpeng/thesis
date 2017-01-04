@@ -12,7 +12,7 @@ This paper uses a feature of the Green Mark (GM) program in Singapore to isolate
 
 ## Green Mark (GM) Certification in Singapore
 
-The Green Mark scheme was launched in January 2005 to encourage the construction of more environmentally friendly buildings. Buildings which apply for the Green Mark certificaiton would be assessed on their energy efficiency, environmental impact and indoor environmental quality. They would be scored on a points basis, and then these scores would be converted to an award type (Certified, Gold, Gold Plus, Platinum) based on the scores. For more information, see [https://www.bca.gov.sg/GreenMark/green_mark_buildings.html](https://www.bca.gov.sg/GreenMark/green_mark_buildings.html).
+The Green Mark scheme was launched in January 2005 to encourage the construction of more environmentally friendly buildings. Buildings which apply for the Green Mark certificaiton would be assessed on their energy efficiency, environmental impact and indoor environmental quality. They would be scored on a points basis, and then these scores would be converted to an award type (Certified, Gold, Gold Plus, Platinum) based on the scores. More information can be found on the BCA Green Mark Website [^gm_website]. 
 
 ## Other Considerations
 
@@ -20,5 +20,6 @@ Some literature have shown that the costs of building green features are actuall
 
 Regardless, even if the cost premiums are low, these cost premiums still need to be offset by a corresponding price premium. Buyers and tenants are unwilling to pay for green features not because they do not value green features, but because they cannot observe them before the purchase or rental agreement. A certification is required as a signal or assurance of quality, to allow potential tenants and buyers to price in the benefits from the green features.
 
+[^gm_website]: Website can be found here: [https://www.bca.gov.sg/GreenMark/green_mark_buildings.html](https://www.bca.gov.sg/GreenMark/green_mark_buildings.html)
 
-\pagebreak
+\newpage
