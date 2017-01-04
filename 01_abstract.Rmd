@@ -7,4 +7,4 @@
 Here is some filler text.
 
 
-\pagebreak
+\newpage

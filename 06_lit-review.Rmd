@@ -5,4 +5,4 @@ There is a fair amount of literature showing the price effects of environmental 
 
 
 
-\pagebreak
+\newpage

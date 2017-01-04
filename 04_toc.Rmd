@@ -6,4 +6,4 @@
 
 \listoftables
 
-\pagebreak
+\newpage

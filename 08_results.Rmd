@@ -41,4 +41,4 @@ summary(mdl_with_controls_ymfe)
 
 Without any control variables, receiving the GM award with no changes in the property results in a price premium of `r extract_coef(base_mdl, "treat")`. Adding control variables like the floor area, type of sale and whether or not the buyer is a HDB owner drastically reduces the signalling effect of the GM award to `r extract_coef(mdl_with_controls, "treat")`. Adding year and month fixed effects reduces the effect even more, to `r extract_coef(mdl_with_controls_ymfe, "treat")`.
 
-\pagebreak
+\newpage
