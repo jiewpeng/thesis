@@ -3,12 +3,12 @@
 
 ## Data Sources
 
-Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. Information about the GM awards was obtained by scraping the Building Construction Authority of Singapore (BCA) Green Mark Buildings Directory [^1], searching for Residential and Mixed Developments. Since the GM Buildings Directory only contained the year of award, I had to obtain the exact dates of the award by searching for "BCA Awards" the Straits Times archive from LexisNexis. Green Mark winners are announced on the BCA awards night, so I searched for the dates of the BCA awards night for each year (2005 till 2015).
+Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. Information about the GM awards was obtained by scraping the Building Construction Authority of Singapore (BCA) Green Mark Buildings Directory [^gm_buildings_directory], searching for Residential and Mixed Developments. Since the GM Buildings Directory only contained the year of award, I had to obtain the exact dates of the award by searching for "BCA Awards" the Straits Times archive from LexisNexis. Green Mark winners are announced on the BCA awards night, so I searched for the dates of the BCA awards night for each year (2005 till 2015).
 
 ## Methodology
 
 This paper uses a fixed effects (FE) approach to isolate the signalling effect of the GM certification from other unobserved characteristics correlated with a GM certification. 
 
-[^1]: Website can be found here: https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx
+[^gm_buildings_directory]: Website can be found here: https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx
 
 \newpage
