@@ -5,6 +5,6 @@
 
 **GM**: Green Mark environmental certification in Singapore. 
 
-**DID**: Difference-in-difference
+**FE**: Fixed effect/s
 
 \pagebreak
