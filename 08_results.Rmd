@@ -1,5 +1,44 @@
 
 # Empirical Results
 
+```{r setup, include = FALSE}
+source("misc/load_libraries.R")
+knitr::opts_chunk$set(include = FALSE, message = FALSE, warning = FALSE, cache = TRUE)
+```
+
+```{r load data}
+data <- read_rds("data/final/data.RDS")
+```
+
+```{r function to extract coefficients}
+# because I'm only running log-linear regressions, I set it to return a string
+# with a percentage rounded to 2 decimal places
+extract_coef <- function(model, var) {
+    coefs <- coef(model)
+    result <- (coefs[var] * 100) %>% as.double() %>% round(2) %>% as.character()
+    return(str_c(result, "%"))
+}
+```
+
+```{r}
+base_mdl <- felm(ln_price ~ treat | project_name, data = data)
+summary(base_mdl)
+```
+
+```{r}
+mdl_with_controls <- felm(
+    ln_price ~ treat + area + type_of_sale + hdb_buyer | 
+        project_name, data = data)
+summary(mdl_with_controls)
+```
+
+```{r}
+mdl_with_controls_ymfe <- felm(
+    ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
+        project_name, data = data)
+summary(mdl_with_controls_ymfe)
+```
+
+Without any control variables, receiving the GM award with no changes in the property results in a price premium of `r extract_coef(base_mdl, "treat")`. Adding control variables like the floor area, type of sale and whether or not the buyer is a HDB owner drastically reduces the signalling effect of the GM award to `r extract_coef(mdl_with_controls, "treat")`. Adding year and month fixed effects reduces the effect even more, to `r extract_coef(mdl_with_controls_ymfe, "treat")`.
 
 \pagebreak
