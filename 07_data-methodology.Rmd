@@ -9,6 +9,46 @@ Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Rea
 
 This paper uses a fixed effects (FE) approach to isolate the signalling effect of the GM certification from other unobserved characteristics correlated with a GM certification. 
 
+## Descriptive Statistics
+
+```{r, include = FALSE}
+source("misc/load_libraries.R")
+knitr::opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = FALSE, cache = FALSE)
+```
+
+```{r}
+data <- read_rds("data/final/data.RDS")
+```
+
+```{r generate stats}
+summary_df <- data %>% 
+    group_by(project_name) %>% 
+    summarise(transactions = n(), treat = sum(treat), proportion = mean(prop))
+summary_df
+```
+
+```{r, include = TRUE, fig.cap = "test caption"}
+p_txn <- summary_df %>% 
+    ggplot(aes(transactions)) + 
+    geom_histogram() + 
+    labs(x = "Transactions per Project", y = "Count")
+p_treat <- summary_df %>% 
+    ggplot(aes(treat)) + 
+    geom_histogram() + 
+    labs(x = "Treated Transactions per Project", y = "Count")
+p_prop <- summary_df %>% 
+    ggplot(aes(proportion)) + 
+    geom_histogram() + 
+    labs(x = "Proportion of Treated Transactions per Project", y = "Count")
+grid.arrange(p_txn, p_treat, p_prop, ncol=2, top = textGrob("Project-level characteristics"))
+```
+
+
+```{r}
+summary(summary_df)
+```
+
+
 [^gm_buildings_directory]: Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
 
 \newpage
