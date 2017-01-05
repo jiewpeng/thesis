@@ -41,7 +41,7 @@ summary(mdl_with_controls_ymfe)
 
 Without any control variables, receiving the GM award with no changes in the property results in a price premium of `r extract_coef(base_mdl, "treat")`. Adding control variables like the floor area, type of sale and whether or not the buyer is a HDB owner drastically reduces the signalling effect of the GM award to `r extract_coef(mdl_with_controls, "treat")`. Adding year and month fixed effects reduces the effect even more, to `r extract_coef(mdl_with_controls_ymfe, "treat")`.
 
-```{r basic regressions, include = TRUE, results = "asis"}
+```{r main results, include = TRUE, results = "asis"}
 vars_to_keep <- names(coef(mdl_with_controls))
 labels <- vars_to_keep %>% 
     str_replace_all("type_of_sale", "Type of Sale: ") %>% 
@@ -83,6 +83,23 @@ plat_mdl <- felm(
     ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
         project_name, data = data, subset = award == "Platinum")
 summary(plat_mdl)
+```
+
+```{r split by award, include = TRUE, results = "asis"}
+vars_to_keep <- names(coef(mdl_with_controls))
+labels <- vars_to_keep %>% 
+    str_replace_all("type_of_sale", "Type of Sale: ") %>% 
+    str_replace_all("_", " ") %>% 
+    str_to_title()
+condo_fe <- c("Condo Level Fixed Effects", "Yes", "Yes", "Yes", "Yes")
+year_month_fe <- c("Year and Month Fixed Effects", "Yes", "Yes", "Yes", "Yes")
+col_labs <- c("Certified", "Gold", "Gold Plus", "Platinum")
+stargazer(certified_mdl, gold_mdl, gold_plus_mdl, plat_mdl, 
+          type = "latex", title = "Heterogeneous Effects of Different Awards",
+          keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
+          dep.var.labels = "Natural log of Price", header = FALSE,
+          add.lines = list(condo_fe, year_month_fe), label = "splitbyaward",
+          column.labels = col_labs)
 ```
 
 
