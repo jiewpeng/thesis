@@ -35,7 +35,9 @@ greenmark_expanded
 ```{r some basic cleaning neglected in the cleaning script}
 greenmark_expanded <- greenmark_expanded %>% 
     mutate(year_award = as.integer(str_replace(year_award, "FY", "20")),
-           award = str_replace_all(award, "Green Mark ", ""))
+           award = str_replace_all(award, "Green Mark ", "")) %>% 
+    select(-project_name) %>% 
+    distinct(postal_code, year_award, award)
 greenmark_expanded
 ```
 
@@ -54,7 +56,7 @@ greenmark_expanded %>% distinct(award)
 ```
 
 ```{r perform second merge}
-second_merge <- transactions %>% left_join(greenmark_expanded, by = "project_name")
+second_merge <- transactions %>% inner_join(greenmark_expanded, by = "postal_code")
 second_merge
 ```
 
@@ -70,8 +72,7 @@ final <- second_merge %>%
            planning_region = as.factor(planning_region),
            planning_area = as.factor(planning_area),
            award = as.factor(award)) %>% 
-    select(-nett_price, -postal_code.y) %>% 
-    rename(postal_code = postal_code.x)
+    select(-nett_price)
 final
 ```
 
