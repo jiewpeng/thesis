@@ -22,10 +22,16 @@ data <- read_rds("data/final/data.RDS")
 
 ```{r generate stats}
 summary_df <- data %>% 
+    filter(type_of_sale == "New Sale") %>% 
     group_by(project_name) %>% 
     summarise(transactions = n(), treat = sum(treat), proportion = mean(prop))
 summary_df
 ```
+
+```{r proportion of GM vs non-GM projects}
+data %>% group_by(award) %>% summarise(count = n()) %>% mutate(proportion = count / sum(count))
+```
+
 
 ```{r, include = TRUE, fig.cap = "test caption"}
 p_txn <- summary_df %>% 
@@ -35,7 +41,7 @@ p_txn <- summary_df %>%
 p_treat <- summary_df %>% 
     ggplot(aes(treat)) + 
     geom_histogram() + 
-    labs(x = "Treated Transactions per Project", y = "Count")
+    labs(x = "GM-certified Transactions per Project", y = "Count")
 p_prop <- summary_df %>% 
     ggplot(aes(proportion)) + 
     geom_histogram() + 

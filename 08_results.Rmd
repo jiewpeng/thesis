@@ -20,86 +20,86 @@ extract_coef <- function(model, var) {
 }
 ```
 
-```{r base reg model}
-base_mdl <- felm(ln_price ~ treat | project_name, data = data)
-summary(base_mdl)
+```{r naive model}
+naive_mdl <- felm(ln_price ~ award, data = data, subset = type_of_sale == "New Sale")
+summary(naive_mdl)
 ```
 
-```{r model with controls}
-mdl_with_controls <- felm(
-    ln_price ~ treat + area + type_of_sale + hdb_buyer | 
-        project_name, data = data)
-summary(mdl_with_controls)
+```{r naive model with controls}
+naive_mdl_with_controls <- felm(
+    ln_price ~ award + ln_area + floor + hdb_buyer, 
+    data = data, subset = type_of_sale == "New Sale")
+summary(naive_mdl_with_controls)
 ```
 
-```{r model with controls and year/month FE}
-mdl_with_controls_ymfe <- felm(
-    ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
-        project_name, data = data)
-summary(mdl_with_controls_ymfe)
+```{r model with controls and year-quarter FE}
+naive_mdl_with_controls_yqfe <- felm(
+    ln_price ~ award + ln_area + floor + hdb_buyer + yq_sale, 
+    data = data, subset = type_of_sale == "New Sale")
+summary(naive_mdl_with_controls_yqfe)
 ```
-
-Without any control variables, receiving the GM award with no changes in the property results in a price premium of `r extract_coef(base_mdl, "treat")`. Adding control variables like the floor area, type of sale and whether or not the buyer is a HDB owner drastically reduces the signalling effect of the GM award to `r extract_coef(mdl_with_controls, "treat")`. Adding year and month fixed effects reduces the effect even more, to `r extract_coef(mdl_with_controls_ymfe, "treat")`.
 
 ```{r main results, include = TRUE, results = "asis"}
-vars_to_keep <- names(coef(mdl_with_controls))
+vars_to_keep <- names(coef(naive_mdl_with_controls))[-1] # exclude intercept
 labels <- vars_to_keep %>% 
     str_replace_all("type_of_sale", "Type of Sale: ") %>% 
     str_replace_all("_", " ") %>% 
-    str_to_title()
-condo_fe <- c("Condo Level Fixed Effects", "Yes", "Yes", "Yes")
-year_month_fe <- c("Year and Month Fixed Effects", "No", "No", "Yes")
-stargazer(base_mdl, mdl_with_controls, mdl_with_controls_ymfe, 
+    str_to_title() %>% 
+    str_replace_all("Award", "GM Award (1 = Yes)") %>% 
+    str_replace_all("Ln Area", "ln(Area)") %>% 
+    str_replace_all("Hdb Buyer", "HDB Buyer")
+year_qtr_fe <- c("Year-Quarter Fixed Effects", "No", "No", "Yes")
+stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_yqfe, 
           type = "latex", title = "Effects of GM Award on Price",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(condo_fe, year_month_fe), label = "mainresults")
+          add.lines = list(year_qtr_fe), label = "mainresults")
 ```
 
-
-```{r certified only model}
-certified_mdl <- felm(
-    ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
-        project_name, data = data, subset = award == "Certified")
-summary(certified_mdl)
+```{r DID base model}
+did_base_mdl <- lm(ln_price ~ award + after_gm + ln_area + floor + hdb_buyer + yq_sale, 
+    data = data, subset = type_of_sale == "New Sale")
+summary(did_base_mdl)
 ```
 
-```{r gold only model}
-gold_mdl <- felm(
-    ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
-        project_name, data = data, subset = award == "Gold")
-summary(gold_mdl)
-```
-
-```{r gold plus only model}
-gold_plus_mdl <- felm(
-    ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
-        project_name, data = data, subset = award == "Gold Plus")
-summary(gold_plus_mdl)
-```
-
-```{r platinum only model}
-plat_mdl <- felm(
-    ln_price ~ treat + area + type_of_sale + hdb_buyer + year_sale + month_sale | 
-        project_name, data = data, subset = award == "Platinum")
-summary(plat_mdl)
-```
-
-```{r split by award, include = TRUE, results = "asis"}
-vars_to_keep <- names(coef(mdl_with_controls))
+```{r DID results, include = TRUE, results = "asis"}
+vars_to_keep <- names(coef(did_base_mdl))[-1] # exclude intercept
+vars_to_keep <- vars_to_keep[!str_detect(vars_to_keep, "yq_sale")] # exclude yq dummies
 labels <- vars_to_keep %>% 
     str_replace_all("type_of_sale", "Type of Sale: ") %>% 
     str_replace_all("_", " ") %>% 
-    str_to_title()
-condo_fe <- c("Condo Level Fixed Effects", "Yes", "Yes", "Yes", "Yes")
-year_month_fe <- c("Year and Month Fixed Effects", "Yes", "Yes", "Yes", "Yes")
-col_labs <- c("Certified", "Gold", "Gold Plus", "Platinum")
-stargazer(certified_mdl, gold_mdl, gold_plus_mdl, plat_mdl, 
-          type = "latex", title = "Heterogeneous Effects of Different Awards",
+    str_to_title() %>% 
+    str_replace_all("Award", "GM Award (1 = Yes)") %>% 
+    str_replace_all("After Gm", "GM x After GM (1 = Yes)") %>% 
+    str_replace_all("Ln Area", "ln(Area)") %>% 
+    str_replace_all("Hdb Buyer", "HDB Buyer")
+year_qtr_fe <- c("Year-Quarter Fixed Effects", "Yes")
+stargazer(did_base_mdl, 
+          type = "latex", title = "Difference-in-difference Models",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(condo_fe, year_month_fe), label = "splitbyaward",
-          column.labels = col_labs)
+          add.lines = list(year_qtr_fe), label = "didresults")
+```
+
+```{r placebo models}
+placebo_6mo_mdl <- lm(ln_price ~ award + placebo_after_gm_6mo + ln_area + floor + hdb_buyer + yq_sale,
+    data = data, subset = type_of_sale == "New Sale" & placebo_after_gm_flag == 1)
+placebo_12mo_mdl <- lm(ln_price ~ award + placebo_after_gm_12mo + ln_area + floor + hdb_buyer + yq_sale,
+    data = data, subset = type_of_sale == "New Sale" & placebo_after_gm_flag == 1)
+#summary(placebo_12mo_mdl)
+```
+
+```{r placebo results, include = TRUE, results = "asis"}
+vars_to_keep <- c("award", "placebo_after_gm_6mo", "placebo_after_gm_12mo", "ln_area", "floor", "hdb_buyer")
+labels <- c("GM Award (1 = Yes)", "GM x After (6 months before GM), 1 = Yes", 
+            "GM x After (12 months before GM), 1 = Yes",
+            "ln(Area)", "Floor", "HDB Buyer")
+year_qtr_fe <- c("Year-Quarter Fixed Effects", "Yes", "Yes")
+stargazer(placebo_6mo_mdl, placebo_12mo_mdl,
+          type = "latex", title = "Placebo Difference-in-difference Tests",
+          keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
+          dep.var.labels = "Natural log of Price", header = FALSE,
+          add.lines = list(year_qtr_fe), label = "placeboresults")
 ```
 
 
