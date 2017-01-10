@@ -56,7 +56,7 @@ greenmark_expanded %>% distinct(award)
 ```
 
 ```{r perform second merge}
-second_merge <- transactions %>% inner_join(greenmark_expanded, by = "postal_code")
+second_merge <- transactions %>% left_join(greenmark_expanded, by = "postal_code")
 second_merge
 ```
 
@@ -112,14 +112,12 @@ final_with_dates
 
 ```{r add proportions of transactions before/after GM award}
 proportions <- final_with_dates %>% 
-    filter(!is.na(award)) %>% 
     group_by(project_name) %>% 
     summarise(count = n(), treat = sum(treat)) %>% 
     mutate(prop = treat/count) %>% 
     select(-count, -treat)
 final_with_dates_proportions <- final_with_dates %>% 
-    left_join(proportions, by = "project_name") %>% 
-    filter(!is.na(prop) & prop != 0 & prop != 1)
+    left_join(proportions, by = "project_name")
 final_with_dates_proportions
 ```
 
