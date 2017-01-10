@@ -117,7 +117,19 @@ proportions <- final_with_dates %>%
     mutate(prop = treat/count) %>% 
     select(-count, -treat)
 final_with_dates_proportions <- final_with_dates %>% 
-    left_join(proportions, by = "project_name")
+    left_join(proportions, by = "project_name") %>% 
+    rename(award_type = award) %>% 
+    mutate(award = as.numeric(!is.na(award_type)),
+           yq_sale = str_c(year(sale_date), "Q", quarter(sale_date)),
+           floor = as.integer(str_match(address, "#(\\d{2})")[,2]),
+           after_gm = as.integer(sale_date > date_award),
+           ln_area = log(area)) %>% 
+    mutate(after_gm = replace(after_gm, is.na(after_gm), 0),
+           placebo_after_gm_flag = as.integer(after_gm == 0),
+           placebo_after_gm_6mo = as.integer(sale_date > date_award %m-% months(6)),
+           placebo_after_gm_12mo = as.integer(sale_date > date_award %m-% months(12))) %>% 
+    mutate(placebo_after_gm_6mo = replace(placebo_after_gm_6mo, is.na(placebo_after_gm_6mo), 0),
+           placebo_after_gm_12mo = replace(placebo_after_gm_12mo, is.na(placebo_after_gm_12mo), 0))
 final_with_dates_proportions
 ```
 
