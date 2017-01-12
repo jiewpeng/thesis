@@ -97,39 +97,44 @@ greenmark_dates_df
 
 ```{r add dates of award}
 final_with_dates <- final %>% 
-    left_join(greenmark_dates_df, by = "year_award") %>% 
-    mutate(treat = as.integer(sale_date > date_award),
-           placebo_3mo = as.integer(sale_date > date_award %m-% months(3)),
-           placebo_6mo = as.integer(sale_date > date_award %m-% months(6)),
-           placebo_12mo = as.integer(sale_date > date_award %m-% months(12)),
-           placebo_flag = as.integer(sale_date <= date_award),
-           ln_price = log(trans_price),
-           year_sale = factor(year(sale_date)),
-           month_sale = factor(month(sale_date))) %>% 
-    filter(type_of_area == "Strata")
+    left_join(greenmark_dates_df, by = "year_award")
 final_with_dates
 ```
 
-```{r add proportions of transactions before/after GM award}
-proportions <- final_with_dates %>% 
-    group_by(project_name) %>% 
-    summarise(count = n(), treat = sum(treat)) %>% 
-    mutate(prop = treat/count) %>% 
-    select(-count, -treat)
-final_with_dates_proportions <- final_with_dates %>% 
-    left_join(proportions, by = "project_name") %>% 
-    rename(award_type = award) %>% 
-    mutate(award = as.numeric(!is.na(award_type)),
-           yq_sale = str_c(year(sale_date), "Q", quarter(sale_date)),
-           floor = as.integer(str_match(address, "#(\\d{2})")[,2]),
-           after_gm = as.integer(sale_date > date_award),
-           ln_area = log(area)) %>% 
-    mutate(after_gm = replace(after_gm, is.na(after_gm), 0),
-           placebo_after_gm_flag = as.integer(after_gm == 0),
-           placebo_after_gm_6mo = as.integer(sale_date > date_award %m-% months(6)),
-           placebo_after_gm_12mo = as.integer(sale_date > date_award %m-% months(12))) %>% 
-    mutate(placebo_after_gm_6mo = replace(placebo_after_gm_6mo, is.na(placebo_after_gm_6mo), 0),
-           placebo_after_gm_12mo = replace(placebo_after_gm_12mo, is.na(placebo_after_gm_12mo), 0))
+```{r add more variables needed for regressions/summary stats}
+final_with_dates_proportions <- final_with_dates %>%
+    filter(type_of_area == "Strata" & no_units == 1) %>% 
+    rename(award_type = award, award_date = date_award, 
+           ctrl_postal_sector = postal_sector, ctrl_hdb_buyer = hdb_buyer,
+           ctrl_prop_type = property_type,
+           sale_type = type_of_sale) %>% 
+    mutate(ln_price = log(trans_price),
+           tmp =  str_match(tenure, "\\d+"),
+           tmp = replace(tmp, tenure == "Freehold", "Freehold"),
+           tmp = replace(tmp, as.integer(tmp) < 800, "99"),
+           tmp = replace(tmp, as.integer(tmp) >= 800, "Freehold"),
+           ctrl_freehold = as.integer(tmp == "Freehold"),
+           ctrl_floor = as.integer(str_match(address, "#(\\d{2})")[,2]),
+           ctrl_ln_area = log(area), 
+           sale_ym = str_sub(as.character(sale_date), 1, 7),
+           award_dummy = as.numeric(!is.na(award_type)),
+           award_ym = str_sub(as.character(award_date), 1, 7),
+           award_after = as.integer(sale_ym >= award_ym),
+           ctrl_postal_sector = factor(ctrl_postal_sector),
+           ctrl_postal_first4 = factor(str_sub(postal_code, 1, 4))) %>% 
+    mutate(award_after = replace(award_after, is.na(award_after), 0),
+           placebo_after_gm_flag = as.integer(award_after == 0),
+           placebo_ym_6mo = str_sub(as.character(award_date %m-% months(6)), 1, 7),
+           placebo_ym_12mo = str_sub(as.character(award_date %m-% months(12)), 1, 7),
+           placebo_after_6mo = as.integer(sale_ym >= placebo_ym_6mo),
+           placebo_after_12mo = as.integer(sale_ym >= placebo_ym_12mo)) %>% 
+    mutate(placebo_after_6mo = replace(placebo_after_6mo, is.na(placebo_after_6mo), 0),
+           placebo_after_12mo = replace(placebo_after_12mo, is.na(placebo_after_12mo), 0)) %>% 
+    select(project_name, address, ln_price, 
+           starts_with("award"), 
+           starts_with("ctrl"), 
+           starts_with("placebo"), 
+           starts_with("sale"))
 final_with_dates_proportions
 ```
 
