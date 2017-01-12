@@ -20,86 +20,104 @@ extract_coef <- function(model, var) {
 }
 ```
 
+```{r set up models}
+make_reg_formula <- function(...) {
+    input_list <- list(...)
+    result <- ""
+    for (v in input_list) {
+        for (ele in v) {
+            result <- str_c(result, ele, sep = " + ")
+        }
+    }
+    result <- str_sub(result, 4, str_length(result)) # remove additional " + " at the front
+    return(result)
+}
+base_reg <- "ln_price ~ award_dummy"
+did_dummy <- "award_after"
+controls <- c("ctrl_prop_type", "ctrl_ln_area", "ctrl_freehold", "ctrl_floor")
+area_fe <- "ctrl_postal_first4"
+time_fe <- "sale_ym"
+subs <- ~ sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium"
+```
+
+
 ```{r naive model}
-naive_mdl <- felm(ln_price ~ award, data = data, subset = type_of_sale == "New Sale")
+naive_mdl <- lm(make_reg_formula(base_reg), data = data, subset = f_eval(subs, data))
 summary(naive_mdl)
 ```
 
 ```{r naive model with controls}
-naive_mdl_with_controls <- felm(
-    ln_price ~ award + ln_area + floor + hdb_buyer, 
-    data = data, subset = type_of_sale == "New Sale")
+naive_mdl_with_controls <- lm(
+    ln_price ~ award_dummy + ctrl_ln_area + ctrl_floor + ctrl_hdb_buyer + ctrl_prop_type + 
+        ctrl_postal_sector + ctrl_freehold, data = data, subset = sale_type == "New Sale")
 summary(naive_mdl_with_controls)
 ```
 
 ```{r model with controls and year-quarter FE}
-naive_mdl_with_controls_yqfe <- felm(
-    ln_price ~ award + ln_area + floor + hdb_buyer + yq_sale, 
-    data = data, subset = type_of_sale == "New Sale")
+naive_mdl_with_controls_yqfe <- lm(
+    ln_price ~ award_dummy + ctrl_ln_area + ctrl_floor + ctrl_hdb_buyer + sale_ym + 
+        ctrl_prop_type + ctrl_postal_sector + ctrl_freehold, 
+    data = data, subset = sale_type == "New Sale")
 summary(naive_mdl_with_controls_yqfe)
 ```
 
 ```{r main results, include = TRUE, results = "asis"}
-vars_to_keep <- names(coef(naive_mdl_with_controls))[-1] # exclude intercept
-labels <- vars_to_keep %>% 
-    str_replace_all("type_of_sale", "Type of Sale: ") %>% 
-    str_replace_all("_", " ") %>% 
-    str_to_title() %>% 
-    str_replace_all("Award", "GM Award (1 = Yes)") %>% 
-    str_replace_all("Ln Area", "ln(Area)") %>% 
-    str_replace_all("Hdb Buyer", "HDB Buyer")
-year_qtr_fe <- c("Year-Quarter Fixed Effects", "No", "No", "Yes")
+vars_to_keep <- c("award_dummy", "ctrl_ln_area", "ctrl_floor", "ctrl_hdb_buyer", "ctrl_prop_typeCondominium", "ctrl_prop_typeExecutive Condominium", "ctrl_freehold")
+labels <- c("GM Award", "ln(Area)", "Floor", "HDB Buyer", "Property Type: Condominium", "Property Type: Executive Condominium", "Freehold")
+postal_sector_fe <- c("Postal Sector Dummies", "No", "Yes", "Yes")
+year_qtr_fe <- c("Year-Month Dummies", "No", "No", "Yes")
 stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_yqfe, 
           type = "latex", title = "Effects of GM Award on Price",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(year_qtr_fe), label = "mainresults")
+          add.lines = list(postal_sector_fe, year_qtr_fe), label = "mainresults")
 ```
 
 ```{r DID base model}
-did_base_mdl <- lm(ln_price ~ award + after_gm + ln_area + floor + hdb_buyer + yq_sale, 
-    data = data, subset = type_of_sale == "New Sale")
-summary(did_base_mdl)
+did_base_mdl <- lm(
+    ln_price ~ award_dummy + award_after + ctrl_ln_area + ctrl_floor + 
+        ctrl_hdb_buyer + ctrl_prop_type + ctrl_freehold + ctrl_postal_sector + sale_ym, 
+    data = data, subset = sale_type == "New Sale")
 ```
 
+
 ```{r DID results, include = TRUE, results = "asis"}
-vars_to_keep <- names(coef(did_base_mdl))[-1] # exclude intercept
-vars_to_keep <- vars_to_keep[!str_detect(vars_to_keep, "yq_sale")] # exclude yq dummies
-labels <- vars_to_keep %>% 
-    str_replace_all("type_of_sale", "Type of Sale: ") %>% 
-    str_replace_all("_", " ") %>% 
-    str_to_title() %>% 
-    str_replace_all("Award", "GM Award (1 = Yes)") %>% 
-    str_replace_all("After Gm", "GM x After GM (1 = Yes)") %>% 
-    str_replace_all("Ln Area", "ln(Area)") %>% 
-    str_replace_all("Hdb Buyer", "HDB Buyer")
-year_qtr_fe <- c("Year-Quarter Fixed Effects", "Yes")
+vars_to_keep <- c("award_dummy", "award_after", "ctrl_ln_area", "ctrl_floor", "ctrl_hdb_buyer", "ctrl_prop_typeCondominium", "ctrl_prop_typeExecutive Condominium", "ctrl_freehold")
+labels <- c("GM Award", "GM x After GM (1 = Yes)", "ln(Area)", "Floor", "HDB Buyer", "Property Type: Condominium", "Property Type: Executive Condominium", "Freehold")
+postal_sector_fe <- c("Postal Sector Dummies", "Yes")
+year_qtr_fe <- c("Year-Month Dummies", "Yes")
 stargazer(did_base_mdl, 
           type = "latex", title = "Difference-in-difference Models",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(year_qtr_fe), label = "didresults")
+          add.lines = list(postal_sector_fe, year_qtr_fe), label = "didresults")
 ```
 
 ```{r placebo models}
-placebo_6mo_mdl <- lm(ln_price ~ award + placebo_after_gm_6mo + ln_area + floor + hdb_buyer + yq_sale,
-    data = data, subset = type_of_sale == "New Sale" & placebo_after_gm_flag == 1)
-placebo_12mo_mdl <- lm(ln_price ~ award + placebo_after_gm_12mo + ln_area + floor + hdb_buyer + yq_sale,
-    data = data, subset = type_of_sale == "New Sale" & placebo_after_gm_flag == 1)
+placebo_6mo_mdl <- lm(
+    ln_price ~ award_dummy + placebo_after_6mo + ctrl_ln_area + ctrl_floor + 
+        ctrl_hdb_buyer + ctrl_prop_type + ctrl_freehold + ctrl_postal_sector + sale_ym,
+    data = data, subset = sale_type == "New Sale" & placebo_after_gm_flag == 1)
+placebo_12mo_mdl <- lm(
+    ln_price ~ award_dummy + placebo_after_12mo + ctrl_ln_area + ctrl_floor + 
+        ctrl_hdb_buyer + ctrl_prop_type + ctrl_freehold + ctrl_postal_sector + sale_ym,
+    data = data, subset = sale_type == "New Sale" & placebo_after_gm_flag == 1)
 #summary(placebo_12mo_mdl)
 ```
 
 ```{r placebo results, include = TRUE, results = "asis"}
-vars_to_keep <- c("award", "placebo_after_gm_6mo", "placebo_after_gm_12mo", "ln_area", "floor", "hdb_buyer")
+vars_to_keep <- c("award_dummy", "placebo_after_6mo", "placebo_after_12mo", "ctrl_ln_area", "ctrl_floor", "ctrl_hdb_buyer", "ctrl_prop_typeCondominium", "ctrl_prop_typeExecutive Condominium", "ctrl_freehold")
 labels <- c("GM Award (1 = Yes)", "GM x After (6 months before GM), 1 = Yes", 
             "GM x After (12 months before GM), 1 = Yes",
-            "ln(Area)", "Floor", "HDB Buyer")
-year_qtr_fe <- c("Year-Quarter Fixed Effects", "Yes", "Yes")
+            "ln(Area)", "Floor", "HDB Buyer", "Property Type: Condominium", 
+            "Property Type: Executive Condominium", "Freehold")
+postal_sector_fe <- c("Postal Sector Dummies", "Yes", "Yes")
+year_qtr_fe <- c("Year-Month Dummies", "Yes", "Yes")
 stargazer(placebo_6mo_mdl, placebo_12mo_mdl,
           type = "latex", title = "Placebo Difference-in-difference Tests",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(year_qtr_fe), label = "placeboresults")
+          add.lines = list(postal_sector_fe, year_qtr_fe), label = "placeboresults")
 ```
 
 
