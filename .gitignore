@@ -3,7 +3,7 @@
 .Rapp.history
 # Session Data files
 .RData
-.Rhistory
+*.Rhistory
 # Example code in package build process
 *-Ex.R
 # Output files from R CMD build
