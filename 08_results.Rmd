@@ -32,6 +32,21 @@ make_reg_formula <- function(...) {
     result <- str_sub(result, 4, str_length(result)) # remove additional " + " at the front
     return(result)
 }
+reg <- function(..., area_fe = "", time_fe = "") {
+    reg_formula <- make_reg_formula(...)
+    if (time_fe != "") {
+        reg_formula <- str_c(reg_formula, " + ", time_fe)
+    }
+    if (area_fe != "") {
+        reg_formula <- str_c(reg_formula, " | ", area_fe)
+    }
+    felm(formula(reg_formula), data = data, subset = f_eval(subs, data))
+}
+summary2 <- function(reg_mdl) {
+    summ <- summary(reg_mdl)
+    summ$coefficients <- summ$coefficients[!str_detect(dimnames(summ$coefficients)[[1]], time_fe),]
+    return(summ)
+} 
 base_reg <- "ln_price ~ award_dummy"
 did_dummy <- "award_after"
 controls <- c("ctrl_prop_type", "ctrl_ln_area", "ctrl_freehold", "ctrl_floor")
@@ -42,23 +57,18 @@ subs <- ~ sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium"
 
 
 ```{r naive model}
-naive_mdl <- lm(make_reg_formula(base_reg), data = data, subset = f_eval(subs, data))
+naive_mdl <- reg(base_reg)
 summary(naive_mdl)
 ```
 
 ```{r naive model with controls}
-naive_mdl_with_controls <- lm(
-    ln_price ~ award_dummy + ctrl_ln_area + ctrl_floor + ctrl_hdb_buyer + ctrl_prop_type + 
-        ctrl_postal_sector + ctrl_freehold, data = data, subset = sale_type == "New Sale")
+naive_mdl_with_controls <- reg(base_reg, controls, area_fe = area_fe)
 summary(naive_mdl_with_controls)
 ```
 
-```{r model with controls and year-quarter FE}
-naive_mdl_with_controls_yqfe <- lm(
-    ln_price ~ award_dummy + ctrl_ln_area + ctrl_floor + ctrl_hdb_buyer + sale_ym + 
-        ctrl_prop_type + ctrl_postal_sector + ctrl_freehold, 
-    data = data, subset = sale_type == "New Sale")
-summary(naive_mdl_with_controls_yqfe)
+```{r model with controls and year-month FE}
+naive_mdl_with_controls_ymfe <- reg(base_reg, controls, area_fe = area_fe, time_fe = time_fe)
+summary(naive_mdl_with_controls_ymfe)
 ```
 
 ```{r main results, include = TRUE, results = "asis"}
