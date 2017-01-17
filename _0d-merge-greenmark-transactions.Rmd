@@ -12,6 +12,7 @@ source("misc/load_libraries.R")
 ```{r load data}
 transactions <- read_rds("data/raw/private/non-landed.RDS")
 greenmark <- read_rds("data/intermediate/greenmark_cleaned.RDS")
+cpi <- read_csv("data/raw/consumer-price-index-base-year-2014-100-monthly.csv")
 ```
 
 ```{r merge on project name}
@@ -95,6 +96,17 @@ greenmark_dates_df <- tibble(year_award = 2005:2016, date_award = bca_award_date
 greenmark_dates_df
 ```
 
+```{r get cpi ready for merging}
+cpi <- cpi %>% 
+    filter(level_1 == "All Items") %>% 
+    select(-level_1) %>% 
+    rename("cpi" = value, "sale_ym" = month) %>% 
+    mutate(cpi = as.double(cpi))
+cpi
+```
+
+
+
 ```{r add dates of award}
 final_with_dates <- final %>% 
     left_join(greenmark_dates_df, by = "year_award")
@@ -108,10 +120,10 @@ final_with_dates_proportions <- final_with_dates %>%
            ctrl_postal_sector = postal_sector, ctrl_hdb_buyer = hdb_buyer,
            ctrl_prop_type = property_type,
            sale_type = type_of_sale) %>% 
-    mutate(ln_price = log(trans_price),
-           tmp =  str_match(tenure, "\\d+"),
+    mutate(tmp =  str_match(tenure, "\\d+"),
            tmp = replace(tmp, tenure == "Freehold", "Freehold"),
            tmp = replace(tmp, as.integer(tmp) < 800, "99"),
+           ctrl_lease = replace(tmp, as.integer(tmp) >= 800, "999"),
            tmp = replace(tmp, as.integer(tmp) >= 800, "Freehold"),
            ctrl_freehold = as.integer(tmp == "Freehold"),
            ctrl_floor = as.integer(str_match(address, "#(\\d{2})")[,2]),
@@ -122,7 +134,10 @@ final_with_dates_proportions <- final_with_dates %>%
            award_after = as.integer(sale_ym >= award_ym),
            ctrl_postal_sector = factor(ctrl_postal_sector),
            ctrl_postal_first4 = factor(str_sub(postal_code, 1, 4))) %>% 
-    mutate(award_after = replace(award_after, is.na(award_after), 0),
+    left_join(cpi, by = "sale_ym") %>% 
+    mutate(ln_price = log(trans_price / cpi),
+           ln_price_psm = log(price_psm / cpi),
+           award_after = replace(award_after, is.na(award_after), 0),
            placebo_after_gm_flag = as.integer(award_after == 0),
            placebo_ym_6mo = str_sub(as.character(award_date %m-% months(6)), 1, 7),
            placebo_ym_12mo = str_sub(as.character(award_date %m-% months(12)), 1, 7),
