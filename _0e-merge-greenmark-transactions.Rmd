@@ -107,9 +107,19 @@ cpi
 
 
 
-```{r add dates of award}
+```{r add dates of award and completion}
+completion_dates <- final %>% 
+    distinct(project_name, completion_date) %>% 
+    arrange(project_name, completion_date) %>% 
+    filter(completion_date != "Uncompleted" & completion_date != "Unknown" & project_name != "N.A.") %>% 
+    group_by(project_name) %>% 
+    filter(row_number() == n()) %>% 
+    ungroup() %>% 
+    mutate(completion_date = as.integer(completion_date))
 final_with_dates <- final %>% 
-    left_join(greenmark_dates_df, by = "year_award")
+    left_join(greenmark_dates_df, by = "year_award") %>% 
+    select(-completion_date) %>% 
+    left_join(completion_dates, by = "project_name")
 final_with_dates
 ```
 
@@ -127,7 +137,10 @@ final_with_dates_proportions <- final_with_dates %>%
            tmp = replace(tmp, as.integer(tmp) >= 800, "Freehold"),
            ctrl_freehold = as.integer(tmp == "Freehold"),
            ctrl_floor = as.integer(str_match(address, "#(\\d{2})")[,2]),
+           ctrl_floor2 = as.integer(ctrl_floor ^ 2),
+           ctrl_firstfloor = as.integer(ctrl_floor == 1),
            ctrl_ln_area = log(area), 
+           ctrl_yrs_to_completion = year(sale_date) - completion_date,
            sale_ym = str_sub(as.character(sale_date), 1, 7),
            award_dummy = as.numeric(!is.na(award_type)),
            award_ym = str_sub(as.character(award_date), 1, 7),
@@ -145,7 +158,7 @@ final_with_dates_proportions <- final_with_dates %>%
            placebo_after_12mo = as.integer(sale_ym >= placebo_ym_12mo)) %>% 
     mutate(placebo_after_6mo = replace(placebo_after_6mo, is.na(placebo_after_6mo), 0),
            placebo_after_12mo = replace(placebo_after_12mo, is.na(placebo_after_12mo), 0)) %>% 
-    select(project_name, address, ln_price, 
+    select(project_name, address, ln_price, ln_price_psm,
            starts_with("award"), 
            starts_with("ctrl"), 
            starts_with("placebo"), 
