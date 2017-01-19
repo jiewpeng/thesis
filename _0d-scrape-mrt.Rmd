@@ -1,0 +1,108 @@
+
+```{r}
+source("misc/load_libraries.R")
+```
+
+```{r}
+mrt_station_page <- read_html("https://en.wikipedia.org/wiki/List_of_Singapore_MRT_stations")
+```
+
+```{r}
+station_data <- mrt_station_page %>% html_node(".wikitable") %>% html_table(fill = TRUE) 
+station_data <- station_data[,c(1, 2, 5)]
+station_data
+```
+
+```{r}
+names(station_data) <- c("station_code", "station_name", "opening_date")
+station_data
+```
+
+```{r}
+stations <- station_data %>% 
+    filter(str_detect(station_code, "[A-Z]{2}\\d{1,2}")) %>% 
+    mutate(opening_date = str_replace_all(opening_date, c("\\[.\\]" = ""))) %>% 
+    filter(!str_detect(opening_date, "(Reserved)|(TBA)")) %>% 
+    mutate(year = as.integer(str_match(opening_date, "\\d{4}"))) %>% 
+    filter(year < 2017) %>% 
+    mutate(opening_date = dmy(opening_date)) %>% 
+    distinct(station_name, opening_date) %>% 
+    mutate(station_name = str_c(station_name, " MRT station"))
+stations
+```
+
+```{r}
+onemap_api <- "http://developers.onemap.sg/commonapi/search?searchVal=<station>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+find_coords <- function(station_name) {
+    station_name <- str_replace_all(station_name, " ", "+")
+    page <- str_replace(onemap_api, "<station>", station_name)
+    response <- read_html(page) %>% html_text() %>% fromJSON()
+    if (response$found == "0") {
+        return(tibble(lat = NA_real_, lon = NA_real_))
+    }
+    first_result <- response$results[[1]]
+    lat <- as.double(first_result$LATITUDE)
+    lon <- as.double(first_result$LONGITUDE)
+    return(tibble(lat = lat, lon = lon))
+}
+```
+
+```{r}
+stations_with_coords <- stations %>% 
+    mutate(coords = map(station_name, find_coords)) %>% 
+    unnest()
+stations_with_coords
+```
+
+```{r}
+transactions <- read_rds("data/raw/private/non-landed.RDS")
+```
+
+```{r}
+transactions
+```
+
+```{r}
+unique_postals <- transactions %>% 
+    distinct(postal_code) %>% 
+    filter(str_detect(postal_code, "\\d{6}"))
+unique_postals
+```
+
+```{r}
+geocode_api <- "http://developers.onemap.sg/commonapi/search?searchVal=Singapore+<pcode>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+geocode <- function(postal_code) {
+    page <- str_replace(geocode_api, "<pcode>", postal_code)
+    read_json <- safely(fromJSON)
+    response <- read_json(file = page)$result
+    found <- response$found
+    if (is.null(found)) {
+        return(tibble(lat = NA_real_, lon = NA_real_))
+    }
+    if (found == "0") {
+        return(tibble(lat = NA_real_, lon = NA_real_))
+    }
+    first_result <- response$results[[1]]
+    lat <- as.double(first_result$LATITUDE)
+    lon <- as.double(first_result$LONGITUDE)
+    return(tibble(lat = lat, lon = lon))
+}
+```
+
+```{r}
+geocoded_postals <- unique_postals %>% 
+    mutate(tmp = map(postal_code, geocode)) %>% 
+    unnest()
+geocoded_postals
+```
+
+```{r}
+geocoded_transactions <- transactions %>% 
+    left_join(geocoded_postals, by = "postal_code")
+geocoded_transactions
+```
+
+```{r}
+geocoded_transactions %>% write_rds("data/intermediate/transactions_geocoded.RDS")
+```
+
