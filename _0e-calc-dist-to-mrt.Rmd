@@ -1,0 +1,49 @@
+
+```{r}
+source("misc/load_libraries.R")
+```
+
+
+```{r}
+transactions_geocoded <- read_rds("data/intermediate/transactions_geocoded.RDS")
+mrt_coords <- read_rds("data/intermediate/mrt_coords.RDS")
+```
+
+```{r}
+transactions_geocoded <- transactions_geocoded %>% 
+    mutate(sale_date = dmy(sale_date))
+```
+
+
+```{r}
+mrt <- map2(mrt_coords$lon, mrt_coords$lat, c)
+dist_to_mrt <- function(lat1, lon1, sale_date) {
+    distances <- map(mrt, distHaversine,  c(lon1, lat1))
+    distances_df <- mrt_coords %>% 
+        mutate(dist = distances) %>% 
+        filter(opening_date <= sale_date) %>% 
+        unnest(dist) %>% 
+        summarise(result = min(dist))
+    return(distances_df$result[1] / 1000)
+}
+```
+
+```{r}
+start <- Sys.time()
+transactions_with_distances <- transactions_geocoded %>% 
+    mutate(ctrl_dist_mrt = pmap(list(lat, lon, sale_date), dist_to_mrt)) %>% 
+    unnest(ctrl_dist_mrt)
+end <- Sys.time()
+time_taken <- end - start
+print(str_c("Time taken: ", end - start, "s"))
+transactions_with_distances
+```
+
+
+```{r}
+transactions_with_distances %>% write_rds("data/intermediate/transactions_with_dist_mrt.rds")
+```
+
+
+
+
