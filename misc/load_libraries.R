@@ -1,6 +1,6 @@
 packages <- c(
     "tidyverse", "rvest", "stringr", "Hmisc", "httr", "rjson", "lubridate",
-    "bookdown", "lfe", "grid", "gridExtra", "lazyeval"
+    "lfe", "grid", "gridExtra", "lazyeval", "geosphere", "haven"
 )
 
 for (package in packages) {
@@ -18,9 +18,12 @@ for (package in packages) {
 
 # custom build of stargazer is needed if using bookdown to generate pdf
 # install.packages("devtools")
+# detools::install_github("rstudio/rmarkdown)
 # devtools::install_github("jiewpeng/stargazer_bookdown")
+# devtools::install_github("rstudio/bookdown")
 
 library(stargazer)
+library(bookdown)
 
 rm(packages)
 rm(package)
