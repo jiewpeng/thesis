@@ -21,7 +21,8 @@ station_data
 ```{r}
 stations <- station_data %>% 
     filter(str_detect(station_code, "[A-Z]{2}\\d{1,2}")) %>% 
-    mutate(opening_date = str_replace_all(opening_date, c("\\[.\\]" = ""))) %>% 
+    mutate(opening_date = str_replace_all(opening_date, c("\\[.\\]" = "")),
+           station_name = str_replace_all(station_name, c("\\[.\\]" = ""))) %>% 
     filter(!str_detect(opening_date, "(Reserved)|(TBA)")) %>% 
     mutate(year = as.integer(str_match(opening_date, "\\d{4}"))) %>% 
     filter(year < 2017) %>% 
@@ -53,6 +54,11 @@ stations_with_coords <- stations %>%
     unnest()
 stations_with_coords
 ```
+
+```{r}
+stations_with_coords %>% write_rds("data/intermediate/mrt_coords.RDS")
+```
+
 
 ```{r}
 transactions <- read_rds("data/raw/private/non-landed.RDS")
