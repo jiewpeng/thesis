@@ -15,15 +15,7 @@ transactions <- private_datasets %>% map(read_csv, col_types = "cciiciciicccccci
 transactions
 ```
 
-```{r label dataset}
-label_df <- function(df) {
-    col_labels <- names(df)
-    names(col_labels) <- col_labels
-    col_labels <- as.list(col_labels)
-    label(df) <- col_labels
-    return(df)
-}
-transactions <- label_df(transactions)
+```{r rename dataset columns}
 names(transactions) <- c(
     "project_name", "address", "no_units", "area", "type_of_area",
     "trans_price", "nett_price", "price_psm", "price_psf", "sale_date",
