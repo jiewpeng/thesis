@@ -1,0 +1,358 @@
+
+
+```{r setup}
+source("misc/load_libraries.R")
+```
+
+```{r load data}
+transactions <- read_rds("data/intermediate/transactions_with_gm_and_condo_facilities.RDS")
+conquas <- read_csv("data/raw/conquas-private-nonlanded.csv")
+```
+
+```{r clean conquas}
+names(conquas) <- c("s_no", "fy", "project_name", "contractor", "developer", "struct_score",
+                    "arch_score", "mne_score", "conquas_score")
+conquas_cleaned <- conquas %>% 
+    select(project_name, ends_with("_score")) %>% 
+    mutate(project_name_orig = project_name) %>% 
+    mutate(project_name = str_to_upper(project_name)) %>% 
+    mutate(project_name = str_replace_all(project_name, c(
+        "CONDO$" = "CONDOMINIUM",
+        "APARTMENTS" = "APARTMENT",
+        "RESIDENCES" = "RESIDENCE",
+        "GARDENS" = "GARDEN",
+        "COURTS" = "COURT",
+        "MASIONS" = "MANSION",
+        "TOWERS" = "TOWER",
+        " +SINGAPORE" = "",
+        " +AT +" = "@",
+        " ?' ?" = "'",
+        " ?@ ?" = "@",
+        " ?# ?" = "#",
+        "\\." = "",
+        "-" = "",
+        " +" = " ",
+        " \\bEC\\b" = "",
+        "EXEC\\b" = "EXECUTIVE",
+        "APRT" = "APARTMENT",
+        "\\bRD\\b" = "ROAD",
+        "\\(?CONVENTIONAL HOUSING\\)?" = "",
+        "PROJECT|PROJECTS" = "",
+        "EXECUTIVE CONDOMINIUM" = "")),
+        project_name = str_trim(project_name)) %>% 
+    filter(struct_score != 0.0 | arch_score != 0.0 | mne_score != 0.0 | conquas_score != "0")
+conquas_cleaned
+```
+
+```{r check for duplicate projects}
+conquas_cleaned %>% 
+    group_by(project_name) %>% 
+    summarise(no = n()) %>% 
+    filter(no > 1)
+```
+
+```{r fix some stuff in conquas dataset}
+# here I remove stuff that will never match, fix some stuff that has 
+# brackets and slashes and "@"
+clean_names_1 <- function(project_name) {
+    str_replace_all(project_name, c(
+        "12 STY FLAT DEVT@NO 7 HOLT ROAD" = "SEVEN HOLT ROAD",
+        "2 FORD AVE" = "URBAN EDGE@HOLLAND V",
+        "20STY RESIDENTIAL BLDG CASSIA VIEW" = "CASSIA VIEW",
+        "78 AND 80 HOLLAND ROAD" = "DUET",
+        "AVILA GARDEN ( PH 2A AND 2B)" = "AVILA GARDEN",
+        "DORSETT RESIDENCE / DORSETT" = "DORSETT RESIDENCE",
+        "JIA, 65 WILKIE ROAD" = "JIA",
+        "KENTISH COURT S7B" = "KENTISH COURT",
+        "KENTISH GREEN S7 (C)" = "KENTISH GREEN",
+        "KENTISH LODGE S7(A)" = "KENTISH LODGE",
+        "L¨@VIV" = "L'VIV",
+        "KEW GREEN TOWN HOUSE" = "KEW GREEN",
+        "NO 90 HOLLAND ROAD" = "90 HOLLAND ROAD",
+        "RIVERVALE CREST@RIVERVALE CRESCENT" = "RIVERVALE CREST",
+        "THE RITZ CARLTON RESIDENCE,, CAIRNHILL" = "THE RITZCARLTON RESIDENCE CAIRNHILL",
+        "THE SCALA 130, 132, 134, 136, 138 SERANGOON AVE 3" = "THE SCALA",
+        "THR3E THRE3 ROBIN" = "THREE THREE ROBIN",
+        "THE PROMENADE@JALAN PELIKAT" = "THE PROMENADE@PELIKAT",
+        "GAIA@33 JALAN DUSUN" = "GAIA",
+        "JERVOIS JADE@21 JERVOIS CLOSE" = "JERVOIS JADE APARTMENT"
+    ))
+}
+garbage_names <- c(
+    "20U 3S TERRACE@KEW CRESENT",
+    "30 SWEETTENHAM ROAD",
+    "BALESTIER MIXED DEVELOPMENT",
+    "KOVAN MELODY CONDOMINIUM",
+    "MIXED DEVELOPMENT RESIDENTIAL",
+    "PROP CLUSTERED HOUSING@KEW DR/LIMAN GARDEN",
+    "RES FLATS W/BASEMENT@MT ELIZABETH", # might be RHAPSODY ON MOUNT ELIZABETH
+    "S/D/TER HOUSING DEVT@JSOO BEE",
+    "TERRACE HOUSE@BT TERESA CLOSE",
+    "TERRACES@KEW DRIVE",
+    "PARK VILLAS S 1 (A)",
+    "PARK VILLAS S 1 (B)"
+)
+conquas_cleaned_2 <- conquas_cleaned %>% 
+    mutate(project_name = map(project_name, clean_names_1)) %>% 
+    unnest() %>% 
+    filter(!str_detect(project_name, "STY\\b|BUNGALOW|\\bUNITS\\b") & !(project_name %in% garbage_names)) %>% 
+    select(project_name, everything())
+conquas_cleaned_2
+```
+
+```{r verify that the transactions data does not have any of these patterns so it is safe to remove}
+distinct_projects <- transactions %>% distinct(project_name)
+distinct_projects %>% filter(str_detect(project_name, "EXECUTIVE|PROJECT|CONVENTIONAL HOUSING"))
+```
+
+```{r get the first batch of non matches}
+matches_1 <- conquas_cleaned_2 %>% 
+    inner_join(distinct_projects, by = "project_name") %>% 
+    select(starts_with("project_name"), ends_with("score")) %>% 
+    mutate(match_source = "data")
+non_matches_1 <- conquas_cleaned_2 %>% anti_join(distinct_projects, by = "project_name")
+non_matches_1
+```
+
+
+```{r function to get alt names}
+onemap_api <- "http://developers.onemap.sg/commonapi/search?searchVal=<project>&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+distinct_projects_vec <- distinct_projects$project_name
+get_alt_name <- function(proj_name) {
+    
+    trimmed_name <- str_replace_all(
+        proj_name, "EXECUTIVE CONDOMINIUM|CONDOMINIUM|PROJECTS|PROJECT|@.*|\\(.*\\)|TERRACES|TERRACE", "") %>%
+        str_trim()
+    if (trimmed_name %in% distinct_projects_vec) {
+        return(tibble(alt_name = trimmed_name, match_source = "data"))
+    }
+    
+    if (!str_detect(proj_name, "CONDOMINIUM")) {
+        long_name <- str_c(proj_name, " CONDOMINIUM")
+        if (long_name %in% distinct_projects_vec) {
+            return(tibble(alt_name = long_name, match_source = "data"))
+        }
+    }
+    
+    if (!str_detect(proj_name, "APARTMENT")) {
+        long_name <- str_c(proj_name, " APARTMENT")
+        if (long_name %in% distinct_projects_vec) {
+            return(tibble(alt_name = long_name, match_source = "data"))
+        }
+    }
+    
+    name <- str_replace_all(proj_name, c(" " = "+", "#" = ""))
+    page <- str_replace(onemap_api, "<project>", name)
+    read_json <- safely(fromJSON)
+    response <- read_json(file = page)$result
+    found <- response$found
+    
+
+    if (is.null(found) | found == "0" | found == 0) {
+        if (str_detect(name, "EXECUTIVE CONDOMINIUM|CONDOMINIUM|PROJECTS|PROJECT|@|APARTMENT|\\(")) {
+            proj_name <- str_replace_all(proj_name, "EXECUTIVE CONDOMINIUM|CONDOMINIUM|APARTMENTS|APARTMENT|PROJECTS|PROJECT|@.*|\\(.*\\)", "") %>% str_trim()
+            return(get_alt_name(proj_name))
+        }
+        else {
+           return(tibble(alt_name = proj_name, match_source = "none")) 
+        }
+        
+    }
+    
+    first_result <- response$results[[1]]
+    bldg <- first_result$BUILDING
+    
+    if (bldg == "NIL") {
+        return(tibble(alt_name = proj_name, match_source = "none"))
+    }
+    
+    bldg <- str_replace_all(bldg, c(
+        "CONDO$" = "CONDOMINIUM",
+        "APARTMENTS" = "APARTMENT",
+        "RESIDENCES" = "RESIDENCE",
+        "GARDENS" = "GARDEN",
+        "COURTS" = "COURT",
+        "MASIONS" = "MANSION",
+        "TOWERS" = "TOWER",
+        " +SINGAPORE" = "",
+        " +AT +" = "@",
+        " ?' ?" = "'",
+        " ?@ ?" = "@",
+        " ?# ?" = "#",
+        "\\." = "",
+        "-" = "",
+        " +" = " ",
+        " \\bEC\\b" = "",
+        "EXEC\\b" = "EXECUTIVE",
+        "APRT" = "APARTMENT",
+        "\\bRD\\b" = "ROAD",
+        "\\(?CONVENTIONAL HOUSING\\)?" = "",
+        "PROJECT|PROJECTS" = "",
+        "EXECUTIVE CONDOMINIUM" = "",
+        "\\+" = " "))
+    
+    return(tibble(alt_name = bldg, match_source = "onemap"))
+}
+```
+
+```{r get alt names}
+non_matches_1_with_alt_name <- non_matches_1 %>% 
+    mutate(tmp = map(project_name, get_alt_name)) %>% 
+    unnest(tmp) 
+```
+
+```{r checks for non matches 1}
+non_matches_1_with_alt_name %>% 
+    filter(match_source == "onemap" & project_name != alt_name) %>% 
+    select(project_name, alt_name, project_name_orig) %>% 
+    arrange(project_name) %>% 
+    View()
+distinct_projects %>% arrange(project_name) %>% View()
+non_matches_1_with_alt_name %>% filter(match_source == "none" & project_name != alt_name) %>% 
+    select(project_name, alt_name, project_name_orig) %>% 
+    arrange(project_name) %>% 
+    View()
+```
+
+
+```{r fix alt names in non matches 1}
+# verify by searching propertyguru and matching the developer names from
+# the CONQUAS data
+non_matches_1_garbage_names <- c(
+    "32U SEMID@KEW DR/ TERRACE PH 3B",
+    "CLUSTER HOUSING@WEST COAST ROAD",
+    "DETACHED HOUSE@KING ALBERT PARK"
+)
+non_matches_1_with_alt_name_fixed <- non_matches_1_with_alt_name %>% 
+    filter(!(project_name %in% non_matches_1_garbage_names)) %>% 
+    mutate(alt_name = replace(alt_name, project_name == "ANDERSON CONDOMINIUM", "ANDERSON CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "BUKIT SEDAP", "BUKIT SEDAP"),
+           alt_name = replace(alt_name, project_name == "CLAYMORE APARTMENT", "CLAYMORE APARTMENT"),
+           alt_name = replace(alt_name, project_name == "CARIBBEAN CONDOMINIUM@KEPPEL ROAD", "CARIBBEAN CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "CLEMENTI WOODS CONDOMINIUM", "CLEMENTIWOODS CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "DEVELOPMENT@NOVENA RISE AND JALAN NOVENA", "DEVELOPMENT@NOVENA RISE AND JALAN NOVENA"),
+           alt_name = replace(alt_name, project_name == "GARDEN VISTA", "GARDENVISTA"),
+           alt_name = replace(alt_name, project_name == "GLENDALE CONDOMINIUM", "GLENDALE CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "GREENWOOD PARK", "GREENWOOD PARK"),
+           alt_name = replace(alt_name, project_name == "HABOURLIGHTS CONDOMINIUM", "HARBOURLIGHTS"),
+           alt_name = replace(alt_name, project_name == "HOUSING DEVT@KEW GATE", "HOUSING DEVT@KEW GATE"),
+           alt_name = replace(alt_name, project_name == "MAYFAIR CONDOMINIUM", "THE MAYFAIR"),
+           alt_name = replace(alt_name, project_name == "OXLEY RESIDENCE", "OXLEY RESIDENCE"),
+           alt_name = replace(alt_name, project_name == "RAINTREE CONDOMINIUM", "THE RAINTREE"),
+           alt_name = replace(alt_name, project_name == "SHELFORD ROAD CONDOMINIUM", "SHELFORD REGENCY"),
+           alt_name = replace(alt_name, project_name == "SKY@ELEVEN CONDOMINIUM", "SKY@ELEVEN"),
+           alt_name = replace(alt_name, project_name == "SKYLINE ANGULLIA", "SKYLINE ANGULLIA"),
+           alt_name = replace(alt_name, project_name == "ST WINDERMERE", "WINDERMERE"),
+           alt_name = replace(alt_name, project_name == "SUNRISE TERRACES", "SUNRISE TERRACES"),
+           alt_name = replace(alt_name, project_name == "THE ATRIA", "THE ATRIA@MEYER"),
+           alt_name = replace(alt_name, project_name == "THE PIER", "THE PIER@ROBERTSON"),
+           alt_name = replace(alt_name, project_name == "TREETOPS CONDOMINIUM", "TREETOPS CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "TREVOSE CRESCENT", "THE TREVOSE"),
+           alt_name = replace(alt_name, project_name == "ULU SEMBAWANG", "ULU SEMBAWANG"),
+           alt_name = replace(alt_name, project_name == "W RESIDENCE", "W RESIDENCE"),
+           alt_name = replace(alt_name, project_name == "WEST VILLE", "WEST VILLE"),
+           alt_name = replace(alt_name, project_name == "WILBY ROAD CONDOMINIUM", "WILBY ROAD CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "KENTISH GREEN S7 (C)", "KENTISH GREEN"),
+           alt_name = replace(alt_name, project_name == "KENTISH LODGE S7(A)", "KENTISH LODGE"),
+           alt_name = replace(alt_name, project_name == "SANTUARY GREEN CONDOMINIUM", "SANCTUARY GREEN"),
+           alt_name = replace(alt_name, project_name == "WEST POINT CONDO ( PH 2)", "WEST POINT"),
+           alt_name = replace(alt_name, project_name == "WESTBAY RESORT CONDOMINIUM", "WEST BAY CONDOMINIUM"))
+```
+
+```{r find second batch of non matches}
+matches_2 <- non_matches_1_with_alt_name_fixed %>% 
+    inner_join(distinct_projects, by = c("alt_name" = "project_name")) %>% 
+    select(project_name = alt_name, project_name_orig, ends_with("score"), match_source)
+non_matches_2 <- non_matches_1_with_alt_name_fixed %>% 
+    anti_join(distinct_projects, by = c("alt_name" = "project_name"))
+non_matches_2 %>% 
+    select(project_name, alt_name, project_name_orig) %>% 
+    arrange(project_name) %>% 
+    View()
+transactions %>% distinct(project_name, address) %>% View()
+```
+
+```{r fix non matches 2}
+# this one checks by searching the project names/addresses in the transactions data
+# and trying typos/extra or lack space etc.
+non_matches_2_fixed <- non_matches_2 %>%
+    mutate(alt_name = replace(alt_name, project_name == "BUCKLY 18", "BUCKLEY 18"),
+           alt_name = replace(alt_name, project_name == "CHANTILY RISE@HILLVIEW AVE", "CHANTILLY RISE"),
+           alt_name = replace(alt_name, project_name == "CITY VALE", "CITYVALE"),
+           alt_name = replace(alt_name, project_name == "CITY VISTA RESIDENCE", "CITYVISTA RESIDENCE"),
+           alt_name = replace(alt_name, project_name == "COTE D AZUR CONDOMINIUM", "COTE D'AZUR"),
+           alt_name = replace(alt_name, project_name == "D PAVILLION", "D'PAVILION"),
+           alt_name = replace(alt_name, project_name == "DEROYALE", "DE ROYALE"),
+           alt_name = replace(alt_name, project_name == "DUMAN VIEW CONDOMINIUM", "DUNMAN VIEW"),
+           alt_name = replace(alt_name, project_name == "ESTALLA GARDEN CONDOMINIUM", "ESTELLA GARDEN"),
+           alt_name = replace(alt_name, project_name == "GLENDALE CONDOMINIUM", "GLENDALE PARK"),
+           alt_name = replace(alt_name, project_name == "GOLDCOAST CONDOMINIUM", "GOLD COAST CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "GRAND DUCHESS@ST PATRICKS", "GRAND DUCHESS@ST PATRICK'S"),
+           alt_name = replace(alt_name, project_name == "HOUGANG GREEN RES AND COMM DEVT", "HOUGANG GREEN"),
+           alt_name = replace(alt_name, project_name == "HUME PARK PARCEL II", "HUME PARK II"),
+           alt_name = replace(alt_name, project_name == "KENSINGTON PARK PHASE II", "KENSINGTON PARK CONDOMINIUM"),
+           alt_name = replace(alt_name, project_name == "LEONIE PARCVIEW", "LEONIE PARC VIEW"),
+           alt_name = replace(alt_name, project_name == "MERAWOODS CONDOMINIUM", "MERA WOODS"),
+           alt_name = replace(alt_name, project_name == "RIVER GATE", "RIVERGATE"),
+           alt_name = replace(alt_name, project_name == "SETIA MANSION@NO11 EVELYN ROAD", "SETIA RESIDENCE"),
+           alt_name = replace(alt_name, project_name == "SOUTH HAVEN CONDOMINIUM", "SOUTHAVEN I"),
+           alt_name = replace(alt_name, project_name == "SOUTH HAVEN PHASE II", "SOUTHAVEN II"),
+           alt_name = replace(alt_name, project_name == "THE ABEERDEEN/ST MICHEAL PLACE", "THE ABERDEEN"),
+           alt_name = replace(alt_name, project_name == "THE DAKOTA RESIDENCE", "DAKOTA RESIDENCE"),
+           alt_name = replace(alt_name, project_name == "W RESIDENCE", "THE RESIDENCE@W SENTOSA COVE"),
+           alt_name = replace(alt_name, project_name == "WATERPLACE CONDOMINIUM", "WATER PLACE"),
+           alt_name = replace(alt_name, project_name == "WHITE WATER", "WHITEWATER"))
+```
+
+```{r third round of matching}
+matches_3 <- non_matches_2_fixed %>% 
+    select(project_name = alt_name, project_name_orig, ends_with("score"), match_source) %>% 
+    inner_join(distinct_projects, by = "project_name")
+matches_3
+```
+
+```{r final matches}
+final_matches <- matches_1 %>% 
+    bind_rows(matches_2) %>% 
+    bind_rows(matches_3) %>% 
+    mutate(match_source = str_replace(match_source, "none", "manual"))
+final_matches
+```
+
+```{r check for duplicates in final matches}
+final_matches %>% group_by(project_name) %>% summarise(count = n()) %>% filter(count > 1)
+```
+
+```{r examine dupes in final matches}
+final_matches %>% filter(project_name == "THE SHELFORD")
+final_matches %>% filter(project_name == "EASTWOOD GREEN")
+```
+
+```{r fix the wrong shelford}
+final_matches_nodupes <- final_matches %>% 
+    filter(!(project_name == "THE SHELFORD" & struct_score == 87.6) & !(project_name == "EASTWOOD GREEN" & struct_score != 78.8))
+final_matches_nodupes %>% group_by(project_name) %>% summarise(count = n()) %>% filter(count > 1)
+```
+
+
+```{r examine how much of the data is matched by what means}
+final_matches_nodupes %>% group_by(match_source) %>% summarise(n())
+```
+
+```{r verify that the final matches are not faulty}
+final_matches_nodupes %>% anti_join(distinct_projects, by = "project_name")
+```
+
+```{r finally, merge onto transactions}
+transactions_with_conquas <- transactions %>% 
+    left_join(final_matches_nodupes, by = "project_name") %>% 
+    mutate(conquas_truncated = as.integer(str_detect(conquas_score, "95 points or higher (CONQUAS 8th edition)")),
+           conquas_score = str_replace(conquas_score, "95 points or higher (CONQUAS 8th edition)", "95"),
+           conquas_score = as.numeric(conquas_score))
+nrow(transactions) == nrow(transactions_with_conquas)
+```
+
+```{r}
+transactions_with_conquas %>% write_rds("data/final/data.RDS")
+```
+
