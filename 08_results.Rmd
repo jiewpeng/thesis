@@ -10,6 +10,11 @@ knitr::opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = 
 data <- read_rds("data/final/data.RDS")
 ```
 
+```{r}
+data %>% filter(sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium") %>% select(project_name, starts_with("facil")) %>% filter(is.na(facil_bbq) | is.na(facil_swp) | is.na(facil_tennis) | is.na(facil_basketball) | is.na(facil_gym) | is.na(facil_functionrm) | is.na(facil_jacuzzi) | is.na(facil_sauna)) %>% distinct(project_name)
+```
+
+
 ```{r function to extract coefficients}
 # because I'm only running log-linear regressions, I set it to return a string
 # with a percentage rounded to 2 decimal places
@@ -32,7 +37,7 @@ make_reg_formula <- function(...) {
     result <- str_sub(result, 4, str_length(result)) # remove additional " + " at the front
     return(result)
 }
-reg <- function(..., area_fe = "", time_fe = "") {
+reg <- function(..., area_fe = "", time_fe = "", s = subs) {
     reg_formula <- make_reg_formula(...)
     if (time_fe != "") {
         reg_formula <- str_c(reg_formula, " + ", time_fe)
@@ -40,95 +45,162 @@ reg <- function(..., area_fe = "", time_fe = "") {
     if (area_fe != "") {
         reg_formula <- str_c(reg_formula, " | ", area_fe)
     }
-    felm(formula(reg_formula), data = data, subset = f_eval(subs, data))
+    felm(formula(reg_formula), data = data, subset = f_eval(s, data))
 }
 summary2 <- function(reg_mdl) {
-    summ <- summary(reg_mdl)
+    summ <- summary(reg_mdl, robust = TRUE)
     summ$coefficients <- summ$coefficients[!str_detect(dimnames(summ$coefficients)[[1]], time_fe),]
     return(summ)
 } 
-base_reg <- "ln_price ~ award_dummy"
+base_reg <- "ln_price_psm ~ award_dummy"
 did_dummy <- "award_after"
-controls <- c("ctrl_prop_type", "ctrl_ln_area", "ctrl_freehold", "ctrl_floor")
+placebo_6mo_dummy <- "placebo_after_6mo"
+placebo_12mo_dummy <- "placebo_after_12mo"
+controls <- c("ctrl_prop_type", "ctrl_ln_area", "ctrl_freehold", "ctrl_floor", "ctrl_floor2", 
+              "ctrl_firstfloor", "ctrl_topfloor", "ctrl_dist_mrt", "ctrl_yrs_to_completion",
+              "facil_bbq", "facil_swp", "facil_tennis", "facil_basketball", "facil_gym",
+              "facil_functionrm", "facil_jacuzzi", "facil_sauna")
+conquas_vars <- c("conquas_score")
 area_fe <- "ctrl_postal_first4"
 time_fe <- "sale_ym"
 subs <- ~ sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium"
+subs_placebo <- ~ sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium" & placebo_after_gm_flag == 1
+keep_coefs <- function(...) {
+    mdls <- list(...)
+    covariates <- mdls %>% 
+        map(~.x$coefficients) %>% 
+        map(dimnames) %>% 
+        map(~.[[1]]) %>% 
+        unlist()
+    covariates <- covariates[
+        !str_detect(covariates, time_fe) & !str_detect(covariates, "(Intercept)") & !str_detect(covariates, "facil_")] %>% 
+        unique()
+    if (any(str_detect(covariates, "placebo"))) {
+        covariates <- c(
+            covariates[covariates %in% c("award_dummy", placebo_6mo_dummy, placebo_12mo_dummy)],
+            covariates[!covariates %in% c("award_dummy", placebo_6mo_dummy, placebo_12mo_dummy)])
+    }
+    return(covariates)
+}
+label_coefs <- function(lst) {
+    str_replace_all(lst, c(
+        "award_dummy" = "GM Award",
+        "award_after" = "GM x After GM",
+        "ctrl_ln_area" = "ln(Area (sqm))",
+        "ctrl_freehold" = "Freehold",
+        "ctrl_floor2" = "Floor$^{2}$",
+        "ctrl_floor" = "Floor",
+        "ctrl_firstfloor" = "First Floor",
+        "ctrl_topfloor" = "Top Floor",
+        "ctrl_hdb_buyer" = "HDB Buyer",
+        "ctrl_prop_type" = "Property Type: ",
+        "ctrl_lease" = "Lease Type: ",
+        "ctrl_dist_mrt" = "Distance to MRT (km)",
+        "ctrl_yrs_to_completion" = "Years to Completion",
+        "placebo_after_6mo" = "GM x After (6 months before GM)",
+        "placebo_after_12mo" = "GM x After (12 months before GM)",
+        "conquas_score" = "CONQUAS Score",
+        "conquas_truncated" = "CONQUAS Score Censored"
+    ))
+}
+extract_ses <- function(model) {
+    summ <- summary2(model)
+    se <- summ$coefficients[,2]
+    return(se)
+}
+```
+
+```{r}
+data[f_eval(subs, data),] %>% 
+    group_by(award_dummy, award_after) %>% 
+    summarise(transactions = n(), projects = n_distinct(project_name))
 ```
 
 
 ```{r naive model}
 naive_mdl <- reg(base_reg)
-summary(naive_mdl)
+summary2(naive_mdl)
 ```
 
 ```{r naive model with controls}
 naive_mdl_with_controls <- reg(base_reg, controls, area_fe = area_fe)
-summary(naive_mdl_with_controls)
+summary2(naive_mdl_with_controls)
 ```
 
 ```{r model with controls and year-month FE}
 naive_mdl_with_controls_ymfe <- reg(base_reg, controls, area_fe = area_fe, time_fe = time_fe)
-summary(naive_mdl_with_controls_ymfe)
+summary2(naive_mdl_with_controls_ymfe)
 ```
 
 ```{r main results, include = TRUE, results = "asis"}
-vars_to_keep <- c("award_dummy", "ctrl_ln_area", "ctrl_floor", "ctrl_hdb_buyer", "ctrl_prop_typeCondominium", "ctrl_prop_typeExecutive Condominium", "ctrl_freehold")
-labels <- c("GM Award", "ln(Area)", "Floor", "HDB Buyer", "Property Type: Condominium", "Property Type: Executive Condominium", "Freehold")
-postal_sector_fe <- c("Postal Sector Dummies", "No", "Yes", "Yes")
-year_qtr_fe <- c("Year-Month Dummies", "No", "No", "Yes")
-stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_yqfe, 
+vars_to_keep <- keep_coefs(naive_mdl_with_controls_ymfe)
+labels <- label_coefs(vars_to_keep)
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "No", "Yes", "Yes")
+time_fe_line <- c("Year-Month Dummies", "No", "No", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "No", "Yes", "Yes")
+ses <- map(list(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe), extract_ses)
+stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe, 
           type = "latex", title = "Effects of GM Award on Price",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
-          dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(postal_sector_fe, year_qtr_fe), label = "mainresults")
+          dep.var.labels = "Natural log of Price psm", header = FALSE,
+          add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
+          se = ses, digits = 3, label = "mainresults")
 ```
 
 ```{r DID base model}
-did_base_mdl <- lm(
-    ln_price ~ award_dummy + award_after + ctrl_ln_area + ctrl_floor + 
-        ctrl_hdb_buyer + ctrl_prop_type + ctrl_freehold + ctrl_postal_sector + sale_ym, 
-    data = data, subset = sale_type == "New Sale")
+did_base_mdl <- reg(base_reg, did_dummy, controls, area_fe = area_fe, time_fe = time_fe)
+summary2(did_base_mdl)
 ```
 
+```{r DID model with conquas}
+did_with_conquas <- reg(base_reg, did_dummy, controls, conquas_vars, area_fe = area_fe, time_fe = time_fe)
+summary2(did_with_conquas)
+```
 
 ```{r DID results, include = TRUE, results = "asis"}
-vars_to_keep <- c("award_dummy", "award_after", "ctrl_ln_area", "ctrl_floor", "ctrl_hdb_buyer", "ctrl_prop_typeCondominium", "ctrl_prop_typeExecutive Condominium", "ctrl_freehold")
-labels <- c("GM Award", "GM x After GM (1 = Yes)", "ln(Area)", "Floor", "HDB Buyer", "Property Type: Condominium", "Property Type: Executive Condominium", "Freehold")
-postal_sector_fe <- c("Postal Sector Dummies", "Yes")
-year_qtr_fe <- c("Year-Month Dummies", "Yes")
-stargazer(did_base_mdl, 
+vars_to_keep <- keep_coefs(did_with_conquas)
+labels <- label_coefs(vars_to_keep)
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes")
+time_fe_line <- c("Year-Month Dummies", "Yes", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes")
+ses <- list(did_base_mdl, did_with_conquas) %>% map(extract_ses)
+stargazer(did_base_mdl, did_with_conquas,
           type = "latex", title = "Difference-in-difference Models",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
-          dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(postal_sector_fe, year_qtr_fe), label = "didresults")
+          dep.var.labels = "Natural log of Price psm", header = FALSE,
+          add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
+          se = ses, digits = 3, label = "didresults")
 ```
 
 ```{r placebo models}
-placebo_6mo_mdl <- lm(
-    ln_price ~ award_dummy + placebo_after_6mo + ctrl_ln_area + ctrl_floor + 
-        ctrl_hdb_buyer + ctrl_prop_type + ctrl_freehold + ctrl_postal_sector + sale_ym,
-    data = data, subset = sale_type == "New Sale" & placebo_after_gm_flag == 1)
-placebo_12mo_mdl <- lm(
-    ln_price ~ award_dummy + placebo_after_12mo + ctrl_ln_area + ctrl_floor + 
-        ctrl_hdb_buyer + ctrl_prop_type + ctrl_freehold + ctrl_postal_sector + sale_ym,
-    data = data, subset = sale_type == "New Sale" & placebo_after_gm_flag == 1)
-#summary(placebo_12mo_mdl)
+placebo_6mo_mdl <- reg(base_reg, placebo_6mo_dummy, controls, conquas_vars, area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
+summary2(placebo_6mo_mdl)
+placebo_12mo_mdl <- reg(base_reg, placebo_12mo_dummy, controls, conquas_vars, area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
+summary2(placebo_12mo_mdl)
 ```
 
 ```{r placebo results, include = TRUE, results = "asis"}
-vars_to_keep <- c("award_dummy", "placebo_after_6mo", "placebo_after_12mo", "ctrl_ln_area", "ctrl_floor", "ctrl_hdb_buyer", "ctrl_prop_typeCondominium", "ctrl_prop_typeExecutive Condominium", "ctrl_freehold")
-labels <- c("GM Award (1 = Yes)", "GM x After (6 months before GM), 1 = Yes", 
-            "GM x After (12 months before GM), 1 = Yes",
-            "ln(Area)", "Floor", "HDB Buyer", "Property Type: Condominium", 
-            "Property Type: Executive Condominium", "Freehold")
-postal_sector_fe <- c("Postal Sector Dummies", "Yes", "Yes")
-year_qtr_fe <- c("Year-Month Dummies", "Yes", "Yes")
+vars_to_keep <- keep_coefs(placebo_6mo_mdl, placebo_12mo_mdl)
+labels <- label_coefs(vars_to_keep)
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes")
+time_fe_line <- c("Year-Month Dummies", "Yes", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes")
+ses <- list(placebo_6mo_mdl, placebo_12mo_mdl) %>% map(extract_ses)
 stargazer(placebo_6mo_mdl, placebo_12mo_mdl,
           type = "latex", title = "Placebo Difference-in-difference Tests",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
-          dep.var.labels = "Natural log of Price", header = FALSE,
-          add.lines = list(postal_sector_fe, year_qtr_fe), label = "placeboresults")
+          dep.var.labels = "Natural log of Price psm", header = FALSE,
+          add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
+          se = ses, digits = 3, label = "placeboresults")
 ```
 
+
+```{r}
+# using postal code FE
+controls <- c("ctrl_ln_area", "ctrl_floor", "ctrl_floor2", 
+              "ctrl_firstfloor", "ctrl_topfloor", "ctrl_yrs_to_completion")
+area_fe <- "ctrl_postal_code"
+reg(base_reg, did_dummy, controls, area_fe = area_fe, time_fe = time_fe) %>% summary2()
+```
 
 \newpage
