@@ -1,0 +1,526 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"unit",
+				"unitpricepsf\tVariable"
+			],
+			[
+				"ttm",
+				"ttm3"
+			],
+			[
+				"flat",
+				"flat_model\tVariable"
+			],
+			[
+				"new",
+				"newvarname"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "05_intro.Rmd",
+			"settings":
+			{
+				"buffer_size": 6336,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 242.0,
+		"last_filter": "build",
+		"selected_items":
+		[
+			[
+				"build",
+				"Build: New Build System"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+			"ls",
+			"cd "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis"
+	],
+	"file_history":
+	[
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/08_results.Rmd",
+		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/User/build-thesis.sublime-build",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/03_abbreviations.Rmd",
+		"/D/SteamLibrary (Windows)/SteamApps/common/Path of Exile/POE Trade Macro/Run_Only_This.ahk",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/terminal.glue",
+		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/Glue/Glue.sublime-settings",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/thesis.sublime-project",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/04_toc.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/01_abstract.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/02_foreword.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/thesis.bib",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/05_intro.Rmd",
+		"/C/Users/Jiew Peng/Desktop/test.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/00_cover-page.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/SPH3101 Project 2/code/libraries.R",
+		"/C/Users/Jiew Peng/Desktop/HAWKERCENTRE.kml",
+		"/C/Users/Jiew Peng/Desktop/RelaxSG.kml",
+		"/C/Users/Jiew Peng/Desktop/merge-conquas.R",
+		"/C/Users/Jiew Peng/Desktop/temp - Copy.do",
+		"/C/Users/Jiew Peng/Desktop/temp.do",
+		"/C/Users/Jiew Peng/Desktop/conquas_matches.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/misc/preamble.tex",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/_build.sh",
+		"/D/SteamLibrary (Windows)/SteamApps/common/Path of Exile/POE Trade Macro/trade_data/TradeMacro.ahk",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/packrat/init.R",
+		"/C/Users/Jiew Peng/Documents/My Games/Path of Exile/NeverSink's filter - REGULAR.filter",
+		"/C/Users/Jiew Peng/Desktop/_main.txt",
+		"/C/Users/Jiew Peng/Desktop/bookdown-demo-master/_output.yml",
+		"/C/Users/Jiew Peng/Desktop/bookdown-demo-master/index.Rmd",
+		"/C/Users/Jiew Peng/Desktop/test/_output.yml",
+		"/C/Users/Jiew Peng/Desktop/bookdown-demo-master/_book/bookdown-demo.tex",
+		"/C/Users/Jiew Peng/Desktop/test/_deploy.sh",
+		"/C/Users/Jiew Peng/Desktop/test/_build.sh",
+		"/C/Users/Jiew Peng/Desktop/bookdown-demo-master/_build.sh",
+		"/C/Users/Jiew Peng/Desktop/test/_main.tex",
+		"/C/Users/Jiew Peng/Desktop/_build.sh",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/README.md",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/geocode.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/temp.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 4/Lim Jiew Peng_A0108369X_stata.do",
+		"/C/Users/Jiew Peng/Desktop/stata.bat",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/ec4305_emp_assignment_1.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/SPH3101 Project 2/code/main.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/SPH3101 Project 2/preamble.tex",
+		"/C/Users/Jiew Peng/Desktop/TRIDRIS_11-7-2016.ris",
+		"/C/Users/Jiew Peng/Desktop/TRIDCitation_11-7-2016.txt",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/SPH3101 Project 2/misc/apav6.csl",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/SPH3101 Project 2/misc/apav6.csl.xml",
+		"/C/Users/Jiew Peng/Desktop/REM Fix.bat",
+		"/D/TV Shows/Fresh Off the Boat/Fresh Off the Boat Season 1/rename_subs_entire_season.py",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 2/ec4305_assigment2.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/assignment_specs/PS_guideline.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/preamble.tex",
+		"/C/ado/plus/r/rdrobust_bw.mo",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/data/raw/greenmark/GREENBUILDING.kml",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/test-scrape.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/Project 1/code/1-clean-Q7.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/Project 1/code/2-merge-datasets.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/sph3101.bib",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/Project 1/code/1-clean-Q5-Q6-Q20.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Project/Project 1/code/1-clean-Q1-Q9-Q15.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/custom_stargazer.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Assignments/ec4103_assignment1_r/code/ec4103_assignment1.Rmd",
+		"/C/Users/Jiew Peng/Desktop/DefaultNameList.ini",
+		"/D/Windows Dropbox/Dropbox/temp/scraping_for_pearlyn/data/test2.tsv",
+		"/D/Windows Dropbox/Dropbox/temp/scraping_for_pearlyn/data/test3.tsv",
+		"/D/Windows Dropbox/Dropbox/temp/scraping_for_pearlyn/data/output.tsv",
+		"/D/Windows Dropbox/Dropbox/temp/scraping_for_pearlyn/test2.tsv",
+		"/D/Windows Dropbox/Dropbox/temp/scraping_for_pearlyn/data/HDBcoord_revgeocoded.csv",
+		"/D/Windows Dropbox/Dropbox/temp/scraping_for_pearlyn/data/test.csv",
+		"/C/Users/Jiew Peng/Desktop/test/test.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/test.css",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Assignments/ec4103_assignment_2/.gitignore",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Assignments/ec4103_assignment_2/README.md",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/packrat/lib/x86_64-w64-mingw32/3.3.1/bookdown/resources/gitbook/css/style.css",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/packrat/lib/x86_64-w64-mingw32/3.3.1/bookdown/templates/gitbook.html",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/packrat/packrat.lock",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/.gitignore",
+		"/D/Git Repos/stargazer/R/stargazer.R",
+		"/D/Git Repos/stargazer/R/stargazer-internal.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/_book/libs/.gitignore",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/.git/info/exclude",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/_book/search_index.json",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/packrat/init.R",
+		"/D/github_repos/stargazer/R/stargazer-internal.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/output/ec4305_assignment1.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/output/ec4305_emp_assignment_1.R",
+		"/C/Users/Jiew Peng/AppData/Local/MiKTeX/2.9/miktex/log/pdflatex.log",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4305 Applied Econometrics/Empirical Assignments/Empirical Assignment 1/output/test.R",
+		"/C/Users/Jiew Peng/R/win-library/3.3/stargazer/R/stargazer.rdb",
+		"/C/Users/Jiew Peng/R/win-library/3.3/stargazer/R/stargazer",
+		"/C/Users/Jiew Peng/Desktop/testscrape/test2.html",
+		"/C/Users/Jiew Peng/Desktop/testscrape/0_scrape_greenmark_info.html",
+		"/C/Users/Jiew Peng/Desktop/testscrape/test2.md",
+		"/C/Users/Jiew Peng/Desktop/testscrape/test.md",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/ipyrmd.py",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/test.md",
+		"/C/Users/Jiew Peng/Desktop/testscrape/aaa.md",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/SPH3101 Biostatistics for Public Health/Lecture Notes/Week2/code/lab2.R",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/ec4103.bib",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Readings/TA readings & Assignments/tilakbook",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Assignments/ec4103_assignment1_r/.git/info/exclude",
+		"/C/Users/Jiew Peng/Desktop/My Collection.xml",
+		"/C/Users/Jiew Peng/Desktop/My Collection.bib",
+		"/C/Users/Jiew Peng/Desktop/My Collection.ris",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/.git/info/exclude",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Assignments/ec4103_assignment1/README.md",
+		"/D/Temp/Dockerfile",
+		"/C/Program Files/Docker Toolbox/run_docker.bash",
+		"/C/Users/Jiew Peng/Desktop/run_docker.bash",
+		"/E/syslinux.cfg",
+		"/C/Program Files/Docker Toolbox/start.sh",
+		"/D/TV Shows/rename_subs_entire_season.py",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4103 Singapore Economy Practice and Policy/Assignments/ec4103_assignment1/code/ec4103_assignment1.ipynb",
+		"/D/TV Shows/Psych.Season.1-8.720p.x265.HEVC-LION[UTR]/Psych.Season.1.720p.x265.HEVC-LION[UTR]/rename_subs_entire_season.py",
+		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Stata/combine_hdb.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Stata/combine.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/CS1010S Programming Methodology/Side Quests/Side Quest 12/cs1010s-fbdata.json",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Stata/combine_private.do",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/data/sch_relocations.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/data/merged.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/data/raw_private/private-2000-001.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/oputput/regressions.md",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/sch_relocations.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/merged.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/merged.csv",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/helpers.R"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			")\n",
+			"address == (\".*\"),",
+			"address == \"",
+			"\\)",
+			"\" ",
+			" replace projectname = (.* )",
+			" replace projectname = \"GRANGE 120\"  ",
+			" replace projectname = (.*)",
+			"if regexm\\(address, ",
+			"\\)==1",
+			"(replace projectname = .*)(if regexm.*==1)",
+			"  ",
+			"skyline",
+			" replace",
+			"if substr\\(address.*== ",
+			"\\)==1",
+			".*if regexm\\(address, ",
+			"\\n",
+			"replace projectname = .* if projectname == ?",
+			"replace projectname = \"THE ESTUARY\" if projectname ==",
+			"   ",
+			"    ",
+			"sorcerer boots",
+			"C:\\Anaconda3\\",
+			"breslau",
+			"mahmen",
+			"beagl",
+			"table",
+			"devtools",
+			"min.max",
+			"use.bookdown",
+			"tab:",
+			"#tab:",
+			"<caption>",
+			"if (text.title != \"\") { cat(\"<caption>\", \"(\\\\#tab:\", label, \")\", \"<strong>\", .remove.control.sequences(inside.caption, type=\"html\"),\"</strong></caption>\\n\", sep=\"\") }",
+			"                            if (text.title != \"\") { cat(\"<caption>\", \"(\\\\#tab:\", label, \")\", \"<strong>\", .remove.control.sequences(inside.caption, type=\"html\"),\"</strong></caption>\\n\", sep=\"\") }\n",
+			"tab:",
+			"\\\\#tab:",
+			"\\\\#",
+			"setup",
+			"float.env",
+			".format.floating.",
+			"end{adjustbox}",
+			"begin{adjustbox}{tabular=",
+			"tabular}{",
+			"end{tabular}",
+			"begin{tabular}",
+			"tabularx",
+			"begin{tabularx}{\\\\textwidth}",
+			"begin{tabular}",
+			"end{tabular}",
+			"begin{tabular}",
+			"p{1cm}",
+			"4cm",
+			"\"\\\\begin{tabular}{\",.formatting.alignment,\" | p{4cm}} \\n\",sep=\"\"",
+			"\"\\\\begin{tabular}{\",.formatting.alignment,\" | p{4cm} |} \\n\",sep=\"\"",
+			"\"\\\\begin{tabular}{\",.formatting.alignment,\"} \\n\",sep=\"\"",
+			"float.env",
+			".format.floating.environment",
+			"tab:",
+			"label",
+			"begin{table}",
+			"end{tabulary}",
+			"begin{tabulary}{0.8\\\\textwidth}",
+			"0.8\\textwidth",
+			"end{tabular}",
+			"begin{tabular}",
+			"end{tabu}",
+			"begin{tabu} to \\\\textwidth ",
+			"end{tabularx}",
+			"begin{tabularx}{\\\\textwidth}",
+			"column.sep.width",
+			".format.column.sep.width",
+			".formatting.alignment",
+			"{ltablex}",
+			"{tabularx}",
+			"end{tabular}",
+			"begin{tabular}",
+			"end{tabular*}",
+			"begin{tabular*}{\\\\textwidth}",
+			"\\begin{tabular}{\\textwidth}",
+			"end{tabular}",
+			"\\begin{tabular}",
+			".formatting",
+			"\\begin{tabular",
+			"\\label",
+			".input  n",
+			"alist",
+			"female",
+			"zero",
+			"neg6",
+			"zero",
+			"neg6",
+			"old",
+			"567503950026306",
+			"old",
+			"merged",
+			".doc"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"str_detect\\(address, \\1\\),",
+			"str_detect(address, \\1,",
+			"address == \"\\\\\\\\b",
+			"address == \"\\\\b",
+			"\\),",
+			"\"",
+			", \\1)",
+			", \\1",
+			"project_name = replace(project_name, address == ",
+			"",
+			"\\2 \\1",
+			"\\2\\1",
+			" ",
+			"replace",
+			"",
+			", ",
+			"",
+			"C:\\Program Files\\Anaconda3\\",
+			"end{tabular}",
+			"begin{tabular}{",
+			"tabular=",
+			"end{adjustbox}",
+			"begin{adjustbox}{tabular}",
+			"tabular",
+			"begin{tabular}",
+			"begin{tabularx}",
+			"end{tabularx}",
+			"begin{tabular}{\\\\textwidth}",
+			"",
+			"1cm",
+			"\"\\\\begin{tabular}{\",.formatting.alignment,\"p{4cm}} \\n\",sep=\"\"",
+			"\"\\\\begin{tabular}{\",.formatting.alignment,\" | p{4cm}} \\n\",sep=\"\"",
+			"\"\\\\begin{tabular}{\",.formatting.alignment,\" | p{4cm} |} \\n\",sep=\"\"",
+			"end{tabular}",
+			"begin{tabular}",
+			"0.8\\\\textwidth",
+			"end{tabulary}",
+			"begin{tabulary}{0.8\\textwidth}",
+			"end{tabular}",
+			"begin{tabular}",
+			"end{tabu}",
+			"begin{tabu} to \\\\textwidth ",
+			"{tabularx}",
+			"{ltablex}",
+			"end{tabularx}",
+			"begin{tabularx}{\\\\textwidth}",
+			"end{tabular}",
+			"begin{tabular}",
+			"\\begin{tabular*}{\\\\textwidth}",
+			"end{tabular*}",
+			"\\end{tabular*}",
+			"\\begin{tabular}{\\textwidth}",
+			"male",
+			"neg6",
+			"zero",
+			"neg6",
+			"zero",
+			"new",
+			"subset",
+			".xls"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "05_intro.Rmd",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								981,
+								981
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/knitr/knitr-Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1104.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 148.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/build-thesis.sublime-build",
+	"project": "thesis.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 145.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
