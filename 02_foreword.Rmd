@@ -3,6 +3,6 @@
 
 # Foreword {#foreword .unnumbered}
 
-Acknowledgements blah blah blah
+(Place holder) acknowledgements
 
 \newpage
