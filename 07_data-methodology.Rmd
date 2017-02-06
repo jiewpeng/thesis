@@ -5,9 +5,17 @@
 
 Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. Information about the GM awards was obtained by scraping the Building Construction Authority of Singapore (BCA) Green Mark Buildings Directory [^gm_buildings_directory], searching for Residential and Mixed Developments. Since the GM Buildings Directory only contained the year of award, I had to obtain the exact dates of the award by searching for "BCA Awards" the Straits Times archive from LexisNexis. Green Mark winners are announced on the BCA awards night, so I searched for the dates of the BCA awards night for each year (2005 till 2015).
 
+
+
 ## Methodology
 
 This paper uses a fixed effects (FE) approach to isolate the signalling effect of the GM certification from other unobserved characteristics correlated with a GM certification. 
+
+Certified buildings can have a price premium due to two reasons: either the signalling effect provided by the certification, or that good features tend to cluster together such that green buildings are also higher quality buildings in other aspects. This paper uses a difference-in-differences (DID) approach to isolate the signalling effect from any other factors that might contribute to a price premium.
+
+This paper uses a feature of the GM program in Singapore to isolate the signalling effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the effect of the award as a signal from other unobserved characteristics. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. 
+
+This study uses only new sales of private residential properties, excluding Executive Condominiums (ECs). I use only private residential properties, because commercial and office buildings do undergo asset enhancement initiatives (AEIs) every once in a while. If the timing of the GM award coincides with these AEIs, the DID cannot isolate the effect of the GM award from the other relevant improvements in the property as a result of the AEI. I also exclude ECs because ECs are subsidised properties and they have certain conditions that buyers must fulfil, which makes the market a bit different from other private residential properties.
 
 ## Descriptive Statistics
 
