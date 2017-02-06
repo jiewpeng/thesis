@@ -3,8 +3,10 @@
 
 # Abbreviations {#abbr .unnumbered}
 
-**GM**: Green Mark environmental certification in Singapore. 
+**BCA**: Building and Construction Authority of Singapore
 
-**FE**: Fixed effect/s
+**GM**: Green Mark environmental certification in Singapore
+
+**DID**: Difference-in-differences methodology
 
 \newpage
