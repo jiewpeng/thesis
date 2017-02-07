@@ -27,9 +27,27 @@
 			"file": "05_intro.Rmd",
 			"settings":
 			{
-				"buffer_size": 6336,
+				"buffer_size": 5352,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "07_data-methodology.Rmd",
+			"settings":
+			{
+				"buffer_size": 2629,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/thesis.bib",
+			"settings":
+			{
+				"buffer_size": 26713,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -40,17 +58,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 242.0,
-		"last_filter": "build",
+		"height": 104.0,
+		"last_filter": "Package Control: install",
 		"selected_items":
 		[
 			[
-				"build",
-				"Build: New Build System"
-			],
-			[
 				"Package Control: install",
 				"Package Control: Install Package"
+			],
+			[
+				"build",
+				"Build: New Build System"
 			],
 			[
 				"Package Control: ",
@@ -83,9 +101,14 @@
 	],
 	"file_history":
 	[
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/08_results.Rmd",
-		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/User/build-thesis.sublime-build",
+		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXing.sublime-settings",
+		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/LaTeXing/LaTeXing.sublime-settings",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/03_abbreviations.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/07_data-methodology.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/thesis.bib",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/08_results.Rmd",
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/misc/preamble.tex",
+		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/User/build-thesis.sublime-build",
 		"/D/SteamLibrary (Windows)/SteamApps/common/Path of Exile/POE Trade Macro/Run_Only_This.ahk",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/terminal.glue",
 		"/C/Users/Jiew Peng/AppData/Roaming/Sublime Text 3/Packages/Glue/Glue.sublime-settings",
@@ -93,7 +116,6 @@
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/04_toc.Rmd",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/01_abstract.Rmd",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/02_foreword.Rmd",
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/thesis.bib",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/05_intro.Rmd",
 		"/C/Users/Jiew Peng/Desktop/test.do",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/00_cover-page.Rmd",
@@ -104,7 +126,6 @@
 		"/C/Users/Jiew Peng/Desktop/temp - Copy.do",
 		"/C/Users/Jiew Peng/Desktop/temp.do",
 		"/C/Users/Jiew Peng/Desktop/conquas_matches.do",
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/misc/preamble.tex",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/_build.sh",
 		"/D/SteamLibrary (Windows)/SteamApps/common/Path of Exile/POE Trade Macro/trade_data/TradeMacro.ahk",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/thesis/packrat/init.R",
@@ -207,10 +228,7 @@
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/data/merged.csv",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/data/raw_private/private-2000-001.csv",
 		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/oputput/regressions.md",
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/sch_relocations.csv",
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/merged.csv",
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/merged.csv",
-		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/R/helpers.R"
+		"/D/Windows Dropbox/Dropbox/Uni Stuff/EC4387 Housing Economics/Project/Anaconda/sch_relocations.csv"
 	],
 	"find":
 	{
@@ -228,6 +246,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"mendeley",
+			"DID",
+			"bca",
+			"{\\_}",
 			")\n",
 			"address == (\".*\"),",
 			"address == \"",
@@ -412,15 +434,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6336,
+						"buffer_size": 5352,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								981,
-								981
+								3126,
+								3126
 							]
 						],
 						"settings":
@@ -428,10 +450,66 @@
 							"syntax": "Packages/knitr/knitr-Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1104.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "07_data-methodology.Rmd",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2629,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1499,
+								1499
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/knitr/knitr-Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 207.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/Windows Dropbox/Dropbox/Uni Stuff/Z_Mendeley/thesis.bib",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26713,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								456,
+								456
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/Bibtex.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -518,7 +596,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 145.0,
+	"side_bar_width": 183.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
