@@ -99,7 +99,12 @@ label_coefs <- function(lst) {
         "ctrl_yrs_to_completion" = "Years to Completion",
         "placebo_after_6mo" = "GM x After (6 months before GM)",
         "placebo_after_12mo" = "GM x After (12 months before GM)",
-        "conquas_score" = "CONQUAS Score",
+        "conquas_score$" = "CONQUAS Score",
+        "conquas_score_cat61-70" = "CONQUAS Score: 61-70", 
+        "conquas_score_cat71-80" = "CONQUAS Score: 71-80",
+        "conquas_score_cat81-90" = "CONQUAS Score: 81-90", 
+        "conquas_score_cat> 90" = "CONQUAS Score: > 90", 
+        "conquas_score_catMissing" = "CONQUAS Score: Missing",
         "conquas_truncated" = "CONQUAS Score Censored"
     ))
 }
@@ -144,7 +149,7 @@ stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "mainresults")
+          se = ses, digits = 3, label = "mainresults", no.space = TRUE)
 ```
 
 ```{r DID base model}
@@ -157,19 +162,26 @@ did_with_conquas <- reg(base_reg, did_dummy, controls, conquas_vars, area_fe = a
 summary2(did_with_conquas)
 ```
 
+```{r DID model with conquas categorical}
+did_with_conquas_cat <- reg(base_reg, did_dummy, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe)
+summary2(did_with_conquas_cat)
+```
+
+
 ```{r DID results, include = TRUE, results = "asis"}
-vars_to_keep <- keep_coefs(did_with_conquas)
+vars_to_keep <- c(keep_coefs(did_with_conquas), "conquas_score_cat71-80", "conquas_score_cat81-90", 
+                  "conquas_score_cat> 90", "conquas_score_catMissing")
 labels <- label_coefs(vars_to_keep)
-area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes")
-time_fe_line <- c("Year-Month Dummies", "Yes", "Yes")
-condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes")
-ses <- list(did_base_mdl, did_with_conquas) %>% map(extract_ses)
-stargazer(did_base_mdl, did_with_conquas,
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes", "Yes")
+time_fe_line <- c("Year-Month Dummies", "Yes", "Yes", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes", "Yes")
+ses <- list(did_base_mdl, did_with_conquas, did_with_conquas_cat) %>% map(extract_ses)
+stargazer(did_base_mdl, did_with_conquas, did_with_conquas_cat,
           type = "latex", title = "Difference-in-difference Models",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "didresults")
+          se = ses, digits = 3, label = "didresults", no.space = TRUE)
 ```
 
 ```{r placebo models}
@@ -191,16 +203,9 @@ stargazer(placebo_6mo_mdl, placebo_12mo_mdl,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "placeboresults")
+          se = ses, digits = 3, label = "placeboresults", no.space = TRUE)
 ```
 
 
-```{r}
-# using postal code FE
-controls <- c("ctrl_ln_area", "ctrl_floor", "ctrl_floor2", 
-              "ctrl_firstfloor", "ctrl_topfloor", "ctrl_yrs_to_completion")
-area_fe <- "ctrl_postal_code"
-reg(base_reg, did_dummy, controls, area_fe = area_fe, time_fe = time_fe) %>% summary2()
-```
 
 \newpage
