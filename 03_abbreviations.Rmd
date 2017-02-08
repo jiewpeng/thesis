@@ -5,8 +5,12 @@
 
 **BCA**: Building and Construction Authority of Singapore
 
-**GM**: Green Mark environmental certification in Singapore
+**CONQUAS**: Construction Quality Assessment System
 
 **DID**: Difference-in-differences methodology
+
+**GM**: Green Mark environmental certification in Singapore
+
+**HDB**: Housing Development Board. Statutory board in Singapore in charge of public housing.
 
 \newpage
