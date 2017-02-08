@@ -3,8 +3,52 @@
 
 ## Data Sources
 
-Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. Information about the GM awards was obtained by scraping the Building Construction Authority of Singapore (BCA) Green Mark Buildings Directory [^gm_buildings_directory], searching for Residential and Mixed Developments. Since the GM Buildings Directory only contained the year of award, I had to obtain the exact dates of the award by searching for "BCA Awards" the Straits Times archive from LexisNexis. Green Mark winners are announced on the BCA awards night, so I searched for the dates of the BCA awards night for each year (2005 till 2015).
+Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. A total of 331,405 private residential housing transactions were collected. 
 
+About eighty percent of the Singapore population lives in public housing [@DOSInfographic]. Property characteristics are heterogeneous across different submarkets [@Sing2006], so this paper studies only new sales in the condominium and apartment market, of which 134,183 transactions were collected. Public housing by the Housing Development Board (HDB) as well as executive condominiums (ECs) are subsidised and have eligibility criteria [see @HDBFlat; also @HDBEC], hence they might function differently from the private housing market. In the private property market, I use only residential properties, because commercial and office buildings do undergo asset enhancement initiatives (AEIs) every once in a while. If the timing of the GM award coincides with these AEIs, the DID cannot isolate the effect of the GM award from the other relevant improvements in the property as a result of the AEI. 
+
+Information about the GM awards was obtained by scraping the Building Construction Authority of Singapore (BCA) Green Mark Buildings Directory [^gm_buildings_directory], searching for Residential and Mixed Developments. Since the GM Buildings Directory only contained the year of award, I obtained the exact dates of the award by searching for "BCA Awards" the Straits Times archive from LexisNexis. Green Mark winners are announced on the BCA awards night, so I searched for the dates of the BCA awards night for each year (2005 till 2015).
+
+Information about condominium facilities was obtained from (??). Construction Quality Assessment System (CONQUAS) scores for projects were obtained from the BCA's Information on Construction Quality (IQUAS) database [^IQUAS]. 
+
+## Descriptive Statistics
+
+```{r, include = FALSE}
+source("misc/load_libraries.R")
+source("misc/custom_tab_summary.R")
+knitr::opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+data <- read_rds("data/final/data.RDS") %>% 
+    filter(sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium")
+```
+
+```{r summary-stats, include = TRUE}
+data2 <- data %>% 
+    mutate(unit_price_psm = exp(ln_price_psm), 
+           unit_size = exp(ctrl_ln_area),
+           award_dummy = factor(award_dummy, labels = c("Non-GM", "GM")),
+           ctrl_prop_type = fct_drop(ctrl_prop_type),
+           award_type = as.character(award_type),
+           award_type = replace(award_type, is.na(award_type), "No Award"),
+           award_type = factor(award_type),
+           award_type = fct_relevel(award_type, "Certified", "Gold", "Gold Plus", "Platinum"),
+           conquas_score_cat = fct_drop(conquas_score_cat),
+           ctrl_freehold = factor(ctrl_freehold, labels = c("Leasehold", "Freehold"))) %>% 
+    select(-ctrl_floor2)
+my_summary <- with(data2, list("Property Type" = tab_summary2(ctrl_prop_type),
+                               "Unit Price (S$/psm)" = tab_summary2(unit_price_psm),
+                               "Unit Size (sqm)" = tab_summary2(unit_size),
+                               "Distance to MRT (km)" = tab_summary2(ctrl_dist_mrt),
+                               "Lease Type" = tab_summary2(ctrl_freehold),
+                               "Green Mark Award" = tab_summary2(award_type),
+                               "CONQUAS Score" = tab_summary2(conquas_score_cat)))
+overall_table <- summary_table(data2, my_summary)
+grouped_table <- summary_table(data2 %>% group_by(award_dummy), my_summary)
+cbind(overall_table, grouped_table) %>% 
+    render_table(caption = "Comparison of GM and non-GM Properties")
+```
 
 ## Methodology
 
@@ -12,11 +56,11 @@ Certified buildings can have a price premium due to two reasons: either the sign
 
 This paper uses a feature of the GM program in Singapore to isolate the signalling effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the effect of the award as a signal from other unobserved characteristics. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. 
 
-This study uses only new sales of private residential properties, excluding Executive Condominiums (ECs). I use only private residential properties, because commercial and office buildings do undergo asset enhancement initiatives (AEIs) every once in a while. If the timing of the GM award coincides with these AEIs, the DID cannot isolate the effect of the GM award from the other relevant improvements in the property as a result of the AEI. I also exclude ECs because ECs are subsidised properties and they have certain conditions that buyers must fulfil, which makes the market a bit different from other private residential properties.
-
-## Descriptive Statistics
+This study uses only new sales of private residential properties, excluding ECs. 
 
 
-[^gm_buildings_directory]: Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
+[^gm_buildings_directory]: The BCA Green Mark Buildings Directory contains a list of buildings which are awarded with the Green Mark award. Information about the award such as the award year is provided. Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
+
+[^IQUAS]: The IQUAS database contains information about projects, such as the CONQUAS score and Quality Mark certification. Website can be found here: [https://www.bca.gov.sg/Professionals/IQUAS/IQUAS/default.aspx?menuID=4](https://www.bca.gov.sg/Professionals/IQUAS/IQUAS/default.aspx?menuID=4)
 
 \newpage

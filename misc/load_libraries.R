@@ -1,6 +1,7 @@
 packages <- c(
     "tidyverse", "rvest", "stringr", "Hmisc", "httr", "rjson", "lubridate",
-    "lfe", "grid", "gridExtra", "lazyeval", "geosphere", "haven", "forcats"
+    "lfe", "grid", "gridExtra", "lazyeval", "geosphere", "haven", "forcats",
+    "knitr", "qwraps2"
 )
 
 for (package in packages) {
