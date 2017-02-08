@@ -1,4 +1,4 @@
-mean_sd2 <- function(x) mean_sd(x, denote_sd = "paren")
+mean_sd2 <- function(x) mean_sd(x, denote_sd = "paren", show_n = "never", na_rm = TRUE)
 
 tab_summary2 <- function(x, n_perc_args = list(digits = 0, show_symbol = FALSE), envir = parent.frame()) {
     UseMethod("tab_summary2")
