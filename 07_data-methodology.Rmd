@@ -43,7 +43,15 @@ my_summary <- with(data2, list("Property Type" = tab_summary2(ctrl_prop_type),
                                "Distance to MRT (km)" = tab_summary2(ctrl_dist_mrt),
                                "Lease Type" = tab_summary2(ctrl_freehold),
                                "Green Mark Award" = tab_summary2(award_type),
-                               "CONQUAS Score" = tab_summary2(conquas_score_cat)))
+                               "CONQUAS Score" = tab_summary2(conquas_score_cat),
+                               "Facilities (%)" = list("BBQ Pit" = ~mean_sd2(facil_bbq),
+                                                       "Swimming Pool" = ~mean_sd2(facil_swp),
+                                                       "Tennis Court" = ~mean_sd2(facil_tennis),
+                                                       "Basketball Court" = ~mean_sd2(facil_basketball),
+                                                       "Gym" = ~mean_sd2(facil_gym),
+                                                       "Function Room" = ~mean_sd2(facil_functionrm),
+                                                       "Jacuzzi" = ~mean_sd2(facil_jacuzzi),
+                                                       "Sauna" = ~mean_sd2(facil_sauna))))
 overall_table <- summary_table(data2, my_summary)
 grouped_table <- summary_table(data2 %>% group_by(award_dummy), my_summary)
 cbind(overall_table, grouped_table) %>% 
