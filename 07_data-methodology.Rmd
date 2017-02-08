@@ -35,14 +35,16 @@ data2 <- data %>%
            award_type = factor(award_type),
            award_type = fct_relevel(award_type, "Certified", "Gold", "Gold Plus", "Platinum"),
            conquas_score_cat = fct_drop(conquas_score_cat),
-           ctrl_freehold = factor(ctrl_freehold, labels = c("Leasehold", "Freehold"))) %>% 
+           ctrl_freehold = factor(ctrl_freehold, labels = c("Leasehold", "Freehold")),
+           year_sale = factor(str_sub(sale_ym, 1, 4))) %>% 
     select(-ctrl_floor2)
 my_summary <- with(data2, 
                    list("Property Type" = tab_summary2(ctrl_prop_type),
                         "Unit Price (S$/sqm)" = tab_summary2(unit_price_psm),
                         "Unit Size (sqm)" = tab_summary2(unit_size),
-                        "Distance to MRT (km)" = tab_summary2(ctrl_dist_mrt),
+                        "Distance to MRT (km)" = tab_summary2(ctrl_dist_mrt)[-4],
                         "Lease Type" = tab_summary2(ctrl_freehold),
+                        "Floor" = tab_summary2(ctrl_floor)[c(2, 3)],
                         "Green Mark Award" = tab_summary2(award_type),
                         "CONQUAS Score" = tab_summary2(conquas_score_cat),
                         "Facilities (%)" = list("BBQ Pit" = ~mean_sd2(facil_bbq),
@@ -52,7 +54,8 @@ my_summary <- with(data2,
                                                 "Gym" = ~mean_sd2(facil_gym),
                                                 "Function Room" = ~mean_sd2(facil_functionrm),
                                                 "Jacuzzi" = ~mean_sd2(facil_jacuzzi),
-                                                "Sauna" = ~mean_sd2(facil_sauna))))
+                                                "Sauna" = ~mean_sd2(facil_sauna)),
+                        "Transaction Year" = tab_summary2(year_sale)))
 overall_table <- summary_table(data2, my_summary)
 grouped_table <- summary_table(data2 %>% group_by(award_dummy), my_summary)
 cbind(overall_table, grouped_table) %>% 
