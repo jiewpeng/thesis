@@ -72,11 +72,45 @@ Housing prices are modelled using the hedonic price model introduced by Rosen [-
 
 This paper uses a feature of the GM program in Singapore to isolate the signalling effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the effect of the award as a signal from other unobserved characteristics. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. In essence, because nothing about the property has changed after it is awarded with the GM award, any price premium that is generated after the award should be independent of unobserved characteristics.
 
-This study uses only new sales of private residential properties, excluding ECs. 
+This study uses only new sales of private residential properties, excluding ECs. This is because ECs are subsidised by HDB and have eligibility criteria, which implies that it is limited to a certain group of buyers. 
+
+### "Naive" Model
+
+The first models run are basic models that test the difference in price between GM and non-GM rated dwellings. These are hedonic pricing models with the natural log of price per square metre (psm) [^cpideflated] as the dependent variable, and hedonic characteristics as the independent variables. 
+
+I first start off by regressing the natural log of price psm on a dummy indicating whether or not a property is GM certified:
+
+\begin{equation} 
+  P_i = \beta_0 + \beta_1 GM_i + \epsilon_i
+  (\#eq:naive)
+\end{equation}
+
+where $i$ indexes housing transactions, $GM_i$ indicates if the property associated with transaction $i$ is GM-certified.
+
+The model specified by \@ref(eq:naive) has several weaknesses. It does not consider any hedonic characteristics at all. Since the GM award is likely to be correlated with other hedonic characteristics which affect housing prices, the model suffers from omitted variable bias. As such, the model can be improved by adding other hedonic characteristics and locational controls:
+
+\begin{equation} 
+  P_i = \beta_0 + \beta_1 GM_i + \beta X_i + \lambda loc_i + \epsilon_i
+  (\#eq:naivewithcontrols)
+\end{equation}
+
+where $X_i$ is a vector of hedonic attributes, including the property type (apartment or condominium), the natural log of the area in sqm of the unit, a freehold dummy, two order polynomial of the floor that the unit is on, dummies indicating if the unit is on the bottom or top floor (these units have less liveable space), distance to MRT (in kilometres), the number of years to completion when the sale happened, and availability of facilities such as gymnasium or swimming pool. $loc_i$ indicates the 4 digit postal code of the property.
+
+The predictive performance of this model can be further improved by controlling for the property market cycle. This is done by adding in year-month dummies:
+
+\begin{equation} 
+  P_{it} = \beta_0 + \beta_1 GM_i + \beta X_i + \lambda loc_i + \gamma_t + \epsilon_{it}
+  (\#eq:naivewithcontrolsandtimefe)
+\end{equation}
+
+### DID Model
+
 
 
 [^gm_buildings_directory]: The BCA Green Mark Buildings Directory contains a list of buildings which are awarded with the Green Mark award. Information about the award such as the award year is provided. Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
 
 [^IQUAS]: The IQUAS database contains information about projects, such as the CONQUAS score and Quality Mark certification. Website can be found here: [https://www.bca.gov.sg/Professionals/IQUAS/IQUAS/default.aspx?menuID=4](https://www.bca.gov.sg/Professionals/IQUAS/IQUAS/default.aspx?menuID=4)
+
+[^cpideflated]: Prices were deflated by the CPI before being log-transformed
 
 \newpage
