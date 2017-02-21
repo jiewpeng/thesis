@@ -3,9 +3,9 @@
 
 ## Data Sources
 
-Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. A total of 331,405 private residential housing transactions were collected. 
-
 About eighty percent of the Singapore population lives in public housing [@DOSInfographic]. Property characteristics are heterogeneous across different submarkets [@Sing2006], so this paper studies only new sales in the condominium and apartment market, of which 134,183 transactions were collected. Public housing by the Housing Development Board (HDB) as well as executive condominiums (ECs) are subsidised and have eligibility criteria [see @HDBFlat; also @HDBEC], hence they might function differently from the private housing market. In the private property market, I use only residential properties, because commercial and office buildings do undergo asset enhancement initiatives (AEIs) every once in a while. If the timing of the GM award coincides with these AEIs, the DID cannot isolate the effect of the GM award from the other relevant improvements in the property as a result of the AEI. 
+
+Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. A total of 331,405 private residential housing transactions were collected. 
 
 Information about the GM awards was obtained by scraping the Building Construction Authority of Singapore (BCA) Green Mark Buildings Directory [^gm_buildings_directory], searching for Residential and Mixed Developments. Since the GM Buildings Directory only contained the year of award, I obtained the exact dates of the award by searching for "BCA Awards" the Straits Times archive from LexisNexis. Green Mark winners are announced on the BCA awards night, so I searched for the dates of the BCA awards night for each year (2005 till 2015).
 
@@ -64,9 +64,13 @@ cbind(overall_table, grouped_table) %>%
 
 ## Methodology
 
-Certified buildings can have a price premium due to two reasons: either the signalling effect provided by the certification, or that good features tend to cluster together such that green buildings are also higher quality buildings in other aspects. This paper uses a difference-in-differences (DID) approach to isolate the signalling effect from any other factors that might contribute to a price premium.
+Certified buildings can have a price premium due to two reasons: either the signalling effect provided by the certification, or that good features tend to cluster together such that green buildings are also higher quality buildings in other aspects. Fuerst [-@Fuerst2016] also pointed out that energy efficient features present in green buildings may also affect building performance in non-environmental aspects, and hence also generate a price premium that is unrelated to environmental friendliness. 
 
-This paper uses a feature of the GM program in Singapore to isolate the signalling effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the effect of the award as a signal from other unobserved characteristics. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. 
+This study uses a difference-in-differences (DID) approach to isolate the signalling effect from any other factors associated with the GM certification that might contribute to a price premium.
+
+Housing prices are modelled using the hedonic price model introduced by Rosen [-@Rosen1974]. In this model, housing price is a function of structural, environmental and locational attributes. These attributes carry implicit prices, which are revealed from observed prices of different properties with different combinations of attributes. These implicit prices are estimated with regression analysis.
+
+This paper uses a feature of the GM program in Singapore to isolate the signalling effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the effect of the award as a signal from other unobserved characteristics. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. In essence, because nothing about the property has changed after it is awarded with the GM award, any price premium that is generated after the award should be independent of unobserved characteristics.
 
 This study uses only new sales of private residential properties, excluding ECs. 
 
