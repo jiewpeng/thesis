@@ -31,7 +31,9 @@ So we can just replace its postal code with one that we can find from the transa
 
 ```{r replace postal code for The Glades Condo}
 glades_postal_code <- transactions %>% filter(project_name == "THE GLADES") %>% .$postal_code %>% .[1]
-greenmark <- greenmark %>% mutate(postal_code = replace(postal_code, project_name == "The Glades", glades_postal_code))
+greenmark <- greenmark %>% 
+    mutate(postal_code = replace(postal_code, project_name == "The Glades", glades_postal_code)) %>% 
+    filter(!is.na(postal_code))
 greenmark %>% filter(project_name == "The Glades")
 ```
 

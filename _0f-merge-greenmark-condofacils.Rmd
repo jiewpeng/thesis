@@ -25,7 +25,8 @@ merged
 ```{r get all postal codes associated with each project name}
 with_awards <- merged %>% 
     filter(!is.na(award)) %>% 
-    distinct(project_name, postal_code)
+    distinct(project_name, postal_code) %>% 
+    filter(!is.na(postal_code))
 with_awards
 ```
 
@@ -39,8 +40,7 @@ greenmark_expanded
 greenmark_expanded <- greenmark_expanded %>% 
     mutate(year_award = as.integer(str_replace(year_award, "FY", "20")),
            award = str_replace_all(award, "Green Mark ", "")) %>% 
-    select(-project_name) %>% 
-    distinct(postal_code, year_award, award)
+    distinct(project_name, postal_code, year_award, award)
 greenmark_expanded
 ```
 
@@ -54,7 +54,7 @@ greenmark_expanded %>% distinct(award)
 ```
 
 ```{r perform second merge}
-second_merge <- transactions %>% left_join(greenmark_expanded, by = "postal_code")
+second_merge <- transactions %>% left_join(greenmark_expanded, by = c("project_name", "postal_code"))
 second_merge
 ```
 
@@ -119,6 +119,25 @@ final_with_dates <- final %>%
 final_with_dates
 ```
 
+```{r get placebo resales}
+firstsales <- final_with_dates %>% 
+    select(address, sale_date, date_award, award, project_name) %>% 
+    filter(!is.na(address) & project_name != "N.A.") %>% 
+    group_by(address) %>% 
+    arrange(sale_date) %>% 
+    filter(row_number() == 1) %>% 
+    mutate(sale_ym = str_sub(as.character(sale_date), 1, 7),
+           award_dummy = as.numeric(!is.na(award)),
+           award_ym = str_sub(as.character(date_award), 1, 7),
+           placebo_after = as.integer(sale_ym >= award_ym),
+           placebo_after = replace(placebo_after, is.na(placebo_after), 0),
+           placebo_interaction = placebo_after * award_dummy) %>% 
+    select(address, placebo_interaction) %>% 
+    ungroup()
+firstsales
+```
+
+
 ```{r add more variables needed for regressions/summary stats}
 topfloors <- final_with_dates %>% 
     filter(project_name != "N.A.") %>% 
@@ -155,19 +174,30 @@ final_with_dates_proportions <- final_with_dates %>%
     left_join(cpi, by = "sale_ym") %>% 
     mutate(ln_price = log(trans_price / cpi * 100),
            ln_price_psm = log(price_psm / cpi * 100),
-           award_after = replace(award_after, is.na(award_after), 0),
-           placebo_after_gm_flag = as.integer(award_after == 0),
-           placebo_ym_6mo = str_sub(as.character(award_date %m-% months(6)), 1, 7),
-           placebo_ym_12mo = str_sub(as.character(award_date %m-% months(12)), 1, 7),
-           placebo_after_6mo = as.integer(sale_ym >= placebo_ym_6mo),
-           placebo_after_12mo = as.integer(sale_ym >= placebo_ym_12mo)) %>% 
-    mutate(placebo_after_6mo = replace(placebo_after_6mo, is.na(placebo_after_6mo), 0),
-           placebo_after_12mo = replace(placebo_after_12mo, is.na(placebo_after_12mo), 0)) %>% 
+           award_after = replace(award_after, is.na(award_after), 0)) %>% 
+    #mutate(placebo_after_gm_flag = as.integer(award_after == 0),
+           #placebo_ym_6mo = str_sub(as.character(award_date %m-% months(6)), 1, 7),
+           #placebo_ym_12mo = str_sub(as.character(award_date %m-% months(12)), 1, 7),
+           #placebo_after_6mo = as.integer(sale_ym >= placebo_ym_6mo),
+           #placebo_after_12mo = as.integer(sale_ym >= placebo_ym_12mo)) %>% 
+    #mutate(#placebo_after_6mo = replace(placebo_after_6mo, is.na(placebo_after_6mo), 0),
+           #placebo_after_12mo = replace(placebo_after_12mo, is.na(placebo_after_12mo), 0)) %>% 
+    left_join(firstsales, by = "address") %>% 
+    mutate(placebo_resale_before_gm = as.integer((sale_type == "Resale") & (sale_ym < award_ym)),
+           placebo_resale_before_gm = replace(placebo_resale_before_gm, is.na(placebo_resale_before_gm), 0)) %>% 
     select(project_name, address, ln_price, ln_price_psm,
            starts_with("award"), 
            starts_with("ctrl"), 
            starts_with("placebo"), 
-           starts_with("sale"))
+           starts_with("sale"),
+           top_year = completion_date)
+projects_with_resale_before_gm <- final_with_dates_proportions %>% 
+    filter(placebo_resale_before_gm == 1) %>% 
+    distinct(project_name) %>% 
+    mutate(placebo_flag = 0)
+final_with_dates_proportions <- final_with_dates_proportions %>% 
+    left_join(projects_with_resale_before_gm, by = "project_name") %>% 
+    mutate(placebo_flag = replace(placebo_flag, is.na(placebo_flag), 1))
 final_with_dates_proportions
 ```
 
