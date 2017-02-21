@@ -13,4 +13,6 @@
 
 **HDB**: Housing Development Board. Statutory board in Singapore in charge of public housing.
 
+**MRT**: Mass Rapid Transit. Public rail system in Singapore.
+
 \newpage
