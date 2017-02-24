@@ -25,6 +25,13 @@ extract_coef <- function(model, var) {
 }
 ```
 
+```{r function to extract r squared}
+extract_r2 <- function(model) {
+    r2 <- summary(model)$r2
+    return(round(r2, 3))
+}
+```
+
 ```{r set up models}
 make_reg_formula <- function(...) {
     input_list <- list(...)
@@ -119,7 +126,6 @@ data[f_eval(subs, data),] %>%
     summarise(transactions = n(), projects = n_distinct(project_name))
 ```
 
-
 ```{r naive model}
 naive_mdl <- reg(base_reg)
 summary2(naive_mdl)
@@ -135,7 +141,13 @@ naive_mdl_with_controls_ymfe <- reg(base_reg, controls, area_fe = area_fe, time_
 summary2(naive_mdl_with_controls_ymfe)
 ```
 
-```{r main results, include = TRUE, results = "asis"}
+## Results from "Naive" Models
+
+Table \@ref(tab:naiveresults) reports the regression results from the "basic" hedonic models. The most basic model specified by equation \@ref(eq:naive) suggests that the GM award provides a `r extract_coef(naive_mdl, "award_dummy")` price premium over non-GM properties. However, this model suffers from omitted variable bias and also has a very low $R^2$ of `r extract_r2(naive_mdl)`. The model specified by equation \@ref(eq:naivewithcontrols) which adds hedonic characteristics, locational controls (4-digit postal code dummies) and condominium/apartment facilities shows a GM award effect of `r extract_coef(naive_mdl_with_controls, "award_dummy")`. Because this model adds a significant number of variables, the $R^2$ also increases significantly to `r extract_r2(naive_mdl_with_controls)`. After controlling for property market trends using year-month dummies, this effect changes to `r extract_coef(naive_mdl_with_controls_ymfe, "award_dummy")`.
+
+The coefficients of the hedonic characteristics are all expected. For instance, condominiums are more expensive compared to comparable apartments, higher floors command higher prices but suffer from diminishing returns. Units on the first and top floors of any block are cheaper than comparable units on other floors because these typically have unliveable space (first floors have patios and top floors have roof terraces). Properties further away from the closest MRT station also sell for lesser.
+
+```{r naive models results, include = TRUE, results = "asis"}
 vars_to_keep <- keep_coefs(naive_mdl_with_controls_ymfe)
 labels <- label_coefs(vars_to_keep)
 area_fe_line <- c("4-digit Postal Code Fixed Effects", "No", "Yes", "Yes")
@@ -147,7 +159,7 @@ stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "mainresults", no.space = TRUE)
+          se = ses, digits = 3, label = "tab:naiveresults", no.space = TRUE)
 ```
 
 ```{r DID base model}
@@ -160,11 +172,29 @@ did_with_conquas <- reg(base_reg, did_dummy, controls, conquas_vars, area_fe = a
 summary2(did_with_conquas)
 ```
 
+```{r function to calculate reduction in observations}
+reduction_in_obs <- function(mdl1, mdl2) {
+    n1 <- summary(mdl1)$N
+    n2 <- summary(mdl2)$N
+    diff <- ((1 - (n1/n2)) * 100) %>% 
+        round(0) %>% 
+        format(big.mark = ",", scientific = FALSE)
+    return(str_c(diff, "%"))
+}
+```
+
 ```{r DID model with conquas categorical}
 did_with_conquas_cat <- reg(base_reg, did_dummy, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe)
 summary2(did_with_conquas_cat)
 ```
 
+## Results from DID Models
+
+The above models were further improved by using a DID methodology as outlined in the previous section. The results from the DID specifications are reported in Table \@ref(tab:didresults). Controlling for hedonic characteristics, availability of facilities, locational effects and year-month effects, the announcement of GM award increases a property's price by `r extract_coef(did_base_mdl, "award_after")`. GM rated properties are also higher quality than non-GM rated ones, having a `r extract_coef(did_base_mdl, "award_dummy")` premium before they receive the award. 
+
+Adding CONQUAS score as a regressor changes the premium associated with the GM award announcement to `r extract_coef(did_with_conquas, "award_after")`, indicating that quality is an important factor in determining housing prices. This implies that the previous models suffered from omitted variable bias, due to the announcement of award being correlated with the unobserved quality of the building (which can be captured by the CONQUAS score). 
+
+Unfortunately, since CONQUAS scoring is optional, many buildings do not apply for it; about `r reduction_in_obs(did_with_conquas, did_base_mdl)` of the observations were dropped. This might cause selection problems. This can be solved by categorising the CONQUAS score into bands, and including a category for missing scores. Doing so could also reduce noise as it is unlikely that people are able to take into account the exact scores into pricing decisions. This model shows that the GM announcement is associated with a `r extract_coef(did_with_conquas_cat, "award_after")` increase in price of a GM rated property. It also shows that higher CONQUAS scores are associated with higher prices, especially when compared to the lowest scores of 61-70. Properties with missing CONQUAS scores also command a premium over properties with CONQUAS scores of 61-70. This indicates that property buyers really do not like low quality properties.
 
 ```{r DID results, include = TRUE, results = "asis"}
 vars_to_keep <- c(keep_coefs(did_with_conquas), "conquas_score_cat71-80", "conquas_score_cat81-90", 
@@ -179,13 +209,17 @@ stargazer(did_base_mdl, did_with_conquas, did_with_conquas_cat,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "didresults", no.space = TRUE)
+          se = ses, digits = 3, label = "tab:didresults", no.space = TRUE)
 ```
 
 ```{r placebo model}
 placebo_mdl <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
 summary2(placebo_mdl)
 ```
+
+## Results from Placebo DID
+
+Finally, a placebo DID model is also run, to ensure that GM rated and non-GM rated properties are comparable. The specification is described in the previous section. Running the model on `r format(summary(placebo_mdl)$N, big.mark = ",", scientific = FALSE)` resale transactions shows a positive but insignificant DID coefficient. This result indicates that there is no selection bias that is not controlled for by the regressors in the DID model with CONQUAS scores.
 
 ```{r placebo results, include = TRUE, results = "asis"}
 vars_to_keep <- keep_coefs(placebo_mdl)
@@ -199,7 +233,7 @@ stargazer(placebo_mdl,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "placeboresults", no.space = TRUE)
+          se = ses, digits = 3, label = "tab:placeboresults", no.space = TRUE)
 ```
 
 ```{r}
