@@ -1,4 +1,6 @@
 ---
 bibliography: "../Z_Mendeley/thesis.bib"
 csl: "misc/apav6.csl"
+documentclass: book
+classoption: oneside
 ---
