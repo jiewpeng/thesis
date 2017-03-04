@@ -1,5 +1,7 @@
 \pagenumbering{arabic}
 
+\mainmatter
+
 # Introduction
 
 In recent years, numerous green building certification schemes have been developed, "aimed at mitigating the impact of buildings on the natural environment through sustainable design" [@Vierra2016]. The impact of buildings on the environment is huge; for instance, "US buildings alone are responsible for more CO~2~ emissions than any other entire country in the world except China" [@Kats2003]. Many of these certifications focus on rating the sustainability and energy efficiency of buildings.
@@ -24,10 +26,10 @@ In order to further encourage developers to incorporate Green Building Technolog
 
 ## Aim of Study
 
-The aim of this paper is to explore the signalling effects of an environmental certification or award, using data from housing transactions in Singapore. 
+The aim of this paper is to explore the intangible effects of an environmental certification or award, using data from housing transactions in Singapore. 
 
-The signalling effects of environmental certifications are important because these certifications are meant to incentivise certain behaviour, in this case, constructing energy efficient buildings. In order for certifications to incentivise private companies to adopt certain practices, they need to act as credible signals, i.e. provide a price premium to offset the cost premium associated with "good behaviour". 
+This study uses a difference-in-differences (DID) approach to separate the intangible effects of the GM award from the tangible effects of it (energy savings), through its effect on housing transaction prices. 
 
-This study uses a difference-in-differences (DID) approach to study the signalling effects of the GM award through its effect on housing transaction prices. 
+The intangible effects of environmental certifications are important because these certifications are meant to incentivise certain behaviour, in this case, constructing energy efficient buildings. In order for certifications to incentivise private companies to adopt certain practices, they need to provide a price premium to offset the cost premium associated with "good behaviour". This price premium generated must be on top of the premium that buyers attach to the developers' claims about the energy performance of the property.
 
 \newpage
