@@ -1,11 +1,25 @@
 
-\pdfbookmark[section]{Abstract}{abstract}
-
 \pagenumbering{roman}
 
-# Abstract {#abstract .unnumbered}
+\frontmatter
 
-Here is some filler text.
+# Abstract
 
+```{r, include = FALSE}
+source("misc/load_libraries.R")
+knitr::opts_chunk$set(include = FALSE, echo = FALSE, message = FALSE, warning = FALSE, cache = FALSE)
+```
+
+```{r}
+data <- read_rds("data/final/data.RDS")
+```
+
+Since the 1990s, environmental certifications have been introduced in an attempt to curb the environmental impact that building construction has on the environment. This study analyses the intangible effects of such certification, separating them from the economic effects of energy savings that the certified properties provide. This gives an estimate of the value of a certification that is independent of the economic benefits provided from the features required to attain the certification.
+
+A difference-in-difference (DID) design is used with a hedonic pricing model to estimate the intangible effects of the Green Mark (GM) certification in Singapore. A total of `r data %>% filter((ctrl_prop_type != "Executive Condominium") & (sale_type == "New Sale")) %>% nrow() %>% format(big.mark = ",", scientific = FALSE)` new sale transactions of private residential properties (excluding Executive Condominiums) were used in the analysis. The results suggest that the intangible effects of the GM award provide a price premium of about 1 to 2 percent.
+
+\vspace*{\fill}
+
+Keywords: Green certification; housing market; difference-in-difference; hedonic analysis
 
 \newpage
