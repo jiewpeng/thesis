@@ -1,4 +1,3 @@
+\backmatter
 
-\pdfbookmark[section]{References}{ref}
-
-# References {#ref .unnumbered}
+# References
