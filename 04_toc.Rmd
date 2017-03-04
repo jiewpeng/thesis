@@ -1,4 +1,4 @@
-\pdfbookmark[section]{Contents}{toc}
+\pdfbookmark[chapter]{Contents}{toc}
 
 \tableofcontents
 

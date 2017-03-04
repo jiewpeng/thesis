@@ -1,7 +1,5 @@
 
-\pdfbookmark[section]{Abbreviations}{abbr}
-
-# Abbreviations {#abbr .unnumbered}
+# Abbreviations
 
 **BCA**: Building and Construction Authority of Singapore
 
