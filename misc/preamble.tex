@@ -7,18 +7,52 @@
 \usepackage{setspace}
 \usepackage{sectsty}
 \usepackage{tocloft}
-\usepackage{hyperref}
-\usepackage[numbered]{bookmark}
 \usepackage{underscore}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{bookmark}
 
 \doublespacing
-\chapterfont{\centering\uppercase}
-\sectionfont{\centering\uppercase}
 
+% formatting for chapter and section titles
+\titleformat{\chapter}
+  {\filcenter\Large\bfseries\uppercase}
+  {\thechapter}{1em}{}
+\titlespacing{\chapter}
+  {5pc}{*0}{*2}[5pc]
+\titleformat{\section}
+  {\large\bfseries}
+  {\thesection}{1em}{}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}}
+\renewcommand{\headrulewidth}{0pt}
+
+% formatting header and footer
+\fancypagestyle{plain}{%
+  \fancyhf{} %
+  \fancyfoot[C]{\thepage} %
+}
+\pagestyle{plain}
+
+% formatting TOC etc.
+\renewcommand{\cfttoctitlefont}{\Large\bfseries}
 \renewcommand{\contentsname}{TABLE OF CONTENTS}
-\renewcommand*\listfigurename{LIST OF FIGURES}
-\renewcommand*\listtablename{LIST OF TABLES}
+\renewcommand{\cftaftertoctitle}{}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\cftloftitlefont}{\Large\bfseries}
+\renewcommand{\cftafterloftitle}{}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftafterloftitleskip}{0pt}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\cftlottitlefont}{\Large\bfseries}
+\renewcommand{\cftafterlottitle}{}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftafterlottitleskip}{0pt}
 
+% automatically resize width of tables that exceed document width
 \newsavebox{\mybox}
 \newenvironment{mytabularwrap}{\begin{lrbox}{\mybox}}
   {\end{lrbox}%
@@ -29,10 +63,8 @@
       \resizebox{\textwidth}{!}{\usebox\mybox}%
   \fi
   }
-
-
 \BeforeBeginEnvironment{tabular}{\begin{mytabularwrap}}
 \AfterEndEnvironment{tabular}{\end{mytabularwrap}}
 
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
