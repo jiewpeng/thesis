@@ -103,7 +103,7 @@ label_coefs <- function(lst) {
         "ctrl_lease" = "Lease Type: ",
         "ctrl_dist_mrt" = "Distance to MRT (km)",
         "ctrl_yrs_to_completion" = "Years to Completion",
-        "placebo_interaction" = "GM x After",
+        "placebo_interaction" = "GM x GM After New Sale",
         "conquas_score$" = "CONQUAS Score",
         "conquas_score_cat61-70" = "CONQUAS Score: 61-70", 
         "conquas_score_cat71-80" = "CONQUAS Score: 71-80",
@@ -159,7 +159,7 @@ stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "tab:naiveresults", no.space = TRUE)
+          se = ses, digits = 3, label = "naiveresults", no.space = TRUE)
 ```
 
 ```{r DID base model}
@@ -167,7 +167,7 @@ did_base_mdl <- reg(base_reg, did_dummy, controls, area_fe = area_fe, time_fe = 
 summary2(did_base_mdl)
 ```
 
-```{r DID model with conquas}
+```{r DID model with CONQUAS}
 did_with_conquas <- reg(base_reg, did_dummy, controls, conquas_vars, area_fe = area_fe, time_fe = time_fe)
 summary2(did_with_conquas)
 ```
@@ -183,7 +183,7 @@ reduction_in_obs <- function(mdl1, mdl2) {
 }
 ```
 
-```{r DID model with conquas categorical}
+```{r DID model with CONQUAS categorical}
 did_with_conquas_cat <- reg(base_reg, did_dummy, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe)
 summary2(did_with_conquas_cat)
 ```
@@ -209,12 +209,16 @@ stargazer(did_base_mdl, did_with_conquas, did_with_conquas_cat,
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "tab:didresults", no.space = TRUE)
+          se = ses, digits = 3, label = "didresults", no.space = TRUE)
 ```
 
 ```{r placebo model}
-placebo_mdl <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
+placebo_mdl <- reg(base_reg, placebo_interaction, controls, area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
+placebo_mdl_with_conquas <- reg(base_reg, placebo_interaction, controls, "conquas_score", area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
+placebo_mdl_with_conquas_cat <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
 summary2(placebo_mdl)
+summary2(placebo_mdl_with_conquas)
+summary2(placebo_mdl_with_conquas_cat)
 ```
 
 ## Results from Placebo DID
@@ -222,18 +226,19 @@ summary2(placebo_mdl)
 Finally, a placebo DID model is also run, to ensure that GM rated and non-GM rated properties are comparable. The specification is described in the previous section. Running the model on `r format(summary(placebo_mdl)$N, big.mark = ",", scientific = FALSE)` resale transactions shows a positive but insignificant DID coefficient. This result indicates that there is no selection bias that is not controlled for by the regressors in the DID model with CONQUAS scores.
 
 ```{r placebo results, include = TRUE, results = "asis"}
-vars_to_keep <- keep_coefs(placebo_mdl)
+vars_to_keep <- c(keep_coefs(placebo_mdl_with_conquas), "conquas_score_cat61-70", "conquas_score_cat71-80", "conquas_score_cat81-90", 
+                  "conquas_score_cat> 90", "conquas_score_catMissing")
 labels <- label_coefs(vars_to_keep)
-area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes")
-time_fe_line <- c("Year-Month Dummies", "Yes")
-condo_facils_line <- c("Condo Facilities Dummies", "Yes")
-ses <- list(placebo_mdl) %>% map(extract_ses)
-stargazer(placebo_mdl,
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes", "Yes")
+time_fe_line <- c("Year-Month Dummies", "Yes", "Yes", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes", "Yes")
+ses <- list(placebo_mdl, placebo_mdl_with_conquas, placebo_mdl_with_conquas_cat) %>% map(extract_ses)
+stargazer(placebo_mdl, placebo_mdl_with_conquas, placebo_mdl_with_conquas_cat,
           type = "latex", title = "Placebo Difference-in-difference Tests",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "tab:placeboresults", no.space = TRUE)
+          se = ses, digits = 3, label = "placeboresults", no.space = TRUE)
 ```
 
 ```{r}
