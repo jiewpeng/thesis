@@ -4,8 +4,8 @@
     \begin{center}
         \vspace*{1cm}
         
-        \textbf{PLACEHOLDER THESIS TITLE}\\
-        \textbf{A VERY MEANINGFUL THESIS}
+        \textbf{INTANGIBLE EFFECTS OF GREEN LABELLING}\\
+        \textbf{EVIDENCE FROM SINGAPORE}
         
         \vspace*{\fill}
         \textbf{by}\\
