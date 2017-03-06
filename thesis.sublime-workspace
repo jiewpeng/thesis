@@ -53,7 +53,7 @@
 			"file": "misc/preamble.tex",
 			"settings":
 			{
-				"buffer_size": 1908,
+				"buffer_size": 1943,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -476,7 +476,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -492,8 +492,8 @@
 						"selection":
 						[
 							[
-								4628,
-								4628
+								5737,
+								5737
 							]
 						],
 						"settings":
@@ -501,10 +501,10 @@
 							"syntax": "Packages/knitr/knitr-Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 759.0,
+						"translation.y": 207.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -520,8 +520,8 @@
 						"selection":
 						[
 							[
-								3664,
-								3664
+								2725,
+								2725
 							]
 						],
 						"settings":
@@ -529,10 +529,10 @@
 							"syntax": "Packages/knitr/knitr-Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 483.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -541,15 +541,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1908,
+						"buffer_size": 1943,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1437,
-								1437
+								1942,
+								1942
 							]
 						],
 						"settings":
@@ -559,7 +559,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1104.0,
+						"translation.y": 1196.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -590,7 +590,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -618,7 +618,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -11310,7 +11310,7 @@
 						"translation.y": 4136.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -11326,8 +11326,8 @@
 						"selection":
 						[
 							[
-								7962,
-								7962
+								5729,
+								5729
 							]
 						],
 						"settings":
@@ -11335,1804 +11335,3116 @@
 							"R-Box.completions":
 							[
 								[
-									"confint.default\t{stats}",
-									"confint.default"
+									"extends\t{methods}",
+									"extends"
 								],
 								[
-									"mahalanobis\t{stats}",
-									"mahalanobis"
+									"makeMethodsList\t{methods}",
+									"makeMethodsList"
 								],
 								[
-									"optimize\t{stats}",
-									"optimize"
+									"assignMethodsMetaData\t{methods}",
+									"assignMethodsMetaData"
 								],
 								[
-									"hat\t{stats}",
-									"hat"
+									"Summary\t{methods}",
+									"Summary"
 								],
 								[
-									"Box.test\t{stats}",
-									"Box.test"
+									"setReplaceMethod\t{methods}",
+									"setReplaceMethod"
 								],
 								[
-									"reorder\t{stats}",
-									"reorder"
+									".__C__EmptyMethodsList\t{methods}",
+									".__C__EmptyMethodsList"
 								],
 								[
-									"phyper\t{stats}",
-									"phyper"
+									"methodSignatureMatrix\t{methods}",
+									"methodSignatureMatrix"
 								],
 								[
-									"ar.mle\t{stats}",
-									"ar.mle"
+									"el\t{methods}",
+									"el"
 								],
 								[
-									"rhyper\t{stats}",
-									"rhyper"
+									".__C__lm\t{methods}",
+									".__C__lm"
 								],
 								[
-									"contr.SAS\t{stats}",
-									"contr.SAS"
+									"completeClassDefinition\t{methods}",
+									"completeClassDefinition"
 								],
 								[
-									"na.exclude\t{stats}",
-									"na.exclude"
+									"newEmptyObject\t{methods}",
+									"newEmptyObject"
 								],
 								[
-									"qgeom\t{stats}",
-									"qgeom"
+									"isGrammarSymbol\t{methods}",
+									"isGrammarSymbol"
 								],
 								[
-									"is.ts\t{stats}",
-									"is.ts"
+									"findFunction\t{methods}",
+									"findFunction"
 								],
 								[
-									"plogis\t{stats}",
-									"plogis"
+									"hasMethods\t{methods}",
+									"hasMethods"
 								],
 								[
-									"drop.terms\t{stats}",
-									"drop.terms"
+									".__C__ObjectsWithPackage\t{methods}",
+									".__C__ObjectsWithPackage"
 								],
 								[
-									"rlogis\t{stats}",
-									"rlogis"
+									"sigToEnv\t{methods}",
+									"sigToEnv"
 								],
 								[
-									"convolve\t{stats}",
-									"convolve"
+									".__C__namedList\t{methods}",
+									".__C__namedList"
 								],
 								[
-									"ts.intersect\t{stats}",
-									"ts.intersect"
+									"SignatureMethod\t{methods}",
+									"SignatureMethod"
 								],
 								[
-									"KalmanSmooth\t{stats}",
-									"KalmanSmooth"
+									"allGenerics\t{methods}",
+									"allGenerics"
 								],
 								[
-									"ts.union\t{stats}",
-									"ts.union"
+									"method.skeleton\t{methods}",
+									"method.skeleton"
 								],
 								[
-									"smoothEnds\t{stats}",
-									"smoothEnds"
+									".hasSlot\t{methods}",
+									".hasSlot"
 								],
 								[
-									"is.tskernel\t{stats}",
-									"is.tskernel"
+									".__C__PossibleMethod\t{methods}",
+									".__C__PossibleMethod"
 								],
 								[
-									"as.formula\t{stats}",
-									"as.formula"
+									"selectMethod\t{methods}",
+									"selectMethod"
 								],
 								[
-									"dexp\t{stats}",
-									"dexp"
+									"metaNameUndo\t{methods}",
+									"metaNameUndo"
 								],
 								[
-									"inverse.gaussian\t{stats}",
-									"inverse.gaussian"
+									".__C__matrix\t{methods}",
+									".__C__matrix"
 								],
 								[
-									"na.contiguous\t{stats}",
-									"na.contiguous"
+									".__C__refObject\t{methods}",
+									".__C__refObject"
 								],
 								[
-									"line\t{stats}",
-									"line"
+									".__C__nonstandardGroupGenericFunction\t{methods}",
+									".__C__nonstandardGroupGenericFunction"
 								],
 								[
-									"dgeom\t{stats}",
-									"dgeom"
+									".__C__refMethodDefWithTrace\t{methods}",
+									".__C__refMethodDefWithTrace"
 								],
 								[
-									"qbirthday\t{stats}",
-									"qbirthday"
+									".__C__classGeneratorFunction\t{methods}",
+									".__C__classGeneratorFunction"
 								],
 								[
-									"confint.lm\t{stats}",
-									"confint.lm"
+									"findMethod\t{methods}",
+									"findMethod"
 								],
 								[
-									"cophenetic\t{stats}",
-									"cophenetic"
+									"showMethods\t{methods}",
+									"showMethods"
 								],
 								[
-									"var.test\t{stats}",
-									"var.test"
+									"possibleExtends\t{methods}",
+									"possibleExtends"
 								],
 								[
-									"diffinv\t{stats}",
-									"diffinv"
+									"findUnique\t{methods}",
+									"findUnique"
 								],
 								[
-									"ar\t{stats}",
-									"ar"
+									"initialize\t{methods}",
+									"initialize"
 								],
 								[
-									"dummy.coef\t{stats}",
-									"dummy.coef"
+									"formalArgs\t{methods}",
+									"formalArgs"
 								],
 								[
-									"cooks.distance\t{stats}",
-									"cooks.distance"
+									".__C__NULL\t{methods}",
+									".__C__NULL"
 								],
 								[
-									"density\t{stats}",
-									"density"
+									".__C__glm.null\t{methods}",
+									".__C__glm.null"
 								],
 								[
-									"ptukey\t{stats}",
-									"ptukey"
+									"initRefFields\t{methods}",
+									"initRefFields"
 								],
 								[
-									"as.dist\t{stats}",
-									"as.dist"
+									"className\t{methods}",
+									"className"
 								],
 								[
-									"drop1\t{stats}",
-									"drop1"
+									"S3Class\t{methods}",
+									"S3Class"
 								],
 								[
-									"rbeta\t{stats}",
-									"rbeta"
+									"setGenericImplicit\t{methods}",
+									"setGenericImplicit"
 								],
 								[
-									"fligner.test\t{stats}",
-									"fligner.test"
+									"makeClassRepresentation\t{methods}",
+									"makeClassRepresentation"
 								],
 								[
-									"naprint\t{stats}",
-									"naprint"
+									"hasMethod\t{methods}",
+									"hasMethod"
 								],
 								[
-									"qqnorm\t{stats}",
-									"qqnorm"
+									"MethodAddCoerce\t{methods}",
+									"MethodAddCoerce"
 								],
 								[
-									"is.stepfun\t{stats}",
-									"is.stepfun"
+									"getGeneric\t{methods}",
+									"getGeneric"
 								],
 								[
-									"lsfit\t{stats}",
-									"lsfit"
+									".__C__list\t{methods}",
+									".__C__list"
 								],
 								[
-									"mad\t{stats}",
-									"mad"
+									"evalqOnLoad\t{methods}",
+									"evalqOnLoad"
 								],
 								[
-									"shapiro.test\t{stats}",
-									"shapiro.test"
+									"resetGeneric\t{methods}",
+									"resetGeneric"
 								],
 								[
-									"qqplot\t{stats}",
-									"qqplot"
+									"makePrototypeFromClassDef\t{methods}",
+									"makePrototypeFromClassDef"
 								],
 								[
-									"eff.aovlist\t{stats}",
-									"eff.aovlist"
+									".__C__functionWithTrace\t{methods}",
+									".__C__functionWithTrace"
 								],
 								[
-									"runif\t{stats}",
-									"runif"
+									".__C__MethodDefinitionWithTrace\t{methods}",
+									".__C__MethodDefinitionWithTrace"
 								],
 								[
-									"isoreg\t{stats}",
-									"isoreg"
+									"slotNames\t{methods}",
+									"slotNames"
 								],
 								[
-									"profile\t{stats}",
-									"profile"
+									"setLoadActions\t{methods}",
+									"setLoadActions"
 								],
 								[
-									"is.leaf\t{stats}",
-									"is.leaf"
+									".__C__OptionalFunction\t{methods}",
+									".__C__OptionalFunction"
 								],
 								[
-									"dchisq\t{stats}",
-									"dchisq"
+									".__C__derivedDefaultMethod\t{methods}",
+									".__C__derivedDefaultMethod"
 								],
 								[
-									"contr.poly\t{stats}",
-									"contr.poly"
+									"checkAtAssignment\t{methods}",
+									"checkAtAssignment"
 								],
 								[
-									"stepfun\t{stats}",
-									"stepfun"
+									".__C__traceable\t{methods}",
+									".__C__traceable"
 								],
 								[
-									"quasipoisson\t{stats}",
-									"quasipoisson"
+									"setOldClass\t{methods}",
+									"setOldClass"
 								],
 								[
-									"na.omit\t{stats}",
-									"na.omit"
+									"substituteDirect\t{methods}",
+									"substituteDirect"
 								],
 								[
-									"pnbinom\t{stats}",
-									"pnbinom"
+									"requireMethods\t{methods}",
+									"requireMethods"
 								],
 								[
-									"ppois\t{stats}",
-									"ppois"
+									"Complex\t{methods}",
+									"Complex"
 								],
 								[
-									"model.matrix.default\t{stats}",
-									"model.matrix.default"
+									"setIs\t{methods}",
+									"setIs"
 								],
 								[
-									"family\t{stats}",
-									"family"
+									"methodsPackageMetaName\t{methods}",
+									"methodsPackageMetaName"
 								],
 								[
-									"plot.ecdf\t{stats}",
-									"plot.ecdf"
+									"linearizeMlist\t{methods}",
+									"linearizeMlist"
 								],
 								[
-									"cor.test\t{stats}",
-									"cor.test"
+									"isSealedClass\t{methods}",
+									"isSealedClass"
 								],
 								[
-									"pchisq\t{stats}",
-									"pchisq"
+									"kronecker\t{methods}",
+									"kronecker"
 								],
 								[
-									"rchisq\t{stats}",
-									"rchisq"
+									"cbind2\t{methods}",
+									"cbind2"
 								],
 								[
-									"na.fail\t{stats}",
-									"na.fail"
+									".__C__builtin\t{methods}",
+									".__C__builtin"
 								],
 								[
-									"heatmap\t{stats}",
-									"heatmap"
+									".__C__ClassUnionRepresentation\t{methods}",
+									".__C__ClassUnionRepresentation"
 								],
 								[
-									"rmultinom\t{stats}",
-									"rmultinom"
+									"isGeneric\t{methods}",
+									"isGeneric"
 								],
 								[
-									"qweibull\t{stats}",
-									"qweibull"
+									".__C__refClassRepresentation\t{methods}",
+									".__C__refClassRepresentation"
 								],
 								[
-									"power.t.test\t{stats}",
-									"power.t.test"
+									"canCoerce\t{methods}",
+									"canCoerce"
 								],
 								[
-									"complete.cases\t{stats}",
-									"complete.cases"
+									"newBasic\t{methods}",
+									"newBasic"
 								],
 								[
-									"loess.control\t{stats}",
-									"loess.control"
+									".__C__.environment\t{methods}",
+									".__C__.environment"
 								],
 								[
-									"qnbinom\t{stats}",
-									"qnbinom"
+									".__C__refClass\t{methods}",
+									".__C__refClass"
 								],
 								[
-									"df\t{stats}",
-									"df"
+									"completeSubclasses\t{methods}",
+									"completeSubclasses"
 								],
 								[
-									"rnorm\t{stats}",
-									"rnorm"
+									".__C__table\t{methods}",
+									".__C__table"
 								],
 								[
-									"addmargins\t{stats}",
-									"addmargins"
+									"getLoadActions\t{methods}",
+									"getLoadActions"
 								],
 								[
-									"asOneSidedFormula\t{stats}",
-									"asOneSidedFormula"
+									"getClassDef\t{methods}",
+									"getClassDef"
 								],
 								[
-									"nlm\t{stats}",
-									"nlm"
+									"findClass\t{methods}",
+									"findClass"
 								],
 								[
-									"covratio\t{stats}",
-									"covratio"
+									".__C__language\t{methods}",
+									".__C__language"
 								],
 								[
-									"C\t{stats}",
-									"C"
+									".__C__anova.glm.null\t{methods}",
+									".__C__anova.glm.null"
 								],
 								[
-									"as.stepfun\t{stats}",
-									"as.stepfun"
+									"registerImplicitGenerics\t{methods}",
+									"registerImplicitGenerics"
 								],
 								[
-									"D\t{stats}",
-									"D"
+									"isClassDef\t{methods}",
+									"isClassDef"
 								],
 								[
-									"ar.burg\t{stats}",
-									"ar.burg"
+									"getPrototype\t{methods}",
+									"getPrototype"
 								],
 								[
-									"cov2cor\t{stats}",
-									"cov2cor"
+									"setValidity\t{methods}",
+									"setValidity"
 								],
 								[
-									"pgeom\t{stats}",
-									"pgeom"
+									"setPrimitiveMethods\t{methods}",
+									"setPrimitiveMethods"
 								],
 								[
-									"chisq.test\t{stats}",
-									"chisq.test"
+									"is\t{methods}",
+									"is"
 								],
 								[
-									"p.adjust\t{stats}",
-									"p.adjust"
+									"Logic\t{methods}",
+									"Logic"
 								],
 								[
-									"nls\t{stats}",
-									"nls"
+									".S4methods\t{methods}",
+									".S4methods"
 								],
 								[
-									"integrate\t{stats}",
-									"integrate"
+									".__C__socket\t{methods}",
+									".__C__socket"
 								],
 								[
-									"fivenum\t{stats}",
-									"fivenum"
+									"cacheMethod\t{methods}",
+									"cacheMethod"
 								],
 								[
-									"weighted.mean\t{stats}",
-									"weighted.mean"
+									"asMethodDefinition\t{methods}",
+									"asMethodDefinition"
 								],
 								[
-									"rweibull\t{stats}",
-									"rweibull"
+									".__C__special\t{methods}",
+									".__C__special"
 								],
 								[
-									"qqline\t{stats}",
-									"qqline"
+									"representation\t{methods}",
+									"representation"
 								],
 								[
-									"as.dendrogram\t{stats}",
-									"as.dendrogram"
+									".__C__SealedMethodDefinition\t{methods}",
+									".__C__SealedMethodDefinition"
 								],
 								[
-									"runmed\t{stats}",
-									"runmed"
+									"isSealedMethod\t{methods}",
+									"isSealedMethod"
 								],
 								[
-									"aov\t{stats}",
-									"aov"
+									".__C__raw\t{methods}",
+									".__C__raw"
 								],
 								[
-									"dt\t{stats}",
-									"dt"
+									"S3Part\t{methods}",
+									"S3Part"
 								],
 								[
-									"influence\t{stats}",
-									"influence"
+									".__C__environment\t{methods}",
+									".__C__environment"
 								],
 								[
-									"rnbinom\t{stats}",
-									"rnbinom"
+									".__C__integer\t{methods}",
+									".__C__integer"
 								],
 								[
-									"coefficients\t{stats}",
-									"coefficients"
+									"listFromMlist\t{methods}",
+									"listFromMlist"
 								],
 								[
-									"tsp\t{stats}",
-									"tsp"
+									".__C__mts\t{methods}",
+									".__C__mts"
 								],
 								[
-									"dfbeta\t{stats}",
-									"dfbeta"
+									".doTracePrint\t{methods}",
+									".doTracePrint"
 								],
 								[
-									"hasTsp\t{stats}",
-									"hasTsp"
+									".OldClassesList\t{methods}",
+									".OldClassesList"
 								],
 								[
-									"dbinom\t{stats}",
-									"dbinom"
+									".__C__standardGeneric\t{methods}",
+									".__C__standardGeneric"
 								],
 								[
-									"wilcox.test\t{stats}",
-									"wilcox.test"
+									".__C__MethodsList\t{methods}",
+									".__C__MethodsList"
 								],
 								[
-									"scatter.smooth\t{stats}",
-									"scatter.smooth"
+									"promptMethods\t{methods}",
+									"promptMethods"
 								],
 								[
-									"start\t{stats}",
-									"start"
+									"setPackageName\t{methods}",
+									"setPackageName"
 								],
 								[
-									"delete.response\t{stats}",
-									"delete.response"
+									".__C__groupGenericFunction\t{methods}",
+									".__C__groupGenericFunction"
 								],
 								[
-									"qsignrank\t{stats}",
-									"qsignrank"
+									"tryNew\t{methods}",
+									"tryNew"
 								],
 								[
-									"is.mts\t{stats}",
-									"is.mts"
+									"getSubclasses\t{methods}",
+									"getSubclasses"
 								],
 								[
-									".getXlevels\t{stats}",
-									".getXlevels"
+									".classEnv\t{methods}",
+									".classEnv"
 								],
 								[
-									"BIC\t{stats}",
-									"BIC"
+									"Arith\t{methods}",
+									"Arith"
 								],
 								[
-									"ks.test\t{stats}",
-									"ks.test"
+									".__C__LinearMethodsList\t{methods}",
+									".__C__LinearMethodsList"
 								],
 								[
-									".nknots.smspl\t{stats}",
-									".nknots.smspl"
+									".__C__formula\t{methods}",
+									".__C__formula"
 								],
 								[
-									"order.dendrogram\t{stats}",
-									"order.dendrogram"
+									"assignClassDef\t{methods}",
+									"assignClassDef"
 								],
 								[
-									"SSD\t{stats}",
-									"SSD"
+									".__C__ordered\t{methods}",
+									".__C__ordered"
 								],
 								[
-									"HoltWinters\t{stats}",
-									"HoltWinters"
+									"seemsS4Object\t{methods}",
+									"seemsS4Object"
 								],
 								[
-									"qbeta\t{stats}",
-									"qbeta"
+									"setMethod\t{methods}",
+									"setMethod"
 								],
 								[
-									"pbinom\t{stats}",
-									"pbinom"
+									".__C__SClassExtension\t{methods}",
+									".__C__SClassExtension"
 								],
 								[
-									"effects\t{stats}",
-									"effects"
+									".__C__expression\t{methods}",
+									".__C__expression"
 								],
 								[
-									"rbinom\t{stats}",
-									"rbinom"
+									".__C__classRepresentation\t{methods}",
+									".__C__classRepresentation"
 								],
 								[
-									"monthplot\t{stats}",
-									"monthplot"
+									"setRefClass\t{methods}",
+									"setRefClass"
 								],
 								[
-									"acf2AR\t{stats}",
-									"acf2AR"
+									".__C__numeric\t{methods}",
+									".__C__numeric"
 								],
 								[
-									"splinefunH\t{stats}",
-									"splinefunH"
+									"evalSource\t{methods}",
+									"evalSource"
 								],
 								[
-									"splinefun\t{stats}",
-									"splinefun"
+									"rbind2\t{methods}",
+									"rbind2"
 								],
 								[
-									"qunif\t{stats}",
-									"qunif"
+									"balanceMethodsList\t{methods}",
+									"balanceMethodsList"
 								],
 								[
-									"nls.control\t{stats}",
-									"nls.control"
+									".__C__VIRTUAL\t{methods}",
+									".__C__VIRTUAL"
 								],
 								[
-									"dbeta\t{stats}",
-									"dbeta"
+									"conformMethod\t{methods}",
+									"conformMethod"
 								],
 								[
-									"influence.measures\t{stats}",
-									"influence.measures"
+									"getClassPackage\t{methods}",
+									"getClassPackage"
 								],
 								[
-									"as.ts\t{stats}",
-									"as.ts"
+									"getClass\t{methods}",
+									"getClass"
 								],
 								[
-									"prop.trend.test\t{stats}",
-									"prop.trend.test"
+									".__C__complex\t{methods}",
+									".__C__complex"
 								],
 								[
-									"summary.glm\t{stats}",
-									"summary.glm"
+									"getMethod\t{methods}",
+									"getMethod"
 								],
 								[
-									"get_all_vars\t{stats}",
-									"get_all_vars"
+									"getGenerics\t{methods}",
+									"getGenerics"
 								],
 								[
-									"preplot\t{stats}",
-									"preplot"
+									"finalDefaultMethod\t{methods}",
+									"finalDefaultMethod"
 								],
 								[
-									"mood.test\t{stats}",
-									"mood.test"
+									"showClass\t{methods}",
+									"showClass"
 								],
 								[
-									"dunif\t{stats}",
-									"dunif"
+									".__C__name\t{methods}",
+									".__C__name"
 								],
 								[
-									"vcov\t{stats}",
-									"vcov"
+									".__C__nonstandardGeneric\t{methods}",
+									".__C__nonstandardGeneric"
 								],
 								[
-									"glm.control\t{stats}",
-									"glm.control"
+									".__C__POSIXct\t{methods}",
+									".__C__POSIXct"
 								],
 								[
-									"ar.ols\t{stats}",
-									"ar.ols"
+									".__C__factor\t{methods}",
+									".__C__factor"
 								],
 								[
-									"qgamma\t{stats}",
-									"qgamma"
+									".__C__libraryIQR\t{methods}",
+									".__C__libraryIQR"
 								],
 								[
-									"dendrapply\t{stats}",
-									"dendrapply"
+									"empty.dump\t{methods}",
+									"empty.dump"
 								],
 								[
-									"arima0.diag\t{stats}",
-									"arima0.diag"
+									"validSlotNames\t{methods}",
+									"validSlotNames"
 								],
 								[
-									"dnbinom\t{stats}",
-									"dnbinom"
+									"new\t{methods}",
+									"new"
 								],
 								[
-									"qnorm\t{stats}",
-									"qnorm"
+									".__C__listOfMethods\t{methods}",
+									".__C__listOfMethods"
 								],
 								[
-									"SSbiexp\t{stats}",
-									"SSbiexp"
+									"existsFunction\t{methods}",
+									"existsFunction"
 								],
 								[
-									"poisson.test\t{stats}",
-									"poisson.test"
+									".__C__.externalptr\t{methods}",
+									".__C__.externalptr"
 								],
 								[
-									"add.scope\t{stats}",
-									"add.scope"
+									".__C__classPrototypeDef\t{methods}",
+									".__C__classPrototypeDef"
 								],
 								[
-									"plot.spec.phase\t{stats}",
-									"plot.spec.phase"
+									"getClasses\t{methods}",
+									"getClasses"
 								],
 								[
-									"dlnorm\t{stats}",
-									"dlnorm"
+									"isVirtualClass\t{methods}",
+									"isVirtualClass"
 								],
 								[
-									"makeARIMA\t{stats}",
-									"makeARIMA"
+									"elNamed\t{methods}",
+									"elNamed"
 								],
 								[
-									"tsSmooth\t{stats}",
-									"tsSmooth"
+									"getDataPart\t{methods}",
+									"getDataPart"
 								],
 								[
-									"dnorm\t{stats}",
-									"dnorm"
+									".__C__mtable\t{methods}",
+									".__C__mtable"
 								],
 								[
-									"nobs\t{stats}",
-									"nobs"
+									".__C__anova\t{methods}",
+									".__C__anova"
 								],
 								[
-									"knots\t{stats}",
-									"knots"
+									"sealClass\t{methods}",
+									"sealClass"
 								],
 								[
-									"fitted\t{stats}",
-									"fitted"
+									".selectSuperClasses\t{methods}",
+									".selectSuperClasses"
 								],
 								[
-									"spline\t{stats}",
-									"spline"
+									"getMethodsMetaData\t{methods}",
+									"getMethodsMetaData"
 								],
 								[
-									"symnum\t{stats}",
-									"symnum"
+									".__C__maov\t{methods}",
+									".__C__maov"
 								],
 								[
-									"prcomp\t{stats}",
-									"prcomp"
+									"isClassUnion\t{methods}",
+									"isClassUnion"
 								],
 								[
-									"friedman.test\t{stats}",
-									"friedman.test"
+									"getClassName\t{methods}",
+									"getClassName"
 								],
 								[
-									"KalmanForecast\t{stats}",
-									"KalmanForecast"
+									"matchSignature\t{methods}",
+									"matchSignature"
 								],
 								[
-									"aggregate.data.frame\t{stats}",
-									"aggregate.data.frame"
+									".EmptyPrimitiveSkeletons\t{methods}",
+									".EmptyPrimitiveSkeletons"
 								],
 								[
-									"plot.spec.coherency\t{stats}",
-									"plot.spec.coherency"
+									"signature\t{methods}",
+									"signature"
 								],
 								[
-									"frequency\t{stats}",
-									"frequency"
+									"loadMethod\t{methods}",
+									"loadMethod"
 								],
 								[
-									"decompose\t{stats}",
-									"decompose"
+									".__C__packageInfo\t{methods}",
+									".__C__packageInfo"
 								],
 								[
-									"dsignrank\t{stats}",
-									"dsignrank"
+									"evalOnLoad\t{methods}",
+									"evalOnLoad"
 								],
 								[
-									"pcauchy\t{stats}",
-									"pcauchy"
+									".__C__MethodWithNextWithTrace\t{methods}",
+									".__C__MethodWithNextWithTrace"
 								],
 								[
-									"dist\t{stats}",
-									"dist"
+									".__C__dump.frames\t{methods}",
+									".__C__dump.frames"
 								],
 								[
-									"SSmicmen\t{stats}",
-									"SSmicmen"
+									"fixPre1.8\t{methods}",
+									"fixPre1.8"
 								],
 								[
-									"predict\t{stats}",
-									"predict"
+									"getMethodsForDispatch\t{methods}",
+									"getMethodsForDispatch"
 								],
 								[
-									"lag.plot\t{stats}",
-									"lag.plot"
+									"setLoadAction\t{methods}",
+									"setLoadAction"
 								],
 								[
-									"plnorm\t{stats}",
-									"plnorm"
+									".TraceWithMethods\t{methods}",
+									".TraceWithMethods"
 								],
 								[
-									"write.ftable\t{stats}",
-									"write.ftable"
+									"missingArg\t{methods}",
+									"missingArg"
 								],
 								[
-									"factanal\t{stats}",
-									"factanal"
+									"externalRefMethod\t{methods}",
+									"externalRefMethod"
 								],
 								[
-									"resid\t{stats}",
-									"resid"
+									".__C__function\t{methods}",
+									".__C__function"
 								],
 								[
-									"rlnorm\t{stats}",
-									"rlnorm"
+									".__C__envRefClass\t{methods}",
+									".__C__envRefClass"
 								],
 								[
-									"rstandard\t{stats}",
-									"rstandard"
+									"defaultPrototype\t{methods}",
+									"defaultPrototype"
 								],
 								[
-									"plot.ts\t{stats}",
-									"plot.ts"
+									".__C__glm\t{methods}",
+									".__C__glm"
 								],
 								[
-									"optim\t{stats}",
-									"optim"
+									"insertSource\t{methods}",
+									"insertSource"
 								],
 								[
-									"glm.fit\t{stats}",
-									"glm.fit"
+									"dumpMethod\t{methods}",
+									"dumpMethod"
 								],
 								[
-									"predict.lm\t{stats}",
-									"predict.lm"
+									".__C__if\t{methods}",
+									".__C__if"
 								],
 								[
-									"dmultinom\t{stats}",
-									"dmultinom"
+									".__C__oldClass\t{methods}",
+									".__C__oldClass"
 								],
 								[
-									"getCall\t{stats}",
-									"getCall"
+									"coerce\t{methods}",
+									"coerce"
 								],
 								[
-									"ansari.test\t{stats}",
-									"ansari.test"
+									"hasArg\t{methods}",
+									"hasArg"
 								],
 								[
-									"loadings\t{stats}",
-									"loadings"
+									".__C__refGeneratorSlot\t{methods}",
+									".__C__refGeneratorSlot"
 								],
 								[
-									"NLSstAsymptotic\t{stats}",
-									"NLSstAsymptotic"
+									"testInheritedMethods\t{methods}",
+									"testInheritedMethods"
 								],
 								[
-									"residuals.glm\t{stats}",
-									"residuals.glm"
+									"insertClassMethods\t{methods}",
+									"insertClassMethods"
 								],
 								[
-									"window\t{stats}",
-									"window"
+									".__C__call\t{methods}",
+									".__C__call"
 								],
 								[
-									"pbeta\t{stats}",
-									"pbeta"
+									".__C__data.frame\t{methods}",
+									".__C__data.frame"
 								],
 								[
-									"pairwise.t.test\t{stats}",
-									"pairwise.t.test"
+									"Math\t{methods}",
+									"Math"
 								],
 								[
-									"mantelhaen.test\t{stats}",
-									"mantelhaen.test"
+									".__C__for\t{methods}",
+									".__C__for"
 								],
 								[
-									"aggregate\t{stats}",
-									"aggregate"
+									"removeMethods\t{methods}",
+									"removeMethods"
 								],
 								[
-									"qcauchy\t{stats}",
-									"qcauchy"
+									".__C__array\t{methods}",
+									".__C__array"
 								],
 								[
-									"loess.smooth\t{stats}",
-									"loess.smooth"
+									"getPackageName\t{methods}",
+									"getPackageName"
 								],
 								[
-									"predict.glm\t{stats}",
-									"predict.glm"
+									".__C__MethodDefinition\t{methods}",
+									".__C__MethodDefinition"
 								],
 								[
-									"extractAIC\t{stats}",
-									"extractAIC"
+									".__C__nonstandardGenericWithTrace\t{methods}",
+									".__C__nonstandardGenericWithTrace"
 								],
 								[
-									"punif\t{stats}",
-									"punif"
+									"rematchDefinition\t{methods}",
+									"rematchDefinition"
 								],
 								[
-									"approxfun\t{stats}",
-									"approxfun"
+									"insertMethod\t{methods}",
+									"insertMethod"
 								],
 								[
-									"napredict\t{stats}",
-									"napredict"
+									"findMethods\t{methods}",
+									"findMethods"
 								],
 								[
-									"weights\t{stats}",
-									"weights"
+									"mergeMethods\t{methods}",
+									"mergeMethods"
 								],
 								[
-									"quasibinomial\t{stats}",
-									"quasibinomial"
+									".__C__POSIXt\t{methods}",
+									".__C__POSIXt"
 								],
 								[
-									"SSweibull\t{stats}",
-									"SSweibull"
+									"unRematchDefinition\t{methods}",
+									"unRematchDefinition"
 								],
 								[
-									"ave\t{stats}",
-									"ave"
+									".__C__refObjectGenerator\t{methods}",
+									".__C__refObjectGenerator"
 								],
 								[
-									"ARMAacf\t{stats}",
-									"ARMAacf"
+									".__C__Date\t{methods}",
+									".__C__Date"
 								],
 								[
-									"bw.ucv\t{stats}",
-									"bw.ucv"
+									".__C__missing\t{methods}",
+									".__C__missing"
 								],
 								[
-									"estVar\t{stats}",
-									"estVar"
+									"callGeneric\t{methods}",
+									"callGeneric"
 								],
 								[
-									"cor\t{stats}",
-									"cor"
+									".__C__externalptr\t{methods}",
+									".__C__externalptr"
 								],
 								[
-									"update.formula\t{stats}",
-									"update.formula"
+									".__C__derivedDefaultMethodWithTrace\t{methods}",
+									".__C__derivedDefaultMethodWithTrace"
 								],
 								[
-									"pbirthday\t{stats}",
-									"pbirthday"
+									".__C__ANY\t{methods}",
+									".__C__ANY"
 								],
 								[
-									"se.contrast\t{stats}",
-									"se.contrast"
+									"mlistMetaName\t{methods}",
+									"mlistMetaName"
 								],
 								[
-									"alias\t{stats}",
-									"alias"
+									"existsMethod\t{methods}",
+									"existsMethod"
 								],
 								[
-									"rcauchy\t{stats}",
-									"rcauchy"
+									"showExtends\t{methods}",
+									"showExtends"
 								],
 								[
-									"cov\t{stats}",
-									"cov"
+									"showMlist\t{methods}",
+									"showMlist"
 								],
 								[
-									"case.names\t{stats}",
-									"case.names"
+									"MethodsList\t{methods}",
+									"MethodsList"
 								],
 								[
-									"ls.print\t{stats}",
-									"ls.print"
+									"getVirtual\t{methods}",
+									"getVirtual"
 								],
 								[
-									"nlminb\t{stats}",
-									"nlminb"
+									"makeStandardGeneric\t{methods}",
+									"makeStandardGeneric"
 								],
 								[
-									"TukeyHSD\t{stats}",
-									"TukeyHSD"
+									".__C__className\t{methods}",
+									".__C__className"
 								],
 								[
-									"hatvalues\t{stats}",
-									"hatvalues"
+									".__C__character\t{methods}",
+									".__C__character"
 								],
 								[
-									"contr.sum\t{stats}",
-									"contr.sum"
+									"initFieldArgs\t{methods}",
+									"initFieldArgs"
 								],
 								[
-									"ppoints\t{stats}",
-									"ppoints"
+									".__C__genericFunction\t{methods}",
+									".__C__genericFunction"
 								],
 								[
-									"filter\t{stats}",
-									"filter"
+									".__C__signature\t{methods}",
+									".__C__signature"
 								],
 								[
-									"deviance\t{stats}",
-									"deviance"
+									".__C__uninitializedField\t{methods}",
+									".__C__uninitializedField"
 								],
 								[
-									"KalmanRun\t{stats}",
-									"KalmanRun"
+									".untracedFunction\t{methods}",
+									".untracedFunction"
 								],
 								[
-									"pnorm\t{stats}",
-									"pnorm"
+									".__C__while\t{methods}",
+									".__C__while"
 								],
 								[
-									"lag\t{stats}",
-									"lag"
+									"validObject\t{methods}",
+									"validObject"
 								],
 								[
-									"ar.yw\t{stats}",
-									"ar.yw"
+									"resetClass\t{methods}",
+									"resetClass"
 								],
 								[
-									"lm\t{stats}",
-									"lm"
+									".__C__hsearch\t{methods}",
+									".__C__hsearch"
 								],
 								[
-									"r2dtable\t{stats}",
-									"r2dtable"
+									"isGroup\t{methods}",
+									"isGroup"
 								],
 								[
-									"cpgram\t{stats}",
-									"cpgram"
+									"substituteFunctionArgs\t{methods}",
+									"substituteFunctionArgs"
 								],
 								[
-									"mcnemar.test\t{stats}",
-									"mcnemar.test"
+									"multipleClasses\t{methods}",
+									"multipleClasses"
 								],
 								[
-									"NLSstClosestX\t{stats}",
-									"NLSstClosestX"
+									"cacheGenericsMetaData\t{methods}",
+									"cacheGenericsMetaData"
 								],
 								[
-									"makepredictcall\t{stats}",
-									"makepredictcall"
+									"dumpMethods\t{methods}",
+									"dumpMethods"
 								],
 								[
-									"NLSstLfAsymptote\t{stats}",
-									"NLSstLfAsymptote"
+									".__C__conditionalExtension\t{methods}",
+									".__C__conditionalExtension"
 								],
 								[
-									"simulate\t{stats}",
-									"simulate"
+									"prototype\t{methods}",
+									"prototype"
 								],
 								[
-									"toeplitz\t{stats}",
-									"toeplitz"
+									"packageSlot\t{methods}",
+									"packageSlot"
 								],
 								[
-									"SSasympOrig\t{stats}",
-									"SSasympOrig"
+									"setGeneric\t{methods}",
+									"setGeneric"
 								],
 								[
-									"summary.manova\t{stats}",
-									"summary.manova"
+									"testVirtual\t{methods}",
+									"testVirtual"
 								],
 								[
-									"model.extract\t{stats}",
-									"model.extract"
+									"prohibitGeneric\t{methods}",
+									"prohibitGeneric"
 								],
 								[
-									"qhyper\t{stats}",
-									"qhyper"
+									".__C__groupGenericFunctionWithTrace\t{methods}",
+									".__C__groupGenericFunctionWithTrace"
 								],
 								[
-									"model.tables\t{stats}",
-									"model.tables"
+									"selectSuperClasses\t{methods}",
+									"selectSuperClasses"
 								],
 								[
-									"add1\t{stats}",
-									"add1"
+									"slot\t{methods}",
+									"slot"
 								],
 								[
-									"SSfol\t{stats}",
-									"SSfol"
+									"doPrimitiveMethod\t{methods}",
+									"doPrimitiveMethod"
 								],
 								[
-									"SSasymp\t{stats}",
-									"SSasymp"
+									".__C__summaryDefault\t{methods}",
+									".__C__summaryDefault"
 								],
 								[
-									"ts.plot\t{stats}",
-									"ts.plot"
+									".__C__recordedplot\t{methods}",
+									".__C__recordedplot"
 								],
 								[
-									"Gamma\t{stats}",
-									"Gamma"
+									".ShortPrimitiveSkeletons\t{methods}",
+									".ShortPrimitiveSkeletons"
 								],
 								[
-									"plot.stepfun\t{stats}",
-									"plot.stepfun"
+									"show\t{methods}",
+									"show"
 								],
 								[
-									"termplot\t{stats}",
-									"termplot"
+									".__C__nonstandardGenericFunction\t{methods}",
+									".__C__nonstandardGenericFunction"
 								],
 								[
-									"bartlett.test\t{stats}",
-									"bartlett.test"
+									"cacheMetaData\t{methods}",
+									"cacheMetaData"
 								],
 								[
-									"oneway.test\t{stats}",
-									"oneway.test"
+									".__C__repeat\t{methods}",
+									".__C__repeat"
 								],
 								[
-									"step\t{stats}",
-									"step"
+									"Ops\t{methods}",
+									"Ops"
 								],
 								[
-									"qlogis\t{stats}",
-									"qlogis"
+									"superClassDepth\t{methods}",
+									"superClassDepth"
 								],
 								[
-									"df.kernel\t{stats}",
-									"df.kernel"
+									".__C__vector\t{methods}",
+									".__C__vector"
 								],
 								[
-									"quasi\t{stats}",
-									"quasi"
+									".__C__POSIXlt\t{methods}",
+									".__C__POSIXlt"
 								],
 								[
-									"coef\t{stats}",
-									"coef"
+									"makeExtends\t{methods}",
+									"makeExtends"
 								],
 								[
-									"promax\t{stats}",
-									"promax"
+									"getValidity\t{methods}",
+									"getValidity"
 								],
 								[
-									"factor.scope\t{stats}",
-									"factor.scope"
+									"functionBody\t{methods}",
+									"functionBody"
 								],
 								[
-									"poisson\t{stats}",
-									"poisson"
+									"completeExtends\t{methods}",
+									"completeExtends"
 								],
 								[
-									"embed\t{stats}",
-									"embed"
+									".__C__integrate\t{methods}",
+									".__C__integrate"
 								],
 								[
-									"dcauchy\t{stats}",
-									"dcauchy"
+									".__C__structure\t{methods}",
+									".__C__structure"
 								],
 								[
-									"na.action\t{stats}",
-									"na.action"
+									"slotsFromS3\t{methods}",
+									"slotsFromS3"
 								],
 								[
-									"rect.hclust\t{stats}",
-									"rect.hclust"
+									".__C__genericFunctionWithTrace\t{methods}",
+									".__C__genericFunctionWithTrace"
 								],
 								[
-									"SSfpl\t{stats}",
-									"SSfpl"
+									".__C__rle\t{methods}",
+									".__C__rle"
 								],
 								[
-									"bw.bcv\t{stats}",
-									"bw.bcv"
+									".__C__activeBindingFunction\t{methods}",
+									".__C__activeBindingFunction"
 								],
 								[
-									"as.hclust\t{stats}",
-									"as.hclust"
+									"Math2\t{methods}",
+									"Math2"
 								],
 								[
-									"varimax\t{stats}",
-									"varimax"
+									".__C__SuperClassMethod\t{methods}",
+									".__C__SuperClassMethod"
 								],
 								[
-									"model.offset\t{stats}",
-									"model.offset"
+									"promptClass\t{methods}",
+									"promptClass"
 								],
 								[
-									"df.residual\t{stats}",
-									"df.residual"
+									"Quote\t{methods}",
+									"Quote"
 								],
 								[
-									"nextn\t{stats}",
-									"nextn"
+									".__C__internalDispatchMethod\t{methods}",
+									".__C__internalDispatchMethod"
 								],
 								[
-									"hclust\t{stats}",
-									"hclust"
+									"getAllMethods\t{methods}",
+									"getAllMethods"
 								],
 								[
-									"smooth.spline\t{stats}",
-									"smooth.spline"
+									"setClassUnion\t{methods}",
+									"setClassUnion"
 								],
 								[
-									"qtukey\t{stats}",
-									"qtukey"
+									"removeMethod\t{methods}",
+									"removeMethod"
 								],
 								[
-									"bw.nrd0\t{stats}",
-									"bw.nrd0"
+									"newClassRepresentation\t{methods}",
+									"newClassRepresentation"
 								],
 								[
-									"ppr\t{stats}",
-									"ppr"
+									".__C__localRefClass\t{methods}",
+									".__C__localRefClass"
 								],
 								[
-									"pacf\t{stats}",
-									"pacf"
+									".__C__refMethodDef\t{methods}",
+									".__C__refMethodDef"
 								],
 								[
-									"power.prop.test\t{stats}",
-									"power.prop.test"
+									"generic.skeleton\t{methods}",
+									"generic.skeleton"
 								],
 								[
-									"pwilcox\t{stats}",
-									"pwilcox"
+									".__C__.name\t{methods}",
+									".__C__.name"
 								],
 								[
-									"bw.nrd\t{stats}",
-									"bw.nrd"
+									"hasLoadAction\t{methods}",
+									"hasLoadAction"
 								],
 								[
-									"rsignrank\t{stats}",
-									"rsignrank"
+									"setAs\t{methods}",
+									"setAs"
 								],
 								[
-									"quantile\t{stats}",
-									"quantile"
+									".__C__aov\t{methods}",
+									".__C__aov"
 								],
 								[
-									"stl\t{stats}",
-									"stl"
+									"listFromMethods\t{methods}",
+									"listFromMethods"
 								],
 								[
-									"AIC\t{stats}",
-									"AIC"
+									".__C__data.frameRowLabels\t{methods}",
+									".__C__data.frameRowLabels"
 								],
 								[
-									"end\t{stats}",
-									"end"
+									"classesToAM\t{methods}",
+									"classesToAM"
 								],
 								[
-									"sortedXyData\t{stats}",
-									"sortedXyData"
+									"getProperties\t{methods}",
+									"getProperties"
 								],
 								[
-									"lowess\t{stats}",
-									"lowess"
+									"traceOff\t{methods}",
+									"traceOff"
 								],
 								[
-									"lm.wfit\t{stats}",
-									"lm.wfit"
+									"classLabel\t{methods}",
+									"classLabel"
 								],
 								[
-									"pf\t{stats}",
-									"pf"
+									"removeMethodsObject\t{methods}",
+									"removeMethodsObject"
 								],
 								[
-									"princomp\t{stats}",
-									"princomp"
+									"allNames\t{methods}",
+									"allNames"
 								],
 								[
-									"terms\t{stats}",
-									"terms"
+									"getSlots\t{methods}",
+									"getSlots"
 								],
 								[
-									"lm.influence\t{stats}",
-									"lm.influence"
+									".__C__S3\t{methods}",
+									".__C__S3"
 								],
 								[
-									"model.frame\t{stats}",
-									"model.frame"
+									".__C__S4\t{methods}",
+									".__C__S4"
 								],
 								[
-									"qwilcox\t{stats}",
-									"qwilcox"
+									"inheritedSlotNames\t{methods}",
+									"inheritedSlotNames"
 								],
 								[
-									"stat.anova\t{stats}",
-									"stat.anova"
+									"showDefault\t{methods}",
+									"showDefault"
 								],
 								[
-									"qchisq\t{stats}",
-									"qchisq"
+									"reconcilePropertiesAndPrototype\t{methods}",
+									"reconcilePropertiesAndPrototype"
 								],
 								[
-									"update.default\t{stats}",
-									"update.default"
+									"removeGeneric\t{methods}",
+									"removeGeneric"
 								],
 								[
-									"model.response\t{stats}",
-									"model.response"
+									"getRefClass\t{methods}",
+									"getRefClass"
 								],
 								[
-									"drop.scope\t{stats}",
-									"drop.scope"
+									".__C__anova.glm\t{methods}",
+									".__C__anova.glm"
 								],
 								[
-									"residuals\t{stats}",
-									"residuals"
+									"addNextMethod\t{methods}",
+									"addNextMethod"
 								],
 								[
-									"median\t{stats}",
-									"median"
+									".__C__packageIQR\t{methods}",
+									".__C__packageIQR"
 								],
 								[
-									"cycle\t{stats}",
-									"cycle"
+									"Compare\t{methods}",
+									"Compare"
 								],
 								[
-									"constrOptim\t{stats}",
-									"constrOptim"
+									"MethodsListSelect\t{methods}",
+									"MethodsListSelect"
 								],
 								[
-									"pt\t{stats}",
-									"pt"
+									"as\t{methods}",
+									"as"
 								],
 								[
-									"deriv3\t{stats}",
-									"deriv3"
+									".__C__standardGenericWithTrace\t{methods}",
+									".__C__standardGenericWithTrace"
 								],
 								[
-									"variable.names\t{stats}",
-									"variable.names"
+									"isXS3Class\t{methods}",
+									"isXS3Class"
 								],
 								[
-									"qf\t{stats}",
-									"qf"
+									"languageEl\t{methods}",
+									"languageEl"
 								],
 								[
-									"summary.aov\t{stats}",
-									"summary.aov"
+									"removeClass\t{methods}",
+									"removeClass"
 								],
 								[
-									"update\t{stats}",
-									"update"
+									".__C__nonStructure\t{methods}",
+									".__C__nonStructure"
 								],
 								[
-									"rwilcox\t{stats}",
-									"rwilcox"
+									"callNextMethod\t{methods}",
+									"callNextMethod"
 								],
 								[
-									"pairwise.table\t{stats}",
-									"pairwise.table"
+									"defaultDumpName\t{methods}",
+									"defaultDumpName"
 								],
 								[
-									"model.matrix.lm\t{stats}",
-									"model.matrix.lm"
+									"makeGeneric\t{methods}",
+									"makeGeneric"
 								],
 								[
-									"expand.model.frame\t{stats}",
-									"expand.model.frame"
+									"isClass\t{methods}",
+									"isClass"
 								],
 								[
-									"acf\t{stats}",
-									"acf"
+									"getAccess\t{methods}",
+									"getAccess"
 								],
 								[
-									"proj\t{stats}",
-									"proj"
+									".__C__.NULL\t{methods}",
+									".__C__.NULL"
 								],
 								[
-									"bw.SJ\t{stats}",
-									"bw.SJ"
+									"getExtends\t{methods}",
+									"getExtends"
 								],
 								[
-									"numericDeriv\t{stats}",
-									"numericDeriv"
+									"setGroupGeneric\t{methods}",
+									"setGroupGeneric"
 								],
 								[
-									"uniroot\t{stats}",
-									"uniroot"
+									".__C__density\t{methods}",
+									".__C__density"
 								],
 								[
-									"ARMAtoMA\t{stats}",
-									"ARMAtoMA"
+									"getFunction\t{methods}",
+									"getFunction"
 								],
 								[
-									"ksmooth\t{stats}",
-									"ksmooth"
+									".__C__logLik\t{methods}",
+									".__C__logLik"
 								],
 								[
-									"qt\t{stats}",
-									"qt"
+									"classMetaName\t{methods}",
+									"classMetaName"
 								],
 								[
-									"dffits\t{stats}",
-									"dffits"
+									".__C__externalRefMethod\t{methods}",
+									".__C__externalRefMethod"
 								],
 								[
-									".checkMFClasses\t{stats}",
-									".checkMFClasses"
+									".__C__MethodSelectionReport\t{methods}",
+									".__C__MethodSelectionReport"
 								],
 								[
-									"rstudent\t{stats}",
-									"rstudent"
+									"setClass\t{methods}",
+									"setClass"
 								],
 								[
-									"rf\t{stats}",
-									"rf"
+									".valueClassTest\t{methods}",
+									".valueClassTest"
 								],
 								[
-									"plclust\t{stats}",
-									"plclust"
+									".__C__optionalMethod\t{methods}",
+									".__C__optionalMethod"
 								],
 								[
-									"manova\t{stats}",
-									"manova"
+									"getGroup\t{methods}",
+									"getGroup"
 								],
 								[
-									"dwilcox\t{stats}",
-									"dwilcox"
+									"checkSlotAssignment\t{methods}",
+									"checkSlotAssignment"
 								],
 								[
-									"kernapply\t{stats}",
-									"kernapply"
+									"implicitGeneric\t{methods}",
+									"implicitGeneric"
 								],
 								[
-									".MFclass\t{stats}",
-									".MFclass"
+									"getAllSuperClasses\t{methods}",
+									"getAllSuperClasses"
 								],
 								[
-									"cutree\t{stats}",
-									"cutree"
+									".__C__ts\t{methods}",
+									".__C__ts"
 								],
 								[
-									"spec.ar\t{stats}",
-									"spec.ar"
+									"getGroupMembers\t{methods}",
+									"getGroupMembers"
 								],
 								[
-									"cmdscale\t{stats}",
-									"cmdscale"
+									"traceOn\t{methods}",
+									"traceOn"
 								],
 								[
-									"poly\t{stats}",
-									"poly"
+									".__C__MethodWithNext\t{methods}",
+									".__C__MethodWithNext"
 								],
 								[
-									"dweibull\t{stats}",
-									"dweibull"
+									".__C__logical\t{methods}",
+									".__C__logical"
 								],
 								[
-									"optimise\t{stats}",
-									"optimise"
+									"setDataPart\t{methods}",
+									"setDataPart"
 								],
 								[
-									"formula\t{stats}",
-									"formula"
+									"getMethods\t{methods}",
+									"getMethods"
 								],
 								[
-									"sd\t{stats}",
-									"sd"
+									".__C__defaultBindingFunction\t{methods}",
+									".__C__defaultBindingFunction"
 								],
 								[
-									"rt\t{stats}",
-									"rt"
+									"findMethodSignatures\t{methods}",
+									"findMethodSignatures"
 								],
 								[
-									"loglin\t{stats}",
-									"loglin"
+									".__C__.Other\t{methods}",
+									".__C__.Other"
 								],
 								[
-									"qbinom\t{stats}",
-									"qbinom"
+									"emptyMethodsList\t{methods}",
+									"emptyMethodsList"
 								],
 								[
-									"median.default\t{stats}",
-									"median.default"
+									".__C__summary.table\t{methods}",
+									".__C__summary.table"
 								],
 								[
-									"gaussian\t{stats}",
-									"gaussian"
+									".slotNames\t{methods}",
+									".slotNames"
 								],
 								[
-									"model.matrix\t{stats}",
-									"model.matrix"
+									".__C__mlm\t{methods}",
+									".__C__mlm"
 								],
 								[
-									"fitted.values\t{stats}",
-									"fitted.values"
+									".__C__sourceEnvironment\t{methods}",
+									".__C__sourceEnvironment"
 								],
 								[
-									"var\t{stats}",
-									"var"
+									"assocplot\t{graphics}",
+									"assocplot"
 								],
 								[
-									"binomial\t{stats}",
-									"binomial"
+									"title\t{graphics}",
+									"title"
 								],
 								[
-									"arima.sim\t{stats}",
-									"arima.sim"
+									"axis.Date\t{graphics}",
+									"axis.Date"
 								],
 								[
-									"logLik\t{stats}",
-									"logLik"
+									"points\t{graphics}",
+									"points"
 								],
 								[
-									"selfStart\t{stats}",
-									"selfStart"
+									"pairs.default\t{graphics}",
+									"pairs.default"
 								],
 								[
-									"reformulate\t{stats}",
-									"reformulate"
+									"strheight\t{graphics}",
+									"strheight"
 								],
 								[
-									"naresid\t{stats}",
-									"naresid"
+									"rect\t{graphics}",
+									"rect"
 								],
 								[
-									"StructTS\t{stats}",
-									"StructTS"
+									"frame\t{graphics}",
+									"frame"
 								],
 								[
-									"interaction.plot\t{stats}",
-									"interaction.plot"
+									"identify\t{graphics}",
+									"identify"
 								],
 								[
-									"SSlogis\t{stats}",
-									"SSlogis"
+									"plot.xy\t{graphics}",
+									"plot.xy"
 								],
 								[
-									"terms.formula\t{stats}",
-									"terms.formula"
+									"stem\t{graphics}",
+									"stem"
 								],
 								[
-									"supsmu\t{stats}",
-									"supsmu"
+									"par\t{graphics}",
+									"par"
 								],
 								[
-									"dgamma\t{stats}",
-									"dgamma"
+									"plot.default\t{graphics}",
+									"plot.default"
 								],
 								[
-									"weighted.residuals\t{stats}",
-									"weighted.residuals"
+									"fourfoldplot\t{graphics}",
+									"fourfoldplot"
 								],
 								[
-									"smooth\t{stats}",
-									"smooth"
+									"yinch\t{graphics}",
+									"yinch"
 								],
 								[
-									"kernel\t{stats}",
-									"kernel"
+									"layout\t{graphics}",
+									"layout"
 								],
 								[
-									"confint\t{stats}",
-									"confint"
+									"panel.smooth\t{graphics}",
+									"panel.smooth"
 								],
 								[
-									"mvfft\t{stats}",
-									"mvfft"
+									"split.screen\t{graphics}",
+									"split.screen"
 								],
 								[
-									"kruskal.test\t{stats}",
-									"kruskal.test"
+									"screen\t{graphics}",
+									"screen"
 								],
 								[
-									"spec.pgram\t{stats}",
-									"spec.pgram"
+									"rug\t{graphics}",
+									"rug"
 								],
 								[
-									"glm\t{stats}",
-									"glm"
+									"plot.new\t{graphics}",
+									"plot.new"
 								],
 								[
-									"ls.diag\t{stats}",
-									"ls.diag"
+									"image.default\t{graphics}",
+									"image.default"
 								],
 								[
-									"pairwise.wilcox.test\t{stats}",
-									"pairwise.wilcox.test"
+									"boxplot.matrix\t{graphics}",
+									"boxplot.matrix"
 								],
 								[
-									"NLSstRtAsymptote\t{stats}",
-									"NLSstRtAsymptote"
+									"clip\t{graphics}",
+									"clip"
 								],
 								[
-									"pgamma\t{stats}",
-									"pgamma"
+									"pairs\t{graphics}",
+									"pairs"
 								],
 								[
-									"rpois\t{stats}",
-									"rpois"
+									"points.default\t{graphics}",
+									"points.default"
 								],
 								[
-									"arima\t{stats}",
-									"arima"
+									"lines.default\t{graphics}",
+									"lines.default"
 								],
 								[
-									"rgamma\t{stats}",
-									"rgamma"
+									"strwidth\t{graphics}",
+									"strwidth"
 								],
 								[
-									"t.test\t{stats}",
-									"t.test"
+									"persp\t{graphics}",
+									"persp"
 								],
 								[
-									"biplot\t{stats}",
-									"biplot"
+									"plot.design\t{graphics}",
+									"plot.design"
 								],
 								[
-									"xtabs\t{stats}",
-									"xtabs"
+									"matpoints\t{graphics}",
+									"matpoints"
 								],
 								[
-									"ts\t{stats}",
-									"ts"
+									"dotchart\t{graphics}",
+									"dotchart"
 								],
 								[
-									"SSasympOff\t{stats}",
-									"SSasympOff"
+									"sunflowerplot\t{graphics}",
+									"sunflowerplot"
 								],
 								[
-									"is.empty.model\t{stats}",
-									"is.empty.model"
+									".filled.contour\t{graphics}",
+									".filled.contour"
 								],
 								[
-									"summary.lm\t{stats}",
-									"summary.lm"
+									"arrows\t{graphics}",
+									"arrows"
 								],
 								[
-									"dummy.coef.lm\t{stats}",
-									"dummy.coef.lm"
+									"symbols\t{graphics}",
+									"symbols"
 								],
 								[
-									"binom.test\t{stats}",
-									"binom.test"
+									"hist.default\t{graphics}",
+									"hist.default"
 								],
 								[
-									"sigma\t{stats}",
-									"sigma"
+									"stripchart\t{graphics}",
+									"stripchart"
 								],
 								[
-									"prop.test\t{stats}",
-									"prop.test"
+									"xyinch\t{graphics}",
+									"xyinch"
 								],
 								[
-									"na.pass\t{stats}",
-									"na.pass"
+									"xinch\t{graphics}",
+									"xinch"
 								],
 								[
-									"make.link\t{stats}",
-									"make.link"
+									"contour\t{graphics}",
+									"contour"
 								],
 								[
-									"summary.stepfun\t{stats}",
-									"summary.stepfun"
+									"erase.screen\t{graphics}",
+									"erase.screen"
 								],
 								[
-									"reshape\t{stats}",
-									"reshape"
+									"Axis\t{graphics}",
+									"Axis"
 								],
 								[
-									"ftable\t{stats}",
-									"ftable"
+									"text.default\t{graphics}",
+									"text.default"
 								],
 								[
-									"density.default\t{stats}",
-									"density.default"
+									"grconvertX\t{graphics}",
+									"grconvertX"
 								],
 								[
-									"dfbetas\t{stats}",
-									"dfbetas"
+									"legend\t{graphics}",
+									"legend"
 								],
 								[
-									"contrasts\t{stats}",
-									"contrasts"
+									"text\t{graphics}",
+									"text"
 								],
 								[
-									"psignrank\t{stats}",
-									"psignrank"
+									"grconvertY\t{graphics}",
+									"grconvertY"
 								],
 								[
-									"polym\t{stats}",
-									"polym"
+									"lcm\t{graphics}",
+									"lcm"
 								],
 								[
-									"model.frame.default\t{stats}",
-									"model.frame.default"
+									"cdplot\t{graphics}",
+									"cdplot"
 								],
 								[
-									"rgeom\t{stats}",
-									"rgeom"
+									"hist\t{graphics}",
+									"hist"
 								],
 								[
-									"contr.treatment\t{stats}",
-									"contr.treatment"
+									"smoothScatter\t{graphics}",
+									"smoothScatter"
 								],
 								[
-									"qlnorm\t{stats}",
-									"qlnorm"
+									"layout.show\t{graphics}",
+									"layout.show"
 								],
 								[
-									"lm.fit\t{stats}",
-									"lm.fit"
+									"grid\t{graphics}",
+									"grid"
 								],
 								[
-									"arima0\t{stats}",
-									"arima0"
+									"polypath\t{graphics}",
+									"polypath"
 								],
 								[
-									"offset\t{stats}",
-									"offset"
+									"close.screen\t{graphics}",
+									"close.screen"
 								],
 								[
-									"power.anova.test\t{stats}",
-									"power.anova.test"
+									"xspline\t{graphics}",
+									"xspline"
 								],
 								[
-									"loess\t{stats}",
-									"loess"
+									"curve\t{graphics}",
+									"curve"
 								],
 								[
-									"pairwise.prop.test\t{stats}",
-									"pairwise.prop.test"
+									"filled.contour\t{graphics}",
+									"filled.contour"
 								],
 								[
-									"kmeans\t{stats}",
-									"kmeans"
+									"co.intervals\t{graphics}",
+									"co.intervals"
 								],
 								[
-									"aggregate.ts\t{stats}",
-									"aggregate.ts"
+									"contour.default\t{graphics}",
+									"contour.default"
 								],
 								[
-									"relevel\t{stats}",
-									"relevel"
+									"boxplot.default\t{graphics}",
+									"boxplot.default"
 								],
 								[
-									"spectrum\t{stats}",
-									"spectrum"
+									"plot.function\t{graphics}",
+									"plot.function"
 								],
 								[
-									"model.weights\t{stats}",
-									"model.weights"
+									"spineplot\t{graphics}",
+									"spineplot"
 								],
 								[
-									"rexp\t{stats}",
-									"rexp"
+									"plot\t{graphics}",
+									"plot"
 								],
 								[
-									".lm.fit\t{stats}",
-									".lm.fit"
+									"boxplot\t{graphics}",
+									"boxplot"
 								],
 								[
-									"printCoefmat\t{stats}",
-									"printCoefmat"
+									"rasterImage\t{graphics}",
+									"rasterImage"
 								],
 								[
-									"PP.test\t{stats}",
-									"PP.test"
+									"axis.POSIXct\t{graphics}",
+									"axis.POSIXct"
 								],
 								[
-									"cov.wt\t{stats}",
-									"cov.wt"
+									"bxp\t{graphics}",
+									"bxp"
 								],
 								[
-									"residuals.lm\t{stats}",
-									"residuals.lm"
+									"box\t{graphics}",
+									"box"
 								],
 								[
-									"replications\t{stats}",
-									"replications"
+									"mtext\t{graphics}",
+									"mtext"
 								],
 								[
-									"fisher.test\t{stats}",
-									"fisher.test"
+									"matplot\t{graphics}",
+									"matplot"
 								],
 								[
-									"qexp\t{stats}",
-									"qexp"
+									"abline\t{graphics}",
+									"abline"
 								],
 								[
-									"screeplot\t{stats}",
-									"screeplot"
+									"pie\t{graphics}",
+									"pie"
 								],
 								[
-									"contr.helmert\t{stats}",
-									"contr.helmert"
+									"image\t{graphics}",
+									"image"
 								],
 								[
-									"deltat\t{stats}",
-									"deltat"
+									"matlines\t{graphics}",
+									"matlines"
 								],
 								[
-									"medpolish\t{stats}",
-									"medpolish"
+									"segments\t{graphics}",
+									"segments"
 								],
 								[
-									"pexp\t{stats}",
-									"pexp"
+									"lines\t{graphics}",
+									"lines"
 								],
 								[
-									"rWishart\t{stats}",
-									"rWishart"
+									"barplot.default\t{graphics}",
+									"barplot.default"
 								],
 								[
-									"ccf\t{stats}",
-									"ccf"
+									"barplot\t{graphics}",
+									"barplot"
 								],
 								[
-									"time\t{stats}",
-									"time"
+									"locator\t{graphics}",
+									"locator"
 								],
 								[
-									"anova\t{stats}",
-									"anova"
+									"stars\t{graphics}",
+									"stars"
 								],
 								[
-									"IQR\t{stats}",
-									"IQR"
+									"coplot\t{graphics}",
+									"coplot"
 								],
 								[
-									"KalmanLike\t{stats}",
-									"KalmanLike"
+									"mosaicplot\t{graphics}",
+									"mosaicplot"
 								],
 								[
-									"optimHess\t{stats}",
-									"optimHess"
+									"polygon\t{graphics}",
+									"polygon"
 								],
 								[
-									"pweibull\t{stats}",
-									"pweibull"
+									"plot.window\t{graphics}",
+									"plot.window"
 								],
 								[
-									"p.adjust.methods\t{stats}",
-									"p.adjust.methods"
+									"axis\t{graphics}",
+									"axis"
 								],
 								[
-									"read.ftable\t{stats}",
-									"read.ftable"
+									"axTicks\t{graphics}",
+									"axTicks"
 								],
 								[
-									"cancor\t{stats}",
-									"cancor"
+									"dev.size\t{grDevices}",
+									"dev.size"
 								],
 								[
-									"fft\t{stats}",
-									"fft"
+									"svg\t{grDevices}",
+									"svg"
 								],
 								[
-									"qpois\t{stats}",
-									"qpois"
+									"recordPlot\t{grDevices}",
+									"recordPlot"
 								],
 								[
-									"tsdiag\t{stats}",
-									"tsdiag"
+									"cairo_ps\t{grDevices}",
+									"cairo_ps"
 								],
 								[
-									"power\t{stats}",
-									"power"
+									"heat.colors\t{grDevices}",
+									"heat.colors"
 								],
 								[
-									"getInitial\t{stats}",
-									"getInitial"
+									"make.rgb\t{grDevices}",
+									"make.rgb"
 								],
 								[
-									"SSgompertz\t{stats}",
-									"SSgompertz"
+									"terrain.colors\t{grDevices}",
+									"terrain.colors"
 								],
 								[
-									"bandwidth.kernel\t{stats}",
-									"bandwidth.kernel"
+									"setEPS\t{grDevices}",
+									"setEPS"
 								],
 								[
-									"quade.test\t{stats}",
-									"quade.test"
+									"Type1Font\t{grDevices}",
+									"Type1Font"
 								],
 								[
-									"mauchly.test\t{stats}",
-									"mauchly.test"
+									"pdf\t{grDevices}",
+									"pdf"
 								],
 								[
-									"approx\t{stats}",
-									"approx"
+									"grey\t{grDevices}",
+									"grey"
 								],
 								[
-									".preformat.ts\t{stats}",
-									".preformat.ts"
+									"dev.list\t{grDevices}",
+									"dev.list"
 								],
 								[
-									"deriv\t{stats}",
-									"deriv"
+									"as.raster\t{grDevices}",
+									"as.raster"
 								],
 								[
-									"spec.taper\t{stats}",
-									"spec.taper"
+									"dev.copy2pdf\t{grDevices}",
+									"dev.copy2pdf"
 								],
 								[
-									"ecdf\t{stats}",
-									"ecdf"
+									"dev.print\t{grDevices}",
+									"dev.print"
 								],
 								[
-									"dhyper\t{stats}",
-									"dhyper"
+									"dev.prev\t{grDevices}",
+									"dev.prev"
 								],
 								[
-									"dpois\t{stats}",
-									"dpois"
+									"as.graphicsAnnot\t{grDevices}",
+									"as.graphicsAnnot"
 								],
 								[
-									"setNames\t{stats}",
-									"setNames"
+									"ps.options\t{grDevices}",
+									"ps.options"
 								],
 								[
-									"dlogis\t{stats}",
-									"dlogis"
+									"pdf.options\t{grDevices}",
+									"pdf.options"
+								],
+								[
+									"colorRamp\t{grDevices}",
+									"colorRamp"
+								],
+								[
+									"dev.flush\t{grDevices}",
+									"dev.flush"
+								],
+								[
+									"windowsFonts\t{grDevices}",
+									"windowsFonts"
+								],
+								[
+									"windows\t{grDevices}",
+									"windows"
+								],
+								[
+									"xyTable\t{grDevices}",
+									"xyTable"
+								],
+								[
+									"graphics.off\t{grDevices}",
+									"graphics.off"
+								],
+								[
+									"bitmap\t{grDevices}",
+									"bitmap"
+								],
+								[
+									"dev2bitmap\t{grDevices}",
+									"dev2bitmap"
+								],
+								[
+									"xy.coords\t{grDevices}",
+									"xy.coords"
+								],
+								[
+									"grey.colors\t{grDevices}",
+									"grey.colors"
+								],
+								[
+									"win.print\t{grDevices}",
+									"win.print"
+								],
+								[
+									"postscript\t{grDevices}",
+									"postscript"
+								],
+								[
+									"dev.cur\t{grDevices}",
+									"dev.cur"
+								],
+								[
+									"dev.hold\t{grDevices}",
+									"dev.hold"
+								],
+								[
+									"windows.options\t{grDevices}",
+									"windows.options"
+								],
+								[
+									"axisTicks\t{grDevices}",
+									"axisTicks"
+								],
+								[
+									"x11\t{grDevices}",
+									"x11"
+								],
+								[
+									"tiff\t{grDevices}",
+									"tiff"
+								],
+								[
+									"check.options\t{grDevices}",
+									"check.options"
+								],
+								[
+									"rainbow\t{grDevices}",
+									"rainbow"
+								],
+								[
+									"nclass.FD\t{grDevices}",
+									"nclass.FD"
+								],
+								[
+									"dev.copy2eps\t{grDevices}",
+									"dev.copy2eps"
+								],
+								[
+									"nclass.Sturges\t{grDevices}",
+									"nclass.Sturges"
+								],
+								[
+									"replayPlot\t{grDevices}",
+									"replayPlot"
+								],
+								[
+									"dev.off\t{grDevices}",
+									"dev.off"
+								],
+								[
+									"win.graph\t{grDevices}",
+									"win.graph"
+								],
+								[
+									"jpeg\t{grDevices}",
+									"jpeg"
+								],
+								[
+									"colors\t{grDevices}",
+									"colors"
+								],
+								[
+									"setGraphicsEventHandlers\t{grDevices}",
+									"setGraphicsEventHandlers"
+								],
+								[
+									"bringToTop\t{grDevices}",
+									"bringToTop"
+								],
+								[
+									"n2mfrow\t{grDevices}",
+									"n2mfrow"
+								],
+								[
+									"colorConverter\t{grDevices}",
+									"colorConverter"
+								],
+								[
+									"setPS\t{grDevices}",
+									"setPS"
+								],
+								[
+									"cm\t{grDevices}",
+									"cm"
+								],
+								[
+									"dev.copy\t{grDevices}",
+									"dev.copy"
+								],
+								[
+									"pictex\t{grDevices}",
+									"pictex"
+								],
+								[
+									"recordGraphics\t{grDevices}",
+									"recordGraphics"
+								],
+								[
+									"rgb2hsv\t{grDevices}",
+									"rgb2hsv"
+								],
+								[
+									"gray\t{grDevices}",
+									"gray"
+								],
+								[
+									"extendrange\t{grDevices}",
+									"extendrange"
+								],
+								[
+									"is.raster\t{grDevices}",
+									"is.raster"
+								],
+								[
+									"colorspaces\t{grDevices}",
+									"colorspaces"
+								],
+								[
+									"getGraphicsEvent\t{grDevices}",
+									"getGraphicsEvent"
+								],
+								[
+									"pdfFonts\t{grDevices}",
+									"pdfFonts"
+								],
+								[
+									"convertColor\t{grDevices}",
+									"convertColor"
+								],
+								[
+									"dev.capabilities\t{grDevices}",
+									"dev.capabilities"
+								],
+								[
+									"msgWindow\t{grDevices}",
+									"msgWindow"
+								],
+								[
+									"chull\t{grDevices}",
+									"chull"
+								],
+								[
+									"blues9\t{grDevices}",
+									"blues9"
+								],
+								[
+									"col2rgb\t{grDevices}",
+									"col2rgb"
+								],
+								[
+									"palette\t{grDevices}",
+									"palette"
+								],
+								[
+									"hsv\t{grDevices}",
+									"hsv"
+								],
+								[
+									"Hershey\t{grDevices}",
+									"Hershey"
+								],
+								[
+									"cm.colors\t{grDevices}",
+									"cm.colors"
+								],
+								[
+									"cairo_pdf\t{grDevices}",
+									"cairo_pdf"
+								],
+								[
+									"colours\t{grDevices}",
+									"colours"
+								],
+								[
+									"dev.interactive\t{grDevices}",
+									"dev.interactive"
+								],
+								[
+									"adjustcolor\t{grDevices}",
+									"adjustcolor"
+								],
+								[
+									"dev.new\t{grDevices}",
+									"dev.new"
+								],
+								[
+									"windowsFont\t{grDevices}",
+									"windowsFont"
+								],
+								[
+									"win.metafile\t{grDevices}",
+									"win.metafile"
+								],
+								[
+									"trans3d\t{grDevices}",
+									"trans3d"
+								],
+								[
+									"dev.control\t{grDevices}",
+									"dev.control"
+								],
+								[
+									"dev.next\t{grDevices}",
+									"dev.next"
+								],
+								[
+									"CIDFont\t{grDevices}",
+									"CIDFont"
+								],
+								[
+									"dev.capture\t{grDevices}",
+									"dev.capture"
+								],
+								[
+									"bmp\t{grDevices}",
+									"bmp"
+								],
+								[
+									"png\t{grDevices}",
+									"png"
+								],
+								[
+									"xfig\t{grDevices}",
+									"xfig"
+								],
+								[
+									"nclass.scott\t{grDevices}",
+									"nclass.scott"
+								],
+								[
+									"gray.colors\t{grDevices}",
+									"gray.colors"
+								],
+								[
+									"deviceIsInteractive\t{grDevices}",
+									"deviceIsInteractive"
+								],
+								[
+									"setGraphicsEventEnv\t{grDevices}",
+									"setGraphicsEventEnv"
+								],
+								[
+									"X11\t{grDevices}",
+									"X11"
+								],
+								[
+									"colorRampPalette\t{grDevices}",
+									"colorRampPalette"
+								],
+								[
+									"rgb\t{grDevices}",
+									"rgb"
+								],
+								[
+									"dev.set\t{grDevices}",
+									"dev.set"
+								],
+								[
+									".axisPars\t{grDevices}",
+									".axisPars"
+								],
+								[
+									"xyz.coords\t{grDevices}",
+									"xyz.coords"
+								],
+								[
+									"savePlot\t{grDevices}",
+									"savePlot"
+								],
+								[
+									"hcl\t{grDevices}",
+									"hcl"
+								],
+								[
+									"postscriptFonts\t{grDevices}",
+									"postscriptFonts"
+								],
+								[
+									"embedFonts\t{grDevices}",
+									"embedFonts"
+								],
+								[
+									"densCols\t{grDevices}",
+									"densCols"
+								],
+								[
+									"getGraphicsEventEnv\t{grDevices}",
+									"getGraphicsEventEnv"
+								],
+								[
+									"topo.colors\t{grDevices}",
+									"topo.colors"
+								],
+								[
+									"devAskNewPage\t{grDevices}",
+									"devAskNewPage"
+								],
+								[
+									"contourLines\t{grDevices}",
+									"contourLines"
+								],
+								[
+									"grSoftVersion\t{grDevices}",
+									"grSoftVersion"
+								],
+								[
+									"boxplot.stats\t{grDevices}",
+									"boxplot.stats"
+								],
+								[
+									"aspell_package_Rd_files\t{utils}",
+									"aspell_package_Rd_files"
+								],
+								[
+									"vi\t{utils}",
+									"vi"
+								],
+								[
+									"read.table\t{utils}",
+									"read.table"
+								],
+								[
+									"setWinProgressBar\t{utils}",
+									"setWinProgressBar"
+								],
+								[
+									"URLdecode\t{utils}",
+									"URLdecode"
+								],
+								[
+									"rc.status\t{utils}",
+									"rc.status"
+								],
+								[
+									"write.csv\t{utils}",
+									"write.csv"
+								],
+								[
+									"winMenuAdd\t{utils}",
+									"winMenuAdd"
+								],
+								[
+									"RweaveLatexOptions\t{utils}",
+									"RweaveLatexOptions"
+								],
+								[
+									"formatUL\t{utils}",
+									"formatUL"
+								],
+								[
+									"prompt\t{utils}",
+									"prompt"
+								],
+								[
+									"upgrade\t{utils}",
+									"upgrade"
+								],
+								[
+									"RShowDoc\t{utils}",
+									"RShowDoc"
+								],
+								[
+									"argsAnywhere\t{utils}",
+									"argsAnywhere"
+								],
+								[
+									"read.delim\t{utils}",
+									"read.delim"
+								],
+								[
+									"de.ncols\t{utils}",
+									"de.ncols"
+								],
+								[
+									"new.packages\t{utils}",
+									"new.packages"
+								],
+								[
+									"read.socket\t{utils}",
+									"read.socket"
+								],
+								[
+									"SweaveSyntConv\t{utils}",
+									"SweaveSyntConv"
+								],
+								[
+									"personList\t{utils}",
+									"personList"
+								],
+								[
+									"write.table\t{utils}",
+									"write.table"
+								],
+								[
+									"read.delim2\t{utils}",
+									"read.delim2"
+								],
+								[
+									"aspell_package_vignettes\t{utils}",
+									"aspell_package_vignettes"
+								],
+								[
+									"SweaveHooks\t{utils}",
+									"SweaveHooks"
+								],
+								[
+									"assignInNamespace\t{utils}",
+									"assignInNamespace"
+								],
+								[
+									"is.relistable\t{utils}",
+									"is.relistable"
+								],
+								[
+									".DollarNames\t{utils}",
+									".DollarNames"
+								],
+								[
+									"toBibtex\t{utils}",
+									"toBibtex"
+								],
+								[
+									"alarm\t{utils}",
+									"alarm"
+								],
+								[
+									"winDialog\t{utils}",
+									"winDialog"
+								],
+								[
+									"RweaveLatexSetup\t{utils}",
+									"RweaveLatexSetup"
+								],
+								[
+									"checkCRAN\t{utils}",
+									"checkCRAN"
+								],
+								[
+									"loadRconsole\t{utils}",
+									"loadRconsole"
+								],
+								[
+									"setRepositories\t{utils}",
+									"setRepositories"
+								],
+								[
+									"dump.frames\t{utils}",
+									"dump.frames"
+								],
+								[
+									"Rprof\t{utils}",
+									"Rprof"
+								],
+								[
+									"sessionInfo\t{utils}",
+									"sessionInfo"
+								],
+								[
+									"winDialogString\t{utils}",
+									"winDialogString"
+								],
+								[
+									"count.fields\t{utils}",
+									"count.fields"
+								],
+								[
+									"create.post\t{utils}",
+									"create.post"
+								],
+								[
+									"tail.matrix\t{utils}",
+									"tail.matrix"
+								],
+								[
+									"choose.dir\t{utils}",
+									"choose.dir"
+								],
+								[
+									"person\t{utils}",
+									"person"
+								],
+								[
+									"promptPackage\t{utils}",
+									"promptPackage"
+								],
+								[
+									"install.packages\t{utils}",
+									"install.packages"
+								],
+								[
+									"news\t{utils}",
+									"news"
+								],
+								[
+									"URLencode\t{utils}",
+									"URLencode"
+								],
+								[
+									"type.convert\t{utils}",
+									"type.convert"
+								],
+								[
+									"help.start\t{utils}",
+									"help.start"
+								],
+								[
+									"de.setup\t{utils}",
+									"de.setup"
+								],
+								[
+									"aregexec\t{utils}",
+									"aregexec"
+								],
+								[
+									"rc.getOption\t{utils}",
+									"rc.getOption"
+								],
+								[
+									"de.restore\t{utils}",
+									"de.restore"
+								],
+								[
+									"file.edit\t{utils}",
+									"file.edit"
+								],
+								[
+									"winProgressBar\t{utils}",
+									"winProgressBar"
+								],
+								[
+									"citHeader\t{utils}",
+									"citHeader"
+								],
+								[
+									"fix\t{utils}",
+									"fix"
+								],
+								[
+									"makeRweaveLatexCodeRunner\t{utils}",
+									"makeRweaveLatexCodeRunner"
+								],
+								[
+									"winMenuNames\t{utils}",
+									"winMenuNames"
+								],
+								[
+									"write.socket\t{utils}",
+									"write.socket"
+								],
+								[
+									"unzip\t{utils}",
+									"unzip"
+								],
+								[
+									"Sweave\t{utils}",
+									"Sweave"
+								],
+								[
+									"read.fwf\t{utils}",
+									"read.fwf"
+								],
+								[
+									"CRAN.packages\t{utils}",
+									"CRAN.packages"
+								],
+								[
+									"RweaveEvalWithOpt\t{utils}",
+									"RweaveEvalWithOpt"
+								],
+								[
+									"limitedLabels\t{utils}",
+									"limitedLabels"
+								],
+								[
+									"readCitationFile\t{utils}",
+									"readCitationFile"
+								],
+								[
+									"setWindowTitle\t{utils}",
+									"setWindowTitle"
+								],
+								[
+									"process.events\t{utils}",
+									"process.events"
+								],
+								[
+									"writeClipboard\t{utils}",
+									"writeClipboard"
+								],
+								[
+									"as.relistable\t{utils}",
+									"as.relistable"
+								],
+								[
+									"getParseText\t{utils}",
+									"getParseText"
+								],
+								[
+									"modifyList\t{utils}",
+									"modifyList"
+								],
+								[
+									"Filters\t{utils}",
+									"Filters"
+								],
+								[
+									"maintainer\t{utils}",
+									"maintainer"
+								],
+								[
+									"available.packages\t{utils}",
+									"available.packages"
+								],
+								[
+									"getWindowTitle\t{utils}",
+									"getWindowTitle"
+								],
+								[
+									"getWindowsHandles\t{utils}",
+									"getWindowsHandles"
+								],
+								[
+									"citeNatbib\t{utils}",
+									"citeNatbib"
+								],
+								[
+									"rc.options\t{utils}",
+									"rc.options"
+								],
+								[
+									"setBreakpoint\t{utils}",
+									"setBreakpoint"
+								],
+								[
+									"Rtangle\t{utils}",
+									"Rtangle"
+								],
+								[
+									"head.matrix\t{utils}",
+									"head.matrix"
+								],
+								[
+									"getTxtProgressBar\t{utils}",
+									"getTxtProgressBar"
+								],
+								[
+									"tail\t{utils}",
+									"tail"
+								],
+								[
+									"changedFiles\t{utils}",
+									"changedFiles"
+								],
+								[
+									"getWindowsHandle\t{utils}",
+									"getWindowsHandle"
+								],
+								[
+									"RweaveLatexFinish\t{utils}",
+									"RweaveLatexFinish"
+								],
+								[
+									"shortPathName\t{utils}",
+									"shortPathName"
+								],
+								[
+									"getAnywhere\t{utils}",
+									"getAnywhere"
+								],
+								[
+									"readClipboard\t{utils}",
+									"readClipboard"
+								],
+								[
+									"browseEnv\t{utils}",
+									"browseEnv"
+								],
+								[
+									"object.size\t{utils}",
+									"object.size"
+								],
+								[
+									"globalVariables\t{utils}",
+									"globalVariables"
+								],
+								[
+									"getClipboardFormats\t{utils}",
+									"getClipboardFormats"
+								],
+								[
+									"packageVersion\t{utils}",
+									"packageVersion"
+								],
+								[
+									"help.search\t{utils}",
+									"help.search"
+								],
+								[
+									"package.skeleton\t{utils}",
+									"package.skeleton"
+								],
+								[
+									"summaryRprof\t{utils}",
+									"summaryRprof"
+								],
+								[
+									"setTxtProgressBar\t{utils}",
+									"setTxtProgressBar"
+								],
+								[
+									"timestamp\t{utils}",
+									"timestamp"
+								],
+								[
+									"getSrcref\t{utils}",
+									"getSrcref"
+								],
+								[
+									"stack\t{utils}",
+									"stack"
+								],
+								[
+									"capture.output\t{utils}",
+									"capture.output"
+								],
+								[
+									"bug.report\t{utils}",
+									"bug.report"
+								],
+								[
+									"rc.settings\t{utils}",
+									"rc.settings"
+								],
+								[
+									"fileSnapshot\t{utils}",
+									"fileSnapshot"
+								],
+								[
+									"hsearch_db_keywords\t{utils}",
+									"hsearch_db_keywords"
+								],
+								[
+									"rtags\t{utils}",
+									"rtags"
+								],
+								[
+									"update.packageStatus\t{utils}",
+									"update.packageStatus"
+								],
+								[
+									"browseVignettes\t{utils}",
+									"browseVignettes"
+								],
+								[
+									"contrib.url\t{utils}",
+									"contrib.url"
+								],
+								[
+									"strOptions\t{utils}",
+									"strOptions"
+								],
+								[
+									"packageDescription\t{utils}",
+									"packageDescription"
+								],
+								[
+									"RweaveLatex\t{utils}",
+									"RweaveLatex"
+								],
+								[
+									"SweaveSyntaxNoweb\t{utils}",
+									"SweaveSyntaxNoweb"
+								],
+								[
+									"flush.console\t{utils}",
+									"flush.console"
+								],
+								[
+									"Rprofmem\t{utils}",
+									"Rprofmem"
+								],
+								[
+									"compareVersion\t{utils}",
+									"compareVersion"
+								],
+								[
+									"winMenuItems\t{utils}",
+									"winMenuItems"
+								],
+								[
+									"as.personList\t{utils}",
+									"as.personList"
+								],
+								[
+									"getFromNamespace\t{utils}",
+									"getFromNamespace"
+								],
+								[
+									"recover\t{utils}",
+									"recover"
+								],
+								[
+									"packageStatus\t{utils}",
+									"packageStatus"
+								],
+								[
+									"read.csv2\t{utils}",
+									"read.csv2"
+								],
+								[
+									"demo\t{utils}",
+									"demo"
+								],
+								[
+									"edit\t{utils}",
+									"edit"
+								],
+								[
+									"choose.files\t{utils}",
+									"choose.files"
+								],
+								[
+									"aspell_package_R_files\t{utils}",
+									"aspell_package_R_files"
+								],
+								[
+									"isS3method\t{utils}",
+									"isS3method"
+								],
+								[
+									"de\t{utils}",
+									"de"
+								],
+								[
+									"RSiteSearch\t{utils}",
+									"RSiteSearch"
+								],
+								[
+									"read.DIF\t{utils}",
+									"read.DIF"
+								],
+								[
+									"hsearch_db_concepts\t{utils}",
+									"hsearch_db_concepts"
+								],
+								[
+									"getSrcLocation\t{utils}",
+									"getSrcLocation"
+								],
+								[
+									"lsf.str\t{utils}",
+									"lsf.str"
+								],
+								[
+									"winMenuAddItem\t{utils}",
+									"winMenuAddItem"
+								],
+								[
+									"tar\t{utils}",
+									"tar"
+								],
+								[
+									"help.request\t{utils}",
+									"help.request"
+								],
+								[
+									"cite\t{utils}",
+									"cite"
+								],
+								[
+									".S3methods\t{utils}",
+									".S3methods"
+								],
+								[
+									"select.list\t{utils}",
+									"select.list"
+								],
+								[
+									".romans\t{utils}",
+									".romans"
+								],
+								[
+									"setStatusBar\t{utils}",
+									"setStatusBar"
+								],
+								[
+									"getCRANmirrors\t{utils}",
+									"getCRANmirrors"
+								],
+								[
+									"relist\t{utils}",
+									"relist"
+								],
+								[
+									"ls.str\t{utils}",
+									"ls.str"
+								],
+								[
+									"localeToCharset\t{utils}",
+									"localeToCharset"
+								],
+								[
+									"readRegistry\t{utils}",
+									"readRegistry"
+								],
+								[
+									"download.packages\t{utils}",
+									"download.packages"
+								],
+								[
+									"arrangeWindows\t{utils}",
+									"arrangeWindows"
+								],
+								[
+									"debugger\t{utils}",
+									"debugger"
+								],
+								[
+									"chooseCRANmirror\t{utils}",
+									"chooseCRANmirror"
+								],
+								[
+									"savehistory\t{utils}",
+									"savehistory"
+								],
+								[
+									"citEntry\t{utils}",
+									"citEntry"
+								],
+								[
+									"RweaveTryStop\t{utils}",
+									"RweaveTryStop"
+								],
+								[
+									"close.socket\t{utils}",
+									"close.socket"
+								],
+								[
+									"vignette\t{utils}",
+									"vignette"
+								],
+								[
+									"getS3method\t{utils}",
+									"getS3method"
+								],
+								[
+									"combn\t{utils}",
+									"combn"
+								],
+								[
+									"loadhistory\t{utils}",
+									"loadhistory"
+								],
+								[
+									"update.packages\t{utils}",
+									"update.packages"
+								],
+								[
+									"glob2rx\t{utils}",
+									"glob2rx"
+								],
+								[
+									"old.packages\t{utils}",
+									"old.packages"
+								],
+								[
+									"remove.packages\t{utils}",
+									"remove.packages"
+								],
+								[
+									"getParseData\t{utils}",
+									"getParseData"
+								],
+								[
+									"xedit\t{utils}",
+									"xedit"
+								],
+								[
+									"SweaveSyntaxLatex\t{utils}",
+									"SweaveSyntaxLatex"
+								],
+								[
+									"packageName\t{utils}",
+									"packageName"
+								],
+								[
+									"bibentry\t{utils}",
+									"bibentry"
+								],
+								[
+									"RtangleSetup\t{utils}",
+									"RtangleSetup"
+								],
+								[
+									"findLineNum\t{utils}",
+									"findLineNum"
+								],
+								[
+									"RtangleWritedoc\t{utils}",
+									"RtangleWritedoc"
+								],
+								[
+									"txtProgressBar\t{utils}",
+									"txtProgressBar"
+								],
+								[
+									"promptData\t{utils}",
+									"promptData"
+								],
+								[
+									"file_test\t{utils}",
+									"file_test"
+								],
+								[
+									"getIdentification\t{utils}",
+									"getIdentification"
+								],
+								[
+									"getSrcFilename\t{utils}",
+									"getSrcFilename"
+								],
+								[
+									"help\t{utils}",
+									"help"
+								],
+								[
+									"win.version\t{utils}",
+									"win.version"
+								],
+								[
+									"toLatex\t{utils}",
+									"toLatex"
+								],
+								[
+									"installed.packages\t{utils}",
+									"installed.packages"
+								],
+								[
+									"citFooter\t{utils}",
+									"citFooter"
+								],
+								[
+									"DLL.version\t{utils}",
+									"DLL.version"
+								],
+								[
+									"unstack\t{utils}",
+									"unstack"
+								],
+								[
+									"mirror2html\t{utils}",
+									"mirror2html"
+								],
+								[
+									"winMenuDelItem\t{utils}",
+									"winMenuDelItem"
+								],
+								[
+									"data.entry\t{utils}",
+									"data.entry"
+								],
+								[
+									"str\t{utils}",
+									"str"
+								],
+								[
+									"read.fortran\t{utils}",
+									"read.fortran"
+								],
+								[
+									"dataentry\t{utils}",
+									"dataentry"
+								],
+								[
+									"citation\t{utils}",
+									"citation"
+								],
+								[
+									"emacs\t{utils}",
+									"emacs"
+								],
+								[
+									"head\t{utils}",
+									"head"
+								],
+								[
+									"promptImport\t{utils}",
+									"promptImport"
+								],
+								[
+									"removeSource\t{utils}",
+									"removeSource"
+								],
+								[
+									"make.packages.html\t{utils}",
+									"make.packages.html"
+								],
+								[
+									"RweaveChunkPrefix\t{utils}",
+									"RweaveChunkPrefix"
+								],
+								[
+									"page\t{utils}",
+									"page"
+								],
+								[
+									"aspell_write_personal_dictionary_file\t{utils}",
+									"aspell_write_personal_dictionary_file"
+								],
+								[
+									"winMenuDel\t{utils}",
+									"winMenuDel"
+								],
+								[
+									"formatOL\t{utils}",
+									"formatOL"
+								],
+								[
+									"RweaveLatexWritedoc\t{utils}",
+									"RweaveLatexWritedoc"
+								],
+								[
+									"memory.limit\t{utils}",
+									"memory.limit"
+								],
+								[
+									"find\t{utils}",
+									"find"
+								],
+								[
+									"pico\t{utils}",
+									"pico"
+								],
+								[
+									"fixInNamespace\t{utils}",
+									"fixInNamespace"
+								],
+								[
+									"adist\t{utils}",
+									"adist"
+								],
+								[
+									"example\t{utils}",
+									"example"
+								],
+								[
+									"data\t{utils}",
+									"data"
+								],
+								[
+									"write.csv2\t{utils}",
+									"write.csv2"
+								],
+								[
+									"memory.size\t{utils}",
+									"memory.size"
+								],
+								[
+									"menu\t{utils}",
+									"menu"
+								],
+								[
+									"read.csv\t{utils}",
+									"read.csv"
+								],
+								[
+									"url.show\t{utils}",
+									"url.show"
+								],
+								[
+									"history\t{utils}",
+									"history"
+								],
+								[
+									"chooseBioCmirror\t{utils}",
+									"chooseBioCmirror"
+								],
+								[
+									"View\t{utils}",
+									"View"
+								],
+								[
+									"assignInMyNamespace\t{utils}",
+									"assignInMyNamespace"
+								],
+								[
+									"hsearch_db\t{utils}",
+									"hsearch_db"
+								],
+								[
+									"browseURL\t{utils}",
+									"browseURL"
+								],
+								[
+									"untar\t{utils}",
+									"untar"
+								],
+								[
+									"aspell\t{utils}",
+									"aspell"
+								],
+								[
+									"getWinProgressBar\t{utils}",
+									"getWinProgressBar"
+								],
+								[
+									"zip\t{utils}",
+									"zip"
+								],
+								[
+									"make.socket\t{utils}",
+									"make.socket"
+								],
+								[
+									"getSrcDirectory\t{utils}",
+									"getSrcDirectory"
+								],
+								[
+									"suppressForeignCheck\t{utils}",
+									"suppressForeignCheck"
+								],
+								[
+									"setInternet2\t{utils}",
+									"setInternet2"
+								],
+								[
+									"aspell_package_C_files\t{utils}",
+									"aspell_package_C_files"
+								],
+								[
+									"download.file\t{utils}",
+									"download.file"
+								],
+								[
+									"apropos\t{utils}",
+									"apropos"
+								],
+								[
+									"as.roman\t{utils}",
+									"as.roman"
+								],
+								[
+									"xemacs\t{utils}",
+									"xemacs"
+								],
+								[
+									"Stangle\t{utils}",
+									"Stangle"
+								],
+								[
+									"methods\t{utils}",
+									"methods"
+								],
+								[
+									"zip.unpack\t{utils}",
+									"zip.unpack"
+								],
+								[
+									"as.person\t{utils}",
+									"as.person"
 								],
 								[
 									"Sys.Date\t{base}",
@@ -17943,3116 +19255,1804 @@
 									".knownS3Generics"
 								],
 								[
-									"dev.size\t{grDevices}",
-									"dev.size"
+									"confint.default\t{stats}",
+									"confint.default"
 								],
 								[
-									"svg\t{grDevices}",
-									"svg"
+									"mahalanobis\t{stats}",
+									"mahalanobis"
 								],
 								[
-									"recordPlot\t{grDevices}",
-									"recordPlot"
+									"optimize\t{stats}",
+									"optimize"
 								],
 								[
-									"cairo_ps\t{grDevices}",
-									"cairo_ps"
+									"hat\t{stats}",
+									"hat"
 								],
 								[
-									"heat.colors\t{grDevices}",
-									"heat.colors"
+									"Box.test\t{stats}",
+									"Box.test"
 								],
 								[
-									"make.rgb\t{grDevices}",
-									"make.rgb"
+									"reorder\t{stats}",
+									"reorder"
 								],
 								[
-									"terrain.colors\t{grDevices}",
-									"terrain.colors"
+									"phyper\t{stats}",
+									"phyper"
 								],
 								[
-									"setEPS\t{grDevices}",
-									"setEPS"
+									"ar.mle\t{stats}",
+									"ar.mle"
 								],
 								[
-									"Type1Font\t{grDevices}",
-									"Type1Font"
+									"rhyper\t{stats}",
+									"rhyper"
 								],
 								[
-									"pdf\t{grDevices}",
-									"pdf"
+									"contr.SAS\t{stats}",
+									"contr.SAS"
 								],
 								[
-									"grey\t{grDevices}",
-									"grey"
+									"na.exclude\t{stats}",
+									"na.exclude"
 								],
 								[
-									"dev.list\t{grDevices}",
-									"dev.list"
+									"qgeom\t{stats}",
+									"qgeom"
 								],
 								[
-									"as.raster\t{grDevices}",
-									"as.raster"
+									"is.ts\t{stats}",
+									"is.ts"
 								],
 								[
-									"dev.copy2pdf\t{grDevices}",
-									"dev.copy2pdf"
+									"plogis\t{stats}",
+									"plogis"
 								],
 								[
-									"dev.print\t{grDevices}",
-									"dev.print"
+									"drop.terms\t{stats}",
+									"drop.terms"
 								],
 								[
-									"dev.prev\t{grDevices}",
-									"dev.prev"
+									"rlogis\t{stats}",
+									"rlogis"
 								],
 								[
-									"as.graphicsAnnot\t{grDevices}",
-									"as.graphicsAnnot"
+									"convolve\t{stats}",
+									"convolve"
 								],
 								[
-									"ps.options\t{grDevices}",
-									"ps.options"
+									"ts.intersect\t{stats}",
+									"ts.intersect"
 								],
 								[
-									"pdf.options\t{grDevices}",
-									"pdf.options"
+									"KalmanSmooth\t{stats}",
+									"KalmanSmooth"
 								],
 								[
-									"colorRamp\t{grDevices}",
-									"colorRamp"
+									"ts.union\t{stats}",
+									"ts.union"
 								],
 								[
-									"dev.flush\t{grDevices}",
-									"dev.flush"
+									"smoothEnds\t{stats}",
+									"smoothEnds"
 								],
 								[
-									"windowsFonts\t{grDevices}",
-									"windowsFonts"
+									"is.tskernel\t{stats}",
+									"is.tskernel"
 								],
 								[
-									"windows\t{grDevices}",
-									"windows"
+									"as.formula\t{stats}",
+									"as.formula"
 								],
 								[
-									"xyTable\t{grDevices}",
-									"xyTable"
+									"dexp\t{stats}",
+									"dexp"
 								],
 								[
-									"graphics.off\t{grDevices}",
-									"graphics.off"
+									"inverse.gaussian\t{stats}",
+									"inverse.gaussian"
 								],
 								[
-									"bitmap\t{grDevices}",
-									"bitmap"
+									"na.contiguous\t{stats}",
+									"na.contiguous"
 								],
 								[
-									"dev2bitmap\t{grDevices}",
-									"dev2bitmap"
+									"line\t{stats}",
+									"line"
 								],
 								[
-									"xy.coords\t{grDevices}",
-									"xy.coords"
+									"dgeom\t{stats}",
+									"dgeom"
 								],
 								[
-									"grey.colors\t{grDevices}",
-									"grey.colors"
+									"qbirthday\t{stats}",
+									"qbirthday"
 								],
 								[
-									"win.print\t{grDevices}",
-									"win.print"
+									"confint.lm\t{stats}",
+									"confint.lm"
 								],
 								[
-									"postscript\t{grDevices}",
-									"postscript"
+									"cophenetic\t{stats}",
+									"cophenetic"
 								],
 								[
-									"dev.cur\t{grDevices}",
-									"dev.cur"
+									"var.test\t{stats}",
+									"var.test"
 								],
 								[
-									"dev.hold\t{grDevices}",
-									"dev.hold"
+									"diffinv\t{stats}",
+									"diffinv"
 								],
 								[
-									"windows.options\t{grDevices}",
-									"windows.options"
+									"ar\t{stats}",
+									"ar"
 								],
 								[
-									"axisTicks\t{grDevices}",
-									"axisTicks"
+									"dummy.coef\t{stats}",
+									"dummy.coef"
 								],
 								[
-									"x11\t{grDevices}",
-									"x11"
+									"cooks.distance\t{stats}",
+									"cooks.distance"
 								],
 								[
-									"tiff\t{grDevices}",
-									"tiff"
+									"density\t{stats}",
+									"density"
 								],
 								[
-									"check.options\t{grDevices}",
-									"check.options"
+									"ptukey\t{stats}",
+									"ptukey"
 								],
 								[
-									"rainbow\t{grDevices}",
-									"rainbow"
+									"as.dist\t{stats}",
+									"as.dist"
 								],
 								[
-									"nclass.FD\t{grDevices}",
-									"nclass.FD"
+									"drop1\t{stats}",
+									"drop1"
 								],
 								[
-									"dev.copy2eps\t{grDevices}",
-									"dev.copy2eps"
+									"rbeta\t{stats}",
+									"rbeta"
 								],
 								[
-									"nclass.Sturges\t{grDevices}",
-									"nclass.Sturges"
+									"fligner.test\t{stats}",
+									"fligner.test"
 								],
 								[
-									"replayPlot\t{grDevices}",
-									"replayPlot"
+									"naprint\t{stats}",
+									"naprint"
 								],
 								[
-									"dev.off\t{grDevices}",
-									"dev.off"
+									"qqnorm\t{stats}",
+									"qqnorm"
 								],
 								[
-									"win.graph\t{grDevices}",
-									"win.graph"
+									"is.stepfun\t{stats}",
+									"is.stepfun"
 								],
 								[
-									"jpeg\t{grDevices}",
-									"jpeg"
+									"lsfit\t{stats}",
+									"lsfit"
 								],
 								[
-									"colors\t{grDevices}",
-									"colors"
+									"mad\t{stats}",
+									"mad"
 								],
 								[
-									"setGraphicsEventHandlers\t{grDevices}",
-									"setGraphicsEventHandlers"
+									"shapiro.test\t{stats}",
+									"shapiro.test"
 								],
 								[
-									"bringToTop\t{grDevices}",
-									"bringToTop"
+									"qqplot\t{stats}",
+									"qqplot"
 								],
 								[
-									"n2mfrow\t{grDevices}",
-									"n2mfrow"
+									"eff.aovlist\t{stats}",
+									"eff.aovlist"
 								],
 								[
-									"colorConverter\t{grDevices}",
-									"colorConverter"
+									"runif\t{stats}",
+									"runif"
 								],
 								[
-									"setPS\t{grDevices}",
-									"setPS"
+									"isoreg\t{stats}",
+									"isoreg"
 								],
 								[
-									"cm\t{grDevices}",
-									"cm"
+									"profile\t{stats}",
+									"profile"
 								],
 								[
-									"dev.copy\t{grDevices}",
-									"dev.copy"
+									"is.leaf\t{stats}",
+									"is.leaf"
 								],
 								[
-									"pictex\t{grDevices}",
-									"pictex"
+									"dchisq\t{stats}",
+									"dchisq"
 								],
 								[
-									"recordGraphics\t{grDevices}",
-									"recordGraphics"
+									"contr.poly\t{stats}",
+									"contr.poly"
 								],
 								[
-									"rgb2hsv\t{grDevices}",
-									"rgb2hsv"
+									"stepfun\t{stats}",
+									"stepfun"
 								],
 								[
-									"gray\t{grDevices}",
-									"gray"
+									"quasipoisson\t{stats}",
+									"quasipoisson"
 								],
 								[
-									"extendrange\t{grDevices}",
-									"extendrange"
+									"na.omit\t{stats}",
+									"na.omit"
 								],
 								[
-									"is.raster\t{grDevices}",
-									"is.raster"
+									"pnbinom\t{stats}",
+									"pnbinom"
 								],
 								[
-									"colorspaces\t{grDevices}",
-									"colorspaces"
+									"ppois\t{stats}",
+									"ppois"
 								],
 								[
-									"getGraphicsEvent\t{grDevices}",
-									"getGraphicsEvent"
+									"model.matrix.default\t{stats}",
+									"model.matrix.default"
 								],
 								[
-									"pdfFonts\t{grDevices}",
-									"pdfFonts"
+									"family\t{stats}",
+									"family"
 								],
 								[
-									"convertColor\t{grDevices}",
-									"convertColor"
+									"plot.ecdf\t{stats}",
+									"plot.ecdf"
 								],
 								[
-									"dev.capabilities\t{grDevices}",
-									"dev.capabilities"
+									"cor.test\t{stats}",
+									"cor.test"
 								],
 								[
-									"msgWindow\t{grDevices}",
-									"msgWindow"
+									"pchisq\t{stats}",
+									"pchisq"
 								],
 								[
-									"chull\t{grDevices}",
-									"chull"
+									"rchisq\t{stats}",
+									"rchisq"
 								],
 								[
-									"blues9\t{grDevices}",
-									"blues9"
+									"na.fail\t{stats}",
+									"na.fail"
 								],
 								[
-									"col2rgb\t{grDevices}",
-									"col2rgb"
+									"heatmap\t{stats}",
+									"heatmap"
 								],
 								[
-									"palette\t{grDevices}",
-									"palette"
+									"rmultinom\t{stats}",
+									"rmultinom"
 								],
 								[
-									"hsv\t{grDevices}",
-									"hsv"
+									"qweibull\t{stats}",
+									"qweibull"
 								],
 								[
-									"Hershey\t{grDevices}",
-									"Hershey"
+									"power.t.test\t{stats}",
+									"power.t.test"
 								],
 								[
-									"cm.colors\t{grDevices}",
-									"cm.colors"
+									"complete.cases\t{stats}",
+									"complete.cases"
 								],
 								[
-									"cairo_pdf\t{grDevices}",
-									"cairo_pdf"
+									"loess.control\t{stats}",
+									"loess.control"
 								],
 								[
-									"colours\t{grDevices}",
-									"colours"
+									"qnbinom\t{stats}",
+									"qnbinom"
 								],
 								[
-									"dev.interactive\t{grDevices}",
-									"dev.interactive"
+									"df\t{stats}",
+									"df"
 								],
 								[
-									"adjustcolor\t{grDevices}",
-									"adjustcolor"
+									"rnorm\t{stats}",
+									"rnorm"
 								],
 								[
-									"dev.new\t{grDevices}",
-									"dev.new"
+									"addmargins\t{stats}",
+									"addmargins"
 								],
 								[
-									"windowsFont\t{grDevices}",
-									"windowsFont"
+									"asOneSidedFormula\t{stats}",
+									"asOneSidedFormula"
 								],
 								[
-									"win.metafile\t{grDevices}",
-									"win.metafile"
+									"nlm\t{stats}",
+									"nlm"
 								],
 								[
-									"trans3d\t{grDevices}",
-									"trans3d"
+									"covratio\t{stats}",
+									"covratio"
 								],
 								[
-									"dev.control\t{grDevices}",
-									"dev.control"
+									"C\t{stats}",
+									"C"
 								],
 								[
-									"dev.next\t{grDevices}",
-									"dev.next"
+									"as.stepfun\t{stats}",
+									"as.stepfun"
 								],
 								[
-									"CIDFont\t{grDevices}",
-									"CIDFont"
+									"D\t{stats}",
+									"D"
 								],
 								[
-									"dev.capture\t{grDevices}",
-									"dev.capture"
+									"ar.burg\t{stats}",
+									"ar.burg"
 								],
 								[
-									"bmp\t{grDevices}",
-									"bmp"
+									"cov2cor\t{stats}",
+									"cov2cor"
 								],
 								[
-									"png\t{grDevices}",
-									"png"
+									"pgeom\t{stats}",
+									"pgeom"
 								],
 								[
-									"xfig\t{grDevices}",
-									"xfig"
+									"chisq.test\t{stats}",
+									"chisq.test"
 								],
 								[
-									"nclass.scott\t{grDevices}",
-									"nclass.scott"
+									"p.adjust\t{stats}",
+									"p.adjust"
 								],
 								[
-									"gray.colors\t{grDevices}",
-									"gray.colors"
+									"nls\t{stats}",
+									"nls"
 								],
 								[
-									"deviceIsInteractive\t{grDevices}",
-									"deviceIsInteractive"
+									"integrate\t{stats}",
+									"integrate"
 								],
 								[
-									"setGraphicsEventEnv\t{grDevices}",
-									"setGraphicsEventEnv"
+									"fivenum\t{stats}",
+									"fivenum"
 								],
 								[
-									"X11\t{grDevices}",
-									"X11"
+									"weighted.mean\t{stats}",
+									"weighted.mean"
 								],
 								[
-									"colorRampPalette\t{grDevices}",
-									"colorRampPalette"
+									"rweibull\t{stats}",
+									"rweibull"
 								],
 								[
-									"rgb\t{grDevices}",
-									"rgb"
+									"qqline\t{stats}",
+									"qqline"
 								],
 								[
-									"dev.set\t{grDevices}",
-									"dev.set"
+									"as.dendrogram\t{stats}",
+									"as.dendrogram"
 								],
 								[
-									".axisPars\t{grDevices}",
-									".axisPars"
+									"runmed\t{stats}",
+									"runmed"
 								],
 								[
-									"xyz.coords\t{grDevices}",
-									"xyz.coords"
+									"aov\t{stats}",
+									"aov"
 								],
 								[
-									"savePlot\t{grDevices}",
-									"savePlot"
+									"dt\t{stats}",
+									"dt"
 								],
 								[
-									"hcl\t{grDevices}",
-									"hcl"
+									"influence\t{stats}",
+									"influence"
 								],
 								[
-									"postscriptFonts\t{grDevices}",
-									"postscriptFonts"
+									"rnbinom\t{stats}",
+									"rnbinom"
 								],
 								[
-									"embedFonts\t{grDevices}",
-									"embedFonts"
+									"coefficients\t{stats}",
+									"coefficients"
 								],
 								[
-									"densCols\t{grDevices}",
-									"densCols"
+									"tsp\t{stats}",
+									"tsp"
 								],
 								[
-									"getGraphicsEventEnv\t{grDevices}",
-									"getGraphicsEventEnv"
+									"dfbeta\t{stats}",
+									"dfbeta"
 								],
 								[
-									"topo.colors\t{grDevices}",
-									"topo.colors"
+									"hasTsp\t{stats}",
+									"hasTsp"
 								],
 								[
-									"devAskNewPage\t{grDevices}",
-									"devAskNewPage"
+									"dbinom\t{stats}",
+									"dbinom"
 								],
 								[
-									"contourLines\t{grDevices}",
-									"contourLines"
+									"wilcox.test\t{stats}",
+									"wilcox.test"
 								],
 								[
-									"grSoftVersion\t{grDevices}",
-									"grSoftVersion"
+									"scatter.smooth\t{stats}",
+									"scatter.smooth"
 								],
 								[
-									"boxplot.stats\t{grDevices}",
-									"boxplot.stats"
+									"start\t{stats}",
+									"start"
 								],
 								[
-									"aspell_package_Rd_files\t{utils}",
-									"aspell_package_Rd_files"
+									"delete.response\t{stats}",
+									"delete.response"
 								],
 								[
-									"vi\t{utils}",
-									"vi"
+									"qsignrank\t{stats}",
+									"qsignrank"
 								],
 								[
-									"read.table\t{utils}",
-									"read.table"
+									"is.mts\t{stats}",
+									"is.mts"
 								],
 								[
-									"setWinProgressBar\t{utils}",
-									"setWinProgressBar"
+									".getXlevels\t{stats}",
+									".getXlevels"
 								],
 								[
-									"URLdecode\t{utils}",
-									"URLdecode"
+									"BIC\t{stats}",
+									"BIC"
 								],
 								[
-									"rc.status\t{utils}",
-									"rc.status"
+									"ks.test\t{stats}",
+									"ks.test"
 								],
 								[
-									"write.csv\t{utils}",
-									"write.csv"
+									".nknots.smspl\t{stats}",
+									".nknots.smspl"
 								],
 								[
-									"winMenuAdd\t{utils}",
-									"winMenuAdd"
+									"order.dendrogram\t{stats}",
+									"order.dendrogram"
 								],
 								[
-									"RweaveLatexOptions\t{utils}",
-									"RweaveLatexOptions"
+									"SSD\t{stats}",
+									"SSD"
 								],
 								[
-									"formatUL\t{utils}",
-									"formatUL"
+									"HoltWinters\t{stats}",
+									"HoltWinters"
 								],
 								[
-									"prompt\t{utils}",
-									"prompt"
+									"qbeta\t{stats}",
+									"qbeta"
 								],
 								[
-									"upgrade\t{utils}",
-									"upgrade"
+									"pbinom\t{stats}",
+									"pbinom"
 								],
 								[
-									"RShowDoc\t{utils}",
-									"RShowDoc"
+									"effects\t{stats}",
+									"effects"
 								],
 								[
-									"argsAnywhere\t{utils}",
-									"argsAnywhere"
+									"rbinom\t{stats}",
+									"rbinom"
 								],
 								[
-									"read.delim\t{utils}",
-									"read.delim"
+									"monthplot\t{stats}",
+									"monthplot"
 								],
 								[
-									"de.ncols\t{utils}",
-									"de.ncols"
+									"acf2AR\t{stats}",
+									"acf2AR"
 								],
 								[
-									"new.packages\t{utils}",
-									"new.packages"
+									"splinefunH\t{stats}",
+									"splinefunH"
 								],
 								[
-									"read.socket\t{utils}",
-									"read.socket"
+									"splinefun\t{stats}",
+									"splinefun"
 								],
 								[
-									"SweaveSyntConv\t{utils}",
-									"SweaveSyntConv"
+									"qunif\t{stats}",
+									"qunif"
 								],
 								[
-									"personList\t{utils}",
-									"personList"
+									"nls.control\t{stats}",
+									"nls.control"
 								],
 								[
-									"write.table\t{utils}",
-									"write.table"
+									"dbeta\t{stats}",
+									"dbeta"
 								],
 								[
-									"read.delim2\t{utils}",
-									"read.delim2"
+									"influence.measures\t{stats}",
+									"influence.measures"
 								],
 								[
-									"aspell_package_vignettes\t{utils}",
-									"aspell_package_vignettes"
+									"as.ts\t{stats}",
+									"as.ts"
 								],
 								[
-									"SweaveHooks\t{utils}",
-									"SweaveHooks"
+									"prop.trend.test\t{stats}",
+									"prop.trend.test"
 								],
 								[
-									"assignInNamespace\t{utils}",
-									"assignInNamespace"
+									"summary.glm\t{stats}",
+									"summary.glm"
 								],
 								[
-									"is.relistable\t{utils}",
-									"is.relistable"
+									"get_all_vars\t{stats}",
+									"get_all_vars"
 								],
 								[
-									".DollarNames\t{utils}",
-									".DollarNames"
+									"preplot\t{stats}",
+									"preplot"
 								],
 								[
-									"toBibtex\t{utils}",
-									"toBibtex"
+									"mood.test\t{stats}",
+									"mood.test"
 								],
 								[
-									"alarm\t{utils}",
-									"alarm"
+									"dunif\t{stats}",
+									"dunif"
 								],
 								[
-									"winDialog\t{utils}",
-									"winDialog"
+									"vcov\t{stats}",
+									"vcov"
 								],
 								[
-									"RweaveLatexSetup\t{utils}",
-									"RweaveLatexSetup"
+									"glm.control\t{stats}",
+									"glm.control"
 								],
 								[
-									"checkCRAN\t{utils}",
-									"checkCRAN"
+									"ar.ols\t{stats}",
+									"ar.ols"
 								],
 								[
-									"loadRconsole\t{utils}",
-									"loadRconsole"
+									"qgamma\t{stats}",
+									"qgamma"
 								],
 								[
-									"setRepositories\t{utils}",
-									"setRepositories"
+									"dendrapply\t{stats}",
+									"dendrapply"
 								],
 								[
-									"dump.frames\t{utils}",
-									"dump.frames"
+									"arima0.diag\t{stats}",
+									"arima0.diag"
 								],
 								[
-									"Rprof\t{utils}",
-									"Rprof"
+									"dnbinom\t{stats}",
+									"dnbinom"
 								],
 								[
-									"sessionInfo\t{utils}",
-									"sessionInfo"
+									"qnorm\t{stats}",
+									"qnorm"
 								],
 								[
-									"winDialogString\t{utils}",
-									"winDialogString"
+									"SSbiexp\t{stats}",
+									"SSbiexp"
 								],
 								[
-									"count.fields\t{utils}",
-									"count.fields"
+									"poisson.test\t{stats}",
+									"poisson.test"
 								],
 								[
-									"create.post\t{utils}",
-									"create.post"
+									"add.scope\t{stats}",
+									"add.scope"
 								],
 								[
-									"tail.matrix\t{utils}",
-									"tail.matrix"
+									"plot.spec.phase\t{stats}",
+									"plot.spec.phase"
 								],
 								[
-									"choose.dir\t{utils}",
-									"choose.dir"
+									"dlnorm\t{stats}",
+									"dlnorm"
 								],
 								[
-									"person\t{utils}",
-									"person"
+									"makeARIMA\t{stats}",
+									"makeARIMA"
 								],
 								[
-									"promptPackage\t{utils}",
-									"promptPackage"
+									"tsSmooth\t{stats}",
+									"tsSmooth"
 								],
 								[
-									"install.packages\t{utils}",
-									"install.packages"
+									"dnorm\t{stats}",
+									"dnorm"
 								],
 								[
-									"news\t{utils}",
-									"news"
+									"nobs\t{stats}",
+									"nobs"
 								],
 								[
-									"URLencode\t{utils}",
-									"URLencode"
+									"knots\t{stats}",
+									"knots"
 								],
 								[
-									"type.convert\t{utils}",
-									"type.convert"
+									"fitted\t{stats}",
+									"fitted"
 								],
 								[
-									"help.start\t{utils}",
-									"help.start"
+									"spline\t{stats}",
+									"spline"
 								],
 								[
-									"de.setup\t{utils}",
-									"de.setup"
+									"symnum\t{stats}",
+									"symnum"
 								],
 								[
-									"aregexec\t{utils}",
-									"aregexec"
+									"prcomp\t{stats}",
+									"prcomp"
 								],
 								[
-									"rc.getOption\t{utils}",
-									"rc.getOption"
+									"friedman.test\t{stats}",
+									"friedman.test"
 								],
 								[
-									"de.restore\t{utils}",
-									"de.restore"
+									"KalmanForecast\t{stats}",
+									"KalmanForecast"
 								],
 								[
-									"file.edit\t{utils}",
-									"file.edit"
+									"aggregate.data.frame\t{stats}",
+									"aggregate.data.frame"
 								],
 								[
-									"winProgressBar\t{utils}",
-									"winProgressBar"
+									"plot.spec.coherency\t{stats}",
+									"plot.spec.coherency"
 								],
 								[
-									"citHeader\t{utils}",
-									"citHeader"
+									"frequency\t{stats}",
+									"frequency"
 								],
 								[
-									"fix\t{utils}",
-									"fix"
+									"decompose\t{stats}",
+									"decompose"
 								],
 								[
-									"makeRweaveLatexCodeRunner\t{utils}",
-									"makeRweaveLatexCodeRunner"
+									"dsignrank\t{stats}",
+									"dsignrank"
 								],
 								[
-									"winMenuNames\t{utils}",
-									"winMenuNames"
+									"pcauchy\t{stats}",
+									"pcauchy"
 								],
 								[
-									"write.socket\t{utils}",
-									"write.socket"
+									"dist\t{stats}",
+									"dist"
 								],
 								[
-									"unzip\t{utils}",
-									"unzip"
+									"SSmicmen\t{stats}",
+									"SSmicmen"
 								],
 								[
-									"Sweave\t{utils}",
-									"Sweave"
+									"predict\t{stats}",
+									"predict"
 								],
 								[
-									"read.fwf\t{utils}",
-									"read.fwf"
+									"lag.plot\t{stats}",
+									"lag.plot"
 								],
 								[
-									"CRAN.packages\t{utils}",
-									"CRAN.packages"
+									"plnorm\t{stats}",
+									"plnorm"
 								],
 								[
-									"RweaveEvalWithOpt\t{utils}",
-									"RweaveEvalWithOpt"
+									"write.ftable\t{stats}",
+									"write.ftable"
 								],
 								[
-									"limitedLabels\t{utils}",
-									"limitedLabels"
+									"factanal\t{stats}",
+									"factanal"
 								],
 								[
-									"readCitationFile\t{utils}",
-									"readCitationFile"
+									"resid\t{stats}",
+									"resid"
 								],
 								[
-									"setWindowTitle\t{utils}",
-									"setWindowTitle"
+									"rlnorm\t{stats}",
+									"rlnorm"
 								],
 								[
-									"process.events\t{utils}",
-									"process.events"
+									"rstandard\t{stats}",
+									"rstandard"
 								],
 								[
-									"writeClipboard\t{utils}",
-									"writeClipboard"
+									"plot.ts\t{stats}",
+									"plot.ts"
 								],
 								[
-									"as.relistable\t{utils}",
-									"as.relistable"
+									"optim\t{stats}",
+									"optim"
 								],
 								[
-									"getParseText\t{utils}",
-									"getParseText"
+									"glm.fit\t{stats}",
+									"glm.fit"
 								],
 								[
-									"modifyList\t{utils}",
-									"modifyList"
+									"predict.lm\t{stats}",
+									"predict.lm"
 								],
 								[
-									"Filters\t{utils}",
-									"Filters"
+									"dmultinom\t{stats}",
+									"dmultinom"
 								],
 								[
-									"maintainer\t{utils}",
-									"maintainer"
+									"getCall\t{stats}",
+									"getCall"
 								],
 								[
-									"available.packages\t{utils}",
-									"available.packages"
+									"ansari.test\t{stats}",
+									"ansari.test"
 								],
 								[
-									"getWindowTitle\t{utils}",
-									"getWindowTitle"
+									"loadings\t{stats}",
+									"loadings"
 								],
 								[
-									"getWindowsHandles\t{utils}",
-									"getWindowsHandles"
+									"NLSstAsymptotic\t{stats}",
+									"NLSstAsymptotic"
 								],
 								[
-									"citeNatbib\t{utils}",
-									"citeNatbib"
+									"residuals.glm\t{stats}",
+									"residuals.glm"
 								],
 								[
-									"rc.options\t{utils}",
-									"rc.options"
+									"window\t{stats}",
+									"window"
 								],
 								[
-									"setBreakpoint\t{utils}",
-									"setBreakpoint"
+									"pbeta\t{stats}",
+									"pbeta"
 								],
 								[
-									"Rtangle\t{utils}",
-									"Rtangle"
+									"pairwise.t.test\t{stats}",
+									"pairwise.t.test"
 								],
 								[
-									"head.matrix\t{utils}",
-									"head.matrix"
+									"mantelhaen.test\t{stats}",
+									"mantelhaen.test"
 								],
 								[
-									"getTxtProgressBar\t{utils}",
-									"getTxtProgressBar"
+									"aggregate\t{stats}",
+									"aggregate"
 								],
 								[
-									"tail\t{utils}",
-									"tail"
+									"qcauchy\t{stats}",
+									"qcauchy"
 								],
 								[
-									"changedFiles\t{utils}",
-									"changedFiles"
+									"loess.smooth\t{stats}",
+									"loess.smooth"
 								],
 								[
-									"getWindowsHandle\t{utils}",
-									"getWindowsHandle"
+									"predict.glm\t{stats}",
+									"predict.glm"
 								],
 								[
-									"RweaveLatexFinish\t{utils}",
-									"RweaveLatexFinish"
+									"extractAIC\t{stats}",
+									"extractAIC"
 								],
 								[
-									"shortPathName\t{utils}",
-									"shortPathName"
+									"punif\t{stats}",
+									"punif"
 								],
 								[
-									"getAnywhere\t{utils}",
-									"getAnywhere"
+									"approxfun\t{stats}",
+									"approxfun"
 								],
 								[
-									"readClipboard\t{utils}",
-									"readClipboard"
+									"napredict\t{stats}",
+									"napredict"
 								],
 								[
-									"browseEnv\t{utils}",
-									"browseEnv"
+									"weights\t{stats}",
+									"weights"
 								],
 								[
-									"object.size\t{utils}",
-									"object.size"
+									"quasibinomial\t{stats}",
+									"quasibinomial"
 								],
 								[
-									"globalVariables\t{utils}",
-									"globalVariables"
+									"SSweibull\t{stats}",
+									"SSweibull"
 								],
 								[
-									"getClipboardFormats\t{utils}",
-									"getClipboardFormats"
+									"ave\t{stats}",
+									"ave"
 								],
 								[
-									"packageVersion\t{utils}",
-									"packageVersion"
+									"ARMAacf\t{stats}",
+									"ARMAacf"
 								],
 								[
-									"help.search\t{utils}",
-									"help.search"
+									"bw.ucv\t{stats}",
+									"bw.ucv"
 								],
 								[
-									"package.skeleton\t{utils}",
-									"package.skeleton"
+									"estVar\t{stats}",
+									"estVar"
 								],
 								[
-									"summaryRprof\t{utils}",
-									"summaryRprof"
+									"cor\t{stats}",
+									"cor"
 								],
 								[
-									"setTxtProgressBar\t{utils}",
-									"setTxtProgressBar"
+									"update.formula\t{stats}",
+									"update.formula"
 								],
 								[
-									"timestamp\t{utils}",
-									"timestamp"
+									"pbirthday\t{stats}",
+									"pbirthday"
 								],
 								[
-									"getSrcref\t{utils}",
-									"getSrcref"
+									"se.contrast\t{stats}",
+									"se.contrast"
 								],
 								[
-									"stack\t{utils}",
-									"stack"
+									"alias\t{stats}",
+									"alias"
 								],
 								[
-									"capture.output\t{utils}",
-									"capture.output"
+									"rcauchy\t{stats}",
+									"rcauchy"
 								],
 								[
-									"bug.report\t{utils}",
-									"bug.report"
+									"cov\t{stats}",
+									"cov"
 								],
 								[
-									"rc.settings\t{utils}",
-									"rc.settings"
+									"case.names\t{stats}",
+									"case.names"
 								],
 								[
-									"fileSnapshot\t{utils}",
-									"fileSnapshot"
+									"ls.print\t{stats}",
+									"ls.print"
 								],
 								[
-									"hsearch_db_keywords\t{utils}",
-									"hsearch_db_keywords"
+									"nlminb\t{stats}",
+									"nlminb"
 								],
 								[
-									"rtags\t{utils}",
-									"rtags"
+									"TukeyHSD\t{stats}",
+									"TukeyHSD"
 								],
 								[
-									"update.packageStatus\t{utils}",
-									"update.packageStatus"
+									"hatvalues\t{stats}",
+									"hatvalues"
 								],
 								[
-									"browseVignettes\t{utils}",
-									"browseVignettes"
+									"contr.sum\t{stats}",
+									"contr.sum"
 								],
 								[
-									"contrib.url\t{utils}",
-									"contrib.url"
+									"ppoints\t{stats}",
+									"ppoints"
 								],
 								[
-									"strOptions\t{utils}",
-									"strOptions"
+									"filter\t{stats}",
+									"filter"
 								],
 								[
-									"packageDescription\t{utils}",
-									"packageDescription"
+									"deviance\t{stats}",
+									"deviance"
 								],
 								[
-									"RweaveLatex\t{utils}",
-									"RweaveLatex"
+									"KalmanRun\t{stats}",
+									"KalmanRun"
 								],
 								[
-									"SweaveSyntaxNoweb\t{utils}",
-									"SweaveSyntaxNoweb"
+									"pnorm\t{stats}",
+									"pnorm"
 								],
 								[
-									"flush.console\t{utils}",
-									"flush.console"
+									"lag\t{stats}",
+									"lag"
 								],
 								[
-									"Rprofmem\t{utils}",
-									"Rprofmem"
+									"ar.yw\t{stats}",
+									"ar.yw"
 								],
 								[
-									"compareVersion\t{utils}",
-									"compareVersion"
+									"lm\t{stats}",
+									"lm"
 								],
 								[
-									"winMenuItems\t{utils}",
-									"winMenuItems"
+									"r2dtable\t{stats}",
+									"r2dtable"
 								],
 								[
-									"as.personList\t{utils}",
-									"as.personList"
+									"cpgram\t{stats}",
+									"cpgram"
 								],
 								[
-									"getFromNamespace\t{utils}",
-									"getFromNamespace"
+									"mcnemar.test\t{stats}",
+									"mcnemar.test"
 								],
 								[
-									"recover\t{utils}",
-									"recover"
+									"NLSstClosestX\t{stats}",
+									"NLSstClosestX"
 								],
 								[
-									"packageStatus\t{utils}",
-									"packageStatus"
+									"makepredictcall\t{stats}",
+									"makepredictcall"
 								],
 								[
-									"read.csv2\t{utils}",
-									"read.csv2"
+									"NLSstLfAsymptote\t{stats}",
+									"NLSstLfAsymptote"
 								],
 								[
-									"demo\t{utils}",
-									"demo"
+									"simulate\t{stats}",
+									"simulate"
 								],
 								[
-									"edit\t{utils}",
-									"edit"
+									"toeplitz\t{stats}",
+									"toeplitz"
 								],
 								[
-									"choose.files\t{utils}",
-									"choose.files"
+									"SSasympOrig\t{stats}",
+									"SSasympOrig"
 								],
 								[
-									"aspell_package_R_files\t{utils}",
-									"aspell_package_R_files"
+									"summary.manova\t{stats}",
+									"summary.manova"
 								],
 								[
-									"isS3method\t{utils}",
-									"isS3method"
+									"model.extract\t{stats}",
+									"model.extract"
 								],
 								[
-									"de\t{utils}",
-									"de"
+									"qhyper\t{stats}",
+									"qhyper"
 								],
 								[
-									"RSiteSearch\t{utils}",
-									"RSiteSearch"
+									"model.tables\t{stats}",
+									"model.tables"
 								],
 								[
-									"read.DIF\t{utils}",
-									"read.DIF"
+									"add1\t{stats}",
+									"add1"
 								],
 								[
-									"hsearch_db_concepts\t{utils}",
-									"hsearch_db_concepts"
+									"SSfol\t{stats}",
+									"SSfol"
 								],
 								[
-									"getSrcLocation\t{utils}",
-									"getSrcLocation"
+									"SSasymp\t{stats}",
+									"SSasymp"
 								],
 								[
-									"lsf.str\t{utils}",
-									"lsf.str"
+									"ts.plot\t{stats}",
+									"ts.plot"
 								],
 								[
-									"winMenuAddItem\t{utils}",
-									"winMenuAddItem"
+									"Gamma\t{stats}",
+									"Gamma"
 								],
 								[
-									"tar\t{utils}",
-									"tar"
+									"plot.stepfun\t{stats}",
+									"plot.stepfun"
 								],
 								[
-									"help.request\t{utils}",
-									"help.request"
+									"termplot\t{stats}",
+									"termplot"
 								],
 								[
-									"cite\t{utils}",
-									"cite"
+									"bartlett.test\t{stats}",
+									"bartlett.test"
 								],
 								[
-									".S3methods\t{utils}",
-									".S3methods"
+									"oneway.test\t{stats}",
+									"oneway.test"
 								],
 								[
-									"select.list\t{utils}",
-									"select.list"
+									"step\t{stats}",
+									"step"
 								],
 								[
-									".romans\t{utils}",
-									".romans"
+									"qlogis\t{stats}",
+									"qlogis"
 								],
 								[
-									"setStatusBar\t{utils}",
-									"setStatusBar"
+									"df.kernel\t{stats}",
+									"df.kernel"
 								],
 								[
-									"getCRANmirrors\t{utils}",
-									"getCRANmirrors"
+									"quasi\t{stats}",
+									"quasi"
 								],
 								[
-									"relist\t{utils}",
-									"relist"
+									"coef\t{stats}",
+									"coef"
 								],
 								[
-									"ls.str\t{utils}",
-									"ls.str"
+									"promax\t{stats}",
+									"promax"
 								],
 								[
-									"localeToCharset\t{utils}",
-									"localeToCharset"
+									"factor.scope\t{stats}",
+									"factor.scope"
 								],
 								[
-									"readRegistry\t{utils}",
-									"readRegistry"
+									"poisson\t{stats}",
+									"poisson"
 								],
 								[
-									"download.packages\t{utils}",
-									"download.packages"
+									"embed\t{stats}",
+									"embed"
 								],
 								[
-									"arrangeWindows\t{utils}",
-									"arrangeWindows"
+									"dcauchy\t{stats}",
+									"dcauchy"
 								],
 								[
-									"debugger\t{utils}",
-									"debugger"
+									"na.action\t{stats}",
+									"na.action"
 								],
 								[
-									"chooseCRANmirror\t{utils}",
-									"chooseCRANmirror"
+									"rect.hclust\t{stats}",
+									"rect.hclust"
 								],
 								[
-									"savehistory\t{utils}",
-									"savehistory"
+									"SSfpl\t{stats}",
+									"SSfpl"
 								],
 								[
-									"citEntry\t{utils}",
-									"citEntry"
+									"bw.bcv\t{stats}",
+									"bw.bcv"
 								],
 								[
-									"RweaveTryStop\t{utils}",
-									"RweaveTryStop"
+									"as.hclust\t{stats}",
+									"as.hclust"
 								],
 								[
-									"close.socket\t{utils}",
-									"close.socket"
+									"varimax\t{stats}",
+									"varimax"
 								],
 								[
-									"vignette\t{utils}",
-									"vignette"
+									"model.offset\t{stats}",
+									"model.offset"
 								],
 								[
-									"getS3method\t{utils}",
-									"getS3method"
+									"df.residual\t{stats}",
+									"df.residual"
 								],
 								[
-									"combn\t{utils}",
-									"combn"
+									"nextn\t{stats}",
+									"nextn"
 								],
 								[
-									"loadhistory\t{utils}",
-									"loadhistory"
+									"hclust\t{stats}",
+									"hclust"
 								],
 								[
-									"update.packages\t{utils}",
-									"update.packages"
+									"smooth.spline\t{stats}",
+									"smooth.spline"
 								],
 								[
-									"glob2rx\t{utils}",
-									"glob2rx"
+									"qtukey\t{stats}",
+									"qtukey"
 								],
 								[
-									"old.packages\t{utils}",
-									"old.packages"
+									"bw.nrd0\t{stats}",
+									"bw.nrd0"
 								],
 								[
-									"remove.packages\t{utils}",
-									"remove.packages"
+									"ppr\t{stats}",
+									"ppr"
 								],
 								[
-									"getParseData\t{utils}",
-									"getParseData"
+									"pacf\t{stats}",
+									"pacf"
 								],
 								[
-									"xedit\t{utils}",
-									"xedit"
+									"power.prop.test\t{stats}",
+									"power.prop.test"
 								],
 								[
-									"SweaveSyntaxLatex\t{utils}",
-									"SweaveSyntaxLatex"
+									"pwilcox\t{stats}",
+									"pwilcox"
 								],
 								[
-									"packageName\t{utils}",
-									"packageName"
+									"bw.nrd\t{stats}",
+									"bw.nrd"
 								],
 								[
-									"bibentry\t{utils}",
-									"bibentry"
+									"rsignrank\t{stats}",
+									"rsignrank"
 								],
 								[
-									"RtangleSetup\t{utils}",
-									"RtangleSetup"
+									"quantile\t{stats}",
+									"quantile"
 								],
 								[
-									"findLineNum\t{utils}",
-									"findLineNum"
+									"stl\t{stats}",
+									"stl"
 								],
 								[
-									"RtangleWritedoc\t{utils}",
-									"RtangleWritedoc"
+									"AIC\t{stats}",
+									"AIC"
 								],
 								[
-									"txtProgressBar\t{utils}",
-									"txtProgressBar"
+									"end\t{stats}",
+									"end"
 								],
 								[
-									"promptData\t{utils}",
-									"promptData"
+									"sortedXyData\t{stats}",
+									"sortedXyData"
 								],
 								[
-									"file_test\t{utils}",
-									"file_test"
+									"lowess\t{stats}",
+									"lowess"
 								],
 								[
-									"getIdentification\t{utils}",
-									"getIdentification"
+									"lm.wfit\t{stats}",
+									"lm.wfit"
 								],
 								[
-									"getSrcFilename\t{utils}",
-									"getSrcFilename"
+									"pf\t{stats}",
+									"pf"
 								],
 								[
-									"help\t{utils}",
-									"help"
+									"princomp\t{stats}",
+									"princomp"
 								],
 								[
-									"win.version\t{utils}",
-									"win.version"
+									"terms\t{stats}",
+									"terms"
 								],
 								[
-									"toLatex\t{utils}",
-									"toLatex"
+									"lm.influence\t{stats}",
+									"lm.influence"
 								],
 								[
-									"installed.packages\t{utils}",
-									"installed.packages"
+									"model.frame\t{stats}",
+									"model.frame"
 								],
 								[
-									"citFooter\t{utils}",
-									"citFooter"
+									"qwilcox\t{stats}",
+									"qwilcox"
 								],
 								[
-									"DLL.version\t{utils}",
-									"DLL.version"
+									"stat.anova\t{stats}",
+									"stat.anova"
 								],
 								[
-									"unstack\t{utils}",
-									"unstack"
+									"qchisq\t{stats}",
+									"qchisq"
 								],
 								[
-									"mirror2html\t{utils}",
-									"mirror2html"
+									"update.default\t{stats}",
+									"update.default"
 								],
 								[
-									"winMenuDelItem\t{utils}",
-									"winMenuDelItem"
+									"model.response\t{stats}",
+									"model.response"
 								],
 								[
-									"data.entry\t{utils}",
-									"data.entry"
+									"drop.scope\t{stats}",
+									"drop.scope"
 								],
 								[
-									"str\t{utils}",
-									"str"
+									"residuals\t{stats}",
+									"residuals"
 								],
 								[
-									"read.fortran\t{utils}",
-									"read.fortran"
+									"median\t{stats}",
+									"median"
 								],
 								[
-									"dataentry\t{utils}",
-									"dataentry"
+									"cycle\t{stats}",
+									"cycle"
 								],
 								[
-									"citation\t{utils}",
-									"citation"
+									"constrOptim\t{stats}",
+									"constrOptim"
 								],
 								[
-									"emacs\t{utils}",
-									"emacs"
+									"pt\t{stats}",
+									"pt"
 								],
 								[
-									"head\t{utils}",
-									"head"
+									"deriv3\t{stats}",
+									"deriv3"
 								],
 								[
-									"promptImport\t{utils}",
-									"promptImport"
+									"variable.names\t{stats}",
+									"variable.names"
 								],
 								[
-									"removeSource\t{utils}",
-									"removeSource"
+									"qf\t{stats}",
+									"qf"
 								],
 								[
-									"make.packages.html\t{utils}",
-									"make.packages.html"
+									"summary.aov\t{stats}",
+									"summary.aov"
 								],
 								[
-									"RweaveChunkPrefix\t{utils}",
-									"RweaveChunkPrefix"
+									"update\t{stats}",
+									"update"
 								],
 								[
-									"page\t{utils}",
-									"page"
+									"rwilcox\t{stats}",
+									"rwilcox"
 								],
 								[
-									"aspell_write_personal_dictionary_file\t{utils}",
-									"aspell_write_personal_dictionary_file"
+									"pairwise.table\t{stats}",
+									"pairwise.table"
 								],
 								[
-									"winMenuDel\t{utils}",
-									"winMenuDel"
+									"model.matrix.lm\t{stats}",
+									"model.matrix.lm"
 								],
 								[
-									"formatOL\t{utils}",
-									"formatOL"
+									"expand.model.frame\t{stats}",
+									"expand.model.frame"
 								],
 								[
-									"RweaveLatexWritedoc\t{utils}",
-									"RweaveLatexWritedoc"
+									"acf\t{stats}",
+									"acf"
 								],
 								[
-									"memory.limit\t{utils}",
-									"memory.limit"
+									"proj\t{stats}",
+									"proj"
 								],
 								[
-									"find\t{utils}",
-									"find"
+									"bw.SJ\t{stats}",
+									"bw.SJ"
 								],
 								[
-									"pico\t{utils}",
-									"pico"
+									"numericDeriv\t{stats}",
+									"numericDeriv"
 								],
 								[
-									"fixInNamespace\t{utils}",
-									"fixInNamespace"
+									"uniroot\t{stats}",
+									"uniroot"
 								],
 								[
-									"adist\t{utils}",
-									"adist"
+									"ARMAtoMA\t{stats}",
+									"ARMAtoMA"
 								],
 								[
-									"example\t{utils}",
-									"example"
+									"ksmooth\t{stats}",
+									"ksmooth"
 								],
 								[
-									"data\t{utils}",
-									"data"
+									"qt\t{stats}",
+									"qt"
 								],
 								[
-									"write.csv2\t{utils}",
-									"write.csv2"
+									"dffits\t{stats}",
+									"dffits"
 								],
 								[
-									"memory.size\t{utils}",
-									"memory.size"
+									".checkMFClasses\t{stats}",
+									".checkMFClasses"
 								],
 								[
-									"menu\t{utils}",
-									"menu"
+									"rstudent\t{stats}",
+									"rstudent"
 								],
 								[
-									"read.csv\t{utils}",
-									"read.csv"
+									"rf\t{stats}",
+									"rf"
 								],
 								[
-									"url.show\t{utils}",
-									"url.show"
+									"plclust\t{stats}",
+									"plclust"
 								],
 								[
-									"history\t{utils}",
-									"history"
+									"manova\t{stats}",
+									"manova"
 								],
 								[
-									"chooseBioCmirror\t{utils}",
-									"chooseBioCmirror"
+									"dwilcox\t{stats}",
+									"dwilcox"
 								],
 								[
-									"View\t{utils}",
-									"View"
+									"kernapply\t{stats}",
+									"kernapply"
 								],
 								[
-									"assignInMyNamespace\t{utils}",
-									"assignInMyNamespace"
+									".MFclass\t{stats}",
+									".MFclass"
 								],
 								[
-									"hsearch_db\t{utils}",
-									"hsearch_db"
+									"cutree\t{stats}",
+									"cutree"
 								],
 								[
-									"browseURL\t{utils}",
-									"browseURL"
+									"spec.ar\t{stats}",
+									"spec.ar"
 								],
 								[
-									"untar\t{utils}",
-									"untar"
+									"cmdscale\t{stats}",
+									"cmdscale"
 								],
 								[
-									"aspell\t{utils}",
-									"aspell"
+									"poly\t{stats}",
+									"poly"
 								],
 								[
-									"getWinProgressBar\t{utils}",
-									"getWinProgressBar"
+									"dweibull\t{stats}",
+									"dweibull"
 								],
 								[
-									"zip\t{utils}",
-									"zip"
+									"optimise\t{stats}",
+									"optimise"
 								],
 								[
-									"make.socket\t{utils}",
-									"make.socket"
+									"formula\t{stats}",
+									"formula"
 								],
 								[
-									"getSrcDirectory\t{utils}",
-									"getSrcDirectory"
+									"sd\t{stats}",
+									"sd"
 								],
 								[
-									"suppressForeignCheck\t{utils}",
-									"suppressForeignCheck"
+									"rt\t{stats}",
+									"rt"
 								],
 								[
-									"setInternet2\t{utils}",
-									"setInternet2"
+									"loglin\t{stats}",
+									"loglin"
 								],
 								[
-									"aspell_package_C_files\t{utils}",
-									"aspell_package_C_files"
+									"qbinom\t{stats}",
+									"qbinom"
 								],
 								[
-									"download.file\t{utils}",
-									"download.file"
+									"median.default\t{stats}",
+									"median.default"
 								],
 								[
-									"apropos\t{utils}",
-									"apropos"
+									"gaussian\t{stats}",
+									"gaussian"
 								],
 								[
-									"as.roman\t{utils}",
-									"as.roman"
+									"model.matrix\t{stats}",
+									"model.matrix"
 								],
 								[
-									"xemacs\t{utils}",
-									"xemacs"
+									"fitted.values\t{stats}",
+									"fitted.values"
 								],
 								[
-									"Stangle\t{utils}",
-									"Stangle"
+									"var\t{stats}",
+									"var"
 								],
 								[
-									"methods\t{utils}",
-									"methods"
+									"binomial\t{stats}",
+									"binomial"
 								],
 								[
-									"zip.unpack\t{utils}",
-									"zip.unpack"
+									"arima.sim\t{stats}",
+									"arima.sim"
 								],
 								[
-									"as.person\t{utils}",
-									"as.person"
+									"logLik\t{stats}",
+									"logLik"
 								],
 								[
-									"extends\t{methods}",
-									"extends"
+									"selfStart\t{stats}",
+									"selfStart"
 								],
 								[
-									"makeMethodsList\t{methods}",
-									"makeMethodsList"
+									"reformulate\t{stats}",
+									"reformulate"
 								],
 								[
-									"assignMethodsMetaData\t{methods}",
-									"assignMethodsMetaData"
+									"naresid\t{stats}",
+									"naresid"
 								],
 								[
-									"Summary\t{methods}",
-									"Summary"
+									"StructTS\t{stats}",
+									"StructTS"
 								],
 								[
-									"setReplaceMethod\t{methods}",
-									"setReplaceMethod"
+									"interaction.plot\t{stats}",
+									"interaction.plot"
 								],
 								[
-									".__C__EmptyMethodsList\t{methods}",
-									".__C__EmptyMethodsList"
+									"SSlogis\t{stats}",
+									"SSlogis"
 								],
 								[
-									"methodSignatureMatrix\t{methods}",
-									"methodSignatureMatrix"
+									"terms.formula\t{stats}",
+									"terms.formula"
 								],
 								[
-									"el\t{methods}",
-									"el"
+									"supsmu\t{stats}",
+									"supsmu"
 								],
 								[
-									".__C__lm\t{methods}",
-									".__C__lm"
+									"dgamma\t{stats}",
+									"dgamma"
 								],
 								[
-									"completeClassDefinition\t{methods}",
-									"completeClassDefinition"
+									"weighted.residuals\t{stats}",
+									"weighted.residuals"
 								],
 								[
-									"newEmptyObject\t{methods}",
-									"newEmptyObject"
+									"smooth\t{stats}",
+									"smooth"
 								],
 								[
-									"isGrammarSymbol\t{methods}",
-									"isGrammarSymbol"
+									"kernel\t{stats}",
+									"kernel"
 								],
 								[
-									"findFunction\t{methods}",
-									"findFunction"
+									"confint\t{stats}",
+									"confint"
 								],
 								[
-									"hasMethods\t{methods}",
-									"hasMethods"
+									"mvfft\t{stats}",
+									"mvfft"
 								],
 								[
-									".__C__ObjectsWithPackage\t{methods}",
-									".__C__ObjectsWithPackage"
+									"kruskal.test\t{stats}",
+									"kruskal.test"
 								],
 								[
-									"sigToEnv\t{methods}",
-									"sigToEnv"
+									"spec.pgram\t{stats}",
+									"spec.pgram"
 								],
 								[
-									".__C__namedList\t{methods}",
-									".__C__namedList"
+									"glm\t{stats}",
+									"glm"
 								],
 								[
-									"SignatureMethod\t{methods}",
-									"SignatureMethod"
+									"ls.diag\t{stats}",
+									"ls.diag"
 								],
 								[
-									"allGenerics\t{methods}",
-									"allGenerics"
+									"pairwise.wilcox.test\t{stats}",
+									"pairwise.wilcox.test"
 								],
 								[
-									"method.skeleton\t{methods}",
-									"method.skeleton"
+									"NLSstRtAsymptote\t{stats}",
+									"NLSstRtAsymptote"
 								],
 								[
-									".hasSlot\t{methods}",
-									".hasSlot"
+									"pgamma\t{stats}",
+									"pgamma"
 								],
 								[
-									".__C__PossibleMethod\t{methods}",
-									".__C__PossibleMethod"
+									"rpois\t{stats}",
+									"rpois"
 								],
 								[
-									"selectMethod\t{methods}",
-									"selectMethod"
+									"arima\t{stats}",
+									"arima"
 								],
 								[
-									"metaNameUndo\t{methods}",
-									"metaNameUndo"
+									"rgamma\t{stats}",
+									"rgamma"
 								],
 								[
-									".__C__matrix\t{methods}",
-									".__C__matrix"
+									"t.test\t{stats}",
+									"t.test"
 								],
 								[
-									".__C__refObject\t{methods}",
-									".__C__refObject"
+									"biplot\t{stats}",
+									"biplot"
 								],
 								[
-									".__C__nonstandardGroupGenericFunction\t{methods}",
-									".__C__nonstandardGroupGenericFunction"
+									"xtabs\t{stats}",
+									"xtabs"
 								],
 								[
-									".__C__refMethodDefWithTrace\t{methods}",
-									".__C__refMethodDefWithTrace"
+									"ts\t{stats}",
+									"ts"
 								],
 								[
-									".__C__classGeneratorFunction\t{methods}",
-									".__C__classGeneratorFunction"
+									"SSasympOff\t{stats}",
+									"SSasympOff"
 								],
 								[
-									"findMethod\t{methods}",
-									"findMethod"
+									"is.empty.model\t{stats}",
+									"is.empty.model"
 								],
 								[
-									"showMethods\t{methods}",
-									"showMethods"
+									"summary.lm\t{stats}",
+									"summary.lm"
 								],
 								[
-									"possibleExtends\t{methods}",
-									"possibleExtends"
+									"dummy.coef.lm\t{stats}",
+									"dummy.coef.lm"
 								],
 								[
-									"findUnique\t{methods}",
-									"findUnique"
+									"binom.test\t{stats}",
+									"binom.test"
 								],
 								[
-									"initialize\t{methods}",
-									"initialize"
+									"sigma\t{stats}",
+									"sigma"
 								],
 								[
-									"formalArgs\t{methods}",
-									"formalArgs"
+									"prop.test\t{stats}",
+									"prop.test"
 								],
 								[
-									".__C__NULL\t{methods}",
-									".__C__NULL"
+									"na.pass\t{stats}",
+									"na.pass"
 								],
 								[
-									".__C__glm.null\t{methods}",
-									".__C__glm.null"
+									"make.link\t{stats}",
+									"make.link"
 								],
 								[
-									"initRefFields\t{methods}",
-									"initRefFields"
+									"summary.stepfun\t{stats}",
+									"summary.stepfun"
 								],
 								[
-									"className\t{methods}",
-									"className"
+									"reshape\t{stats}",
+									"reshape"
 								],
 								[
-									"S3Class\t{methods}",
-									"S3Class"
+									"ftable\t{stats}",
+									"ftable"
 								],
 								[
-									"setGenericImplicit\t{methods}",
-									"setGenericImplicit"
+									"density.default\t{stats}",
+									"density.default"
 								],
 								[
-									"makeClassRepresentation\t{methods}",
-									"makeClassRepresentation"
+									"dfbetas\t{stats}",
+									"dfbetas"
 								],
 								[
-									"hasMethod\t{methods}",
-									"hasMethod"
+									"contrasts\t{stats}",
+									"contrasts"
 								],
 								[
-									"MethodAddCoerce\t{methods}",
-									"MethodAddCoerce"
+									"psignrank\t{stats}",
+									"psignrank"
 								],
 								[
-									"getGeneric\t{methods}",
-									"getGeneric"
+									"polym\t{stats}",
+									"polym"
 								],
 								[
-									".__C__list\t{methods}",
-									".__C__list"
+									"model.frame.default\t{stats}",
+									"model.frame.default"
 								],
 								[
-									"evalqOnLoad\t{methods}",
-									"evalqOnLoad"
+									"rgeom\t{stats}",
+									"rgeom"
 								],
 								[
-									"resetGeneric\t{methods}",
-									"resetGeneric"
+									"contr.treatment\t{stats}",
+									"contr.treatment"
 								],
 								[
-									"makePrototypeFromClassDef\t{methods}",
-									"makePrototypeFromClassDef"
+									"qlnorm\t{stats}",
+									"qlnorm"
 								],
 								[
-									".__C__functionWithTrace\t{methods}",
-									".__C__functionWithTrace"
+									"lm.fit\t{stats}",
+									"lm.fit"
 								],
 								[
-									".__C__MethodDefinitionWithTrace\t{methods}",
-									".__C__MethodDefinitionWithTrace"
+									"arima0\t{stats}",
+									"arima0"
 								],
 								[
-									"slotNames\t{methods}",
-									"slotNames"
+									"offset\t{stats}",
+									"offset"
 								],
 								[
-									"setLoadActions\t{methods}",
-									"setLoadActions"
+									"power.anova.test\t{stats}",
+									"power.anova.test"
 								],
 								[
-									".__C__OptionalFunction\t{methods}",
-									".__C__OptionalFunction"
+									"loess\t{stats}",
+									"loess"
 								],
 								[
-									".__C__derivedDefaultMethod\t{methods}",
-									".__C__derivedDefaultMethod"
+									"pairwise.prop.test\t{stats}",
+									"pairwise.prop.test"
 								],
 								[
-									"checkAtAssignment\t{methods}",
-									"checkAtAssignment"
+									"kmeans\t{stats}",
+									"kmeans"
 								],
 								[
-									".__C__traceable\t{methods}",
-									".__C__traceable"
+									"aggregate.ts\t{stats}",
+									"aggregate.ts"
 								],
 								[
-									"setOldClass\t{methods}",
-									"setOldClass"
+									"relevel\t{stats}",
+									"relevel"
 								],
 								[
-									"substituteDirect\t{methods}",
-									"substituteDirect"
+									"spectrum\t{stats}",
+									"spectrum"
 								],
 								[
-									"requireMethods\t{methods}",
-									"requireMethods"
+									"model.weights\t{stats}",
+									"model.weights"
 								],
 								[
-									"Complex\t{methods}",
-									"Complex"
+									"rexp\t{stats}",
+									"rexp"
 								],
 								[
-									"setIs\t{methods}",
-									"setIs"
+									".lm.fit\t{stats}",
+									".lm.fit"
 								],
 								[
-									"methodsPackageMetaName\t{methods}",
-									"methodsPackageMetaName"
+									"printCoefmat\t{stats}",
+									"printCoefmat"
 								],
 								[
-									"linearizeMlist\t{methods}",
-									"linearizeMlist"
+									"PP.test\t{stats}",
+									"PP.test"
 								],
 								[
-									"isSealedClass\t{methods}",
-									"isSealedClass"
+									"cov.wt\t{stats}",
+									"cov.wt"
 								],
 								[
-									"kronecker\t{methods}",
-									"kronecker"
+									"residuals.lm\t{stats}",
+									"residuals.lm"
 								],
 								[
-									"cbind2\t{methods}",
-									"cbind2"
+									"replications\t{stats}",
+									"replications"
 								],
 								[
-									".__C__builtin\t{methods}",
-									".__C__builtin"
+									"fisher.test\t{stats}",
+									"fisher.test"
 								],
 								[
-									".__C__ClassUnionRepresentation\t{methods}",
-									".__C__ClassUnionRepresentation"
+									"qexp\t{stats}",
+									"qexp"
 								],
 								[
-									"isGeneric\t{methods}",
-									"isGeneric"
+									"screeplot\t{stats}",
+									"screeplot"
 								],
 								[
-									".__C__refClassRepresentation\t{methods}",
-									".__C__refClassRepresentation"
+									"contr.helmert\t{stats}",
+									"contr.helmert"
 								],
 								[
-									"canCoerce\t{methods}",
-									"canCoerce"
+									"deltat\t{stats}",
+									"deltat"
 								],
 								[
-									"newBasic\t{methods}",
-									"newBasic"
+									"medpolish\t{stats}",
+									"medpolish"
 								],
 								[
-									".__C__.environment\t{methods}",
-									".__C__.environment"
+									"pexp\t{stats}",
+									"pexp"
 								],
 								[
-									".__C__refClass\t{methods}",
-									".__C__refClass"
+									"rWishart\t{stats}",
+									"rWishart"
 								],
 								[
-									"completeSubclasses\t{methods}",
-									"completeSubclasses"
+									"ccf\t{stats}",
+									"ccf"
 								],
 								[
-									".__C__table\t{methods}",
-									".__C__table"
+									"time\t{stats}",
+									"time"
 								],
 								[
-									"getLoadActions\t{methods}",
-									"getLoadActions"
+									"anova\t{stats}",
+									"anova"
 								],
 								[
-									"getClassDef\t{methods}",
-									"getClassDef"
+									"IQR\t{stats}",
+									"IQR"
 								],
 								[
-									"findClass\t{methods}",
-									"findClass"
+									"KalmanLike\t{stats}",
+									"KalmanLike"
 								],
 								[
-									".__C__language\t{methods}",
-									".__C__language"
+									"optimHess\t{stats}",
+									"optimHess"
 								],
 								[
-									".__C__anova.glm.null\t{methods}",
-									".__C__anova.glm.null"
+									"pweibull\t{stats}",
+									"pweibull"
 								],
 								[
-									"registerImplicitGenerics\t{methods}",
-									"registerImplicitGenerics"
+									"p.adjust.methods\t{stats}",
+									"p.adjust.methods"
 								],
 								[
-									"isClassDef\t{methods}",
-									"isClassDef"
+									"read.ftable\t{stats}",
+									"read.ftable"
 								],
 								[
-									"getPrototype\t{methods}",
-									"getPrototype"
+									"cancor\t{stats}",
+									"cancor"
 								],
 								[
-									"setValidity\t{methods}",
-									"setValidity"
+									"fft\t{stats}",
+									"fft"
 								],
 								[
-									"setPrimitiveMethods\t{methods}",
-									"setPrimitiveMethods"
+									"qpois\t{stats}",
+									"qpois"
 								],
 								[
-									"is\t{methods}",
-									"is"
+									"tsdiag\t{stats}",
+									"tsdiag"
 								],
 								[
-									"Logic\t{methods}",
-									"Logic"
+									"power\t{stats}",
+									"power"
 								],
 								[
-									".S4methods\t{methods}",
-									".S4methods"
+									"getInitial\t{stats}",
+									"getInitial"
 								],
 								[
-									".__C__socket\t{methods}",
-									".__C__socket"
+									"SSgompertz\t{stats}",
+									"SSgompertz"
 								],
 								[
-									"cacheMethod\t{methods}",
-									"cacheMethod"
+									"bandwidth.kernel\t{stats}",
+									"bandwidth.kernel"
 								],
 								[
-									"asMethodDefinition\t{methods}",
-									"asMethodDefinition"
+									"quade.test\t{stats}",
+									"quade.test"
 								],
 								[
-									".__C__special\t{methods}",
-									".__C__special"
+									"mauchly.test\t{stats}",
+									"mauchly.test"
 								],
 								[
-									"representation\t{methods}",
-									"representation"
+									"approx\t{stats}",
+									"approx"
 								],
 								[
-									".__C__SealedMethodDefinition\t{methods}",
-									".__C__SealedMethodDefinition"
+									".preformat.ts\t{stats}",
+									".preformat.ts"
 								],
 								[
-									"isSealedMethod\t{methods}",
-									"isSealedMethod"
+									"deriv\t{stats}",
+									"deriv"
 								],
 								[
-									".__C__raw\t{methods}",
-									".__C__raw"
+									"spec.taper\t{stats}",
+									"spec.taper"
 								],
 								[
-									"S3Part\t{methods}",
-									"S3Part"
+									"ecdf\t{stats}",
+									"ecdf"
 								],
 								[
-									".__C__environment\t{methods}",
-									".__C__environment"
+									"dhyper\t{stats}",
+									"dhyper"
 								],
 								[
-									".__C__integer\t{methods}",
-									".__C__integer"
+									"dpois\t{stats}",
+									"dpois"
 								],
 								[
-									"listFromMlist\t{methods}",
-									"listFromMlist"
+									"setNames\t{stats}",
+									"setNames"
 								],
 								[
-									".__C__mts\t{methods}",
-									".__C__mts"
-								],
-								[
-									".doTracePrint\t{methods}",
-									".doTracePrint"
-								],
-								[
-									".OldClassesList\t{methods}",
-									".OldClassesList"
-								],
-								[
-									".__C__standardGeneric\t{methods}",
-									".__C__standardGeneric"
-								],
-								[
-									".__C__MethodsList\t{methods}",
-									".__C__MethodsList"
-								],
-								[
-									"promptMethods\t{methods}",
-									"promptMethods"
-								],
-								[
-									"setPackageName\t{methods}",
-									"setPackageName"
-								],
-								[
-									".__C__groupGenericFunction\t{methods}",
-									".__C__groupGenericFunction"
-								],
-								[
-									"tryNew\t{methods}",
-									"tryNew"
-								],
-								[
-									"getSubclasses\t{methods}",
-									"getSubclasses"
-								],
-								[
-									".classEnv\t{methods}",
-									".classEnv"
-								],
-								[
-									"Arith\t{methods}",
-									"Arith"
-								],
-								[
-									".__C__LinearMethodsList\t{methods}",
-									".__C__LinearMethodsList"
-								],
-								[
-									".__C__formula\t{methods}",
-									".__C__formula"
-								],
-								[
-									"assignClassDef\t{methods}",
-									"assignClassDef"
-								],
-								[
-									".__C__ordered\t{methods}",
-									".__C__ordered"
-								],
-								[
-									"seemsS4Object\t{methods}",
-									"seemsS4Object"
-								],
-								[
-									"setMethod\t{methods}",
-									"setMethod"
-								],
-								[
-									".__C__SClassExtension\t{methods}",
-									".__C__SClassExtension"
-								],
-								[
-									".__C__expression\t{methods}",
-									".__C__expression"
-								],
-								[
-									".__C__classRepresentation\t{methods}",
-									".__C__classRepresentation"
-								],
-								[
-									"setRefClass\t{methods}",
-									"setRefClass"
-								],
-								[
-									".__C__numeric\t{methods}",
-									".__C__numeric"
-								],
-								[
-									"evalSource\t{methods}",
-									"evalSource"
-								],
-								[
-									"rbind2\t{methods}",
-									"rbind2"
-								],
-								[
-									"balanceMethodsList\t{methods}",
-									"balanceMethodsList"
-								],
-								[
-									".__C__VIRTUAL\t{methods}",
-									".__C__VIRTUAL"
-								],
-								[
-									"conformMethod\t{methods}",
-									"conformMethod"
-								],
-								[
-									"getClassPackage\t{methods}",
-									"getClassPackage"
-								],
-								[
-									"getClass\t{methods}",
-									"getClass"
-								],
-								[
-									".__C__complex\t{methods}",
-									".__C__complex"
-								],
-								[
-									"getMethod\t{methods}",
-									"getMethod"
-								],
-								[
-									"getGenerics\t{methods}",
-									"getGenerics"
-								],
-								[
-									"finalDefaultMethod\t{methods}",
-									"finalDefaultMethod"
-								],
-								[
-									"showClass\t{methods}",
-									"showClass"
-								],
-								[
-									".__C__name\t{methods}",
-									".__C__name"
-								],
-								[
-									".__C__nonstandardGeneric\t{methods}",
-									".__C__nonstandardGeneric"
-								],
-								[
-									".__C__POSIXct\t{methods}",
-									".__C__POSIXct"
-								],
-								[
-									".__C__factor\t{methods}",
-									".__C__factor"
-								],
-								[
-									".__C__libraryIQR\t{methods}",
-									".__C__libraryIQR"
-								],
-								[
-									"empty.dump\t{methods}",
-									"empty.dump"
-								],
-								[
-									"validSlotNames\t{methods}",
-									"validSlotNames"
-								],
-								[
-									"new\t{methods}",
-									"new"
-								],
-								[
-									".__C__listOfMethods\t{methods}",
-									".__C__listOfMethods"
-								],
-								[
-									"existsFunction\t{methods}",
-									"existsFunction"
-								],
-								[
-									".__C__.externalptr\t{methods}",
-									".__C__.externalptr"
-								],
-								[
-									".__C__classPrototypeDef\t{methods}",
-									".__C__classPrototypeDef"
-								],
-								[
-									"getClasses\t{methods}",
-									"getClasses"
-								],
-								[
-									"isVirtualClass\t{methods}",
-									"isVirtualClass"
-								],
-								[
-									"elNamed\t{methods}",
-									"elNamed"
-								],
-								[
-									"getDataPart\t{methods}",
-									"getDataPart"
-								],
-								[
-									".__C__mtable\t{methods}",
-									".__C__mtable"
-								],
-								[
-									".__C__anova\t{methods}",
-									".__C__anova"
-								],
-								[
-									"sealClass\t{methods}",
-									"sealClass"
-								],
-								[
-									".selectSuperClasses\t{methods}",
-									".selectSuperClasses"
-								],
-								[
-									"getMethodsMetaData\t{methods}",
-									"getMethodsMetaData"
-								],
-								[
-									".__C__maov\t{methods}",
-									".__C__maov"
-								],
-								[
-									"isClassUnion\t{methods}",
-									"isClassUnion"
-								],
-								[
-									"getClassName\t{methods}",
-									"getClassName"
-								],
-								[
-									"matchSignature\t{methods}",
-									"matchSignature"
-								],
-								[
-									".EmptyPrimitiveSkeletons\t{methods}",
-									".EmptyPrimitiveSkeletons"
-								],
-								[
-									"signature\t{methods}",
-									"signature"
-								],
-								[
-									"loadMethod\t{methods}",
-									"loadMethod"
-								],
-								[
-									".__C__packageInfo\t{methods}",
-									".__C__packageInfo"
-								],
-								[
-									"evalOnLoad\t{methods}",
-									"evalOnLoad"
-								],
-								[
-									".__C__MethodWithNextWithTrace\t{methods}",
-									".__C__MethodWithNextWithTrace"
-								],
-								[
-									".__C__dump.frames\t{methods}",
-									".__C__dump.frames"
-								],
-								[
-									"fixPre1.8\t{methods}",
-									"fixPre1.8"
-								],
-								[
-									"getMethodsForDispatch\t{methods}",
-									"getMethodsForDispatch"
-								],
-								[
-									"setLoadAction\t{methods}",
-									"setLoadAction"
-								],
-								[
-									".TraceWithMethods\t{methods}",
-									".TraceWithMethods"
-								],
-								[
-									"missingArg\t{methods}",
-									"missingArg"
-								],
-								[
-									"externalRefMethod\t{methods}",
-									"externalRefMethod"
-								],
-								[
-									".__C__function\t{methods}",
-									".__C__function"
-								],
-								[
-									".__C__envRefClass\t{methods}",
-									".__C__envRefClass"
-								],
-								[
-									"defaultPrototype\t{methods}",
-									"defaultPrototype"
-								],
-								[
-									".__C__glm\t{methods}",
-									".__C__glm"
-								],
-								[
-									"insertSource\t{methods}",
-									"insertSource"
-								],
-								[
-									"dumpMethod\t{methods}",
-									"dumpMethod"
-								],
-								[
-									".__C__if\t{methods}",
-									".__C__if"
-								],
-								[
-									".__C__oldClass\t{methods}",
-									".__C__oldClass"
-								],
-								[
-									"coerce\t{methods}",
-									"coerce"
-								],
-								[
-									"hasArg\t{methods}",
-									"hasArg"
-								],
-								[
-									".__C__refGeneratorSlot\t{methods}",
-									".__C__refGeneratorSlot"
-								],
-								[
-									"testInheritedMethods\t{methods}",
-									"testInheritedMethods"
-								],
-								[
-									"insertClassMethods\t{methods}",
-									"insertClassMethods"
-								],
-								[
-									".__C__call\t{methods}",
-									".__C__call"
-								],
-								[
-									".__C__data.frame\t{methods}",
-									".__C__data.frame"
-								],
-								[
-									"Math\t{methods}",
-									"Math"
-								],
-								[
-									".__C__for\t{methods}",
-									".__C__for"
-								],
-								[
-									"removeMethods\t{methods}",
-									"removeMethods"
-								],
-								[
-									".__C__array\t{methods}",
-									".__C__array"
-								],
-								[
-									"getPackageName\t{methods}",
-									"getPackageName"
-								],
-								[
-									".__C__MethodDefinition\t{methods}",
-									".__C__MethodDefinition"
-								],
-								[
-									".__C__nonstandardGenericWithTrace\t{methods}",
-									".__C__nonstandardGenericWithTrace"
-								],
-								[
-									"rematchDefinition\t{methods}",
-									"rematchDefinition"
-								],
-								[
-									"insertMethod\t{methods}",
-									"insertMethod"
-								],
-								[
-									"findMethods\t{methods}",
-									"findMethods"
-								],
-								[
-									"mergeMethods\t{methods}",
-									"mergeMethods"
-								],
-								[
-									".__C__POSIXt\t{methods}",
-									".__C__POSIXt"
-								],
-								[
-									"unRematchDefinition\t{methods}",
-									"unRematchDefinition"
-								],
-								[
-									".__C__refObjectGenerator\t{methods}",
-									".__C__refObjectGenerator"
-								],
-								[
-									".__C__Date\t{methods}",
-									".__C__Date"
-								],
-								[
-									".__C__missing\t{methods}",
-									".__C__missing"
-								],
-								[
-									"callGeneric\t{methods}",
-									"callGeneric"
-								],
-								[
-									".__C__externalptr\t{methods}",
-									".__C__externalptr"
-								],
-								[
-									".__C__derivedDefaultMethodWithTrace\t{methods}",
-									".__C__derivedDefaultMethodWithTrace"
-								],
-								[
-									".__C__ANY\t{methods}",
-									".__C__ANY"
-								],
-								[
-									"mlistMetaName\t{methods}",
-									"mlistMetaName"
-								],
-								[
-									"existsMethod\t{methods}",
-									"existsMethod"
-								],
-								[
-									"showExtends\t{methods}",
-									"showExtends"
-								],
-								[
-									"showMlist\t{methods}",
-									"showMlist"
-								],
-								[
-									"MethodsList\t{methods}",
-									"MethodsList"
-								],
-								[
-									"getVirtual\t{methods}",
-									"getVirtual"
-								],
-								[
-									"makeStandardGeneric\t{methods}",
-									"makeStandardGeneric"
-								],
-								[
-									".__C__className\t{methods}",
-									".__C__className"
-								],
-								[
-									".__C__character\t{methods}",
-									".__C__character"
-								],
-								[
-									"initFieldArgs\t{methods}",
-									"initFieldArgs"
-								],
-								[
-									".__C__genericFunction\t{methods}",
-									".__C__genericFunction"
-								],
-								[
-									".__C__signature\t{methods}",
-									".__C__signature"
-								],
-								[
-									".__C__uninitializedField\t{methods}",
-									".__C__uninitializedField"
-								],
-								[
-									".untracedFunction\t{methods}",
-									".untracedFunction"
-								],
-								[
-									".__C__while\t{methods}",
-									".__C__while"
-								],
-								[
-									"validObject\t{methods}",
-									"validObject"
-								],
-								[
-									"resetClass\t{methods}",
-									"resetClass"
-								],
-								[
-									".__C__hsearch\t{methods}",
-									".__C__hsearch"
-								],
-								[
-									"isGroup\t{methods}",
-									"isGroup"
-								],
-								[
-									"substituteFunctionArgs\t{methods}",
-									"substituteFunctionArgs"
-								],
-								[
-									"multipleClasses\t{methods}",
-									"multipleClasses"
-								],
-								[
-									"cacheGenericsMetaData\t{methods}",
-									"cacheGenericsMetaData"
-								],
-								[
-									"dumpMethods\t{methods}",
-									"dumpMethods"
-								],
-								[
-									".__C__conditionalExtension\t{methods}",
-									".__C__conditionalExtension"
-								],
-								[
-									"prototype\t{methods}",
-									"prototype"
-								],
-								[
-									"packageSlot\t{methods}",
-									"packageSlot"
-								],
-								[
-									"setGeneric\t{methods}",
-									"setGeneric"
-								],
-								[
-									"testVirtual\t{methods}",
-									"testVirtual"
-								],
-								[
-									"prohibitGeneric\t{methods}",
-									"prohibitGeneric"
-								],
-								[
-									".__C__groupGenericFunctionWithTrace\t{methods}",
-									".__C__groupGenericFunctionWithTrace"
-								],
-								[
-									"selectSuperClasses\t{methods}",
-									"selectSuperClasses"
-								],
-								[
-									"slot\t{methods}",
-									"slot"
-								],
-								[
-									"doPrimitiveMethod\t{methods}",
-									"doPrimitiveMethod"
-								],
-								[
-									".__C__summaryDefault\t{methods}",
-									".__C__summaryDefault"
-								],
-								[
-									".__C__recordedplot\t{methods}",
-									".__C__recordedplot"
-								],
-								[
-									".ShortPrimitiveSkeletons\t{methods}",
-									".ShortPrimitiveSkeletons"
-								],
-								[
-									"show\t{methods}",
-									"show"
-								],
-								[
-									".__C__nonstandardGenericFunction\t{methods}",
-									".__C__nonstandardGenericFunction"
-								],
-								[
-									"cacheMetaData\t{methods}",
-									"cacheMetaData"
-								],
-								[
-									".__C__repeat\t{methods}",
-									".__C__repeat"
-								],
-								[
-									"Ops\t{methods}",
-									"Ops"
-								],
-								[
-									"superClassDepth\t{methods}",
-									"superClassDepth"
-								],
-								[
-									".__C__vector\t{methods}",
-									".__C__vector"
-								],
-								[
-									".__C__POSIXlt\t{methods}",
-									".__C__POSIXlt"
-								],
-								[
-									"makeExtends\t{methods}",
-									"makeExtends"
-								],
-								[
-									"getValidity\t{methods}",
-									"getValidity"
-								],
-								[
-									"functionBody\t{methods}",
-									"functionBody"
-								],
-								[
-									"completeExtends\t{methods}",
-									"completeExtends"
-								],
-								[
-									".__C__integrate\t{methods}",
-									".__C__integrate"
-								],
-								[
-									".__C__structure\t{methods}",
-									".__C__structure"
-								],
-								[
-									"slotsFromS3\t{methods}",
-									"slotsFromS3"
-								],
-								[
-									".__C__genericFunctionWithTrace\t{methods}",
-									".__C__genericFunctionWithTrace"
-								],
-								[
-									".__C__rle\t{methods}",
-									".__C__rle"
-								],
-								[
-									".__C__activeBindingFunction\t{methods}",
-									".__C__activeBindingFunction"
-								],
-								[
-									"Math2\t{methods}",
-									"Math2"
-								],
-								[
-									".__C__SuperClassMethod\t{methods}",
-									".__C__SuperClassMethod"
-								],
-								[
-									"promptClass\t{methods}",
-									"promptClass"
-								],
-								[
-									"Quote\t{methods}",
-									"Quote"
-								],
-								[
-									".__C__internalDispatchMethod\t{methods}",
-									".__C__internalDispatchMethod"
-								],
-								[
-									"getAllMethods\t{methods}",
-									"getAllMethods"
-								],
-								[
-									"setClassUnion\t{methods}",
-									"setClassUnion"
-								],
-								[
-									"removeMethod\t{methods}",
-									"removeMethod"
-								],
-								[
-									"newClassRepresentation\t{methods}",
-									"newClassRepresentation"
-								],
-								[
-									".__C__localRefClass\t{methods}",
-									".__C__localRefClass"
-								],
-								[
-									".__C__refMethodDef\t{methods}",
-									".__C__refMethodDef"
-								],
-								[
-									"generic.skeleton\t{methods}",
-									"generic.skeleton"
-								],
-								[
-									".__C__.name\t{methods}",
-									".__C__.name"
-								],
-								[
-									"hasLoadAction\t{methods}",
-									"hasLoadAction"
-								],
-								[
-									"setAs\t{methods}",
-									"setAs"
-								],
-								[
-									".__C__aov\t{methods}",
-									".__C__aov"
-								],
-								[
-									"listFromMethods\t{methods}",
-									"listFromMethods"
-								],
-								[
-									".__C__data.frameRowLabels\t{methods}",
-									".__C__data.frameRowLabels"
-								],
-								[
-									"classesToAM\t{methods}",
-									"classesToAM"
-								],
-								[
-									"getProperties\t{methods}",
-									"getProperties"
-								],
-								[
-									"traceOff\t{methods}",
-									"traceOff"
-								],
-								[
-									"classLabel\t{methods}",
-									"classLabel"
-								],
-								[
-									"removeMethodsObject\t{methods}",
-									"removeMethodsObject"
-								],
-								[
-									"allNames\t{methods}",
-									"allNames"
-								],
-								[
-									"getSlots\t{methods}",
-									"getSlots"
-								],
-								[
-									".__C__S3\t{methods}",
-									".__C__S3"
-								],
-								[
-									".__C__S4\t{methods}",
-									".__C__S4"
-								],
-								[
-									"inheritedSlotNames\t{methods}",
-									"inheritedSlotNames"
-								],
-								[
-									"showDefault\t{methods}",
-									"showDefault"
-								],
-								[
-									"reconcilePropertiesAndPrototype\t{methods}",
-									"reconcilePropertiesAndPrototype"
-								],
-								[
-									"removeGeneric\t{methods}",
-									"removeGeneric"
-								],
-								[
-									"getRefClass\t{methods}",
-									"getRefClass"
-								],
-								[
-									".__C__anova.glm\t{methods}",
-									".__C__anova.glm"
-								],
-								[
-									"addNextMethod\t{methods}",
-									"addNextMethod"
-								],
-								[
-									".__C__packageIQR\t{methods}",
-									".__C__packageIQR"
-								],
-								[
-									"Compare\t{methods}",
-									"Compare"
-								],
-								[
-									"MethodsListSelect\t{methods}",
-									"MethodsListSelect"
-								],
-								[
-									"as\t{methods}",
-									"as"
-								],
-								[
-									".__C__standardGenericWithTrace\t{methods}",
-									".__C__standardGenericWithTrace"
-								],
-								[
-									"isXS3Class\t{methods}",
-									"isXS3Class"
-								],
-								[
-									"languageEl\t{methods}",
-									"languageEl"
-								],
-								[
-									"removeClass\t{methods}",
-									"removeClass"
-								],
-								[
-									".__C__nonStructure\t{methods}",
-									".__C__nonStructure"
-								],
-								[
-									"callNextMethod\t{methods}",
-									"callNextMethod"
-								],
-								[
-									"defaultDumpName\t{methods}",
-									"defaultDumpName"
-								],
-								[
-									"makeGeneric\t{methods}",
-									"makeGeneric"
-								],
-								[
-									"isClass\t{methods}",
-									"isClass"
-								],
-								[
-									"getAccess\t{methods}",
-									"getAccess"
-								],
-								[
-									".__C__.NULL\t{methods}",
-									".__C__.NULL"
-								],
-								[
-									"getExtends\t{methods}",
-									"getExtends"
-								],
-								[
-									"setGroupGeneric\t{methods}",
-									"setGroupGeneric"
-								],
-								[
-									".__C__density\t{methods}",
-									".__C__density"
-								],
-								[
-									"getFunction\t{methods}",
-									"getFunction"
-								],
-								[
-									".__C__logLik\t{methods}",
-									".__C__logLik"
-								],
-								[
-									"classMetaName\t{methods}",
-									"classMetaName"
-								],
-								[
-									".__C__externalRefMethod\t{methods}",
-									".__C__externalRefMethod"
-								],
-								[
-									".__C__MethodSelectionReport\t{methods}",
-									".__C__MethodSelectionReport"
-								],
-								[
-									"setClass\t{methods}",
-									"setClass"
-								],
-								[
-									".valueClassTest\t{methods}",
-									".valueClassTest"
-								],
-								[
-									".__C__optionalMethod\t{methods}",
-									".__C__optionalMethod"
-								],
-								[
-									"getGroup\t{methods}",
-									"getGroup"
-								],
-								[
-									"checkSlotAssignment\t{methods}",
-									"checkSlotAssignment"
-								],
-								[
-									"implicitGeneric\t{methods}",
-									"implicitGeneric"
-								],
-								[
-									"getAllSuperClasses\t{methods}",
-									"getAllSuperClasses"
-								],
-								[
-									".__C__ts\t{methods}",
-									".__C__ts"
-								],
-								[
-									"getGroupMembers\t{methods}",
-									"getGroupMembers"
-								],
-								[
-									"traceOn\t{methods}",
-									"traceOn"
-								],
-								[
-									".__C__MethodWithNext\t{methods}",
-									".__C__MethodWithNext"
-								],
-								[
-									".__C__logical\t{methods}",
-									".__C__logical"
-								],
-								[
-									"setDataPart\t{methods}",
-									"setDataPart"
-								],
-								[
-									"getMethods\t{methods}",
-									"getMethods"
-								],
-								[
-									".__C__defaultBindingFunction\t{methods}",
-									".__C__defaultBindingFunction"
-								],
-								[
-									"findMethodSignatures\t{methods}",
-									"findMethodSignatures"
-								],
-								[
-									".__C__.Other\t{methods}",
-									".__C__.Other"
-								],
-								[
-									"emptyMethodsList\t{methods}",
-									"emptyMethodsList"
-								],
-								[
-									".__C__summary.table\t{methods}",
-									".__C__summary.table"
-								],
-								[
-									".slotNames\t{methods}",
-									".slotNames"
-								],
-								[
-									".__C__mlm\t{methods}",
-									".__C__mlm"
-								],
-								[
-									".__C__sourceEnvironment\t{methods}",
-									".__C__sourceEnvironment"
-								],
-								[
-									"assocplot\t{graphics}",
-									"assocplot"
-								],
-								[
-									"title\t{graphics}",
-									"title"
-								],
-								[
-									"axis.Date\t{graphics}",
-									"axis.Date"
-								],
-								[
-									"points\t{graphics}",
-									"points"
-								],
-								[
-									"pairs.default\t{graphics}",
-									"pairs.default"
-								],
-								[
-									"strheight\t{graphics}",
-									"strheight"
-								],
-								[
-									"rect\t{graphics}",
-									"rect"
-								],
-								[
-									"frame\t{graphics}",
-									"frame"
-								],
-								[
-									"identify\t{graphics}",
-									"identify"
-								],
-								[
-									"plot.xy\t{graphics}",
-									"plot.xy"
-								],
-								[
-									"stem\t{graphics}",
-									"stem"
-								],
-								[
-									"par\t{graphics}",
-									"par"
-								],
-								[
-									"plot.default\t{graphics}",
-									"plot.default"
-								],
-								[
-									"fourfoldplot\t{graphics}",
-									"fourfoldplot"
-								],
-								[
-									"yinch\t{graphics}",
-									"yinch"
-								],
-								[
-									"layout\t{graphics}",
-									"layout"
-								],
-								[
-									"panel.smooth\t{graphics}",
-									"panel.smooth"
-								],
-								[
-									"split.screen\t{graphics}",
-									"split.screen"
-								],
-								[
-									"screen\t{graphics}",
-									"screen"
-								],
-								[
-									"rug\t{graphics}",
-									"rug"
-								],
-								[
-									"plot.new\t{graphics}",
-									"plot.new"
-								],
-								[
-									"image.default\t{graphics}",
-									"image.default"
-								],
-								[
-									"boxplot.matrix\t{graphics}",
-									"boxplot.matrix"
-								],
-								[
-									"clip\t{graphics}",
-									"clip"
-								],
-								[
-									"pairs\t{graphics}",
-									"pairs"
-								],
-								[
-									"points.default\t{graphics}",
-									"points.default"
-								],
-								[
-									"lines.default\t{graphics}",
-									"lines.default"
-								],
-								[
-									"strwidth\t{graphics}",
-									"strwidth"
-								],
-								[
-									"persp\t{graphics}",
-									"persp"
-								],
-								[
-									"plot.design\t{graphics}",
-									"plot.design"
-								],
-								[
-									"matpoints\t{graphics}",
-									"matpoints"
-								],
-								[
-									"dotchart\t{graphics}",
-									"dotchart"
-								],
-								[
-									"sunflowerplot\t{graphics}",
-									"sunflowerplot"
-								],
-								[
-									".filled.contour\t{graphics}",
-									".filled.contour"
-								],
-								[
-									"arrows\t{graphics}",
-									"arrows"
-								],
-								[
-									"symbols\t{graphics}",
-									"symbols"
-								],
-								[
-									"hist.default\t{graphics}",
-									"hist.default"
-								],
-								[
-									"stripchart\t{graphics}",
-									"stripchart"
-								],
-								[
-									"xyinch\t{graphics}",
-									"xyinch"
-								],
-								[
-									"xinch\t{graphics}",
-									"xinch"
-								],
-								[
-									"contour\t{graphics}",
-									"contour"
-								],
-								[
-									"erase.screen\t{graphics}",
-									"erase.screen"
-								],
-								[
-									"Axis\t{graphics}",
-									"Axis"
-								],
-								[
-									"text.default\t{graphics}",
-									"text.default"
-								],
-								[
-									"grconvertX\t{graphics}",
-									"grconvertX"
-								],
-								[
-									"legend\t{graphics}",
-									"legend"
-								],
-								[
-									"text\t{graphics}",
-									"text"
-								],
-								[
-									"grconvertY\t{graphics}",
-									"grconvertY"
-								],
-								[
-									"lcm\t{graphics}",
-									"lcm"
-								],
-								[
-									"cdplot\t{graphics}",
-									"cdplot"
-								],
-								[
-									"hist\t{graphics}",
-									"hist"
-								],
-								[
-									"smoothScatter\t{graphics}",
-									"smoothScatter"
-								],
-								[
-									"layout.show\t{graphics}",
-									"layout.show"
-								],
-								[
-									"grid\t{graphics}",
-									"grid"
-								],
-								[
-									"polypath\t{graphics}",
-									"polypath"
-								],
-								[
-									"close.screen\t{graphics}",
-									"close.screen"
-								],
-								[
-									"xspline\t{graphics}",
-									"xspline"
-								],
-								[
-									"curve\t{graphics}",
-									"curve"
-								],
-								[
-									"filled.contour\t{graphics}",
-									"filled.contour"
-								],
-								[
-									"co.intervals\t{graphics}",
-									"co.intervals"
-								],
-								[
-									"contour.default\t{graphics}",
-									"contour.default"
-								],
-								[
-									"boxplot.default\t{graphics}",
-									"boxplot.default"
-								],
-								[
-									"plot.function\t{graphics}",
-									"plot.function"
-								],
-								[
-									"spineplot\t{graphics}",
-									"spineplot"
-								],
-								[
-									"plot\t{graphics}",
-									"plot"
-								],
-								[
-									"boxplot\t{graphics}",
-									"boxplot"
-								],
-								[
-									"rasterImage\t{graphics}",
-									"rasterImage"
-								],
-								[
-									"axis.POSIXct\t{graphics}",
-									"axis.POSIXct"
-								],
-								[
-									"bxp\t{graphics}",
-									"bxp"
-								],
-								[
-									"box\t{graphics}",
-									"box"
-								],
-								[
-									"mtext\t{graphics}",
-									"mtext"
-								],
-								[
-									"matplot\t{graphics}",
-									"matplot"
-								],
-								[
-									"abline\t{graphics}",
-									"abline"
-								],
-								[
-									"pie\t{graphics}",
-									"pie"
-								],
-								[
-									"image\t{graphics}",
-									"image"
-								],
-								[
-									"matlines\t{graphics}",
-									"matlines"
-								],
-								[
-									"segments\t{graphics}",
-									"segments"
-								],
-								[
-									"lines\t{graphics}",
-									"lines"
-								],
-								[
-									"barplot.default\t{graphics}",
-									"barplot.default"
-								],
-								[
-									"barplot\t{graphics}",
-									"barplot"
-								],
-								[
-									"locator\t{graphics}",
-									"locator"
-								],
-								[
-									"stars\t{graphics}",
-									"stars"
-								],
-								[
-									"coplot\t{graphics}",
-									"coplot"
-								],
-								[
-									"mosaicplot\t{graphics}",
-									"mosaicplot"
-								],
-								[
-									"polygon\t{graphics}",
-									"polygon"
-								],
-								[
-									"plot.window\t{graphics}",
-									"plot.window"
-								],
-								[
-									"axis\t{graphics}",
-									"axis"
-								],
-								[
-									"axTicks\t{graphics}",
-									"axTicks"
+									"dlogis\t{stats}",
+									"dlogis"
 								],
 								[
 									"abind\tInstalled Package",
@@ -21993,22 +21993,22 @@
 							],
 							"R-Box.loaded_packages":
 							[
-								"stats",
-								"base",
+								"methods",
+								"graphics",
 								"grDevices",
 								"utils",
-								"methods",
-								"graphics"
+								"base",
+								"stats"
 							],
 							"syntax": "Packages/knitr/knitr-Markdown.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3312.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
