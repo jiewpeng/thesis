@@ -1,5 +1,14 @@
 
 # Conclusion
 
+The main objective of this study was to investigate the intangible effects of green labelling on residential housing prices. A large percentage of previous studies on green labelling or certifications did not try to separate the economic effects of energy savings from the intangible effects of labelling, bundling these effects together. A few studies attempted to separate these effects using proxies for environmental ideology or data on energy usage to separate these effects; this study uses a DID approach instead.
+
+The empirical results suggest that GM-rated dwellings are higher quality in general, and that the intangible effects of labelling contribute a `r extract_coef(did_with_conquas_cat, "award_after")` price premium in the private residential market in Singapore.
+
+These results corroborate previous studies' findings that green certification is a good selling point for developers, since they provide a price premium on top of the economic effects of energy savings that they can market to potential buyers. This should encourage more property developers to integrate sustainable designs into their projects, thereby helping to reduce the environmental impact from building construction. 
+
+One important implication is that green certification can be a viable strategy for governments seeking to promote sustainable development. The findings show that the main assumption underlying the use of certification as a means to promote environmental sustainability, that is that the housing market values the certification on top of information on energy savings, is satisfied.
+
+Given the limited scope of this study (green certification in Singapore housing market), further research could be done to explore if these intangible labelling effects are valid outside of the Singapore housing market, or even if they hold for other types of certifications.
 
 \newpage
