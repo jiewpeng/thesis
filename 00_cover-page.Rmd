@@ -4,7 +4,7 @@
     \begin{center}
         \vspace*{1cm}
         
-        \textbf{INTANGIBLE EFFECTS OF GREEN LABELLING}\\
+        \textbf{INTANGIBLE EFFECTS OF GREEN LABELLING:}\\
         \textbf{EVIDENCE FROM SINGAPORE}
         
         \vspace*{\fill}
@@ -17,8 +17,38 @@
         \textbf{2016/2017}
         
         \vspace*{1cm}
+
+        \large
+
+        \vspace*{1cm}
         
     \end{center}
 \end{titlepage}
 
 \newpage
+
+\begin{titlepage}
+    \large
+    \begin{center}
+        \vspace*{1cm}
+        
+        \textbf{INTANGIBLE EFFECTS OF GREEN LABELLING:}\\
+        \textbf{EVIDENCE FROM SINGAPORE}
+        
+        \vspace*{\fill}
+        \textbf{by}\\
+        \textbf{LIM JIEW PENG}
+        \vspace*{\fill}
+        
+        \textbf{Honours Thesis in Part Fulfilment for the Honours B.Soc.Sci. Degree}\\
+        \textbf{Presented to the Department of Economics,}\\
+        \textbf{National University of Singapore 2016/2017}
+        
+        \vspace*{1cm}
+
+        \large
+
+        \vspace*{1cm}
+        
+    \end{center}
+\end{titlepage}
