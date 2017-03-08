@@ -3,7 +3,7 @@
 
 ## Data Sources
 
-About eighty percent of the Singapore population lives in public housing [@DOSInfographic]. Property characteristics are heterogeneous across different submarkets [@Sing2006], so this paper studies only new sales in the condominium and apartment market, of which 134,183 transactions were collected. Public housing by the Housing Development Board (HDB) as well as executive condominiums (ECs) are subsidised and have eligibility criteria [see @HDBFlat; also @HDBEC], hence they might function differently from the private housing market. In the private property market, I use only residential properties, because commercial and office buildings do undergo asset enhancement initiatives (AEIs) every once in a while. If the timing of the GM award coincides with these AEIs, the DID cannot isolate the effect of the GM award from the other relevant improvements in the property as a result of the AEI. 
+About eighty percent of the Singapore population lives in public housing [@DOSInfographic]. However, public housing by the Housing Development Board (HDB) as well as executive condominiums (ECs) are subsidised and have eligibility criteria [see @HDBFlat; also @HDBEC], hence they might function differently. Property characteristics are heterogeneous across different submarkets [@Sing2006], so this paper studies only new sales in the condominium and apartment market, of which 134,183 transactions were collected. In the private property market, I use only residential properties, because commercial and office buildings do undergo asset enhancement initiatives (AEIs) every once in a while. If the timing of the GM award coincides with these AEIs, the DID cannot isolate the effect of the GM award from the other relevant improvements in the property as a result of the AEI. 
 
 Housing transactions ranging from Jan 2003 to Mar 2016 was obtained from the Real Estate Information System (REALIS) of Singapore. A total of 331,405 private residential housing transactions were collected. These transactions were then geocoded using the Onemap Search API. After geocoding, the distance of each property to the nearest MRT station was calculated. The coordinates of MRT stations was obtained again by using the Onemap Search API.
 
@@ -24,7 +24,7 @@ data <- read_rds("data/final/data.RDS") %>%
 
 ## Descriptive Statistics
 
-As of Feb 2017, there are around 1600 GM rated properties, of which `r data %>% filter(award_dummy == 1) %>% distinct(project_name) %>% nrow()` are relevant for this study (private residential properties excluding ECs). There are `r data %>% filter((award_dummy == 0) & (ctrl_prop_type != "Executive Condominium")) %>% distinct(project_name) %>% nrow()` non-GM rated projects. For the main sample used in the analysis (new sales from the above criteria), there are `r data %>% filter((award_dummy == 1) & (ctrl_prop_type != "Executive Condominium") & (sale_type == "New Sale")) %>% distinct(project_name) %>% nrow()` GM rated projects and `r data %>% filter((award_dummy == 0) & (ctrl_prop_type != "Executive Condominium") & (sale_type == "New Sale")) %>% distinct(project_name) %>% nrow()` non-GM rated projects. 
+As of Feb 2017, there are around 1600 GM rated properties, of which `r data %>% filter(award_dummy == 1) %>% distinct(project_name) %>% nrow()` are relevant for this study (private residential properties excluding ECs). For the main sample used in the analysis (new sales from the above criteria), there are `r data %>% filter((award_dummy == 1) & (ctrl_prop_type != "Executive Condominium") & (sale_type == "New Sale")) %>% distinct(project_name) %>% nrow()` GM rated projects and `r data %>% filter((award_dummy == 0) & (ctrl_prop_type != "Executive Condominium") & (sale_type == "New Sale")) %>% distinct(project_name) %>% nrow()` non-GM rated projects. 
 
 Table \@ref(tab:summary-stats) shows some basic descriptive statistics for the new, non-EC sales, including a comparison between GM and non-GM rated properties.
 
@@ -70,13 +70,13 @@ In general, GM-rated properties tend to be of higher quality, selling for higher
 
 ## Methodology
 
-Certified buildings can have a price premium due to two reasons: either the signalling effect provided by the certification, or that good features tend to cluster together such that green buildings are also higher quality buildings in other aspects. Fuerst [-@Fuerst2016] also pointed out that energy efficient features present in green buildings may also affect building performance in non-environmental aspects, and hence also generate a price premium that is unrelated to environmental friendliness. 
+Certified buildings can have a price premium due to a few reasons: the intangible effects provided by the certification, green buildings help reduce water and energy bills, or simply that good features tend to cluster together such that green buildings are also higher quality buildings in other aspects. 
 
-This study uses a difference-in-differences (DID) approach to isolate the signalling effect from any other factors associated with the GM certification that might contribute to a price premium.
+This study uses a difference-in-differences (DID) approach to isolate the intangible effects of certification from any other factors associated with the GM certification that might contribute to a price premium. The DID approach abstracts away the baseline differences between GM-rated and non-GM rated properties and also differences in prices across time, leaving the intangible certification effect.
 
 Housing prices are modelled using the hedonic price model introduced by Rosen [-@Rosen1974]. In this model, housing price is a function of structural, environmental and locational attributes. These attributes carry implicit prices, which are revealed from observed prices of different properties with different combinations of attributes. These implicit prices are estimated with regression analysis.
 
-This paper uses a feature of the GM program in Singapore to isolate the signalling effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the effect of the award as a signal from other unobserved characteristics. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. In essence, because nothing about the property has changed after it is awarded with the GM award, any price premium that is generated after the award should be independent of unobserved characteristics.
+This paper uses a feature of the GM program in Singapore to isolate the intangible effects of an environmental certification. Because certification takes time, developments sometimes get the award only after their launch. This makes it possible to use a DID framework to isolate the intangible effects of certification from other unobserved characteristics, or the economic value of energy savings. The idea is that the award is an "unexpected shock" to buyers, and hence the price premium attributed to the property after the award will be independent of other unobserved characteristics, which may cluster together with green features. In essence, because nothing about the property has changed after it is awarded with the GM award, any price premium that is generated after the award should be independent of unobserved characteristics or energy savings.
 
 This study uses only new sales of private residential properties, excluding ECs. This is because ECs are subsidised by HDB and have eligibility criteria, which implies that it is limited to a certain group of buyers. 
 
@@ -91,9 +91,9 @@ I first start off by regressing the natural log of price psm on a dummy indicati
   (\#eq:naive)
 \end{equation}
 
-where $i$ indexes housing transactions, $GM_i$ indicates if the property associated with transaction $i$ is GM-certified.
+where $P$ is the natural log of the CPI-deflated price psm, $i$ indexes housing transactions, $GM_i$ indicates if the property associated with transaction $i$ is GM-certified.
 
-The model specified by \@ref(eq:naive) has several weaknesses. It does not consider any hedonic characteristics at all. Since the GM award is likely to be correlated with other hedonic characteristics which affect housing prices, the model suffers from omitted variable bias. As such, the model can be improved by adding other hedonic characteristics and locational controls:
+The model specified by equation \@ref(eq:naive) has several weaknesses; most importantly, it does not consider any hedonic characteristics at all. Since the GM award is likely to be correlated with other hedonic characteristics which affect housing prices, the model suffers from omitted variable bias. As such, the model can be improved by adding other hedonic characteristics and locational controls:
 
 \begin{equation} 
   P_i = \beta_0 + \beta_1 GM_i + \beta X_i + \lambda loc_i + \epsilon_i
@@ -109,20 +109,22 @@ The predictive performance of this model can be further improved by controlling 
   (\#eq:naivewithcontrolsandtimefe)
 \end{equation}
 
+where $t$ indexes time (year-month), $\gamma_t$ represents year-month fixed effects.
+
 ### DID Model
 
 Even with these controls, it is likely that there are other omitted variables that are correlated with the GM award and the price of a property. Unobserved quality of the property is one such omitted variable. 
 
 In order to separate the effect of the award from the effect of unobserved quality differences between GM and non-GM rated properties, a DID approach can be used. In this context, the cross-section variation (treatment or control group) is simply whether or not a property is GM-rated. The time variation is before and after a property gets its GM rating.
 
-There is a challenge in defining the time variation for a traditional DID model, because the timing of award varies between properties. However, this issue is solved by using time (year-month) dummies in the regression equation, like in a fixed effects (FE) model, except without entity fixed effects. The resulting model is as follows:
+There is a challenge in defining the time variation for a traditional DID model, because the timing of award varies between properties. There is also no intuitive way to classify the timing of award for non-GM rated properties. However, this issue is solved by using time (year-month) dummies in the regression equation This is not unlike in a fixed effects (FE) model, except without entity fixed effects. The resulting model is as follows:
 
 \begin{equation} 
   P_{it} = \beta_0 + \beta_1 GM_i + \beta_2 GM_i \times AfterGM_{it} + \beta X_i + \lambda loc_i + \gamma_t + \epsilon_{it}
   (\#eq:did)
 \end{equation}
 
-where $CONQUAS_i$ represents the CONQUAS score of the property
+where $AfterGM_{it}$ is a dummy indicating if $t$ is after the GM award date for a GM-rated property, and 0 otherwise (also 0 for non-GM rated properties).
 
 The model can still be improved further, by adding available measures of quality of a property. For instance, the CONQUAS score can be added to control for the construction quality of a property, which is likely to be correlated with the GM award and also the price of a property.
 
@@ -133,7 +135,7 @@ The model can still be improved further, by adding available measures of quality
 
 where $CONQUAS_i$ represents the CONQUAS score of the property
 
-Since CONQUAS is a voluntary rating scheme, the model specified in equation \@ref(eq:didwithconquas) results in a lot of observations being dropped. This is problematic because it might result in selection bias in the model, since unevaluated properties are dropped from the model. Instead, dummies representing ranges of the CONQUAS score can be used; a dummy indicating missing CONQUAS score can also be included so as to not exclude non-CONQUAS rated properties.
+Since CONQUAS is a voluntary rating scheme, the model specified in equation \@ref(eq:didwithconquas) results in a lot of observations being dropped. This is problematic because it might result in selection bias in the model, since unevaluated properties are dropped from the model. Instead, dummies representing ranges of the CONQUAS score can be used; a dummy indicating missing CONQUAS score can also be included so as to not exclude non-CONQUAS rated properties. While a "CONQUAS missing" dummy can be added in this model to avoid dropping observations, the raw CONQUAS score might be noisy; score ranges are less noisy.
 
 \begin{equation} 
   P_{it} = \beta_0 + \beta_1 GM_i + \beta_2 GM_i \times AfterGM_{it} + \beta X_i + \delta CONQUAS_i + \lambda loc_i + \gamma_t + \epsilon_{it}
@@ -148,7 +150,7 @@ In order to ensure that the DID models are robust (i.e. non-GM properties are co
 
 A conventional placebo DID approach that simply shifts the time variation dummy to some time before the actual treatment would not work in this case. Since property developers can inform potential buyers that their property would be GM-rated, buyers are likely to price in part of the premium associated with green features before the official GM announcement date. As a result, the placebo DID coefficient may be significant even if the assumption of common trend between the treatment and control groups is satisfied.
 
-Instead, the same DID model was run on resale transaction data, testing if there were any changes in the property around the time of the award (leading to a change in price premium). The "after GM" dummy was defined as whether or not the new sale of the unit was after the GM announcement. This way, the resale transaction of a GM-rated unit is always already GM-rated by the time of resale; the DID coefficient in this specification should have a coefficient of zero. Any GM-rated project which had resale transactions before being GM-rated were removed. The placebo DID coefficient is checking that there is no difference between GM-rated properties, regardless of whether the GM announcement happened before the first sale or before the resale. If a GM-rated resale property sells before it obtains the GM certification, there will be a price difference between it and other GM-rated properties which have already obtained the GM certification. Here is an example:
+Instead, the same DID model was run on resale transaction data, testing if there were any changes in the property around the time of the award (leading to a change in price premium). The "after GM" dummy was defined as whether or not the new sale of the unit was after the GM announcement. This way, the resale transaction of a GM-rated unit is always already GM-rated by the time of resale; the DID coefficient in this specification should have a coefficient of zero. Any GM-rated project which had resale transactions before being GM-rated were removed. This is because if a GM-rated resale property sells before it obtains the GM certification, there will be a price difference between it and other GM-rated properties which have already obtained the GM certification. Here is an example:
 
 | Order of GM        | Placebo DID Dummy Value                                         |
 |--------------------|-----------------------------------------------------------------|
@@ -157,7 +159,9 @@ Instead, the same DID model was run on resale transaction data, testing if there
 | GM-New Sale-Resale | 1                                                               |
 | New Sale-Resale-GM | 0 (these are excluded from the model to avoid causing problems) |
 
-[^gm_buildings_directory]: The BCA Green Mark Buildings Directory contains a list of buildings which are awarded with the Green Mark award. Information about the award such as the award year is provided. Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
+If the placebo DID coefficient is found to be statistically insignificant, it provides some evidence that there are no omitted variable problems with factors that vary both between GM-rated and non-GM rated properties, and also across time. This implies that the DID coefficients are not capturing unobserved quality changes over time on top of the intangible certification effects.
+
+[^gm_buildings_directory]: The BCA Green Mark Buildings Directory contains a list of buildings which are awarded with the Green Mark award. While there are datasets on GM buildings from data.gov.sg and dex.sg, these datasets do not contain information on the date of the GM award as of the time of data collection. Website can be found here: [https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx](https://www.bca.gov.sg/green_mark/KnowledgeResources/BuildingDirectory.aspx)
 
 [^IQUAS]: The IQUAS database contains information about projects, such as the CONQUAS score and Quality Mark certification. Website can be found here: [https://www.bca.gov.sg/Professionals/IQUAS/IQUAS/default.aspx?menuID=4](https://www.bca.gov.sg/Professionals/IQUAS/IQUAS/default.aspx?menuID=4)
 
