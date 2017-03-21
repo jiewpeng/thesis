@@ -16,6 +16,22 @@ cpi <- read_csv("data/raw/consumer-price-index-base-year-2014-100-monthly.csv")
 condo_facilities <- read_dta("data/raw/CondoFacility.dta") 
 ```
 
+```{r check for dupes in gm}
+greenmark %>% 
+    group_by(project_name, award, year_award) %>% 
+    summarise(count = n()) %>% 
+    group_by(project_name) %>% 
+    summarise(count = n()) %>% 
+    filter(count > 1)
+```
+
+```{r fix dupes in gm}
+greenmark <- greenmark %>% 
+    filter(!(project_name == "LUXUS HILLS" & year_award == "FY10" & year_award == "Green Mark Certified")) %>% 
+    filter(!(project_name == "RIVIERA 38" & year_award == "FY11")) %>% 
+    filter(!(project_name == "TERRENE AT BUKIT TIMAH" & year_award == "FY08"))
+```
+
 
 ```{r merge on project name}
 merged <- transactions %>% left_join(greenmark, on = "project_name")
