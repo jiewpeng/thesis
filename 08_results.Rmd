@@ -126,42 +126,42 @@ data[f_eval(subs, data),] %>%
     summarise(transactions = n(), projects = n_distinct(project_name))
 ```
 
-```{r naive model}
-naive_mdl <- reg(base_reg)
-summary2(naive_mdl)
+```{r basic model}
+basic_mdl <- reg(base_reg)
+summary2(basic_mdl)
 ```
 
-```{r naive model with controls}
-naive_mdl_with_controls <- reg(base_reg, controls, area_fe = area_fe)
-summary2(naive_mdl_with_controls)
+```{r basic model with controls}
+basic_mdl_with_controls <- reg(base_reg, controls, area_fe = area_fe)
+summary2(basic_mdl_with_controls)
 ```
 
 ```{r model with controls and year-month FE}
-naive_mdl_with_controls_ymfe <- reg(base_reg, controls, area_fe = area_fe, time_fe = time_fe)
-summary2(naive_mdl_with_controls_ymfe)
+basic_mdl_with_controls_ymfe <- reg(base_reg, controls, area_fe = area_fe, time_fe = time_fe)
+summary2(basic_mdl_with_controls_ymfe)
 ```
 
-## Results from "Naive" Models
+## Results from Basic Hedonic Regression Models
 
-Table \@ref(tab:naiveresults) reports the regression results from the "basic" hedonic models. The most basic model specified by equation \@ref(eq:naive) suggests that the GM award provides a `r extract_coef(naive_mdl, "award_dummy")` price premium over non-GM properties. However, this model suffers from omitted variable bias and also has a very low predictive power, with a $R^2$ of `r extract_r2(naive_mdl)`. The model specified by equation \@ref(eq:naivewithcontrols), which adds hedonic characteristics, locational controls (4-digit postal code dummies) and condominium/apartment facilities, shows a GM award effect of `r extract_coef(naive_mdl_with_controls, "award_dummy")`. Because this model adds a significant number of variables, the $R^2$ also increases significantly to `r extract_r2(naive_mdl_with_controls)`. After controlling for property market trends using year-month dummies, the premium associated with GM-rated properties changes to `r extract_coef(naive_mdl_with_controls_ymfe, "award_dummy")`.
+Table \@ref(tab:basicresults) reports the regression results from the basic hedonic models. The most basic model specified by equation \@ref(eq:basic) suggests that the GM award provides a `r extract_coef(basic_mdl, "award_dummy")` price premium over non-GM properties. However, this model suffers from omitted variable bias and also has a very low predictive power, with a $R^2$ of `r extract_r2(basic_mdl)`. The model specified by equation \@ref(eq:basicwithcontrols), which adds hedonic characteristics, locational controls (4-digit postal code dummies) and condominium/apartment facilities, shows a GM award effect of `r extract_coef(basic_mdl_with_controls, "award_dummy")`. Because this model adds a significant number of variables, the $R^2$ also increases significantly to `r extract_r2(basic_mdl_with_controls)`. After controlling for property market trends using year-month dummies, the premium associated with GM-rated properties changes to `r extract_coef(basic_mdl_with_controls_ymfe, "award_dummy")`.
 
 The coefficients of the hedonic characteristics are all expected. For instance, condominiums are more expensive compared to comparable apartments, higher floors command higher prices but suffer from diminishing returns. Units on the first and top floors of any block are cheaper than comparable units on other floors because these typically have unliveable space (first floors have patios and top floors have roof terraces). Properties further away from an MRT station also sell for lesser, as residents in these properties have to incur higher transportation costs. 
 
 These results are in line with the study by Deng, Li and Quigley [-@Deng2012], which also studied the GM award in the Singapore private residential property market with a similar specification. This study excludes some covariates such as buyer characteristics, and adds others, such as distance to the nearest MRT station and the availability of facilities like swimming pool and gymnasium.
 
-```{r naive models results, include = TRUE, results = "asis"}
-vars_to_keep <- keep_coefs(naive_mdl_with_controls_ymfe)
+```{r basic models results, include = TRUE, results = "asis"}
+vars_to_keep <- keep_coefs(basic_mdl_with_controls_ymfe)
 labels <- label_coefs(vars_to_keep)
 area_fe_line <- c("4-digit Postal Code Fixed Effects", "No", "Yes", "Yes")
 time_fe_line <- c("Year-Month Dummies", "No", "No", "Yes")
 condo_facils_line <- c("Condo Facilities Dummies", "No", "Yes", "Yes")
-ses <- map(list(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe), extract_ses)
-stargazer(naive_mdl, naive_mdl_with_controls, naive_mdl_with_controls_ymfe, 
+ses <- map(list(basic_mdl, basic_mdl_with_controls, basic_mdl_with_controls_ymfe), extract_ses)
+stargazer(basic_mdl, basic_mdl_with_controls, basic_mdl_with_controls_ymfe, 
           type = "latex", title = "Effects of GM Award on Price",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
           add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "naiveresults", no.space = TRUE)
+          se = ses, digits = 3, label = "basicresults", no.space = TRUE)
 ```
 
 ```{r DID base model}
