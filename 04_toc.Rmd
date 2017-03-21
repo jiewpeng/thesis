@@ -1,5 +1,7 @@
 \pdfbookmark[chapter]{Contents}{toc}
 
+\pagestyle{plain}
+
 \tableofcontents
 
 \listoffigures
@@ -7,3 +9,5 @@
 \listoftables
 
 \newpage
+
+\pagestyle{rightpageno}
