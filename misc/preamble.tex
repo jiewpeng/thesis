@@ -35,7 +35,11 @@
   \fancyhf{} %
   \fancyfoot[C]{\thepage} %
 }
-\pagestyle{plain}
+\fancypagestyle{rightpageno}{%
+  \fancyhf{} %
+  \fancyhead[R]{\thepage} %
+}
+\pagestyle{rightpageno}
 
 % formatting TOC etc.
 \renewcommand{\cfttoctitlefont}{\Large\bfseries}
