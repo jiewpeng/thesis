@@ -44,7 +44,7 @@ make_reg_formula <- function(...) {
     result <- str_sub(result, 4, str_length(result)) # remove additional " + " at the front
     return(result)
 }
-reg <- function(..., area_fe = "", time_fe = "", s = subs) {
+reg <- function(..., area_fe = "", time_fe = "", d = data, s = subs) {
     reg_formula <- make_reg_formula(...)
     if (time_fe != "") {
         reg_formula <- str_c(reg_formula, " + ", time_fe)
@@ -52,16 +52,16 @@ reg <- function(..., area_fe = "", time_fe = "", s = subs) {
     if (area_fe != "") {
         reg_formula <- str_c(reg_formula, " | ", area_fe)
     }
-    felm(formula(reg_formula), data = data, subset = f_eval(s, data))
+    felm(formula(reg_formula), data = d, subset = f_eval(s, d))
 }
 summary2 <- function(reg_mdl) {
     summ <- summary(reg_mdl, robust = TRUE)
     summ$coefficients <- summ$coefficients[!str_detect(dimnames(summ$coefficients)[[1]], time_fe),]
     return(summ)
-} 
+}
 base_reg <- "ln_price_psm ~ award_dummy"
 did_dummy <- "award_after"
-controls <- c("ctrl_prop_type", "ctrl_ln_area", "ctrl_freehold", "ctrl_floor", "ctrl_floor2", 
+controls <- c("ctrl_prop_type", "ctrl_ln_area", "ctrl_freehold", "ctrl_floor", "ctrl_floor2",
               "ctrl_firstfloor", "ctrl_topfloor", "ctrl_dist_mrt", "ctrl_yrs_to_completion",
               "facil_bbq", "facil_swp", "facil_tennis", "facil_basketball", "facil_gym",
               "facil_functionrm", "facil_jacuzzi", "facil_sauna")
@@ -70,16 +70,16 @@ conquas_vars <- c("conquas_score")
 area_fe <- "ctrl_postal_first4"
 time_fe <- "sale_ym"
 subs <- ~ sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium"
-subs_placebo <- ~ sale_type == "Resale" & ctrl_prop_type != "Executive Condominium" & placebo_flag == 1
+subs_robustness <- ~ sale_type == "Resale" & ctrl_prop_type != "Executive Condominium" & placebo_flag == 1
 keep_coefs <- function(...) {
     mdls <- list(...)
-    covariates <- mdls %>% 
-        map(~.x$coefficients) %>% 
-        map(dimnames) %>% 
-        map(~.[[1]]) %>% 
+    covariates <- mdls %>%
+        map(~.x$coefficients) %>%
+        map(dimnames) %>%
+        map(~.[[1]]) %>%
         unlist()
     covariates <- covariates[
-        !str_detect(covariates, time_fe) & !str_detect(covariates, "(Intercept)") & !str_detect(covariates, "facil_")] %>% 
+        !str_detect(covariates, time_fe) & !str_detect(covariates, "(Intercept)") & !str_detect(covariates, "facil_")] %>%
         unique()
     if (any(str_detect(covariates, "placebo"))) {
         covariates <- c(
@@ -105,10 +105,10 @@ label_coefs <- function(lst) {
         "ctrl_yrs_to_completion" = "Years to Completion",
         "placebo_interaction" = "GM x GM After New Sale",
         "conquas_score$" = "CONQUAS Score",
-        "conquas_score_cat61-70" = "CONQUAS Score: 61-70", 
+        "conquas_score_cat61-70" = "CONQUAS Score: 61-70",
         "conquas_score_cat71-80" = "CONQUAS Score: 71-80",
-        "conquas_score_cat81-90" = "CONQUAS Score: 81-90", 
-        "conquas_score_cat> 90" = "CONQUAS Score: > 90", 
+        "conquas_score_cat81-90" = "CONQUAS Score: 81-90",
+        "conquas_score_cat> 90" = "CONQUAS Score: > 90",
         "conquas_score_catMissing" = "CONQUAS Score: Missing",
         "conquas_truncated" = "CONQUAS Score Censored"
     ))
@@ -121,8 +121,8 @@ extract_ses <- function(model) {
 ```
 
 ```{r}
-data[f_eval(subs, data),] %>% 
-    group_by(award_dummy, award_after) %>% 
+data[f_eval(subs, data),] %>%
+    group_by(award_dummy, award_after) %>%
     summarise(transactions = n(), projects = n_distinct(project_name))
 ```
 
@@ -145,9 +145,11 @@ summary2(basic_mdl_with_controls_ymfe)
 
 Table \@ref(tab:basicresults) reports the regression results from the basic hedonic models. The most basic model specified by equation \@ref(eq:basic) suggests that the GM award provides a `r extract_coef(basic_mdl, "award_dummy")` price premium over non-GM properties. However, this model suffers from omitted variable bias and also has a very low predictive power, with a $R^2$ of `r extract_r2(basic_mdl)`. The model specified by equation \@ref(eq:basicwithcontrols), which adds hedonic characteristics, locational controls (4-digit postal code dummies) and condominium/apartment facilities, shows a GM award effect of `r extract_coef(basic_mdl_with_controls, "award_dummy")`. Because this model adds a significant number of variables, the $R^2$ also increases significantly to `r extract_r2(basic_mdl_with_controls)`. After controlling for property market trends using year-month dummies, the premium associated with GM-rated properties changes to `r extract_coef(basic_mdl_with_controls_ymfe, "award_dummy")`.
 
-The coefficients of the hedonic characteristics are all expected. For instance, condominiums are more expensive compared to comparable apartments, higher floors command higher prices but suffer from diminishing returns. Units on the first and top floors of any block are cheaper than comparable units on other floors because these typically have unliveable space (first floors have patios and top floors have roof terraces). Properties further away from an MRT station also sell for lesser, as residents in these properties have to incur higher transportation costs. 
+The coefficients of the hedonic characteristics are all expected. For instance, condominiums are more expensive compared to comparable apartments, higher floors command higher prices but suffer from diminishing returns. Units on the first and top floors of any block are cheaper than comparable units on other floors because these typically have unliveable space (first floors have patios and top floors have roof terraces). Properties further away from an MRT station also sell for lesser, as residents in these properties have to incur higher transportation costs.
 
 These results are in line with the study by Deng, Li and Quigley [-@Deng2012], which also studied the GM award in the Singapore private residential property market with a similar specification. This study excludes some covariates such as buyer characteristics, and adds others, such as distance to the nearest MRT station and the availability of facilities like swimming pool and gymnasium.
+
+Overall, the results from these basic hedonic models indicate that GM-rated properties command a premium over non-GM rated properties. These results show that, after controlling for property characteristics such as size and location, the combined benefits of energy savings as well as the intangible certification effects contribute about a 3 to 8 percent price premium.
 
 ```{r basic models results, include = TRUE, results = "asis"}
 vars_to_keep <- keep_coefs(basic_mdl_with_controls_ymfe)
@@ -156,11 +158,11 @@ area_fe_line <- c("4-digit Postal Code Fixed Effects", "No", "Yes", "Yes")
 time_fe_line <- c("Year-Month Dummies", "No", "No", "Yes")
 condo_facils_line <- c("Condo Facilities Dummies", "No", "Yes", "Yes")
 ses <- map(list(basic_mdl, basic_mdl_with_controls, basic_mdl_with_controls_ymfe), extract_ses)
-stargazer(basic_mdl, basic_mdl_with_controls, basic_mdl_with_controls_ymfe, 
+stargazer(basic_mdl, basic_mdl_with_controls, basic_mdl_with_controls_ymfe,
           type = "latex", title = "Effects of GM Award on Price",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
-          add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
+          add.lines = list(area_fe_line, time_fe_line, condo_facils_line),
           se = ses, digits = 3, label = "basicresults", no.space = TRUE)
 ```
 
@@ -178,8 +180,8 @@ summary2(did_with_conquas)
 reduction_in_obs <- function(mdl1, mdl2) {
     n1 <- summary(mdl1)$N
     n2 <- summary(mdl2)$N
-    diff <- ((1 - (n1/n2)) * 100) %>% 
-        round(0) %>% 
+    diff <- ((1 - (n1/n2)) * 100) %>%
+        round(0) %>%
         format(big.mark = ",", scientific = FALSE)
     return(str_c(diff, "%"))
 }
@@ -192,14 +194,19 @@ summary2(did_with_conquas_cat)
 
 ## Results from DID Models
 
-The above models were further improved by using a DID methodology as outlined in the previous section. The results from the DID specifications are reported in Table \@ref(tab:didresults). Controlling for hedonic characteristics, availability of facilities, locational effects and year-month effects, the announcement of GM award increases a property's price by `r extract_coef(did_base_mdl, "award_after")`. GM rated properties are also higher quality than non-GM rated ones, having a `r extract_coef(did_base_mdl, "award_dummy")` premium before they receive the award. 
+The above models were further improved by using a DID methodology as outlined in the previous chapter. The results from the DID specifications are reported in Table \@ref(tab:didresults).
 
-Adding CONQUAS score as a regressor changes the premium associated with the GM award announcement to `r extract_coef(did_with_conquas, "award_after")`, indicating that quality is an important factor in determining housing prices. This implies that the previous models suffered from omitted variable bias, due to the award being correlated with the unobserved quality of the building (which can be captured by the CONQUAS score). 
+Controlling for hedonic characteristics, availability of facilities, locational effects and year-month effects, the announcement of GM award increases a property's price by `r extract_coef(did_base_mdl, "award_after")`. GM rated properties are also higher quality than non-GM rated ones, having a `r extract_coef(did_base_mdl, "award_dummy")` premium before they receive the award.
+
+Adding CONQUAS score as a regressor changes the premium associated with the GM award announcement to `r extract_coef(did_with_conquas, "award_after")`, indicating that quality is an important factor in determining housing prices. This implies that the previous models suffered from omitted variable bias, due to the award being correlated with the unobserved quality of the building (which can be captured by the CONQUAS score).
 
 Unfortunately, since CONQUAS scoring is optional, many buildings do not apply for it; about `r reduction_in_obs(did_with_conquas, did_base_mdl)` of the observations were dropped. This might cause selection problems, which can be solved by categorising the CONQUAS score into bands, and including a category for missing scores. Doing so could also reduce noise as it is unlikely that people are able to take into account the exact scores into pricing decisions since they cannot observe quality fully. This model shows that the GM announcement is associated with a `r extract_coef(did_with_conquas_cat, "award_after")` increase in price of a GM rated property. It also shows that higher CONQUAS scores are associated with higher prices, especially when compared to the lowest scores of 61-70. Properties with missing CONQUAS scores also command a premium over properties with CONQUAS scores of 61-70. This indicates that property buyers really do not like low quality properties.
 
+Comparing the results from the DID to the basic hedonic models, the intangible award effects contribute about a 1 to 2% premium, which is smaller but still economically significant. This is especially so considering that the GM award was found to be of the lowest importance in condominium buyers' decision making process, among many factors such as size, location and condominium facilities [@Heinzle2013].
+
+
 ```{r DID results, include = TRUE, results = "asis"}
-vars_to_keep <- c(keep_coefs(did_with_conquas), "conquas_score_cat71-80", "conquas_score_cat81-90", 
+vars_to_keep <- c(keep_coefs(did_with_conquas), "conquas_score_cat71-80", "conquas_score_cat81-90",
                   "conquas_score_cat> 90", "conquas_score_catMissing")
 labels <- label_coefs(vars_to_keep)
 area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes", "Yes")
@@ -210,74 +217,142 @@ stargazer(did_base_mdl, did_with_conquas, did_with_conquas_cat,
           type = "latex", title = "Difference-in-difference Models",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
-          add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
+          add.lines = list(area_fe_line, time_fe_line, condo_facils_line),
           se = ses, digits = 3, label = "didresults", no.space = TRUE)
 ```
 
-```{r placebo model}
-placebo_mdl <- reg(base_reg, placebo_interaction, controls, area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
-placebo_mdl_with_conquas <- reg(base_reg, placebo_interaction, controls, "conquas_score", area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
-placebo_mdl_with_conquas_cat <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, s = subs_placebo)
-summary2(placebo_mdl)
-summary2(placebo_mdl_with_conquas)
-summary2(placebo_mdl_with_conquas_cat)
+```{r robustness model}
+robustness_mdl <- reg(base_reg, placebo_interaction, controls, area_fe = area_fe, time_fe = time_fe, s = subs_robustness)
+robustness_mdl_with_conquas <- reg(base_reg, placebo_interaction, controls, "conquas_score", area_fe = area_fe, time_fe = time_fe, s = subs_robustness)
+robustness_mdl_with_conquas_cat <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, s = subs_robustness)
+summary2(robustness_mdl)
+summary2(robustness_mdl_with_conquas)
+summary2(robustness_mdl_with_conquas_cat)
 ```
 
-## Results from Placebo DID
+## Results from Robustness Check
 
-Finally, a placebo DID model is also run, to ensure that there are no unobserved quality changes that coincide with the announcement of the GM award. The specification is described in the previous section. Running the model on `r format(summary(placebo_mdl)$N, big.mark = ",", scientific = FALSE)` resale transactions shows a positive but insignificant DID coefficient. This result indicates that there is no issue with GM announcements coinciding with unobserved changes in quality of the property.
+A robustness check was also carried out, to ensure that the effect captured by the DID dummy is indeed due to intangible award effects, and not unobserved quality changes that coincide with the announcement of the GM award, such as asset enhancement or renovation works. The specification of the models are the same as the main DID models, with some exceptions. The data used is resale data instead of new sale data, and the award period variable is defined as whether a resale unit's new sale happened after the development received the GM award.
 
-The GM award premium is also larger in the resale market compared to the premium for new sales, which is in line with the findings by Deng and Wu [-@Deng2014], who find a 10% premium at the resale stage but only 4% during the presale stage. They conclude that developers pay almost all the costs associated with sustainable development, but are unable to extract all of the benefits associated with these investments. This, they explained, might "impede the further development of green residential properties". 
+Running the model on `r format(summary(robustness_mdl)$N, big.mark = ",", scientific = FALSE)` resale transactions shows a positive but insignificant DID coefficient. This result indicates that there is no issue with GM announcements coinciding with unobserved changes in quality of the property; there are no other effects associated with the announcement of the GM certification other than the intangible award effects.
 
-The authors offered two explanations for this phenomena. The first is that there is information asymmetry in housing presale arrangements, and households do not fully trust the GM evaluation, which is based on design and document reviews and not the actual building performance. The premium would increase after an owner has lived in it, since the green claims can be verified then. 
-
-The second explanation is a general equilibrium argument; the supply of GM-rated properties in the resale market was much smaller than that in the new sales market during the period of data used in that study (2000 to 2010) when the GM scheme was still new, which causes the premium to in the resale market to be larger. 
-
-In the context of this study which uses data up to March 2016, the first explanation is more likely. In light of this, the authors' suggested to introduce new business arrangements or financial products which allow developers to capture more of the benefits associated with green properties. This might be warranted, but still, a `r extract_coef(did_with_conquas_cat, "award_after")` price premium is not that small; it is unlikely to cause developers to ignore sustainable design.
-
-```{r placebo results, include = TRUE, results = "asis"}
-vars_to_keep <- c(keep_coefs(placebo_mdl_with_conquas), "conquas_score_cat61-70", "conquas_score_cat71-80", "conquas_score_cat81-90", 
-                  "conquas_score_cat> 90", "conquas_score_catMissing")
+```{r robustness check results, include = TRUE, results = "asis"}
+vars_to_keep <- c("award_dummy", "placebo_interaction")
 labels <- label_coefs(vars_to_keep)
 area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes", "Yes")
 time_fe_line <- c("Year-Month Dummies", "Yes", "Yes", "Yes")
 condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes", "Yes")
-ses <- list(placebo_mdl, placebo_mdl_with_conquas, placebo_mdl_with_conquas_cat) %>% map(extract_ses)
-stargazer(placebo_mdl, placebo_mdl_with_conquas, placebo_mdl_with_conquas_cat,
+controls_line <- c("Hedonic Characteristics", "Yes", "Yes", "Yes")
+conquas_line <- c("CONQUAS Score", "Not Included", "Continuous", "Categorical")
+ses <- list(robustness_mdl, robustness_mdl_with_conquas, robustness_mdl_with_conquas_cat) %>% map(extract_ses)
+stargazer(robustness_mdl, robustness_mdl_with_conquas, robustness_mdl_with_conquas_cat,
+          type = "latex", title = "Robustness Check",
+          keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
+          dep.var.labels = "Natural log of Price psm", header = FALSE,
+          add.lines = list(controls_line, area_fe_line, time_fe_line, condo_facils_line, conquas_line),
+          se = ses, digits = 3, label = "robustnessresults", no.space = TRUE,
+          notes = c(
+            "Models are of the same specification as the main DID models,",
+            "except that instead of new sales, resale transactions are used.",
+            "The interaction term is re-defined as whether or not the new sale",
+            "of the corresponding housing unit occurred after the GM award."))
+```
+
+The GM award premium is also larger in the resale market compared to the premium for new sales, which is in line with the findings by Deng and Wu [-@Deng2014], who find a 10% premium at the resale stage but only 4% during the presale stage. They conclude that developers pay almost all the costs associated with sustainable development, but are unable to extract all of the benefits associated with these investments. This, they explained, might "impede the further development of green residential properties".
+
+The authors offered two explanations for this phenomena. The first is that there is information asymmetry in housing presale arrangements, and households do not fully trust the GM evaluation, which is based on design and document reviews and not the actual building performance. The premium would increase after an owner has lived in it, since the green claims can be verified then.
+
+The second explanation is a general equilibrium argument; the supply of GM-rated properties in the resale market was much smaller than that in the new sales market during the period of data used in that study (2000 to 2010) when the GM scheme was still new, which causes the premium to in the resale market to be larger.
+
+In the context of this study which uses data up to March 2016, the first explanation is more likely. In light of this, the authors' suggested to introduce new business arrangements or financial products which allow developers to capture more of the benefits associated with green properties. This might be warranted, but still, a `r extract_coef(did_with_conquas_cat, "award_after")` price premium is not that small; it is unlikely to cause developers to ignore sustainable design.
+
+\FloatBarrier
+
+## Common Trend Assumption
+
+For the DID to produce convincing results, the main assumption required is that GM-rated and non-GM rated properties follow some common trend in price before the GM award. If this is not the case, the DID model might simply be capturing some sort of selection effects associated with the assignment GM award, and not the actual award effects.
+
+The way to test for this is to run a regression on the data before the respective GM-rated properties receive their award, and assign a GM rating period that is before the actual date of award, to test if this fake DID coefficient is statistically significant. If the fake DID coefficient is found to be statistically significant, then the main DID results may simply be capturing some selection effects.
+
+However, because developers are presented a letter of award when the certification process is completed, which will be before the BCA awards night, the intangible award effects would have kicked in before the BCA awards night (i.e. the treatment period).
+
+This means that a placebo DID methodology which shifts the treatment timing before the actual treatment would not work, unless the fake GM rating period is far enough back in time (i.e. at least 1 year before the actual GM rating date [^bcaawards]). If the fake award date is within 1 year of the real one, the placebo DID coefficient might be statistically significant simply because the award effects have already kicked in by the time of the fake award date.
+
+Table \@ref(tab:placeboresults) shows the results of such a placebo DID check, by shifting the date of award back by 12 and 18 months.
+
+```{r prepare data for placebo checks}
+data_12m <- data %>%
+    mutate(placebo_award = award_date %m-% months(12),
+           placebo_award_ym = str_sub(as.character(placebo_award), 1, 7),
+           placebo_interaction = as.integer(sale_ym >= placebo_award_ym),
+           placebo_interaction = replace(placebo_interaction, is.na(placebo_interaction), 0),
+           placebo_flag = 0,
+           placebo_flag = as.integer(replace(placebo_flag, (is.na(award_type)) | (sale_ym < award_ym), 1)),
+           days_from_sale = award_date - sale_date,
+           years_from_sale = days_from_sale / 365)
+data_18m <- data %>%
+    mutate(placebo_award = award_date %m-% months(18),
+           placebo_award_ym = str_sub(as.character(placebo_award), 1, 7),
+           placebo_interaction = as.integer(sale_ym >= placebo_award_ym),
+           placebo_interaction = replace(placebo_interaction, is.na(placebo_interaction), 0),
+           placebo_flag = 0,
+           placebo_flag = as.integer(replace(placebo_flag, (is.na(award_type)) | (sale_ym < award_ym), 1)))
+```
+
+```{r alt placebo, include = TRUE, results = "asis"}
+subs_placebo2 <- ~ sale_type == "New Sale" & ctrl_prop_type != "Executive Condominium" & placebo_flag == 1
+placebo2_mdl_12m <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, d = data_12m, s = subs_placebo2)
+placebo2_mdl_18m <- reg(base_reg, placebo_interaction, controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, d = data_18m, s = subs_placebo2)
+vars_to_keep <- c("award_dummy", "placebo_interaction")
+labels <- c("GM Award", "GM x After GM")
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes", "Yes")
+time_fe_line <- c("Year-Month Dummies", "Yes", "Yes")
+controls_line <- c("Hedonic Characteristics", "Yes", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "Yes", "Yes")
+ses <- list(placebo2_mdl_12m, placebo2_mdl_18m) %>% map(extract_ses)
+stargazer(placebo2_mdl_12m, placebo2_mdl_18m,
           type = "latex", title = "Placebo Difference-in-difference Tests",
           keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
           dep.var.labels = "Natural log of Price psm", header = FALSE,
-          add.lines = list(area_fe_line, time_fe_line, condo_facils_line), 
-          se = ses, digits = 3, label = "placeboresults", no.space = TRUE)
+          add.lines = list(controls_line, area_fe_line, time_fe_line, condo_facils_line),
+          se = ses, digits = 3, label = "placeboresults", no.space = TRUE,
+          notes = c("Models are of the same specification as the main DID model", " with categorical CONQUAS scores (i.e. column (3) in Table 4.2).", "The only difference is the definition of the award date."),
+          column.labels = c("Award date shifted left by 12 months", "Award date shifted left by 18 months"))
 ```
 
-```{r}
-problem_projects <- data %>% 
-    filter((placebo_resale_before_gm == 1) & (project_name != "NA")) %>% 
-    distinct(project_name) %>% 
-    .$project_name
-last_new_sales <- data %>% 
-    filter((project_name %in% problem_projects) & (sale_type == "New Sale")) %>% 
-    group_by(project_name) %>% 
-    arrange(desc(sale_ym)) %>% 
-    filter(row_number() == 1) %>% 
-    mutate(yr_last_new_sale = as.integer(str_sub(award_ym, 1, 4))) %>% 
-    select(project_name, yr_last_new_sale)
-first_resales <- data %>% 
-    filter((project_name %in% problem_projects) & (sale_type == "Resale")) %>% 
-    group_by(project_name) %>% 
-    arrange(sale_ym) %>% 
-    filter(row_number() == 1) %>% 
-    mutate(award_yr = as.integer(str_sub(award_ym, 1, 4)), 
-           yr_first_resale = as.integer(str_sub(sale_ym, 1, 4))) %>% 
-    select(project_name, top_year, award_yr, yr_first_resale)
-garbage_sales <- first_resales %>% 
-    left_join(last_new_sales, by = "project_name") %>% 
-    select(project_name, award_yr, top_yr = top_year, yr_last_new_sale, yr_first_resale) %>% 
-    mutate(top_before_2005 = top_yr < 2005,
-           resale_before_last_new_sale = yr_first_resale < yr_last_new_sale,
-           resale_before_top = yr_first_resale < top_yr)
+On face value, these placebo DID model results indicate that GM-rated and non-GM rated properties do not follow a common price trend, implying that non-GM rated properties are not suitable controls for GM-rated properties. This is seen from the positive and statistically significant DID coefficient (GM x After GM).
+
+However, it should be noted that units which only receive their GM award very long after their sale (> 1 year) might be fundamentally different from other GM-rated units, and this might cause the placebo DID coefficients to be significant even when there is no difference in trend between GM-rated and non-GM rated properties.
+
+To investigate if this is the case, I run another regression, this time modelling the logarithm of price per square metre as a function of the number of years between the time of sale and the time of the GM award, including all the controls used in the prior regression models:
+
+\begin{equation}
+  P_{it} = \beta_0 + \beta_1 YearsBetweenSaleAndGM_{it} + \beta X_i + \beta_2 CONQUAS_i + \lambda loc_i + \gamma_t + \epsilon_{it}
+  (\#eq:yearsbetweensaleandgm)
+\end{equation}
+
+```{r years from sale model, include = TRUE, results = "asis"}
+years_from_sale_mdl <- reg("ln_price_psm ~ years_from_sale", controls, "conquas_score_cat", area_fe = area_fe, time_fe = time_fe, d = data_12m, s = subs_placebo2)
+vars_to_keep <- c("years_from_sale")
+labels <- c("Years between Sale and GM Award")
+area_fe_line <- c("4-digit Postal Code Fixed Effects", "Yes")
+time_fe_line <- c("Year-Month Dummies", "Yes")
+condo_facils_line <- c("Condo Facilities Dummies", "Yes")
+controls_line <- c("Hedonic Characteristics", "Yes")
+conquas_line <- c("CONQUAS Score", "Categorical")
+ses <- list(years_from_sale_mdl) %>% map(extract_ses)
+stargazer(years_from_sale_mdl,
+          type = "latex", title = "Check if time between sale and GM award affects price",
+          keep = vars_to_keep, order = vars_to_keep, covariate.labels = labels,
+          dep.var.labels = "Natural log of Price psm", header = FALSE,
+          add.lines = list(controls_line, area_fe_line, time_fe_line, condo_facils_line, conquas_line),
+          se = ses, digits = 3, label = "yearsfromsalemodel", no.space = TRUE)
 ```
 
+Indeed, the results from Table \@ref(tab:yearsfromsalemodel) indicate that the longer the time between a unit's sale and its award date, the lower its unit price. This implies that the placebo DID dummies could have been statistically significant simply because they were picking up the difference between "normal" GM-rated units and GM-rated units that sold way before they were awarded with the GM certification.
+
+Unfortunately, there is no way to tell how much of the placebo treatment effect is driven by the differences between GM-rated and non-GM rated properties, or the effect mentioned in the previous paragraph. There is no way to empirically confirm if GM-rated and non-GM rated properties are really comparable, though intuitively, there is not a compelling reason to suggest otherwise.
+
+[^bcaawards]: The BCA Awards Night is an annual event where developers receive BCA awards, such as the GM award. Since it is held every year, the maximum time lag between a developer receiving a letter of GM award for their property and the date of the BCA Awards Night is 1 year.
 
 \newpage

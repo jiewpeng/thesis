@@ -1,0 +1,10 @@
+
+# Acknowledgements
+
+First and foremost, I would like to thank my advisor, Dr Eric Fesselmeyer, for his guidance throughout the few months I was working on my thesis. Not only has he helped me with my thesis, he was one of the main reasons I discovered my interest in data analysis. This discovery then led me to choose to start my career as a data analyst, and this, to me, is a far greater help than helping with the thesis.
+
+Secondly, I would like to thank my friends - Joey, Pearlyn, Shing Shyan, Shiyi, Sze Zhin, Xueli, Yan Kai for their awesome company and valuable feedback on my thesis. The process of writing the thesis would have been a lot more miserable if not for them.
+
+Last but certainly not least, I am very grateful for the unwavering support that my family has given me over the course of the few months when I was working on the thesis.
+
+\newpage
